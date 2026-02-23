@@ -1,0 +1,89 @@
+.categorias {
+  padding: 140px 40px;
+  background: #050505;
+  text-align: center;
+}
+
+.categorias-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  color: #f1d18a;
+}
+
+.categorias-header p {
+  color: #aaa;
+  margin: 20px 0 80px;
+}
+
+.categorias-grid {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.categoria-card {
+  position: relative;
+  height: 380px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 30px;
+  text-decoration: none;
+  transition: transform 0.5s ease;
+}
+
+.categoria-card:hover {
+  transform: translateY(-10px);
+}
+
+.categoria-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.15)
+  );
+}
+
+.categoria-card h3 {
+  position: relative;
+  z-index: 2;
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  color: #f1d18a;
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media (max-width: 1024px) {
+  .categorias-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .categorias {
+    padding: 100px 20px;
+  }
+
+  .categorias-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .categorias-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .categoria-card {
+    height: 320px;
+  }
+}

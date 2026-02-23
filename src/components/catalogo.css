@@ -1,0 +1,80 @@
+.catalogo {
+  position: relative;
+  min-height: 85vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.catalogo-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 200, 100, 0.25), transparent 55%),
+    linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.9));
+}
+
+.catalogo-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 40px;
+}
+
+.catalogo-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  color: #f1d18a;
+  margin-bottom: 25px;
+}
+
+.catalogo-content p {
+  color: #ddd;
+  font-size: 1.1rem;
+  margin-bottom: 45px;
+  line-height: 1.7;
+}
+
+.btn-catalogo {
+  font-size: 1.05rem;
+  padding: 16px 38px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media (max-width: 1024px) {
+  .catalogo-content h2 {
+    font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalogo {
+    min-height: 70vh;
+  }
+
+  .catalogo-content {
+    padding: 20px;
+  }
+
+  .catalogo-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .catalogo-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalogo-content h2 {
+    font-size: 1.9rem;
+  }
+}

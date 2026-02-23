@@ -1,0 +1,107 @@
+.campanha {
+  position: relative;
+  min-height: 85vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.campanha-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 65% 30%, rgba(255, 200, 120, 0.35), transparent 45%),
+    linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.6));
+}
+
+.campanha-content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  margin-left: 10%;
+  padding: 40px;
+}
+
+.campanha-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #f1d18a, #b98a2c);
+  color: #111;
+  padding: 6px 16px;
+  font-weight: 600;
+  border-radius: 30px;
+  margin-bottom: 25px;
+}
+
+.campanha-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.4rem;
+  color: #f1d18a;
+  margin-bottom: 25px;
+}
+
+.campanha-content p {
+  color: #ddd;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 45px;
+}
+
+.campanha-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-outline {
+  border: 2px solid #f1d18a;
+  color: #f1d18a;
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: #f1d18a;
+  color: #111;
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media (max-width: 1024px) {
+  .campanha-content h2 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .campanha {
+    min-height: auto;
+    padding: 120px 20px;
+    text-align: center;
+  }
+
+  .campanha-content {
+    margin: auto;
+    padding: 0;
+  }
+
+  .campanha-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .campanha-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .campanha-content p {
+    font-size: 1rem;
+  }
+}

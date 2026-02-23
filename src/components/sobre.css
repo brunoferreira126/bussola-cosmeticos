@@ -1,0 +1,144 @@
+.sobre {
+  position: relative;
+  background: #000;
+  padding: 140px 40px;
+  overflow: hidden;
+}
+
+/* PARTÍCULAS DOURADAS (FAKE CINEMA) */
+.sobre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 40%, rgba(255, 200, 120, 0.12), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(255, 200, 120, 0.1), transparent 45%);
+  z-index: 1;
+}
+
+/* LINHA DOURADA */
+.sobre-divider {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 70%;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(230, 184, 92, 0.8),
+    transparent
+  );
+  z-index: 2;
+}
+
+/* CONTAINER */
+.sobre-container {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* IMAGEM */
+.sobre-image img {
+  width: 100%;
+  border-radius: 6px;
+  filter:
+    drop-shadow(0 40px 80px rgba(0,0,0,0.9))
+    contrast(1.05);
+}
+
+/* TEXTO */
+.sobre-text h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  color: #f1d18a;
+  margin-bottom: 30px;
+}
+
+.sobre-text p {
+  color: #ddd;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* BOTÃO */
+.sobre .btn-gold {
+  background: linear-gradient(
+    135deg,
+    #f6e3a1,
+    #d4a94f,
+    #b98a2c
+  );
+  color: #111;
+  padding: 14px 34px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow:
+    0 10px 30px rgba(241, 209, 138, 0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+}
+
+/* ===========================
+   SOBRE RESPONSIVO
+=========================== */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .sobre-container {
+    gap: 60px;
+  }
+
+  .sobre-text h2 {
+    font-size: 2.3rem;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .sobre {
+    padding: 100px 20px;
+  }
+
+  .sobre-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 50px;
+  }
+
+  .sobre-image img {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .sobre-text h2 {
+    font-size: 2rem;
+  }
+
+  .sobre-text p {
+    font-size: 1rem;
+  }
+
+  .sobre .btn-gold {
+    margin: auto;
+  }
+}
+
+/* MOBILE PEQUENO */
+@media (max-width: 480px) {
+  .sobre-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .sobre-text p {
+    font-size: 0.95rem;
+  }
+}
