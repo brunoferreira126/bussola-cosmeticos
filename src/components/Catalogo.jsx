@@ -20,7 +20,7 @@ export default function Catalogo() {
         </p>
 
         <a
-          href="https://drive.google.com/SEU-LINK-CATALOGO-GERAL"
+          href="https://drive.google.com/drive/folders/11HaScnui7q4QxRh4I_VPu4jywLCkk27x?hl=pt-br"
           target="_blank"
           className="btn-gold btn-catalogo"
         >

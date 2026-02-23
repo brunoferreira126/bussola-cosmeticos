@@ -5,7 +5,7 @@
   overflow: hidden;
 }
 
-/* PARTÍCULAS DOURADAS (FAKE CINEMA) */
+/* PARTÍCULAS DOURADAS (EFEITO CINEMA) */
 .sobre::before {
   content: "";
   position: absolute;
@@ -46,12 +46,26 @@
 }
 
 /* IMAGEM */
-.sobre-image img {
+.sobre-visual {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sobre-visual img {
   width: 100%;
-  border-radius: 6px;
-  filter:
-    drop-shadow(0 40px 80px rgba(0,0,0,0.9))
-    contrast(1.05);
+  display: block;
+  filter: contrast(1.05) brightness(0.95);
+  box-shadow: 0 40px 100px rgba(0,0,0,.85);
+}
+
+/* Glow dourado */
+.sobre-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(241,209,138,.25), transparent 60%);
+  pointer-events: none;
 }
 
 /* TEXTO */
@@ -66,11 +80,40 @@
   color: #ddd;
   font-size: 1.05rem;
   line-height: 1.7;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+/* TEXTO DE DESTAQUE */
+.sobre-intro {
+  font-size: 1.2rem;
+  color: #f1d18a;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+/* LISTA */
+.sobre-lista {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+}
+
+.sobre-lista li {
+  margin-bottom: 12px;
+  color: #ddd;
+}
+
+/* TEXTO FINAL */
+.sobre-fecho {
+  margin-top: 25px;
+  font-style: italic;
+  color: #ccc;
 }
 
 /* BOTÃO */
 .sobre .btn-gold {
+  display: inline-block;
+  margin-top: 30px;
   background: linear-gradient(
     135deg,
     #f6e3a1,
@@ -84,11 +127,41 @@
   text-decoration: none;
   box-shadow:
     0 10px 30px rgba(241, 209, 138, 0.45),
-    inset 0 0 0 1px rgba(255,255,255,0.25);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sobre .btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 40px rgba(241, 209, 138, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
 
 /* ===========================
-   SOBRE RESPONSIVO
+   ANIMAÇÃO DE ENTRADA
+=========================== */
+
+.sobre-image,
+.sobre-text {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+.sobre.visible .sobre-image {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sobre.visible .sobre-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+/* ===========================
+   RESPONSIVO
 =========================== */
 
 /* TABLET */
@@ -128,7 +201,7 @@
   }
 
   .sobre .btn-gold {
-    margin: auto;
+    margin: 30px auto 0;
   }
 }
 

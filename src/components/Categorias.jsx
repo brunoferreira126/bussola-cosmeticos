@@ -14,7 +14,7 @@ export default function Categorias() {
 
       <div className="categorias-grid">
         <a
-          href="https://drive.google.com/SEU-LINK-PERFUMES"
+          href="https://drive.google.com/drive/folders/148i1vNnRBJ9CEimS2LyIjtZdaxkuPPJA?hl=pt-br"
           target="_blank"
           className="categoria-card"
           style={{ backgroundImage: `url(${perfumes})` }}
@@ -24,7 +24,7 @@ export default function Categorias() {
         </a>
 
         <a
-          href="https://drive.google.com/SEU-LINK-AUTOCUIDADO"
+          href="https://drive.google.com/drive/folders/1LviSjOlqQ6WnudhANMbRJwh2LvvQJx95?hl=pt-br"
           target="_blank"
           className="categoria-card"
           style={{ backgroundImage: `url(${autocuidado})` }}
@@ -34,7 +34,7 @@ export default function Categorias() {
         </a>
 
         <a
-          href="https://drive.google.com/SEU-LINK-ACESSORIOS"
+          href="https://drive.google.com/drive/folders/1ZWa3XRAL0B-OxJDozjLwqAUI-XWC9w-C?hl=pt-br"
           target="_blank"
           className="categoria-card"
           style={{ backgroundImage: `url(${acessorios})` }}
