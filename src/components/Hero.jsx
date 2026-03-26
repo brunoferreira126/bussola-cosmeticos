@@ -26,8 +26,8 @@ export default function Hero() {
           />
 
           <h1>
-            Perfumes que <br />
-            marcam presença
+            A escolha certa <br />
+            guiada com precisão
           </h1>
 
           <p>
@@ -42,7 +42,7 @@ export default function Hero() {
               rel="noreferrer"
               className="btn-gold"
             >
-              Ver Catálogo
+              Nossos Produtos
             </a>
 
             <a
@@ -51,7 +51,7 @@ export default function Hero() {
               rel="noreferrer"
               className="btn-whatsapp"
             >
-              Falar no WhatsApp
+              Fale Conosco
             </a>
           </div>
         </div>

@@ -103,6 +103,23 @@
   color: #ddd;
 }
 
+/* HIGHLIGHTS (ITENS DESTACADOS) */
+.sobre-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.sobre-highlights span {
+  background: rgba(241, 209, 138, 0.08);
+  border: 1px solid rgba(241, 209, 138, 0.25);
+  color: #f1d18a;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  backdrop-filter: blur(6px);
+}
 /* TEXTO FINAL */
 .sobre-fecho {
   margin-top: 25px;
@@ -142,14 +159,14 @@
    ANIMAÇÃO DE ENTRADA
 =========================== */
 
-.sobre-image,
-.sobre-text {
+.sobre-visual,
+.sobre-text  {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.9s ease;
 }
 
-.sobre.visible .sobre-image {
+.sobre.visible .sobre-visual {
   opacity: 1;
   transform: translateY(0);
 }

@@ -1,53 +1,57 @@
 .campanha {
   position: relative;
-  min-height: 85vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
+  padding: 140px 40px;
+  background: #000;
   overflow: hidden;
 }
 
+/* OVERLAY CINEMATOGRÁFICO */
 .campanha-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 65% 30%, rgba(255, 200, 120, 0.35), transparent 45%),
-    linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.6));
+    radial-gradient(circle at 70% 30%, rgba(255, 200, 120, 0.25), transparent 40%),
+    linear-gradient(to right, rgba(0,0,0,0.95), rgba(0,0,0,0.7));
+  z-index: 1;
 }
 
-.campanha-content {
+/* CONTAINER */
+.campanha-container {
   position: relative;
   z-index: 2;
-  max-width: 650px;
-  margin-left: 10%;
-  padding: 40px;
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
 }
 
-.campanha-tag {
-  display: inline-block;
-  background: linear-gradient(135deg, #f1d18a, #b98a2c);
-  color: #111;
-  padding: 6px 16px;
-  font-weight: 600;
-  border-radius: 30px;
-  margin-bottom: 25px;
-}
-
+/* TEXTO */
 .campanha-content h2 {
   font-family: "Playfair Display", serif;
-  font-size: 3.4rem;
+  font-size: 3rem;
   color: #f1d18a;
   margin-bottom: 25px;
 }
 
 .campanha-content p {
   color: #ddd;
-  font-size: 1.15rem;
-  line-height: 1.7;
-  margin-bottom: 45px;
+  margin-bottom: 40px;
 }
 
+/* TAG */
+.campanha-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #f1d18a, #b98a2c);
+  color: #111;
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* BOTÕES */
 .campanha-buttons {
   display: flex;
   gap: 20px;
@@ -60,66 +64,73 @@
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
 }
 
-.btn-outline:hover {
-  background: #f1d18a;
-  color: #111;
+
+.campanha-carousel img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔥 garante encaixe bonito */
+  border-radius: 16px;
+
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s ease;
 }
 
-/* ===========================
-   RESPONSIVO
-=========================== */
-
-@media (max-width: 1024px) {
-  .campanha-content h2 {
-    font-size: 2.8rem;
-  }
+/* IMAGEM ATIVA */
+.campanha-carousel img.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+/* ANTERIOR (ESQUERDA) */
+.campanha-carousel img:nth-child(n) {
+  z-index: 1;
+}
+.campanha-carousel img.active {
+  box-shadow: 0 20px 60px rgba(241, 209, 138, 0.25);
+}
+.campanha-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* CARROSSEL */
+.campanha-carousel {
+  position: relative;
+  width: 320px;
+  height: 420px; /* 🔥 ESSA LINHA RESOLVE */
+  margin-right: 10%;
 }
 
+
+/* RESPONSIVO */
 @media (max-width: 768px) {
-  .campanha {
-    min-height: auto;
-    padding: 120px 20px;
+  .campanha-container {
+    flex-direction: column;
+    align-items: center; /* 🔥 CENTRALIZA TUDO */
+    justify-content: center;
+    gap: 50px;
     text-align: center;
   }
 
   .campanha-content {
-    margin: auto;
-    padding: 0;
+    margin: 0 auto;
   }
 
   .campanha-buttons {
-    flex-direction: column;
+    justify-content: center;
+  }
+
+  .campanha-carousel {
+    width: 100%;
+    max-width: 280px; /* 🔥 controla tamanho */
+    height: 360px;
+    margin: 0 auto; /* 🔥 CENTRALIZA */
+    display: flex;
+    justify-content: center;
     align-items: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .campanha-content h2 {
-    font-size: 2.2rem;
-  }
-
-  .campanha-content p {
-    font-size: 1rem;
-  }
-}
-
-.campanha-content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  animation: fadeUp 1s ease forwards;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

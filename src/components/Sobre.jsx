@@ -63,7 +63,7 @@ export default function Sobre() {
             rel="noreferrer"
             className="btn-gold"
           >
-            Ver Ofertas Exclusivas
+           Ofertas Exclusivas Limitadas
           </a>
         </div>
       </div>
