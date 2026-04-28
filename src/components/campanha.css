@@ -1,45 +1,38 @@
 /* ==================================================
-   CAMPANHA.CSS - VERSÃO FINAL
-   ✔ Fundo com capa automática
-   ✔ Overlay premium
-   ✔ Contador regressivo destaque
-   ✔ Carrossel elegante
-   ✔ Totalmente responsivo
+   CAMPANHA.CSS - AJUSTE FINAL RESPONSIVO
+   ✔ Melhor adaptação em telas menores
+   ✔ Header não cobre seção
+   ✔ Cronômetro alinhado
+   ✔ Carrossel proporcional
 ================================================== */
 
 .campanha {
   position: relative;
-  padding: 120px 30px;
+  padding: 165px 30px 110px;
   min-height: 100vh;
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   overflow: hidden;
 }
 
-/* ESCURECE A CAPA */
+/* OVERLAY */
 .campanha-overlay {
   position: absolute;
   inset: 0;
-
   background:
     linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.94) 0%,
-      rgba(0, 0, 0, 0.88) 35%,
-      rgba(0, 0, 0, 0.72) 65%,
-      rgba(0, 0, 0, 0.82) 100%
+      rgba(0,0,0,.95) 0%,
+      rgba(0,0,0,.88) 35%,
+      rgba(0,0,0,.72) 65%,
+      rgba(0,0,0,.82) 100%
     );
-
   z-index: 1;
 }
 
-/* ========================================
-   CONTAINER
-======================================== */
-
+/* CONTAINER */
 .campanha-container {
   position: relative;
   z-index: 2;
@@ -53,51 +46,36 @@
   align-items: center;
 }
 
-/* ========================================
-   TEXTO
-======================================== */
-
+/* TEXTO */
 .campanha-content {
   max-width: 760px;
   animation: fadeUp 1s ease;
 }
 
-/* TAG */
 .campanha-tag {
   display: inline-block;
-
   padding: 9px 18px;
   border-radius: 40px;
 
-  background: linear-gradient(
-    135deg,
-    #f7e4b0,
-    #d4a441
-  );
-
+  background: linear-gradient(135deg,#f7e4b0,#d4a441);
   color: #111;
-  font-weight: 800;
-  font-size: 0.92rem;
-  letter-spacing: 0.4px;
 
-  margin-bottom: 18px;
+  font-weight: 800;
+  font-size: .92rem;
+  margin-bottom: 26px;
 }
 
-/* ========================================
-   CONTADOR
-======================================== */
-
+/* CRONÔMETRO */
 .contador-box {
-  display: inline-block;
-
-  margin-top: 8px;
-  margin-bottom: 34px;
+  display: block;
+  width: fit-content;
 
   padding: 16px 24px;
-  border-radius: 12px;
+  margin-bottom: 38px;
 
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(241,209,138,0.28);
+  border-radius: 12px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(241,209,138,.28);
 
   backdrop-filter: blur(8px);
 
@@ -105,35 +83,28 @@
   font-size: 1rem;
   line-height: 1.7;
 
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.28);
+  box-shadow: 0 10px 30px rgba(0,0,0,.28);
 }
 
 .contador-box strong {
   color: #f1d18a;
-  font-size: 1.18rem;
-  font-weight: 800;
+  font-size: 1.15rem;
 }
 
-/* ========================================
-   TÍTULO
-======================================== */
-
+/* TITULO */
 .campanha-content h2 {
   font-size: 3.7rem;
   line-height: 1.08;
   font-weight: 900;
   color: #fff;
-
   margin-bottom: 24px;
 }
 
 /* TEXTO */
 .campanha-content p {
   font-size: 1.12rem;
-  line-height: 1.85;
-  color: rgba(255,255,255,0.88);
-
+  line-height: 1.8;
+  color: rgba(255,255,255,.88);
   max-width: 620px;
   margin-bottom: 24px;
 }
@@ -141,16 +112,11 @@
 /* ALERTA */
 .campanha-alerta {
   color: #f1d18a;
-  font-size: 1rem;
   font-weight: 700;
-
   margin-bottom: 34px;
 }
 
-/* ========================================
-   BOTÕES
-======================================== */
-
+/* BOTÕES */
 .campanha-buttons {
   display: flex;
   gap: 16px;
@@ -161,63 +127,21 @@
 .btn-outline {
   padding: 16px 28px;
   border-radius: 8px;
-
   text-decoration: none;
   font-weight: 800;
-  transition: all 0.3s ease;
+  transition: .3s;
 }
 
-/* BASE */
-.campanha-carousel {
-  position: relative;
-  overflow: hidden;
-}
-
-.campanha-carousel img {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  opacity: 0;
-  visibility: hidden;
-
-  transform: scale(1.03);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease,
-    visibility 0.8s ease;
-}
-
-/* IMAGEM ATIVA */
-.campanha-carousel img.active {
-  opacity: 1;
-  visibility: visible;
-  z-index: 2;
-  transform: scale(1);
-}
-
-/* BOTÃO GOLD */
 .btn-gold {
-  background: linear-gradient(
-    135deg,
-    #f7e4b0,
-    #d4a441
-  );
-
+  background: linear-gradient(135deg,#f7e4b0,#d4a441);
   color: #111;
-
-  box-shadow:
-    0 14px 35px rgba(212,164,65,0.30);
+  box-shadow: 0 14px 35px rgba(212,164,65,.30);
 }
 
 .btn-gold:hover {
   transform: translateY(-4px);
 }
 
-/* BOTÃO OUTLINE */
 .btn-outline {
   border: 2px solid #f1d18a;
   color: #f1d18a;
@@ -228,21 +152,16 @@
   color: #111;
 }
 
-/* ========================================
-   CARROSSEL
-======================================== */
-
+/* CARROSSEL */
 .campanha-carousel {
   position: relative;
-
   width: 430px;
   height: 560px;
 
   border-radius: 22px;
   overflow: hidden;
 
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.58);
+  box-shadow: 0 30px 80px rgba(0,0,0,.58);
 }
 
 .campanha-carousel img {
@@ -255,10 +174,7 @@
 
   opacity: 0;
   transform: scale(1.04);
-
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
+  transition: .8s;
 }
 
 .campanha-carousel img.active {
@@ -270,101 +186,108 @@
 .sem-imagem {
   width: 100%;
   height: 100%;
-
   display: grid;
   place-items: center;
-
   color: #fff;
+  background: rgba(255,255,255,.05);
   text-align: center;
   padding: 20px;
-
-  background: rgba(255,255,255,0.04);
 }
 
-/* ========================================
-   ANIMAÇÃO
-======================================== */
-
+/* ANIMAÇÃO */
 @keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(35px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-/* ========================================
-   RESPONSIVO TABLET
-======================================== */
 /* =========================================
-SEPARAR TAG DO CRONÔMETRO EM TELAS GRANDES
-adicione/substitua no campanha.css
+CORREÇÃO RÁPIDA
+TÍTULO MENOR + CARROSSEL VISÍVEL
+SUBSTITUA SOMENTE A PARTE RESPONSIVA
 ========================================= */
-/* =========================================
-HEADER TAPANDO A SESSÃO
-desce um pouco toda seção campanha
-========================================= */
-
-/* DESKTOP */
-.campanha {
-  padding-top: 165px; /* antes 120px */
-}
 
 /* TABLET */
 @media (max-width: 1100px) {
+
   .campanha {
-    padding-top: 150px;
+    padding: 150px 25px 90px;
+  }
+
+  .campanha-container {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    text-align: center;
+  }
+
+  .campanha-content h2 {
+    font-size: 2.6rem;   /* menor */
+    line-height: 1.15;
+  }
+
+  .contador-box {
+    margin: 0 auto 28px;
+  }
+
+  .campanha-buttons {
+    justify-content: center;
+  }
+
+  .campanha-carousel {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+
+    width: 330px;
+    height: 430px;
   }
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
+
   .campanha {
-    padding-top: 130px;
+    padding: 125px 18px 75px;
+  }
+
+  .campanha-content h2 {
+    font-size: 2rem;   /* menor */
+    line-height: 1.18;
+    margin-bottom: 18px;
+  }
+
+  .campanha-content p {
+    font-size: 0.96rem;
+  }
+
+  .campanha-carousel {
+    display: block;
+    position: relative;
+    margin: 10px auto 0;
+
+    width: 270px;
+    height: 350px;
+  }
+
+  .campanha-carousel img {
+    object-fit: cover;
   }
 }
 
 /* MOBILE PEQUENO */
 @media (max-width: 480px) {
-  .campanha {
-    padding-top: 120px;
-  }
-}
-/* DESKTOP */
-@media (min-width: 769px) {
 
-  .campanha-tag {
-    display: inline-block;
-  
-    margin-bottom: 26px; /* aumenta espaço abaixo da tag */
+  .campanha-content h2 {
+    font-size: 1.72rem; /* menor */
+    line-height: 1.2;
   }
 
-  .contador-box {
-    display: block;
-    width: fit-content;
-
-    margin-top: 0;
-    margin-bottom: 38px; /* espaço abaixo do cronômetro */
-
-    padding: 18px 26px;
+  .campanha-carousel {
+    width: 230px;
+    height: 305px;
   }
-
-}
-
-/* TELAS MUITO GRANDES */
-@media (min-width: 1400px) {
-
-  .campanha-tag {
-    margin-bottom: 32px;
-  }
-
-  .contador-box {
-    margin-bottom: 42px;
-    padding: 20px 28px;
-  }
-
 }

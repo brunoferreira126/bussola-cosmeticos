@@ -120,7 +120,7 @@ export default function Campanha() {
             Especial Dia das Mães
           </span>
 
-          <div className="contador-box">
+          <div  id="campanha" className="contador-box">
             {tempo.acabou ? (
               <>💐 É hoje! Garanta o presente dela</>
             ) : (
