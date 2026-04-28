@@ -13,9 +13,7 @@ export default function Header() {
         <nav className={`header-nav ${open ? "open" : ""}`}>
            <a href="#inicio" onClick={() => setOpen(false)}>Página Inicial</a>
           <a href="#sobre" onClick={() => setOpen(false)}>Sobre</a>
-          
           <a href="#campanha" onClick={() => setOpen(false)}>Campanha</a>
-          <a href="#categorias" onClick={() => setOpen(false)}>Catálogo</a>
           <a href="#contato" onClick={() => setOpen(false)}>Contatos</a>
         </nav>
 

@@ -28,8 +28,8 @@ export default function Footer() {
           <ul>
             <li><a href="#hero">Início</a></li>
             <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#campanhas">Campanhas</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="#campanhas">Campanha</a></li>
+            <li><a href="#contato">Contatos</a></li>
           </ul>
         </div>
 
