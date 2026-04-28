@@ -36,6 +36,10 @@ export default function Hero() {
           </p>
 
           <div className="hero-buttons">
+
+            {/*
+            BOTÃO CATÁLOGO TEMPORARIAMENTE DESATIVADO
+
             <a
               href="https://drive.google.com/drive/folders/1DNUeQ5arinCPO1jF6kc7jtZ4aaRXoXyb?hl=pt-br"
               target="_blank"
@@ -44,6 +48,7 @@ export default function Hero() {
             >
               Nossos Produtos
             </a>
+            */}
 
             <a
               href="https://wa.me/558589411912"
@@ -53,6 +58,7 @@ export default function Hero() {
             >
               Fale Conosco
             </a>
+
           </div>
         </div>
 

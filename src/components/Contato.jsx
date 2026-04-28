@@ -24,12 +24,12 @@ export default function Contato() {
 
           <div className="contato-links">
             <a
-              href="https://wa.me/558589411912"
+              href="https://wa.me/558584241536"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaWhatsapp />
-              <span> 85 8941-1912</span>
+              <span> 85 98424-1536</span>
             </a>
 
             <a

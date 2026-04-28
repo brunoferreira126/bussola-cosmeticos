@@ -1,73 +1,165 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./campanha.css";
 
-// IMPORTANDO TODAS AS IMAGENS
-import img10 from "../assets/icons/campanha/perfume-10-png.png";
-import img11 from "../assets/icons/campanha/perfume-11-png.png";
-import img12 from "../assets/icons/campanha/perfume-12-png.png";
-import img13 from "../assets/icons/campanha/perfume-13-png.png";
-import img14 from "../assets/icons/campanha/perfume-14-png.png";
-import img15 from "../assets/icons/campanha/perfume-15-png.png";
-import img16 from "../assets/icons/campanha/perfume-16-png.png";
-import img17 from "../assets/icons/campanha/perfume-17-png.png";
-import img18 from "../assets/icons/campanha/perfume-18-png.png";
-import img19 from "../assets/icons/campanha/perfume-19-png.png";
-import img20 from "../assets/icons/campanha/perfume-20-png.png";
-import img21 from "../assets/icons/campanha/perfume-21-png.png";
-import img22 from "../assets/icons/campanha/perfume-22-png.png";
-import img23 from "../assets/icons/campanha/perfume-23-png.png";
+/*
+====================================================
+CORREÇÃO DO CARROSSEL NÃO PASSANDO
+PROBLEMA:
+o array "imagens" estava recriando em toda renderização
+e o useEffect reiniciava o setInterval.
 
-// ARRAY COM TODAS
-const imagens = [
-  img10, img11, img12, img13, img14,
-  img15, img16, img17, img18, img19,
-  img20, img21, img22, img23
-];
+SOLUÇÃO:
+usar useMemo para estabilizar imagens.
+====================================================
+*/
+
+const arquivos = import.meta.glob(
+  "../assets/icons/campanha/*.{png,jpg,jpeg,webp}",
+  {
+    eager: true,
+    import: "default",
+  }
+);
 
 export default function Campanha() {
+  /* TODAS IMAGENS */
+  const todasImagens = useMemo(() => {
+    return Object.entries(arquivos)
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map((item) => item[1]);
+  }, []);
+
+  /* CAPA */
+  const capa = todasImagens[0];
+
+  /* CARROSSEL FIXO */
+  const imagens = useMemo(() => {
+    return todasImagens.slice(1);
+  }, [todasImagens]);
+
   const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % imagens.length);
-    }, 2500); // mais rápido (fica mais dinâmico)
+  const [tempo, setTempo] = useState({
+    dias: 0,
+    horas: 0,
+    minutos: 0,
+    acabou: false,
+  });
 
-    return () => clearInterval(interval);
+  /* ===================================
+     CARROSSEL FUNCIONANDO
+  =================================== */
+  useEffect(() => {
+    if (imagens.length <= 1) return;
+
+    const intervalo = setInterval(() => {
+      setIndex((prev) => {
+        if (prev >= imagens.length - 1) {
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 2800);
+
+    return () => clearInterval(intervalo);
+  }, [imagens.length]);
+
+  /* ===================================
+     CONTADOR
+  =================================== */
+  useEffect(() => {
+    const destino = new Date("2026-05-10T00:00:00");
+
+    const atualizarTempo = () => {
+      const agora = new Date();
+      const diff = destino - agora;
+
+      if (diff <= 0) {
+        setTempo({
+          dias: 0,
+          horas: 0,
+          minutos: 0,
+          acabou: true,
+        });
+        return;
+      }
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+
+      setTempo({
+        dias,
+        horas,
+        minutos,
+        acabou: false,
+      });
+    };
+
+    atualizarTempo();
+
+    const timer = setInterval(atualizarTempo, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="campanha">
+    <section
+      className="campanha"
+      style={{
+        backgroundImage: capa ? `url(${capa})` : "none",
+      }}
+    >
       <div className="campanha-overlay"></div>
 
       <div className="campanha-container">
-        {/* TEXTO */}
-        <div className="campanha-content">
-          <span className="campanha-tag">Reta Final do Mês</span>
 
-          <h2>Ofertas Imperdíveis</h2>
+        <div className="campanha-content">
+
+          <span className="campanha-tag">
+            Especial Dia das Mães
+          </span>
+
+          <div className="contador-box">
+            {tempo.acabou ? (
+              <>💐 É hoje! Garanta o presente dela</>
+            ) : (
+              <>
+                Faltam <strong>{tempo.dias}</strong> dias •{" "}
+                <strong>{tempo.horas}</strong> horas •{" "}
+                <strong>{tempo.minutos}</strong> min
+                <br />
+                para o Dia das Mães
+              </>
+            )}
+          </div>
+
+          <h2>
+            Melhor se antecipar
+            <br />
+            e garantir o presente dela
+          </h2>
 
           <p>
-            Perfumes exclusivos, produtos de autocuidado e acessórios com condições especiais.<br />
-            Aproveite antes que acabe.
+            Perfumes, kits especiais e lembranças únicas
+            para surpreender quem sempre cuidou de você.
           </p>
+
+          <div className="campanha-alerta">
+            Os melhores presentes acabam primeiro.
+          </div>
 
           <div className="campanha-buttons">
             <a
-              href="https://wa.me/558589411912"
+              href="https://wa.me/558584241536"
               target="_blank"
+              rel="noreferrer"
               className="btn-gold"
             >
-              Comprar pelo WhatsApp
-            </a>
-
-            <a
-              href="https://drive.google.com/drive/folders/1DNUeQ5arinCPO1jF6kc7jtZ4aaRXoXyb"
-              target="_blank"
-              className="btn-outline"
-            >
-              Ver Catálogo
+              Comprar no WhatsApp
             </a>
           </div>
+
         </div>
 
         {/* CARROSSEL */}
@@ -76,11 +168,12 @@ export default function Campanha() {
             <img
               key={i}
               src={img}
+              alt="Campanha"
               className={i === index ? "active" : ""}
-              alt="Perfume"
             />
           ))}
         </div>
+
       </div>
     </section>
   );

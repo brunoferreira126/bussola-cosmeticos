@@ -1,136 +1,370 @@
+/* ==================================================
+   CAMPANHA.CSS - VERSÃO FINAL
+   ✔ Fundo com capa automática
+   ✔ Overlay premium
+   ✔ Contador regressivo destaque
+   ✔ Carrossel elegante
+   ✔ Totalmente responsivo
+================================================== */
+
 .campanha {
   position: relative;
-  padding: 140px 40px;
-  background: #000;
+  padding: 120px 30px;
+  min-height: 100vh;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   overflow: hidden;
 }
 
-/* OVERLAY CINEMATOGRÁFICO */
+/* ESCURECE A CAPA */
 .campanha-overlay {
   position: absolute;
   inset: 0;
+
   background:
-    radial-gradient(circle at 70% 30%, rgba(255, 200, 120, 0.25), transparent 40%),
-    linear-gradient(to right, rgba(0,0,0,0.95), rgba(0,0,0,0.7));
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.94) 0%,
+      rgba(0, 0, 0, 0.88) 35%,
+      rgba(0, 0, 0, 0.72) 65%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+
   z-index: 1;
 }
 
-/* CONTAINER */
+/* ========================================
+   CONTAINER
+======================================== */
+
 .campanha-container {
   position: relative;
   z-index: 2;
-  max-width: 1300px;
-  margin: auto;
+
+  max-width: 1380px;
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 430px;
+  gap: 70px;
   align-items: center;
 }
 
-/* TEXTO */
-.campanha-content h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 3rem;
-  color: #f1d18a;
-  margin-bottom: 25px;
-}
+/* ========================================
+   TEXTO
+======================================== */
 
-.campanha-content p {
-  color: #ddd;
-  margin-bottom: 40px;
+.campanha-content {
+  max-width: 760px;
+  animation: fadeUp 1s ease;
 }
 
 /* TAG */
 .campanha-tag {
   display: inline-block;
-  background: linear-gradient(135deg, #f1d18a, #b98a2c);
+
+  padding: 9px 18px;
+  border-radius: 40px;
+
+  background: linear-gradient(
+    135deg,
+    #f7e4b0,
+    #d4a441
+  );
+
   color: #111;
-  padding: 6px 16px;
-  border-radius: 30px;
-  margin-bottom: 20px;
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: 0.4px;
+
+  margin-bottom: 18px;
 }
 
-/* BOTÕES */
+/* ========================================
+   CONTADOR
+======================================== */
+
+.contador-box {
+  display: inline-block;
+
+  margin-top: 8px;
+  margin-bottom: 34px;
+
+  padding: 16px 24px;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(241,209,138,0.28);
+
+  backdrop-filter: blur(8px);
+
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.7;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.28);
+}
+
+.contador-box strong {
+  color: #f1d18a;
+  font-size: 1.18rem;
+  font-weight: 800;
+}
+
+/* ========================================
+   TÍTULO
+======================================== */
+
+.campanha-content h2 {
+  font-size: 3.7rem;
+  line-height: 1.08;
+  font-weight: 900;
+  color: #fff;
+
+  margin-bottom: 24px;
+}
+
+/* TEXTO */
+.campanha-content p {
+  font-size: 1.12rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.88);
+
+  max-width: 620px;
+  margin-bottom: 24px;
+}
+
+/* ALERTA */
+.campanha-alerta {
+  color: #f1d18a;
+  font-size: 1rem;
+  font-weight: 700;
+
+  margin-bottom: 34px;
+}
+
+/* ========================================
+   BOTÕES
+======================================== */
+
 .campanha-buttons {
   display: flex;
-  gap: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
+.btn-gold,
 .btn-outline {
-  border: 2px solid #f1d18a;
-  color: #f1d18a;
-  padding: 14px 28px;
-  border-radius: 6px;
+  padding: 16px 28px;
+  border-radius: 8px;
+
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 800;
+  transition: all 0.3s ease;
 }
 
+/* BASE */
+.campanha-carousel {
+  position: relative;
+  overflow: hidden;
+}
 
 .campanha-carousel img {
   position: absolute;
+  inset: 0;
+
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 🔥 garante encaixe bonito */
-  border-radius: 16px;
+  object-fit: cover;
 
   opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.6s ease;
+  visibility: hidden;
+
+  transform: scale(1.03);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    visibility 0.8s ease;
 }
 
 /* IMAGEM ATIVA */
 .campanha-carousel img.active {
   opacity: 1;
-  transform: scale(1);
+  visibility: visible;
   z-index: 2;
+  transform: scale(1);
 }
-/* ANTERIOR (ESQUERDA) */
-.campanha-carousel img:nth-child(n) {
-  z-index: 1;
+
+/* BOTÃO GOLD */
+.btn-gold {
+  background: linear-gradient(
+    135deg,
+    #f7e4b0,
+    #d4a441
+  );
+
+  color: #111;
+
+  box-shadow:
+    0 14px 35px rgba(212,164,65,0.30);
 }
-.campanha-carousel img.active {
-  box-shadow: 0 20px 60px rgba(241, 209, 138, 0.25);
+
+.btn-gold:hover {
+  transform: translateY(-4px);
 }
-.campanha-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+/* BOTÃO OUTLINE */
+.btn-outline {
+  border: 2px solid #f1d18a;
+  color: #f1d18a;
 }
-/* CARROSSEL */
+
+.btn-outline:hover {
+  background: #f1d18a;
+  color: #111;
+}
+
+/* ========================================
+   CARROSSEL
+======================================== */
+
 .campanha-carousel {
   position: relative;
-  width: 320px;
-  height: 420px; /* 🔥 ESSA LINHA RESOLVE */
-  margin-right: 10%;
+
+  width: 430px;
+  height: 560px;
+
+  border-radius: 22px;
+  overflow: hidden;
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.58);
 }
 
+.campanha-carousel img {
+  position: absolute;
+  inset: 0;
 
-/* RESPONSIVO */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transform: scale(1.04);
+
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.campanha-carousel img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* FALLBACK */
+.sem-imagem {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
+
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+
+  background: rgba(255,255,255,0.04);
+}
+
+/* ========================================
+   ANIMAÇÃO
+======================================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   RESPONSIVO TABLET
+======================================== */
+/* =========================================
+SEPARAR TAG DO CRONÔMETRO EM TELAS GRANDES
+adicione/substitua no campanha.css
+========================================= */
+/* =========================================
+HEADER TAPANDO A SESSÃO
+desce um pouco toda seção campanha
+========================================= */
+
+/* DESKTOP */
+.campanha {
+  padding-top: 165px; /* antes 120px */
+}
+
+/* TABLET */
+@media (max-width: 1100px) {
+  .campanha {
+    padding-top: 150px;
+  }
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
-  .campanha-container {
-    flex-direction: column;
-    align-items: center; /* 🔥 CENTRALIZA TUDO */
-    justify-content: center;
-    gap: 50px;
-    text-align: center;
+  .campanha {
+    padding-top: 130px;
+  }
+}
+
+/* MOBILE PEQUENO */
+@media (max-width: 480px) {
+  .campanha {
+    padding-top: 120px;
+  }
+}
+/* DESKTOP */
+@media (min-width: 769px) {
+
+  .campanha-tag {
+    display: inline-block;
+  
+    margin-bottom: 26px; /* aumenta espaço abaixo da tag */
   }
 
-  .campanha-content {
-    margin: 0 auto;
+  .contador-box {
+    display: block;
+    width: fit-content;
+
+    margin-top: 0;
+    margin-bottom: 38px; /* espaço abaixo do cronômetro */
+
+    padding: 18px 26px;
   }
 
-  .campanha-buttons {
-    justify-content: center;
+}
+
+/* TELAS MUITO GRANDES */
+@media (min-width: 1400px) {
+
+  .campanha-tag {
+    margin-bottom: 32px;
   }
 
-  .campanha-carousel {
-    width: 100%;
-    max-width: 280px; /* 🔥 controla tamanho */
-    height: 360px;
-    margin: 0 auto; /* 🔥 CENTRALIZA */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .contador-box {
+    margin-bottom: 42px;
+    padding: 20px 28px;
   }
+
 }

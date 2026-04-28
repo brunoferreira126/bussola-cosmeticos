@@ -58,7 +58,7 @@ export default function Sobre() {
           </p>
 
           <a
-            href="https://drive.google.com/drive/folders/1DNUeQ5arinCPO1jF6kc7jtZ4aaRXoXyb?hl=pt-br"
+            href="https://wa.me/558584241536"
             target="_blank"
             rel="noreferrer"
             className="btn-gold"

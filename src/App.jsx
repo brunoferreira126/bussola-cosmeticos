@@ -14,11 +14,12 @@ export default function App() {
   return (
     <>
       <Header />
+      <Campanha/>
       <Hero />
       <Sobre />
-      <Campanha />
-      <Categorias />
-      <Catalogo />
+      
+   
+    
       <Contato />
       <Footer />
     </>
