@@ -51,7 +51,7 @@ export default function Hero() {
             */}
 
             <a
-              href="https://wa.me/558589411912"
+              href="https://wa.me/558584241536"
               target="_blank"
               rel="noreferrer"
               className="btn-whatsapp"
