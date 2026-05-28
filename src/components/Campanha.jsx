@@ -142,6 +142,10 @@ export default function Campanha() {
               </article>
             ))}
           </div>
+
+          <a href="#catalogo-namorados" className="campanha-mobile-atalho">
+            Ver as 44 opções do catálogo completo
+          </a>
         </div>
       </div>
 

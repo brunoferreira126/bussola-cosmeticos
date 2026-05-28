@@ -190,6 +190,10 @@
   line-height: 1.35;
 }
 
+.campanha-mobile-atalho {
+  display: none;
+}
+
 /* Area branca do catalogo para facilitar leitura e comparacao dos itens. */
 .catalogo-namorados {
   /* Compensa o header fixo quando o usuario clica em "Ver catálogo". */
@@ -497,7 +501,22 @@
 
   .campanha-stats,
   .campanha-destaques {
-    grid-template-columns: 1fr;
+    display: none;
+  }
+
+  .campanha-mobile-atalho {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 54px;
+    margin-top: 18px;
+    border-radius: 8px;
+    background: #f1d18a;
+    color: #111;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 900;
   }
 
   .catalogo-namorados {
@@ -506,6 +525,16 @@
 
   .catalogo-grade {
     grid-template-columns: 1fr;
+  }
+
+  .produto-imagem {
+    background: #f7f1ea;
+  }
+
+  .produto-imagem img {
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    padding: 10px;
   }
 
   .produto-modal {
@@ -521,6 +550,8 @@
   .produto-modal-card img {
     max-height: 280px;
     min-height: 220px;
+    object-fit: contain;
+    background: #f7f1ea;
   }
 
   .produto-modal-info {
