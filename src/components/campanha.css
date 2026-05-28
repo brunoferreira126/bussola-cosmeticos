@@ -1,293 +1,533 @@
 /* ==================================================
-   CAMPANHA.CSS - AJUSTE FINAL RESPONSIVO
-   ✔ Melhor adaptação em telas menores
-   ✔ Header não cobre seção
-   ✔ Cronômetro alinhado
-   ✔ Carrossel proporcional
+   SECAO DE CAMPANHA + CATALOGO DIA DOS NAMORADOS
+   As imagens ficam em /public e sao carregadas sob demanda.
 ================================================== */
 
 .campanha {
-  position: relative;
-  padding: 165px 30px 110px;
-  min-height: 100vh;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: #0f0b0c;
+  color: #fff;
   overflow: hidden;
 }
 
-/* OVERLAY */
+/* Hero da campanha com imagem de fundo leve em WebP. */
+.campanha-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 165px 30px 95px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Camada escura para manter o texto legivel sobre a foto. */
 .campanha-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(
-      to right,
-      rgba(0,0,0,.95) 0%,
-      rgba(0,0,0,.88) 35%,
-      rgba(0,0,0,.72) 65%,
-      rgba(0,0,0,.82) 100%
+      90deg,
+      rgba(10, 7, 8, 0.96) 0%,
+      rgba(10, 7, 8, 0.9) 43%,
+      rgba(10, 7, 8, 0.68) 100%
     );
-  z-index: 1;
 }
 
-/* CONTAINER */
+/* Organiza texto e cards de destaque lado a lado no desktop. */
 .campanha-container {
   position: relative;
   z-index: 2;
-
-  max-width: 1380px;
+  max-width: 1280px;
   margin: 0 auto;
-
   display: grid;
-  grid-template-columns: 1fr 430px;
-  gap: 70px;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 64px;
   align-items: center;
 }
 
-/* TEXTO */
 .campanha-content {
-  max-width: 760px;
-  animation: fadeUp 1s ease;
+  max-width: 740px;
+}
+
+.campanha-tag,
+.catalogo-kicker,
+.produto-categoria {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid rgba(232, 185, 92, 0.4);
+  color: #f5d38d;
+  background: rgba(232, 185, 92, 0.1);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0;
 }
 
 .campanha-tag {
-  display: inline-block;
-  padding: 9px 18px;
-  border-radius: 40px;
-
-  background: linear-gradient(135deg,#f7e4b0,#d4a441);
-  color: #111;
-
-  font-weight: 800;
-  font-size: .92rem;
-  margin-bottom: 26px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  margin-bottom: 24px;
 }
 
-/* CRONÔMETRO */
-.contador-box {
-  display: block;
-  width: fit-content;
-
-  padding: 16px 24px;
-  margin-bottom: 38px;
-
-  border-radius: 12px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(241,209,138,.28);
-
-  backdrop-filter: blur(8px);
-
+.campanha-content h2 {
+  max-width: 760px;
+  margin: 0 0 24px;
   color: #fff;
-  font-size: 1rem;
-  line-height: 1.7;
-
-  box-shadow: 0 10px 30px rgba(0,0,0,.28);
+  font-size: 3.45rem;
+  line-height: 1.06;
+  font-weight: 900;
 }
 
-.contador-box strong {
-  color: #f1d18a;
+.campanha-content p {
+  max-width: 650px;
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+/* Numeros rapidos para mostrar volume, leveza e canal de compra. */
+.campanha-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 650px;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.campanha-stats span {
+  min-height: 82px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.9rem;
+}
+
+.campanha-stats strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #fff;
   font-size: 1.15rem;
 }
 
-/* TITULO */
-.campanha-content h2 {
-  font-size: 3.7rem;
-  line-height: 1.08;
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 24px;
-}
-
-/* TEXTO */
-.campanha-content p {
-  font-size: 1.12rem;
-  line-height: 1.8;
-  color: rgba(255,255,255,.88);
-  max-width: 620px;
-  margin-bottom: 24px;
-}
-
-/* ALERTA */
-.campanha-alerta {
-  color: #f1d18a;
-  font-weight: 700;
-  margin-bottom: 34px;
-}
-
-/* BOTÕES */
 .campanha-buttons {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .btn-gold,
-.btn-outline {
-  padding: 16px 28px;
+.btn-outline,
+.produto-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 800;
-  transition: .3s;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-gold {
-  background: linear-gradient(135deg,#f7e4b0,#d4a441);
+  padding: 0 26px;
+  background: linear-gradient(135deg, #f7e4b0, #d4a441);
   color: #111;
-  box-shadow: 0 14px 35px rgba(212,164,65,.30);
-}
-
-.btn-gold:hover {
-  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(212, 164, 65, 0.28);
 }
 
 .btn-outline {
+  padding: 0 26px;
   border: 2px solid #f1d18a;
   color: #f1d18a;
 }
 
-.btn-outline:hover {
+.btn-gold:hover,
+.btn-outline:hover,
+.produto-whatsapp:hover {
+  transform: translateY(-3px);
+}
+
+/* Cards pequenos com os primeiros itens do catalogo. */
+.campanha-destaques {
+  display: grid;
+  gap: 16px;
+}
+
+.destaque-card {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.destaque-card img {
+  width: 112px;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.destaque-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: #f5d38d;
+  font-weight: 900;
+}
+
+.destaque-card strong {
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+/* Area branca do catalogo para facilitar leitura e comparacao dos itens. */
+.catalogo-namorados {
+  /* Compensa o header fixo quando o usuario clica em "Ver catálogo". */
+  scroll-margin-top: 132px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 30px 96px;
+  color: #1c1516;
+}
+
+.catalogo-topo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+
+.catalogo-kicker,
+.produto-categoria {
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: #8b6418;
+  background: rgba(212, 164, 65, 0.14);
+  font-size: 0.72rem;
+}
+
+.catalogo-topo h3 {
+  max-width: 720px;
+  margin: 14px 0 0;
+  color: #fff;
+  font-size: 2.35rem;
+  line-height: 1.12;
+}
+
+.catalogo-busca {
+  display: grid;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+}
+
+.catalogo-busca input {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid rgba(245, 211, 141, 0.35);
+  border-radius: 8px;
+  padding: 0 16px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font: inherit;
+}
+
+.catalogo-busca input::placeholder {
+  color: rgba(255, 255, 255, 0.52);
+}
+
+/* Filtros simples para navegar pelo catalogo sem trocar de pagina. */
+.catalogo-filtros {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.catalogo-filtros button {
+  min-height: 42px;
+  border: 1px solid rgba(245, 211, 141, 0.32);
+  border-radius: 999px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.catalogo-filtros button.ativo,
+.catalogo-filtros button:hover {
   background: #f1d18a;
   color: #111;
 }
 
-/* CARROSSEL */
-.campanha-carousel {
-  position: relative;
-  width: 430px;
-  height: 560px;
-
-  border-radius: 22px;
-  overflow: hidden;
-
-  box-shadow: 0 30px 80px rgba(0,0,0,.58);
-}
-
-.campanha-carousel img {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  opacity: 0;
-  transform: scale(1.04);
-  transition: .8s;
-}
-
-.campanha-carousel img.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* FALLBACK */
-.sem-imagem {
-  width: 100%;
-  height: 100%;
+/* Grade responsiva: cria quantas colunas couberem sem quebrar os cards. */
+.catalogo-grade {
   display: grid;
-  place-items: center;
-  color: #fff;
-  background: rgba(255,255,255,.05);
-  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 22px;
+}
+
+.produto-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+.produto-imagem {
+  position: relative;
+  background: #201617;
+}
+
+.produto-imagem img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.produto-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 20px;
 }
 
-/* ANIMAÇÃO */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.produto-info h4 {
+  margin: 12px 0 10px;
+  color: #1f1718;
+  font-size: 1.08rem;
+  line-height: 1.3;
 }
-/* =========================================
-CORREÇÃO RÁPIDA
-TÍTULO MENOR + CARROSSEL VISÍVEL
-SUBSTITUA SOMENTE A PARTE RESPONSIVA
-========================================= */
 
-/* TABLET */
+.produto-info p {
+  display: -webkit-box;
+  margin: 0 0 20px;
+  overflow: hidden;
+  color: #5b4d4f;
+  font-size: 0.95rem;
+  line-height: 1.62;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.produto-rodape {
+  display: grid;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.produto-rodape strong {
+  color: #8d1f31;
+  font-size: 1.18rem;
+}
+
+.produto-whatsapp {
+  width: 100%;
+  padding: 0 16px;
+  background: #128c4a;
+  color: #fff;
+}
+
+.produto-whatsapp:hover {
+  background: #0f793f;
+}
+
+.produto-detalhes {
+  min-height: 44px;
+  border: 1px solid rgba(141, 31, 49, 0.25);
+  border-radius: 8px;
+  background: #fff;
+  color: #8d1f31;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
+.produto-detalhes:hover {
+  background: #fff4f6;
+}
+
+/* Modal usado para mostrar a descricao completa sem alongar todos os cards. */
+.produto-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.produto-modal-fundo {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.72);
+  cursor: pointer;
+}
+
+.produto-modal-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) minmax(0, 1fr);
+  width: min(920px, 100%);
+  max-height: min(760px, calc(100vh - 48px));
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
+}
+
+.produto-modal-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+}
+
+.produto-modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  padding: 32px;
+  color: #251b1d;
+}
+
+.produto-modal-info h3 {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.produto-modal-info strong {
+  color: #8d1f31;
+  font-size: 1.35rem;
+}
+
+.produto-modal-info p {
+  margin: 0;
+  color: #514548;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.produto-modal-fechar {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(17, 17, 17, 0.78);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.catalogo-vazio {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid rgba(245, 211, 141, 0.35);
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Ajustes para tablets. */
 @media (max-width: 1100px) {
-
-  .campanha {
-    padding: 150px 25px 90px;
+  .campanha-hero {
+    padding: 145px 24px 80px;
   }
 
-  .campanha-container {
+  .campanha-container,
+  .catalogo-topo {
     grid-template-columns: 1fr;
-    gap: 45px;
-    text-align: center;
   }
 
-  .campanha-content h2 {
-    font-size: 2.6rem;   /* menor */
-    line-height: 1.15;
+  .campanha-destaques {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .contador-box {
-    margin: 0 auto 28px;
+  .destaque-card {
+    grid-template-columns: 1fr;
   }
 
-  .campanha-buttons {
-    justify-content: center;
-  }
-
-  .campanha-carousel {
-    display: block;
-    position: relative;
-    margin: 0 auto;
-
-    width: 330px;
-    height: 430px;
+  .destaque-card img {
+    width: 100%;
   }
 }
 
-/* MOBILE */
+/* Ajustes para celulares. */
 @media (max-width: 768px) {
-
-  .campanha {
-    padding: 125px 18px 75px;
+  .campanha-hero {
+    min-height: auto;
+    padding: 128px 18px 64px;
   }
 
-  .campanha-content h2 {
-    font-size: 2rem;   /* menor */
-    line-height: 1.18;
-    margin-bottom: 18px;
+  .campanha-content h2,
+  .catalogo-topo h3 {
+    font-size: 2rem;
   }
 
   .campanha-content p {
-    font-size: 0.96rem;
+    font-size: 1rem;
   }
 
-  .campanha-carousel {
-    display: block;
-    position: relative;
-    margin: 10px auto 0;
-
-    width: 270px;
-    height: 350px;
+  .campanha-stats,
+  .campanha-destaques {
+    grid-template-columns: 1fr;
   }
 
-  .campanha-carousel img {
-    object-fit: cover;
-  }
-}
-
-/* MOBILE PEQUENO */
-@media (max-width: 480px) {
-
-  .campanha-content h2 {
-    font-size: 1.72rem; /* menor */
-    line-height: 1.2;
+  .catalogo-namorados {
+    padding: 54px 18px 72px;
   }
 
-  .campanha-carousel {
-    width: 230px;
-    height: 305px;
+  .catalogo-grade {
+    grid-template-columns: 1fr;
+  }
+
+  .produto-modal {
+    align-items: end;
+    padding: 12px;
+  }
+
+  .produto-modal-card {
+    grid-template-columns: 1fr;
+    max-height: calc(100vh - 24px);
+  }
+
+  .produto-modal-card img {
+    max-height: 280px;
+    min-height: 220px;
+  }
+
+  .produto-modal-info {
+    padding: 24px 18px;
+  }
+
+  .produto-modal-info h3 {
+    font-size: 1.35rem;
   }
 }

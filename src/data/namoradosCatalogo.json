@@ -1,0 +1,310 @@
+[
+  {
+    "title": "Kit Encanto",
+    "price": "R$ 349,90",
+    "image": "/campanhas/dia-dos-namorados/01-kit-encanto.webp",
+    "alt": "Kit Encanto",
+    "description": "Um presente pensado para surpreender no Dia dos Namorados. O Kit Encanto reúne o sofisticado Eudora Lyra, body splash, loção hidratante e uma linda apresentação em box exclusivo, acompanhada de rosa, balão “Eu Te Amo” e carta especial para tornar o momento ainda mais romântico. Um combo perfeito de perfume, carinho e emoção para quem merece se sentir inesquecível."
+  },
+  {
+    "title": "Kit Doçura",
+    "price": "R$ 249,90",
+    "image": "/campanhas/dia-dos-namorados/02-kit-docura.webp",
+    "alt": "Kit Doçura",
+    "description": "Romântico, delicado e cheio de carinho para surpreender no Dia dos Namorados. O Kit Doçura reúne a linha Cuide-se Bem Delight com body splash, hidratante 200ml, manteiga corporal e sabonetes em barra, tudo em um box exclusivo com capa especial de Dia dos Namorados, acompanhado de rosa, balão “Eu Te Amo” e uma apresentação apaixonante. Um presente encantador para transformar amor em cuidado e tornar esse momento ainda mais inesquecível."
+  },
+  {
+    "title": "Box Cacau Natura Ekos",
+    "price": "R$ 239,90",
+    "image": "/campanhas/dia-dos-namorados/03-box-cacau-natura-ekos.webp",
+    "alt": "Box Cacau Natura Ekos",
+    "description": "Um presente envolvente, marcante e cheio de romantismo para o Dia dos Namorados. A Box Cacau Natura Ekos reúne o frescor irresistível do perfume Ekos Cacau 150ml, sabonetes da linha Ekos, chocolates Serenata de Amor, rosa e cartão temático especial, tudo em uma caixa Natura encantadora que transforma o presente em uma experiência apaixonante. Um combo perfeito para surpreender com carinho, sofisticação e um toque inesquecível de amor."
+  },
+  {
+    "title": "Box Todo Dia Ameixa & Flor de Baunilha",
+    "price": "R$ 179,90",
+    "image": "/campanhas/dia-dos-namorados/04-box-todo-dia-ameixa-flor-de-baunilha.webp",
+    "alt": "Box Todo Dia Ameixa & Flor de Baunilha",
+    "description": "Um presente elegante, marcante e cheio de carinho para surpreender no Dia dos Namorados. A box presenteável Natura reúne body splash e loção hidratante 400ml da linha Ameixa & Flor de Baunilha, acompanhados de rosa e chocolates Ferrero Rocher em uma composição apaixonante e irresistível. Um combo perfeito para encantar, perfumar e transformar esse momento em uma lembrança inesquecível."
+  },
+  {
+    "title": "Kit Luna Fascinante",
+    "price": "R$ 318,90",
+    "image": "/campanhas/dia-dos-namorados/05-kit-luna-fascinante.webp",
+    "alt": "Kit Luna Fascinante",
+    "description": "Sofisticado, envolvente e perfeito para surpreender no Dia dos Namorados. O Kit Luna Fascinante reúne o marcante perfume Luna Fascinante, loção hidratante, sabonetes em barra e chocolates, em uma apresentação encantadora feita para transformar carinho em um presente inesquecível. Um combo perfeito para quem deseja impressionar com elegância, romantismo e muito amor."
+  },
+  {
+    "title": "Box Natura Humor Próprio",
+    "price": "R$ 269,90",
+    "image": "/campanhas/dia-dos-namorados/06-box-natura-humor-proprio.webp",
+    "alt": "Box Natura Humor Próprio",
+    "description": "Um presente divertido, apaixonante e cheio de personalidade para surpreender no Dia dos Namorados. A Box Natura Humor Próprio reúne perfume, body splash, hidratante corporal, chocolate, flores e cartão temático especial, tudo em uma apresentação exclusiva Natura que encanta em cada detalhe e transforma o presente em um momento inesquecível. Um combo perfeito de perfume, cuidado e romantismo para conquistar com leveza, carinho e muito amor."
+  },
+  {
+    "title": "Box Natura Ekos Açaí",
+    "price": "R$ 359,90",
+    "image": "/campanhas/dia-dos-namorados/07-box-natura-ekos-acai.webp",
+    "alt": "Box Natura Ekos Açaí",
+    "description": "Um presente intenso, sofisticado e cheio de carinho para tornar o Dia dos Namorados ainda mais especial. A Box Natura Ekos Açaí reúne perfume 75ml, hidratante corporal 250ml, óleo corporal com refil, rosa e chocolates Ferrero Rocher, tudo em uma apresentação encantadora que transforma cada detalhe em uma experiência apaixonante. Um combo perfeito de cuidado, perfume e romantismo para surpreender com elegância e deixar esse momento inesquecível."
+  },
+  {
+    "title": "Box Natura Una Blush",
+    "price": "R$ 429,90",
+    "image": "/campanhas/dia-dos-namorados/08-box-natura-una-blush.webp",
+    "alt": "Box Natura Una Blush",
+    "description": "Elegante, sofisticado e irresistivelmente apaixonante para surpreender no Dia dos Namorados. A Box Natura Una Blush reúne eau de parfum, hidratante corporal, perfume para cabelo, chocolates Ferrero Rocher, rosa, xícara temática em cerâmica e cartão especial de Dia dos Namorados, tudo em uma apresentação exclusiva Natura que encanta em cada detalhe. Um presente perfeito para impressionar com romantismo, sofisticação e uma experiência inesquecível."
+  },
+  {
+    "title": "Box Natura Ekos Andiroba",
+    "price": "R$ 249,90",
+    "image": "/campanhas/dia-dos-namorados/09-box-natura-ekos-andiroba.webp",
+    "alt": "Box Natura Ekos Andiroba",
+    "description": "Um presente marcante, elegante e cheio de carinho para surpreender no Dia dos Namorados. A Box Natura Ekos Andiroba reúne hidratante corporal 400ml e perfume 150ml em uma apresentação encantadora, acompanhados de rosa e cartão temático especial que tornam cada detalhe ainda mais romântico. Um combo perfeito para presentear com cuidado, sofisticação e uma experiência inesquecível de amor e bem-estar."
+  },
+  {
+    "title": "Box Natura Cereja & Avelã",
+    "price": "R$ 179,90",
+    "image": "/campanhas/dia-dos-namorados/10-box-natura-cereja-avela.webp",
+    "alt": "Box Natura Cereja & Avelã",
+    "description": "Delicado, envolvente e perfeito para surpreender no Dia dos Namorados. A Box Natura Cereja & Avelã reúne hidratante corporal, body splash, rosa e cartão temático especial em uma apresentação encantadora que transforma carinho em um presente inesquecível. Um combo irresistível de cuidado, perfume e romantismo para conquistar em cada detalhe."
+  },
+  {
+    "title": "Box Natura Cereja Negra & Praliné",
+    "price": "R$ 219,90",
+    "image": "/campanhas/dia-dos-namorados/11-box-natura-cereja-negra-praline.webp",
+    "alt": "Box Natura Cereja Negra & Praliné",
+    "description": "Intensa, sofisticada e irresistivelmente apaixonante para surpreender no Dia dos Namorados. A Box Natura Cereja Negra & Praliné reúne body splash, hidratante corporal com refil, rosa e cartão temático especial em uma apresentação encantadora que transforma cada detalhe em uma experiência inesquecível. Um presente perfeito para quem deseja impressionar com perfume marcante, cuidado e muito romantismo."
+  },
+  {
+    "title": "Box Eudora Magnific Tradicional",
+    "price": "R$ 349,90",
+    "image": "/campanhas/dia-dos-namorados/12-box-eudora-magnific-tradicional.webp",
+    "alt": "Box Eudora Magnific Tradicional",
+    "description": "Sofisticado, marcante e feito para surpreender no Dia dos Namorados. A Box Eudora Magnific Tradicional reúne o elegante Eau de Parfum, loção em creme, bolsinha térmica preta, rosa, balão “Eu Te Amo” e cartão temático especial em uma apresentação apaixonante que transforma o presente em um momento inesquecível. Um combo perfeito para impressionar com elegância, romantismo e um toque irresistível de carinho."
+  },
+  {
+    "title": "Caixa da Alegria",
+    "price": "R$ 269,90",
+    "image": "/campanhas/dia-dos-namorados/13-caixa-da-alegria.webp",
+    "alt": "Caixa da Alegria",
+    "description": "Um presente encantador, sofisticado e cheio de carinho para tornar o Dia dos Namorados ainda mais especial. A Caixa da Alegria reúne o irresistível Body Splash Cereja Negra & Praliné, loção hidratante 400ml, refil, carteira, rosas e cartão temático especial em uma apresentação apaixonante que transforma cada detalhe em uma experiência inesquecível. Um combo perfeito para surpreender com perfume marcante, cuidado e muito romantismo em um presente que encanta do começo ao fim."
+  },
+  {
+    "title": "Caixa La Victorie",
+    "price": "R$ 229,90",
+    "image": "/campanhas/dia-dos-namorados/14-caixa-la-victorie.webp",
+    "alt": "Caixa La Victorie",
+    "description": "Elegante, sofisticada e irresistivelmente marcante para surpreender no Dia dos Namorados. A Caixa La Victorie reúne o luxuoso creme acetinado Eudora La Victorie acompanhado do refil e cartão temático especial, em uma apresentação apaixonante feita para transformar carinho em um presente inesquecível. Um presente perfeito para encantar com sofisticação, cuidado e um toque envolvente de romantismo."
+  },
+  {
+    "title": "Caixa Seduction",
+    "price": "R$ 309,90",
+    "image": "/campanhas/dia-dos-namorados/15-caixa-seduction.webp",
+    "alt": "Caixa Seduction",
+    "description": "Envolvente, sofisticada e feita para despertar sensações inesquecíveis no Dia dos Namorados. A Caixa Seduction reúne Coffee Seduction, loção hidratante, sabonete líquido, bolsinha térmica, rosa e cartão temático especial em uma apresentação apaixonante onde cada detalhe foi pensado para surpreender e encantar. Um combo irresistível que combina perfume, cuidado e romantismo em um presente perfeito para impressionar ."
+  },
+  {
+    "title": "Estojo Empire Feminino",
+    "price": "R$ 279,90",
+    "image": "/campanhas/dia-dos-namorados/16-estojo-empire-feminino.webp",
+    "alt": "Estojo Empire Feminino",
+    "description": "Sofisticado, marcante e irresistivelmente elegante para surpreender no Dia dos Namorados. O Estojo Empire Feminino reúne um Eau de Parfum 100ml e Hair Mist 30ml em uma apresentação luxuosa e encantadora, perfeita para quem ama perfumes intensos e cheios de personalidade. Um combo que prolonga a perfumação, realça a feminilidade e transforma cada momento em uma experiência ainda mais envolvente e inesquecível."
+  },
+  {
+    "title": "Bolsa Perfeita Midnight",
+    "price": "R$ 299,90",
+    "image": "/campanhas/dia-dos-namorados/17-bolsa-perfeita-midnight.webp",
+    "alt": "Bolsa Perfeita Midnight",
+    "description": "Misteriosa, sofisticada e irresistivelmente apaixonante para surpreender no Dia dos Namorados. A Bolsa Perfeita Midnight reúne perfume, creme para mãos e creme para pele em uma apresentação exclusiva e encantadora, feita para impressionar desde o primeiro olhar até a experiência completa dos produtos. Com um toque elegante e envolvente, esse presente transforma cuidado, perfume e romantismo em um momento inesquecível. Tudo isso por apenas"
+  },
+  {
+    "title": "Estojo Eudora Baunilha",
+    "price": "R$ 149,90",
+    "image": "/campanhas/dia-dos-namorados/18-estojo-eudora-baunilha.webp",
+    "alt": "Estojo Eudora Baunilha",
+    "description": "Delicado, envolvente e perfeito para transformar o Dia dos Namorados em um momento ainda mais especial. O Estojo Eudora Baunilha reúne body splash 200ml, hidratante desodorante corporal 180ml e creme para mãos 30g em uma apresentação prática, elegante e pronta para presentear. Uma combinação irresistível de cuidado, perfumação e carinho que encanta desde a embalagem até cada detalhe dos produtos. Um presente completo para surpreender quem você ama."
+  },
+  {
+    "title": "Estojo Lily O Boticário",
+    "price": "R$ 389,90",
+    "image": "/campanhas/dia-dos-namorados/19-estojo-lily-o-boticario.webp",
+    "alt": "Estojo Lily O Boticário",
+    "description": "Sofisticado, delicado e apaixonante em cada detalhe para surpreender no Dia dos Namorados. O Estojo Lily reúne Eau de Parfum 30ml, óleo perfumado 150ml, creme para mãos 50g e loção hidratante 75g em uma apresentação elegante e encantadora, perfeita para transformar o presente em uma experiência inesquecível. Uma combinação irresistível de perfume, cuidado e romantismo para emocionar quem você ama desde o primeiro instante."
+  },
+  {
+    "title": "Estojo Eudora Rouge",
+    "price": "R$ 179,90",
+    "image": "/campanhas/dia-dos-namorados/20-estojo-eudora-rouge.webp",
+    "alt": "Estojo Eudora Rouge",
+    "description": "Intenso, sofisticado e irresistivelmente marcante para surpreender no Dia dos Namorados. O Estojo Eudora Rouge reúne um perfume com alta fixação, cheiro envolvente e presença que deixa rastro por onde passa, acompanhado de um mousse de banho que transforma o cuidado diário em uma experiência luxuosa e apaixonante. Tudo isso em uma apresentação elegante da Eudora, perfeita para impressionar, despertar desejo e tornar esse presente simplesmente inesquecível."
+  },
+  {
+    "title": "Estojo Egeo Choc O Boticário",
+    "price": "R$ 224,90",
+    "image": "/campanhas/dia-dos-namorados/21-estojo-egeo-choc-o-boticario.webp",
+    "alt": "Estojo Egeo Choc O Boticário",
+    "description": "Doce, envolvente e irresistivelmente apaixonante para surpreender no Dia dos Namorados. O Estojo Egeo Choc reúne perfume 90ml e shower gel 150ml em uma apresentação moderna e encantadora, perfeita para quem ama fragrâncias marcantes com um toque divertido e sedutor. Uma combinação deliciosa de perfumação, cuidado e romantismo que transforma o presente em um momento inesquecível."
+  },
+  {
+    "title": "Estojo Floratta Rosé",
+    "price": "R$ 239,90",
+    "image": "/campanhas/dia-dos-namorados/22-estojo-floratta-rose.webp",
+    "alt": "Estojo Floratta Rosé",
+    "description": "Delicado, romântico e encantador em cada detalhe para surpreender no Dia dos Namorados. O Estojo Floratta Rosé reúne perfume e loção hidratante em uma apresentação elegante e apaixonante, perfeita para transformar o presente em um momento inesquecível. Uma combinação irresistível de perfumação suave, cuidado e romantismo que encanta, emociona e faz qualquer pessoa se sentir ainda mais especial."
+  },
+  {
+    "title": "Box Eudora Eau de Parfum Indulgent",
+    "price": "R$ 299,90",
+    "image": "/campanhas/dia-dos-namorados/23-box-eudora-eau-de-parfum-indulgent.webp",
+    "alt": "Box Eudora Eau de Parfum Indulgent",
+    "description": "Intenso, sofisticado e irresistivelmente marcante para transformar o Dia dos Namorados em uma experiência inesquecível. Esse box especial reúne o Eau de Parfum Indulgent Eudora acompanhado de body spray, criando uma combinação perfeita para quem ama fragrâncias elegantes, envolventes e cheias de presença. Além disso, o kit acompanha chocolate Ferrero Rocher, rosa e cartão temático especial, tudo em uma apresentação sofisticada e pronta para surpreender com romantismo, desejo e muito carinho. Um presente pensado para impressionar nos detalhes, despertar emoções e fazer quem recebe se sentir verdadeiramente especial."
+  },
+  {
+    "title": "Box Eudora Lyra",
+    "price": "R$ 349,90",
+    "image": "/campanhas/dia-dos-namorados/24-box-eudora-lyra.webp",
+    "alt": "Box Eudora Lyra",
+    "description": "Romântico, sofisticado e pensado para transformar o Dia dos Namorados em um momento inesquecível. Esse box especial reúne o perfume Eudora Lyra, loção hidratante 150ml e body splash 100ml em uma combinação perfeita para quem ama perfumação marcante, pele hidratada e sensação de cuidado o dia inteiro. Acompanhado de rosa, cartão temático especial e boxer “Eu Te Amo”, o presente já vai completo, pronto para surpreender com carinho, romantismo e muito bom gosto. Um kit criado para despertar emoções, gerar conexão e fazer quem recebe se sentir ainda mais especial em cada detalhe."
+  },
+  {
+    "title": "Cesta Floratta Red",
+    "price": "R$ 219,90",
+    "image": "/campanhas/dia-dos-namorados/25-cesta-floratta-red.webp",
+    "alt": "Cesta Floratta Red",
+    "description": "Delicada, romântica e perfeita para surpreender no Dia dos Namorados. Essa cesta especial reúne o Floratta Red acompanhado da loção hidratante com toque envolvente de Maçã de Vermont, criando uma combinação feminina, marcante e cheia de carinho. Uma fragrância apaixonante, com sensação de frescor, delicadeza e perfumação prolongada, perfeita para mulheres que amam se sentir cheirosas, cuidadas e especiais todos os dias. Acompanhada de rosa e apresentação encantadora, é o presente ideal para emocionar em cada detalhe."
+  },
+  {
+    "title": "Cesta Love Baunilha",
+    "price": "R$ 179,90",
+    "image": "/campanhas/dia-dos-namorados/26-cesta-love-baunilha.webp",
+    "alt": "Cesta Love Baunilha",
+    "description": "Doce, romântica e perfeita para transformar o Dia dos Namorados em um momento inesquecível. A Cesta Love reúne body splash de baunilha 200ml, loção hidratante 400ml, chocolate Ferrero Rocher, rosa e uma apresentação encantadora no Box Love — uma combinação pensada para surpreender com carinho, perfumação e muito romantismo. Com fragrância envolvente e toque confortável na pele, é o presente ideal para quem ama cheirinho doce, autocuidado e momentos especiais cheios de conexão e afeto. Uma opção linda, prática e cheia de intenção para emocionar quem você ama."
+  },
+  {
+    "title": "Caixa Divertida",
+    "price": "R$ 129,90",
+    "image": "/campanhas/dia-dos-namorados/27-caixa-divertida.webp",
+    "alt": "Caixa Divertida",
+    "description": "Um presente moderno, criativo e cheio de personalidade para surpreender no Dia dos Namorados. A Caixa Divertida reúne o Brand Collection 324, fragrância que remete a clássicos perfumes importados, com ótima fixação, excelente projeção e aquele aroma marcante perfeito para quem gosta de presença e praticidade no dia a dia. Acompanhado de Ferrero Rocher e uma apresentação dinâmica e encantadora, o kit foi pensado para transformar o presente em um momento especial, cheio de cuidado, carinho e intenção. Um combo perfeito para emocionar, impressionar e não deixar essa data passar em branco."
+  },
+  {
+    "title": "Box “Com Amor”",
+    "price": "R$ 89,90",
+    "image": "/campanhas/dia-dos-namorados/28-box-com-amor.webp",
+    "alt": "Box “Com Amor”",
+    "description": "Delicado, criativo e cheio de carinho para transformar o Dia dos Namorados em uma lembrança inesquecível. Esse presente especial traz um box em MDF escrito “Com Amor”, acompanhado da caixa de sabonetes Natura com 6 unidades na temática “Amor”, formando uma apresentação divertida, romântica e super encantadora. Além da rosa e de toda a composição pensada nos detalhes, é um presente funcional, perfumado e perfeito para demonstrar cuidado de uma forma leve, bonita e cheia de significado."
+  },
+  {
+    "title": "Box Nativa SPA Ameixa",
+    "price": "R$ 229,90",
+    "image": "/campanhas/dia-dos-namorados/29-box-nativa-spa-ameixa.webp",
+    "alt": "Box Nativa SPA Ameixa",
+    "description": "Intenso, feminino e perfeito para transformar o Dia dos Namorados em um momento inesquecível. Esse box especial reúne o body splash 200ml e o hidratante 400ml da linha Nativa SPA Ameixa Negra, uma combinação marcante que perfuma, hidrata e deixa a pele macia com um toque sofisticado e envolvente ao longo do dia. Acompanhado de rosas e cartão temático especial, é um presente completo, romântico e pronto para emocionar em cada detalhe. Uma escolha perfeita para quem quer surpreender com carinho, presença e muito significado."
+  },
+  {
+    "title": "Box Presenteável calmaria",
+    "price": "R$ 239,90",
+    "image": "/campanhas/dia-dos-namorados/30-box-presenteavel-calmaria.webp",
+    "alt": "Box Presenteável calmaria",
+    "description": "Completo, marcante e perfeito para surpreender no Dia dos Namorados com carinho e praticidade. Esse box especial reúne body splash 200ml maracujá , loção hidratante 400ml e caixa de sabonetes com 4 unidades de maracujá , criando uma rotina de autocuidado completa, perfumada e cheia de frescor para o dia a dia. Acompanhado de boxer, flor e cartão temático de Dia dos Namorados, é um presente pronto para entregar, pensado nos mínimos detalhes para emocionar e encantar. Uma escolha funcional, romântica e cheia de significado para quem quer acertar no presente."
+  },
+  {
+    "title": "Natura Homem Sagaz 100ml",
+    "price": "De R$ 229,99 por R$ 179,90",
+    "image": "/campanhas/dia-dos-namorados/31-natura-homem-sagaz-100ml.webp",
+    "alt": "Natura Homem Sagaz 100ml",
+    "description": "Intenso, moderno e feito para o homem que transmite atitude e presença em cada detalhe. O Natura Homem Sagaz 100ml traz uma fragrância enérgica e vibrante, com um perfil marcante que combina frescor sofisticado e notas amadeiradas envolventes, criando um cheiro elegante, versátil e cheio de personalidade. Ideal para quem gosta de se destacar de forma natural, com boa fixação e projeção equilibrada, acompanhando desde o dia a dia até momentos especiais com a mesma confiança. Na campanha de Dia dos Namorados, é o presente perfeito para mulheres que querem surpreender com significado ou para homens que gostam de escolher uma fragrância que impõe presença e estilo. Um perfume que não passa despercebido — ele comunica força, autenticidade e sagacidade."
+  },
+  {
+    "title": "Natura Homem Cor.agio",
+    "price": "De R$ 329,99 por R$ 249,90",
+    "image": "/campanhas/dia-dos-namorados/32-natura-homem-cor-agio.webp",
+    "alt": "Natura Homem Cor.agio",
+    "description": "Forte, marcante e feito para o homem que não passa despercebido. O Natura Homem Coragem traz uma fragrância intensa e envolvente, com notas amadeiradas e especiadas que reforçam presença, atitude e personalidade. Um perfume pensado para quem gosta de deixar rastro, com projeção equilibrada e excelente sensação de durabilidade na pele. É aquele tipo de cheiro que transmite confiança e estilo logo na primeira impressão — perfeito para o dia a dia ou ocasiões especiais. Na pegada do Dia dos Namorados, é o presente ideal para quem quer surpreender e valorizar o homem que você ama com um perfume que realmente chama atenção. Um clássico moderno: forte, elegante e inesquecível."
+  },
+  {
+    "title": "Perfume Whindersson Nunes Signature 45ml",
+    "price": "R$ 79,90",
+    "image": "/campanhas/dia-dos-namorados/33-perfume-whindersson-nunes-signature-45ml.webp",
+    "alt": "Perfume Whindersson Nunes Signature 45ml",
+    "description": "Autêntico, leve e cheio de personalidade — perfeito para quem gosta de um cheiro agradável e fácil de usar no dia a dia. Essa fragrância de assinatura traz uma proposta moderna, com aroma confortável, equilibrado e versátil, ideal para diferentes ocasiões sem perder presença. Um perfume que entrega estilo com simplicidade e ótimo custo-benefício. Na campanha de Dia dos Namorados, é uma excelente opção de presente para surpreender de forma prática, criativa e com significado. Um cheiro que combina com atitude, leveza e autenticidade."
+  },
+  {
+    "title": "Arbo O Boticário",
+    "price": "R$ 154,90",
+    "image": "/campanhas/dia-dos-namorados/34-arbo-o-boticario.webp",
+    "alt": "Arbo O Boticário",
+    "description": "Fresco, leve e extremamente agradável para o homem que gosta de praticidade sem abrir mão de presença. O Arbo traz uma fragrância masculina refrescante, com notas verdes e aromáticas que remetem à natureza, transmitindo sensação de liberdade, energia e bem-estar ao longo do dia. Um perfume versátil, ideal para uso diário, com aquele toque limpo e sofisticado na medida certa. Na campanha de Dia dos Namorados, é uma ótima opção de presente para quem quer acertar com um perfume leve, moderno e fácil de agradar — perfeito para homens que preferem frescor e autenticidade. Um clássico da perfumaria masculina: simples, elegante e sempre certeiro."
+  },
+  {
+    "title": "Cesta Masculina Infinito",
+    "price": "R$ 389,90",
+    "image": "/campanhas/dia-dos-namorados/35-cesta-masculina-infinito.webp",
+    "alt": "Cesta Masculina Infinito",
+    "description": "Intensa, elegante e perfeita para surpreender no Dia dos Namorados com presença e sofisticação. A Cesta Infinito reúne um perfume importado de alta performance com ótima fixação e projeção, acompanhado de café temático de Dia dos Namorados, criando uma experiência marcante, envolvente e cheia de personalidade. Com apresentação em box de coração e uma composição pensada nos mínimos detalhes, é um presente pronto para entregar e emocionar — ideal para mulheres que desejam presentear o marido ou namorado com algo forte, elegante e inesquecível. Um kit masculino que transmite atitude, cuidado e conexão em cada detalhe."
+  },
+  {
+    "title": "Cesta Nina Bloom",
+    "price": "R$ 297,90",
+    "image": "/campanhas/dia-dos-namorados/36-cesta-nina-bloom.webp",
+    "alt": "Cesta Nina Bloom",
+    "description": "Delicada, envolvente e feita para transformar o Dia dos Namorados em uma verdadeira explosão de sentidos. A Cesta Nina Bloom reúne o perfume Nina Secret e a loção hidratante , criando uma combinação perfeita de perfumação marcante e cuidado com a pele, deixando uma sensação feminina, sofisticada e extremamente agradável ao longo do dia. Para completar essa experiência, acompanha flores, chocolate Ferrero Rocher e cartão temático especial, tudo em uma apresentação encantadora e pronta para presentear. Um presente pensado para emocionar, surpreender e tornar o momento inesquecível em cada detalhe."
+  },
+  {
+    "title": "Cesta Presenteável Lily O Boticário",
+    "price": "R$ 249,90",
+    "image": "/campanhas/dia-dos-namorados/37-cesta-presenteavel-lily-o-boticario.webp",
+    "alt": "Cesta Presenteável Lily O Boticário",
+    "description": "Elegante, sofisticada e perfeita para transformar o Dia dos Namorados em uma experiência inesquecível. Essa cesta especial reúne o Lily Creme Acetinado e o desodorante aerosol da linha Lily, criando uma combinação de perfumação floral marcante com cuidado aveludado para a pele, deixando a sensação de feminilidade, presença e delicadeza ao longo do dia. Para completar o momento, acompanha vinho Quinta do Morgado, cartão temático de Dia dos Namorados e balão “Eu Te Amo”, tudo em uma apresentação encantadora, pronta para surpreender e emocionar em cada detalhe. Um presente completo, romântico e cheio de significado para quem deseja acertar em cheio na escolha."
+  },
+  {
+    "title": "Cesta Luna Glow",
+    "price": "R$ 239,90",
+    "image": "/campanhas/dia-dos-namorados/38-cesta-luna-glow.webp",
+    "alt": "Cesta Luna Glow",
+    "description": "Romântica, luminosa e perfeita para transformar o Dia dos Namorados em um momento inesquecível. A Cesta Luna Glow reúne perfume e body splash da linha, criando uma combinação envolvente de perfumação marcante e leve, ideal para quem ama se sentir cheirosa, elegante e confiante ao longo do dia. Para completar a experiência, acompanha chocolates, rosa e cartão temático especial, tudo em uma apresentação encantadora e pronta para presentear. Um presente pensado para emocionar, surpreender e criar conexão em cada detalhe."
+  },
+  {
+    "title": "Cesta Rosa Absoluta",
+    "price": "R$ 189,90",
+    "image": "/campanhas/dia-dos-namorados/39-cesta-rosa-absoluta.webp",
+    "alt": "Cesta Rosa Absoluta",
+    "description": "Intensa, feminina e perfeita para transformar o Dia dos Namorados em um momento inesquecível. Esse kit especial reúne o hidratante Eudora Instance 400ml e o body splash 200ml, criando uma combinação envolvente de perfumação marcante e hidratação prolongada, deixando a pele macia, cheirosa e com sensação de cuidado o dia inteiro. Para completar essa experiência, acompanha cartão temático de Dia dos Namorados, rosa e chocolates, formando um presente completo, romântico e pronto para emocionar em cada detalhe. Um kit pensado para encantar, surpreender e transmitir carinho de forma simples, bonita e inesquecível."
+  },
+  {
+    "title": "cesta Eudora Lyra",
+    "price": "R$ 359,99",
+    "image": "/campanhas/dia-dos-namorados/40-cesta-eudora-lyra.webp",
+    "alt": "cesta Eudora Lyra",
+    "description": "Romântico, sofisticado e perfeito para transformar o Dia dos Namorados em uma experiência inesquecível. A Sexta Eudora Lyra reúne o perfume Eudora Lyra, loção hidratante e body splash, criando uma combinação completa de perfumação marcante e cuidado com a pele, deixando a sensação de elegância, feminilidade e envolvimento ao longo do dia. Para completar essa experiência, acompanha rosas, chocolate Ferrero Rocher e cartão temático de Dia dos Namorados, formando um presente completo, pronto para emocionar e surpreender em cada detalhe. Um kit pensado para gerar desejo, conexão e tornar o momento ainda mais especial."
+  },
+  {
+    "title": "Cesta Noble Blush",
+    "price": "",
+    "image": "/campanhas/dia-dos-namorados/41-cesta-noble-blush.webp",
+    "alt": "Cesta Noble Blush",
+    "description": "Elegante, feminina e feita para transformar o Dia dos Namorados em um momento inesquecível. Essa cesta especial reúne o perfume importado Noble Blush, conhecido por sua presença sofisticada, fixação marcante e fragrância envolvente, ideal para quem gosta de se destacar com delicadeza e personalidade. Acompanhada de flor, chocolate Ferrero Rocher, cartão temático de Dia dos Namorados e apresentação em formato de coração com unboxing impactante, é um presente completo, pensado para emocionar já no primeiro olhar. Um kit criado para gerar desejo, encantar e transformar carinho em experiência inesquecível."
+  },
+  {
+    "title": "Box O Boticário Elysée",
+    "price": "R$ 499,90",
+    "image": "/campanhas/dia-dos-namorados/42-box-o-boticario-elysee.webp",
+    "alt": "Box O Boticário Elysée",
+    "description": "Elegante, marcante e feito para transformar o Dia dos Namorados em uma experiência inesquecível. Esse box especial reúne o Eau de Parfum Elysée O Boticário e o creme acetinado da linha, criando uma combinação sofisticada de perfumação intensa e cuidado aveludado para a pele, com um toque feminino, refinado e extremamente envolvente. Acompanhado de chocolate Ferrero Rocher, rosa, cartão temático de Dia dos Namorados e uma cesta em formato de coração, é um presente completo, pronto para emocionar, encantar e impressionar em cada detalhe. Um kit pensado para gerar desejo, conexão e valorizar quem recebe com sofisticação e presença."
+  },
+  {
+    "title": "Estojo Malbec O Boticário",
+    "price": "R$ 199,90",
+    "image": "/campanhas/dia-dos-namorados/43-estojo-malbec-o-boticario.webp",
+    "alt": "Estojo Malbec O Boticário",
+    "description": "Elegante, marcante e perfeito para surpreender no Dia dos Namorados. O Estojo Malbec reúne o perfume Malbec 50ml e o desodorante da linha em uma combinação ideal para homens que gostam de presença, sofisticação e perfumação intensa no dia a dia. Com fragrância amadeirada marcante e excelente sensação de durabilidade, é um presente que transmite atitude, cuidado e personalidade desde a primeira borrifada. Uma opção prática, sofisticada e pronta para emocionar quem você ama nessa data especial."
+  },
+  {
+    "title": "Kit O.U.i Iconic 001",
+    "price": "De R$ 449,90 por R$ 397,90",
+    "image": "/campanhas/dia-dos-namorados/44-kit-o-u-i-iconic-001.webp",
+    "alt": "Kit O.U.i Iconic 001",
+    "description": "Sofisticado, moderno e perfeito para transformar o Dia dos Namorados em uma experiência inesquecível. Esse presente especial reúne o perfume O.U.i Iconic 001 75ml e o creme para mãos 100g, criando uma combinação elegante de perfumação refinada e cuidado diário com toque luxuoso e extremamente agradável. Com uma fragrância marcante e sofisticada, é o tipo de presente que transmite presença, bom gosto e carinho em cada detalhe, além de entregar uma experiência completa de autocuidado e perfumação. Uma opção impactante, charmosa e pronta para surpreender quem você ama nessa data especial."
+  }
+]

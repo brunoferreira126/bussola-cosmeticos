@@ -1,180 +1,276 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import produtosNamorados from "../data/namoradosCatalogo.json";
 import "./campanha.css";
 
-/*
-====================================================
-CORREÇÃO DO CARROSSEL NÃO PASSANDO
-PROBLEMA:
-o array "imagens" estava recriando em toda renderização
-e o useEffect reiniciava o setInterval.
+// WhatsApp da loja. Mantendo em uma constante fica facil trocar depois.
+const WHATSAPP_NUMERO = "558589411912";
 
-SOLUÇÃO:
-usar useMemo para estabilizar imagens.
-====================================================
-*/
+// Imagem leve em WebP gerada a partir da capa do arquivo Kit Encanto.
+const CAPA_CATALOGO = "/campanhas/dia-dos-namorados/capa-kit-encanto.webp";
 
-const arquivos = import.meta.glob(
-  "../assets/icons/campanha/*.{png,jpg,jpeg,webp}",
-  {
-    eager: true,
-    import: "default",
+// Lista de filtros que aparecem no topo do catalogo.
+const filtros = [
+  { label: "Todos", value: "todos" },
+  { label: "Kits", value: "kit" },
+  { label: "Boxes", value: "box" },
+  { label: "Cestas", value: "cesta" },
+  { label: "Estojos", value: "estojo" },
+  { label: "Masculinos", value: "masculino" },
+];
+
+// Define uma categoria simples com base no titulo e na descricao do produto.
+function obterCategoria(produto) {
+  const titulo = produto.title.toLowerCase();
+  const texto = `${produto.title} ${produto.description}`.toLowerCase();
+
+  if (texto.includes("masculin") || texto.includes("homem") || texto.includes("malbec")) {
+    return "masculino";
   }
-);
+
+  if (titulo.includes("cesta")) return "cesta";
+  if (titulo.includes("estojo")) return "estojo";
+  if (titulo.includes("box")) return "box";
+  if (titulo.includes("kit")) return "kit";
+
+  return "todos";
+}
+
+// Monta a mensagem pronta para abrir o WhatsApp com o produto escolhido.
+function criarLinkWhatsApp(produto) {
+  const mensagem = `Olá! Vim pelo catálogo do Dia dos Namorados e quero saber mais sobre: ${produto.title} - ${produto.price}`;
+
+  return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
+}
 
 export default function Campanha() {
-  /* TODAS IMAGENS */
-  const todasImagens = useMemo(() => {
-    return Object.entries(arquivos)
-      .sort((a, b) => a[0].localeCompare(b[0]))
-      .map((item) => item[1]);
+  // Guarda o texto digitado na busca.
+  const [busca, setBusca] = useState("");
+
+  // Guarda o filtro ativo selecionado pelo cliente.
+  const [filtroAtivo, setFiltroAtivo] = useState("todos");
+
+  // Guarda qual produto foi aberto para leitura completa.
+  const [produtoAberto, setProdutoAberto] = useState(null);
+
+  // Prepara os produtos com categoria uma unica vez por renderizacao relevante.
+  const produtos = useMemo(() => {
+    return produtosNamorados.map((produto) => ({
+      ...produto,
+      categoria: obterCategoria(produto),
+    }));
   }, []);
 
-  /* CAPA */
-  const capa = todasImagens[0];
+  // Filtra por categoria e tambem pelo que o cliente digitou na busca.
+  const produtosFiltrados = useMemo(() => {
+    const termo = busca.trim().toLowerCase();
 
-  /* CARROSSEL FIXO */
-  const imagens = useMemo(() => {
-    return todasImagens.slice(1);
-  }, [todasImagens]);
+    return produtos.filter((produto) => {
+      const bateFiltro =
+        filtroAtivo === "todos" || produto.categoria === filtroAtivo;
 
-  const [index, setIndex] = useState(0);
+      const bateBusca =
+        !termo ||
+        produto.title.toLowerCase().includes(termo) ||
+        produto.description.toLowerCase().includes(termo);
 
-  const [tempo, setTempo] = useState({
-    dias: 0,
-    horas: 0,
-    minutos: 0,
-    acabou: false,
-  });
+      return bateFiltro && bateBusca;
+    });
+  }, [busca, filtroAtivo, produtos]);
 
-  /* ===================================
-     CARROSSEL FUNCIONANDO
-  =================================== */
-  useEffect(() => {
-    if (imagens.length <= 1) return;
-
-    const intervalo = setInterval(() => {
-      setIndex((prev) => {
-        if (prev >= imagens.length - 1) {
-          return 0;
-        }
-        return prev + 1;
-      });
-    }, 2800);
-
-    return () => clearInterval(intervalo);
-  }, [imagens.length]);
-
-  /* ===================================
-     CONTADOR
-  =================================== */
-  useEffect(() => {
-    const destino = new Date("2026-05-10T00:00:00");
-
-    const atualizarTempo = () => {
-      const agora = new Date();
-      const diff = destino - agora;
-
-      if (diff <= 0) {
-        setTempo({
-          dias: 0,
-          horas: 0,
-          minutos: 0,
-          acabou: true,
-        });
-        return;
-      }
-
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutos = Math.floor((diff / (1000 * 60)) % 60);
-
-      setTempo({
-        dias,
-        horas,
-        minutos,
-        acabou: false,
-      });
-    };
-
-    atualizarTempo();
-
-    const timer = setInterval(atualizarTempo, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
+  // Destaca os primeiros produtos do catalogo no resumo da campanha.
+  const destaques = produtos.slice(0, 3);
 
   return (
-    <section
-      className="campanha"
-      style={{
-        backgroundImage: capa ? `url(${capa})` : "none",
-      }}
-    >
-      <div className="campanha-overlay"></div>
+    <section className="campanha" id="campanha">
+      {/* Fundo visual da campanha; a imagem fica em public para nao pesar o bundle. */}
+      <div
+        className="campanha-hero"
+        style={{ backgroundImage: `url(${CAPA_CATALOGO})` }}
+      >
+        <div className="campanha-overlay" />
 
-      <div className="campanha-container">
+        <div className="campanha-container">
+          <div className="campanha-content">
+            <span className="campanha-tag">Especial Dia dos Namorados</span>
 
-        <div className="campanha-content">
+            <h2>Catálogo de presentes prontos para encantar</h2>
 
-          <span className="campanha-tag">
-            Especial Dia das Mães
-          </span>
+            <p>
+              Kits, boxes, cestas e perfumes selecionados para transformar o
+              presente em uma experiencia completa de carinho, beleza e perfume.
+            </p>
 
-          <div  id="campanha" className="contador-box">
-            {tempo.acabou ? (
-              <>💐 É hoje! Garanta o presente dela</>
-            ) : (
-              <>
-                Faltam <strong>{tempo.dias}</strong> dias •{" "}
-                <strong>{tempo.horas}</strong> horas •{" "}
-                <strong>{tempo.minutos}</strong> min
-                <br />
-                para o Dia das Mães
-              </>
-            )}
+            <div className="campanha-stats" aria-label="Resumo do catálogo">
+              <span>
+                <strong>{produtos.length}</strong>
+                opções
+              </span>
+              <span>
+                <strong>WebP</strong>
+                imagens leves
+              </span>
+              <span>
+                <strong>WhatsApp</strong>
+                pedido direto
+              </span>
+            </div>
+
+            <div className="campanha-buttons">
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMERO}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-gold"
+              >
+                Comprar no WhatsApp
+              </a>
+
+              <a href="#catalogo-namorados" className="btn-outline">
+                Ver catálogo
+              </a>
+            </div>
           </div>
 
-          <h2>
-            Melhor se antecipar
-            <br />
-            e garantir o presente dela
-          </h2>
+          <div className="campanha-destaques" aria-label="Destaques do catálogo">
+            {destaques.map((produto) => (
+              <article className="destaque-card" key={produto.title}>
+                <img src={produto.image} alt={produto.alt} loading="eager" />
+                <div>
+                  <span>{produto.price}</span>
+                  <strong>{produto.title}</strong>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
 
-          <p>
-            Perfumes, kits especiais e lembranças únicas
-            para surpreender quem sempre cuidou de você.
-          </p>
-
-          <div className="campanha-alerta">
-            Os melhores presentes acabam primeiro.
+      {/* Catalogo online. As imagens usam lazy loading para carregar aos poucos. */}
+      <div className="catalogo-namorados" id="catalogo-namorados">
+        <div className="catalogo-topo">
+          <div>
+            <span className="catalogo-kicker">Kit Encanto e campanha 2026</span>
+            <h3>Escolha o presente por estilo, preço ou nome</h3>
           </div>
 
-          <div className="campanha-buttons">
-            <a
-              href="https://wa.me/558584241536"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-gold"
-            >
-              Comprar no WhatsApp
-            </a>
-          </div>
-
+          <label className="catalogo-busca">
+            <span>Buscar presente</span>
+            <input
+              type="search"
+              placeholder="Ex.: Eudora, Natura, cesta..."
+              value={busca}
+              onChange={(event) => setBusca(event.target.value)}
+            />
+          </label>
         </div>
 
-        {/* CARROSSEL */}
-        <div className="campanha-carousel">
-          {imagens.map((img, i) => (
-            <img
-              key={i}
-              src={img}
-              alt="Campanha"
-              className={i === index ? "active" : ""}
-            />
+        <div className="catalogo-filtros" aria-label="Filtros do catálogo">
+          {filtros.map((filtro) => (
+            <button
+              type="button"
+              key={filtro.value}
+              className={filtroAtivo === filtro.value ? "ativo" : ""}
+              onClick={() => setFiltroAtivo(filtro.value)}
+            >
+              {filtro.label}
+            </button>
           ))}
         </div>
 
+        <div className="catalogo-grade">
+          {produtosFiltrados.map((produto) => (
+            <article className="produto-card" key={produto.title}>
+              <div className="produto-imagem">
+                <img
+                  src={produto.image}
+                  alt={produto.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="produto-info">
+                <span className="produto-categoria">{produto.categoria}</span>
+                <h4>{produto.title}</h4>
+                <p>{produto.description}</p>
+
+                <div className="produto-rodape">
+                  <strong>{produto.price}</strong>
+
+                  <a
+                    href={criarLinkWhatsApp(produto)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="produto-whatsapp"
+                  >
+                    Pedir no WhatsApp
+                  </a>
+
+                  <button
+                    type="button"
+                    className="produto-detalhes"
+                    onClick={() => setProdutoAberto(produto)}
+                  >
+                    Ler descrição completa
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {produtosFiltrados.length === 0 && (
+          <div className="catalogo-vazio">
+            Nenhum presente encontrado com esse filtro.
+          </div>
+        )}
       </div>
+
+      {produtoAberto && (
+        <div
+          className="produto-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Descrição completa de ${produtoAberto.title}`}
+        >
+          {/* Fecha o modal quando o cliente clica fora do conteudo. */}
+          <button
+            type="button"
+            className="produto-modal-fundo"
+            aria-label="Fechar detalhes"
+            onClick={() => setProdutoAberto(null)}
+          />
+
+          <article className="produto-modal-card">
+            <button
+              type="button"
+              className="produto-modal-fechar"
+              aria-label="Fechar detalhes"
+              onClick={() => setProdutoAberto(null)}
+            >
+              ×
+            </button>
+
+            <img src={produtoAberto.image} alt={produtoAberto.alt} />
+
+            <div className="produto-modal-info">
+              <span className="produto-categoria">{produtoAberto.categoria}</span>
+              <h3>{produtoAberto.title}</h3>
+              <strong>{produtoAberto.price}</strong>
+              <p>{produtoAberto.description}</p>
+
+              <a
+                href={criarLinkWhatsApp(produtoAberto)}
+                target="_blank"
+                rel="noreferrer"
+                className="produto-whatsapp"
+              >
+                Pedir este presente no WhatsApp
+              </a>
+            </div>
+          </article>
+        </div>
+      )}
     </section>
   );
 }
