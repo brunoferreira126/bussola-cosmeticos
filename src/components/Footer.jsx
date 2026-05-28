@@ -39,7 +39,7 @@ export default function Footer() {
           <ul className="footer-contato">
             <li>
               <FaWhatsapp />
-              <a href="https://https://wa.me/558584241536" target="_blank">
+              <a href="https://wa.me/5585984241536" target="_blank">
                 (85) 98424-1536
               </a>
             </li>

@@ -3,7 +3,7 @@ import produtosNamorados from "../data/namoradosCatalogo.json";
 import "./campanha.css";
 
 // WhatsApp da loja. Mantendo em uma constante fica facil trocar depois.
-const WHATSAPP_NUMERO = "558589411912";
+const WHATSAPP_NUMERO = "5585984241536";
 
 // Imagem leve em WebP gerada a partir da capa do arquivo Kit Encanto.
 const CAPA_CATALOGO = "/campanhas/dia-dos-namorados/capa-kit-encanto.webp";

@@ -58,7 +58,7 @@ export default function Sobre() {
           </p>
 
           <a
-            href="https://wa.me/558584241536"
+            href="https://wa.me/5585984241536"
             target="_blank"
             rel="noreferrer"
             className="btn-gold"
