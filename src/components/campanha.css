@@ -459,6 +459,500 @@
   text-align: center;
 }
 
+/* ==================================================
+   CLUBE BUSSOLA + CAMPANHA SAO JOAO
+================================================== */
+
+.clube-bussola {
+  padding: 150px 30px 96px;
+  background:
+    radial-gradient(circle at top left, rgba(197, 48, 38, 0.28), transparent 34%),
+    radial-gradient(circle at top right, rgba(241, 179, 64, 0.2), transparent 30%),
+    #0f0b0c;
+}
+
+.clube-hero,
+.clube-grid,
+.clube-niveis,
+.clube-recompensas,
+.clube-area-cliente,
+.clube-cadastro,
+.catalogo-sao-joao {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.clube-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 430px;
+  gap: 56px;
+  align-items: center;
+  min-height: calc(100vh - 190px);
+}
+
+.clube-hero-texto h2 {
+  max-width: 820px;
+  margin: 0 0 24px;
+  color: #fff;
+  font-size: 3.2rem;
+  line-height: 1.08;
+}
+
+.clube-hero-texto p,
+.clube-cadastro-texto p,
+.catalogo-sao-joao .catalogo-topo p,
+.clube-card p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.clube-acoes {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.dashboard-demo,
+.clube-card,
+.nivel-card,
+.recompensa-card {
+  border: 1px solid rgba(245, 211, 141, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.dashboard-demo {
+  padding: 22px;
+}
+
+.dashboard-topo span,
+.dashboard-progresso span,
+.cashback-box span,
+.codigo-box small {
+  display: block;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.86rem;
+}
+
+.dashboard-topo strong,
+.dashboard-progresso strong {
+  display: block;
+  margin-top: 6px;
+  color: #fff;
+  font-size: 1.18rem;
+}
+
+.dashboard-resumo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.dashboard-resumo span {
+  padding: 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dashboard-resumo strong {
+  display: block;
+  margin-top: 6px;
+  color: #f1d18a;
+  font-size: 1.35rem;
+}
+
+.dashboard-progresso {
+  padding: 16px;
+  border-radius: 8px;
+  background: rgba(18, 140, 74, 0.14);
+}
+
+.dashboard-progresso p {
+  margin: 10px 0 12px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.barra-progresso {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.barra-progresso span {
+  display: block;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, #f1d18a, #c53026);
+}
+
+.dashboard-menu {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.dashboard-menu span {
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.clube-grid,
+.clube-area-cliente,
+.clube-cadastro {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.clube-card {
+  padding: 26px;
+}
+
+.clube-card h3,
+.clube-secao-titulo h3,
+.clube-cadastro-texto h3,
+.catalogo-sao-joao h3 {
+  margin: 12px 0 14px;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1.16;
+}
+
+.fluxo-indicacao {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.fluxo-indicacao span {
+  min-height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(241, 209, 138, 0.14);
+  color: #f1d18a;
+  text-align: center;
+  font-weight: 900;
+  font-size: 0.78rem;
+}
+
+.codigo-box {
+  display: grid;
+  gap: 6px;
+  margin: 20px 0;
+  padding: 18px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.codigo-box strong {
+  color: #f1d18a;
+  font-size: 2rem;
+}
+
+.codigo-box span {
+  color: rgba(255, 255, 255, 0.76);
+  word-break: break-word;
+}
+
+.btn-compartilhar {
+  width: 100%;
+}
+
+.clube-niveis,
+.clube-recompensas,
+.catalogo-sao-joao {
+  margin-top: 58px;
+}
+
+.clube-secao-titulo {
+  max-width: 760px;
+  margin-bottom: 22px;
+}
+
+.niveis-lista,
+.recompensas-lista {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.nivel-card,
+.recompensa-card {
+  padding: 18px;
+}
+
+.nivel-card strong,
+.recompensa-card strong {
+  display: block;
+  color: #fff;
+  font-size: 1.08rem;
+}
+
+.nivel-card span,
+.recompensa-card span {
+  display: block;
+  margin: 10px 0;
+  color: #f1d18a;
+  font-weight: 900;
+}
+
+.nivel-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.55;
+}
+
+.indicacoes-lista {
+  display: grid;
+  gap: 10px;
+}
+
+.indicacao-linha {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.indicacao-linha strong {
+  color: #fff;
+}
+
+.indicacao-linha span,
+.indicacao-linha em {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: normal;
+}
+
+.cashback-box {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+  padding: 18px;
+  border-radius: 8px;
+  background: rgba(18, 140, 74, 0.16);
+}
+
+.cashback-box strong {
+  color: #f1d18a;
+  font-size: 2rem;
+}
+
+.cashback-box small {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.clube-cadastro {
+  align-items: start;
+  padding: 30px;
+  border: 1px solid rgba(245, 211, 141, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.clube-form {
+  display: grid;
+  gap: 14px;
+}
+
+.clube-form label {
+  display: grid;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 800;
+}
+
+.clube-form input {
+  min-height: 50px;
+  border: 1px solid rgba(245, 211, 141, 0.28);
+  border-radius: 8px;
+  padding: 0 14px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font: inherit;
+}
+
+.clube-form input::placeholder {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.clube-form button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.form-retorno {
+  margin: 0;
+  color: #f1d18a;
+  line-height: 1.5;
+}
+
+.catalogo-sao-joao {
+  scroll-margin-top: 132px;
+}
+
+.produto-imagem-contain {
+  background: #f7f1ea;
+}
+
+.produto-imagem-contain img {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  padding: 10px;
+}
+
+/* Hero comercial do Sao Joao exibido enquanto o Clube Bussola esta pausado. */
+.campanha-sao-joao-hero {
+  grid-template-columns: minmax(0, 1fr);
+  position: relative;
+  min-height: 650px;
+  max-width: none;
+  margin: -150px -30px 0;
+  padding: 170px max(30px, calc((100vw - 1280px) / 2)) 84px;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Sem o antigo card-resumo, o texto ocupa o hero com largura confortavel. */
+.campanha-sao-joao-hero .clube-hero-texto {
+  max-width: 820px;
+}
+
+.sao-joao-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 8, 9, 0.84);
+}
+
+.campanha-sao-joao-hero > *:not(.sao-joao-overlay, .bandeirinhas) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Bandeirinhas leves feitas apenas com CSS. */
+.bandeirinhas {
+  position: absolute;
+  top: 132px;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 2px solid rgba(255, 255, 255, 0.56);
+  pointer-events: none;
+}
+
+.bandeirinhas span {
+  width: 54px;
+  height: 58px;
+  margin: -1px 10px 0;
+  background: #d44032;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.bandeirinhas span:nth-child(2n) {
+  background: #efb73e;
+}
+
+.bandeirinhas span:nth-child(3n) {
+  background: #16804d;
+}
+
+.bandeirinhas span:nth-child(4n) {
+  background: #3276b1;
+}
+
+.sao-joao-selos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.sao-joao-selos span {
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.catalogo-resumo {
+  position: relative;
+  padding-top: 96px;
+  border-color: rgba(239, 183, 62, 0.42);
+  background: rgba(40, 13, 14, 0.8);
+}
+
+.selo-sao-joao {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border: 3px solid #efb73e;
+  border-radius: 50%;
+  background: #a62322;
+  color: #fff;
+  text-align: center;
+  transform: rotate(5deg);
+}
+
+.selo-sao-joao small,
+.selo-sao-joao span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.selo-sao-joao strong {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.catalogo-ver-mais {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  margin-top: 34px;
+  padding: 24px;
+  border: 1px solid rgba(245, 211, 141, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.72);
+  text-align: center;
+}
+
+.catalogo-ver-mais button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
 /* Ajustes para tablets. */
 @media (max-width: 1100px) {
   .campanha-hero {
@@ -466,8 +960,31 @@
   }
 
   .campanha-container,
-  .catalogo-topo {
+  .catalogo-topo,
+  .clube-hero,
+  .clube-grid,
+  .clube-area-cliente,
+  .clube-cadastro {
     grid-template-columns: 1fr;
+  }
+
+  .clube-bussola {
+    padding: 140px 24px 84px;
+  }
+
+  .campanha-sao-joao-hero {
+    margin: -140px -24px 0;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .clube-hero {
+    min-height: auto;
+  }
+
+  .niveis-lista,
+  .recompensas-lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .campanha-destaques {
@@ -490,12 +1007,50 @@
     padding: 128px 18px 64px;
   }
 
+  .clube-bussola {
+    padding: 124px 18px 72px;
+  }
+
+  .campanha-sao-joao-hero {
+    min-height: auto;
+    margin: -124px -18px 0;
+    padding: 158px 18px 64px;
+    background-position: 55% center;
+  }
+
+  .bandeirinhas {
+    top: 116px;
+    justify-content: flex-start;
+  }
+
+  .bandeirinhas span {
+    min-width: 34px;
+    width: 34px;
+    height: 38px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .sao-joao-selos {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .catalogo-resumo {
+    padding-top: 92px;
+  }
+
   .campanha-content h2,
-  .catalogo-topo h3 {
+  .catalogo-topo h3,
+  .clube-hero-texto h2,
+  .clube-card h3,
+  .clube-secao-titulo h3,
+  .clube-cadastro-texto h3 {
     font-size: 2rem;
   }
 
-  .campanha-content p {
+  .campanha-content p,
+  .clube-hero-texto p {
     font-size: 1rem;
   }
 
@@ -524,6 +1079,29 @@
   }
 
   .catalogo-grade {
+    grid-template-columns: 1fr;
+  }
+
+  .clube-acoes {
+    display: grid;
+  }
+
+  .dashboard-demo,
+  .clube-card,
+  .clube-cadastro {
+    padding: 20px;
+  }
+
+  .fluxo-indicacao {
+    grid-template-columns: 1fr;
+  }
+
+  .niveis-lista,
+  .recompensas-lista {
+    grid-template-columns: 1fr;
+  }
+
+  .indicacao-linha {
     grid-template-columns: 1fr;
   }
 
