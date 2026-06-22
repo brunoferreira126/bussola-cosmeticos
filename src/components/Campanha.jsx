@@ -1,4 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
+
+// MANUTENCAO DOS CATALOGOS:
+// Edite titulos, precos e legendas nos arquivos dentro de src/data.
+// O arquivo src/data/README.md explica cada campo e o caminho das imagens.
+import produtosOportunidades from "../data/oportunidadesCatalogo.json";
 import produtosSaoJoao from "../data/saoJoaoCatalogo.json";
 import "./campanha.css";
 
@@ -40,15 +45,51 @@ const menuCliente = [
   "Promoções",
 ];
 
-// Filtros do novo catalogo de Sao Joao.
-const filtrosCatalogo = [
-  { label: "Todos", value: "todos" },
-  { label: "Combos", value: "combo" },
-  { label: "Masculinos", value: "masculino" },
-  { label: "Femininos", value: "feminino" },
-  { label: "Infantis", value: "infantil" },
-  { label: "Oportunidades", value: "oportunidade" },
+// Cada aba controla seus próprios textos, produtos e filtros. Centralizar essa
+// configuração evita duplicar a grade e o modal de produtos no JSX.
+const catalogos = {
+  saoJoao: {
+    label: "São João",
+    kicker: "Catálogo atualizado",
+    titulo: "Escolha sua oferta de São João",
+    descricao:
+      "Para facilitar a escolha, mostramos poucas ofertas primeiro. Depois é só tocar em Ver mais ofertas para continuar explorando.",
+    produtos: produtosSaoJoao,
+    filtros: [
+      { label: "Todos", value: "todos" },
+      { label: "Combos", value: "combo" },
+      { label: "Masculinos", value: "masculino" },
+      { label: "Femininos", value: "feminino" },
+      { label: "Infantis", value: "infantil" },
+      { label: "Oportunidades", value: "oportunidade" },
+    ],
+  },
+  oportunidades: {
+    label: "Oportunidades",
+    kicker: "Novidades da Bússola",
+    titulo: "Mais oportunidades para presentear",
+    descricao:
+      "Uma seleção extra de estojos e presentes com pedido direto pelo WhatsApp.",
+    produtos: produtosOportunidades,
+    filtros: [
+      { label: "Todos", value: "todos" },
+      { label: "Masculinos", value: "masculino" },
+      { label: "Femininos", value: "feminino" },
+    ],
+  },
+};
+
+// A ordem deste array também define a ordem visual das abas.
+const abasCatalogo = [
+  { label: "São João", value: "saoJoao" },
+  { label: "Oportunidades", value: "oportunidades" },
 ];
+
+/*
+ * O Clube Bússola continua abaixo deste catálogo, preservado e oculto pela
+ * constante EXIBIR_CLUBE_BUSSOLA. Antes de reativá-lo, alinhar as regras com
+ * Bruno para não misturar o programa de benefícios com campanhas sazonais.
+ */
 
 // Exemplo visual de indicacoes para o cliente entender o funcionamento.
 const indicacoesDemo = [
@@ -72,7 +113,7 @@ function criarMensagemCadastro(dados) {
   ].join("\n");
 }
 
-// Monta a mensagem de compra de cada item do catalogo Sao Joao.
+// Monta a mensagem de compra para produtos de qualquer uma das abas.
 function criarLinkProduto(produto) {
   const mensagem = `Olá! Vim pelo Arraiá de Oportunidades da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
 
@@ -93,10 +134,13 @@ function gerarCodigoIndicacao(nome) {
 }
 
 export default function Campanha() {
-  // Busca digitada pelo cliente dentro do catalogo Sao Joao.
+  // Define qual conjunto de produtos está visível sem trocar de página.
+  const [abaCatalogo, setAbaCatalogo] = useState("saoJoao");
+
+  // Busca digitada pelo cliente dentro da aba ativa.
   const [buscaCatalogo, setBuscaCatalogo] = useState("");
 
-  // Filtro ativo do catalogo Sao Joao.
+  // Categoria escolhida nos filtros da aba ativa.
   const [filtroCatalogo, setFiltroCatalogo] = useState("todos");
 
   // Produto aberto no modal de descricao completa.
@@ -126,11 +170,14 @@ export default function Campanha() {
     [formulario.nome],
   );
 
-  // Produtos filtrados sem recarregar a pagina.
+  // A configuração ativa alimenta título, filtros e produtos da mesma grade.
+  const catalogoAtual = catalogos[abaCatalogo];
+
+  // Filtra apenas os produtos da aba ativa, sem recarregar a página.
   const produtosFiltrados = useMemo(() => {
     const termo = buscaCatalogo.trim().toLowerCase();
 
-    return produtosSaoJoao.filter((produto) => {
+    return catalogoAtual.produtos.filter((produto) => {
       const bateFiltro =
         filtroCatalogo === "todos" || produto.category === filtroCatalogo;
 
@@ -141,15 +188,24 @@ export default function Campanha() {
 
       return bateFiltro && bateBusca;
     });
-  }, [buscaCatalogo, filtroCatalogo]);
+  }, [buscaCatalogo, catalogoAtual.produtos, filtroCatalogo]);
 
   // Sempre que buscar ou trocar filtro, volta para uma vitrine menor.
   useEffect(() => {
     setQuantidadeVisivel(6);
-  }, [buscaCatalogo, filtroCatalogo]);
+  }, [abaCatalogo, buscaCatalogo, filtroCatalogo]);
 
   const produtosVisiveis = produtosFiltrados.slice(0, quantidadeVisivel);
   const temMaisProdutos = quantidadeVisivel < produtosFiltrados.length;
+
+  // Trocar de aba também limpa busca, filtro e modal para não carregar estado
+  // de um catálogo no outro.
+  function selecionarAbaCatalogo(novaAba) {
+    setAbaCatalogo(novaAba);
+    setBuscaCatalogo("");
+    setFiltroCatalogo("todos");
+    setProdutoAberto(null);
+  }
 
   function atualizarCampo(event) {
     const { name, value } = event.target;
@@ -274,30 +330,55 @@ export default function Campanha() {
       </div>
 
       <section className="catalogo-sao-joao" id="catalogo-sao-joao">
-        <div className="catalogo-topo">
-          <div>
-            <span className="catalogo-kicker">Catálogo atualizado</span>
-            <h3>Escolha sua oferta de São João</h3>
-            <p>
-              Para facilitar a escolha, mostramos poucas ofertas primeiro.
-              Depois é só tocar em <strong>Ver mais ofertas</strong> para
-              continuar explorando.
-            </p>
-          </div>
-
-          <label className="catalogo-busca">
-            <span>Buscar oferta</span>
-            <input
-              type="search"
-              placeholder="Ex.: combo, masculino, infantil..."
-              value={buscaCatalogo}
-              onChange={(event) => setBuscaCatalogo(event.target.value)}
-            />
-          </label>
+        <div
+          className="catalogo-abas"
+          role="tablist"
+          aria-label="Catálogos da Bússola"
+        >
+          {abasCatalogo.map((aba) => (
+            <button
+              type="button"
+              role="tab"
+              key={aba.value}
+              id={`aba-${aba.value}`}
+              aria-controls="painel-catalogo"
+              aria-selected={abaCatalogo === aba.value}
+              className={abaCatalogo === aba.value ? "ativo" : ""}
+              onClick={() => selecionarAbaCatalogo(aba.value)}
+            >
+              {aba.label}
+            </button>
+          ))}
         </div>
 
-        <div className="catalogo-filtros" aria-label="Filtros do catálogo São João">
-          {filtrosCatalogo.map((filtro) => (
+        <div
+          id="painel-catalogo"
+          role="tabpanel"
+          aria-labelledby={`aba-${abaCatalogo}`}
+        >
+          <div className="catalogo-topo">
+            <div>
+              <span className="catalogo-kicker">{catalogoAtual.kicker}</span>
+              <h3>{catalogoAtual.titulo}</h3>
+              <p>{catalogoAtual.descricao}</p>
+            </div>
+
+            <label className="catalogo-busca">
+              <span>Buscar oferta</span>
+              <input
+                type="search"
+                placeholder="Ex.: perfume, estojo, masculino..."
+                value={buscaCatalogo}
+                onChange={(event) => setBuscaCatalogo(event.target.value)}
+              />
+            </label>
+          </div>
+
+        <div
+          className="catalogo-filtros"
+          aria-label={`Filtros do catálogo ${catalogoAtual.label}`}
+        >
+          {catalogoAtual.filtros.map((filtro) => (
             <button
               type="button"
               key={filtro.value}
@@ -311,7 +392,10 @@ export default function Campanha() {
 
         <div className="catalogo-grade">
           {produtosVisiveis.map((produto) => (
-            <article className="produto-card" key={produto.numero}>
+            <article
+              className="produto-card"
+              key={`${abaCatalogo}-${produto.numero}`}
+            >
               <div className="produto-imagem produto-imagem-contain">
                 <img
                   src={produto.image}
@@ -357,21 +441,23 @@ export default function Campanha() {
           </div>
         )}
 
-        {temMaisProdutos && (
-          <div className="catalogo-ver-mais">
-            <span>
-              Mostrando {produtosVisiveis.length} de {produtosFiltrados.length} ofertas
-            </span>
+          {temMaisProdutos && (
+            <div className="catalogo-ver-mais">
+              <span>
+                Mostrando {produtosVisiveis.length} de {produtosFiltrados.length}{" "}
+                ofertas
+              </span>
 
-            <button
-              type="button"
-              className="btn-gold"
-              onClick={() => setQuantidadeVisivel((atual) => atual + 6)}
-            >
-              Ver mais ofertas
-            </button>
-          </div>
-        )}
+              <button
+                type="button"
+                className="btn-gold"
+                onClick={() => setQuantidadeVisivel((atual) => atual + 6)}
+              >
+                Ver mais ofertas
+              </button>
+            </div>
+          )}
+        </div>
       </section>
 
       {produtoAberto && (
@@ -704,7 +790,7 @@ export default function Campanha() {
         </div>
 
         <div className="catalogo-filtros" aria-label="Filtros do catálogo São João">
-          {filtrosCatalogo.map((filtro) => (
+          {catalogos.saoJoao.filtros.map((filtro) => (
             <button
               type="button"
               key={filtro.value}

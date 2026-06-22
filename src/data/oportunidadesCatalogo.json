@@ -1,0 +1,65 @@
+[
+  {
+    "numero": 1,
+    "title": "Estojo Floratta Rose + Loção Hidratante",
+    "price": "R$ 214,99",
+    "category": "feminino",
+    "image": "/campanhas/oportunidades/01-estojo-floratta-rose.webp",
+    "alt": "Estojo Floratta Rose com loção hidratante",
+    "description": "Quer surpreender com um presente que encanta desde a primeira impressão? O Estojo Floratta Rose une perfume e loção hidratante em uma apresentação elegante e marcante, perfeita para transformar o presente em uma experiência especial. Uma combinação que entrega fragrância delicada, cuidado com a pele e aquele toque de sofisticação ideal para os arraiais, encontros e momentos inesquecíveis deste São João. Tudo isso por apenas R$ 214,99."
+  },
+  {
+    "numero": 2,
+    "title": "Estojo Lily Feminino",
+    "price": "R$ 379,90",
+    "category": "feminino",
+    "image": "/campanhas/oportunidades/02-estojo-lily-feminino.webp",
+    "alt": "Estojo Lily Feminino",
+    "description": "Quer surpreender com um presente que transmite cuidado, elegância e sofisticação em cada detalhe? O Estojo Lily é uma experiência completa de autocuidado: perfume, óleo corporal, creme acetinado e creme para as mãos reunidos em uma apresentação encantadora, perfeita para presentear ou se presentear neste São João. Uma combinação que prolonga a perfumação, hidrata a pele e transforma a rotina em momentos especiais, deixando uma sensação de luxo e bem-estar do início ao fim. Tudo isso por apenas R$ 379,90."
+  },
+  {
+    "numero": 3,
+    "title": "Estojo Grace Midnight Hinode",
+    "price": "R$ 299,90",
+    "category": "feminino",
+    "image": "/campanhas/oportunidades/03-estojo-grace-midnight.webp",
+    "alt": "Estojo Grace Midnight Hinode",
+    "description": "Quer surpreender com um presente elegante e cheio de significado? O Estojo Grace Midnight reúne perfume, creme para a pele e creme para as mãos em uma apresentação sofisticada e impactante, perfeita para quem valoriza beleza, cuidado e presença em cada detalhe. Uma experiência completa de perfumação e autocuidado, ideal para presentear alguém especial ou transformar sua própria rotina em momentos de cuidado e confiança. Tudo isso por apenas R$ 299,90."
+  },
+  {
+    "numero": 4,
+    "title": "Estojo Iconic 001",
+    "price": "R$ 398,99",
+    "category": "masculino",
+    "image": "/campanhas/oportunidades/04-estojo-iconic-001.webp",
+    "alt": "Estojo Iconic 001",
+    "description": "Quer presentear com presença, sofisticação e impacto neste São João? O Estojo Iconic 001 reúne uma fragrância marcante, shower gel e creme de barbear em uma apresentação elegante e imponente, criada para quem valoriza cuidado pessoal e uma rotina completa de perfumação. Mais do que um presente, é uma experiência de autocuidado que combina praticidade, qualidade e uma presença que não passa despercebida nos arraiais, encontros e momentos especiais da temporada. Tudo isso por R$ 398,99."
+  },
+  {
+    "numero": 5,
+    "title": "Estojo Malbec Clássico",
+    "price": "R$ 199,90",
+    "category": "masculino",
+    "image": "/campanhas/oportunidades/05-estojo-malbec-classico.webp",
+    "alt": "Estojo Malbec Clássico",
+    "description": "Quer acertar no presente masculino com estilo e praticidade neste São João? O Estojo Malbec Clássico reúne shower gel, desodorante aerossol e cuidados para corpo e cabelo em uma apresentação moderna, elegante e pronta para impressionar. Uma combinação pensada para o homem que valoriza presença, autocuidado e praticidade no dia a dia, seja nos arraiais, encontros ou momentos especiais da temporada. Tudo isso por apenas R$ 199,90."
+  },
+  {
+    "numero": 6,
+    "title": "Estojo Feeling Masculino Hinode",
+    "price": "R$ 199,99",
+    "category": "masculino",
+    "image": "/campanhas/oportunidades/06-estojo-feeling-masculino.webp",
+    "alt": "Estojo Feeling Masculino Hinode",
+    "description": "Quer surpreender com um presente masculino completo neste São João? O Estojo Feeling reúne perfume 100 ml e shower gel 200 g em uma apresentação elegante e pronta para impressionar. Uma combinação pensada para quem valoriza cuidado pessoal, praticidade e uma fragrância que acompanha cada momento com personalidade. Ideal para os arraiais, encontros e ocasiões especiais da temporada. Tudo isso por apenas R$ 199,99."
+  },
+  {
+    "numero": 7,
+    "title": "Estojo Empire",
+    "price": "R$ 159,99",
+    "category": "masculino",
+    "image": "/campanhas/oportunidades/07-estojo-empire.webp",
+    "alt": "Estojo Empire Masculino",
+    "description": "Quer surpreender com um presente masculino completo neste São João? O Estojo Empire reúne perfumação e cuidado pessoal em uma apresentação elegante, pensada para quem valoriza praticidade e uma fragrância com personalidade. Ideal para os arraiais, encontros e ocasiões especiais da temporada, entregando uma experiência de autocuidado que vai além de um simples presente. Tudo isso por apenas R$ 159,99."
+  }
+]
