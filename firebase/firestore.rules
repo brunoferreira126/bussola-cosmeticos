@@ -1,0 +1,62 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function autenticado() {
+      return request.auth != null;
+    }
+
+    function membroEquipe() {
+      return autenticado()
+        && exists(/databases/$(database)/documents/equipe/$(request.auth.uid));
+    }
+
+    match /clientes/{clienteId} {
+      allow create: if autenticado() && request.auth.uid == clienteId;
+      allow read: if autenticado()
+        && (request.auth.uid == clienteId || membroEquipe());
+      allow update: if autenticado()
+        && request.auth.uid == clienteId
+        && request.resource.data.codigoIndicacao == resource.data.codigoIndicacao
+        && request.resource.data.role == resource.data.role;
+      allow delete: if false;
+    }
+
+    match /codigosIndicacao/{codigo} {
+      allow get: if autenticado();
+      allow list: if false;
+      allow create: if autenticado()
+        && request.resource.data.clienteId == request.auth.uid;
+      allow update, delete: if membroEquipe();
+    }
+
+    match /indicacoes/{clienteIndicadoId} {
+      allow create: if autenticado()
+        && request.auth.uid == clienteIndicadoId
+        && request.resource.data.clienteIndicado == request.auth.uid
+        && request.resource.data.clienteOrigem != request.auth.uid
+        && request.resource.data.status == 'cadastrado';
+      allow read: if autenticado()
+        && (request.auth.uid == resource.data.clienteOrigem
+          || request.auth.uid == resource.data.clienteIndicado
+          || membroEquipe());
+      allow update: if membroEquipe();
+      allow delete: if false;
+    }
+
+    match /beneficiosSolicitados/{solicitacaoId} {
+      allow create: if autenticado()
+        && request.resource.data.clienteId == request.auth.uid
+        && request.resource.data.status == 'solicitado';
+      allow read: if autenticado()
+        && (request.auth.uid == resource.data.clienteId || membroEquipe());
+      allow update: if membroEquipe();
+      allow delete: if false;
+    }
+
+    match /equipe/{uid} {
+      allow read: if autenticado() && request.auth.uid == uid;
+      allow write: if false;
+    }
+  }
+}

@@ -14,6 +14,7 @@ export default function Header() {
            <a href="#inicio" onClick={() => setOpen(false)}>Página Inicial</a>
           <a href="#sobre" onClick={() => setOpen(false)}>Sobre</a>
           <a href="#campanha" onClick={() => setOpen(false)}>Campanha</a>
+          <a href="#indicacoes" onClick={() => setOpen(false)}>Indicações</a>
           <a href="#contato" onClick={() => setOpen(false)}>Contatos</a>
         </nav>
 
