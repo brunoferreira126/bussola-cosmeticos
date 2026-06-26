@@ -132,7 +132,7 @@ export default function Indicacoes() {
   const [indicacoes, setIndicacoes] = useState([]);
   const [pendentes, setPendentes] = useState([]);
   const [carregando, setCarregando] = useState(firebaseConfigurado);
-  const [modoCadastro, setModoCadastro] = useState(true);
+  const [modoCadastro, setModoCadastro] = useState(false);
   const [formulario, setFormulario] = useState(FORMULARIO_INICIAL);
   const [mensagem, setMensagem] = useState("");
   const [enviando, setEnviando] = useState(false);
@@ -221,6 +221,18 @@ export default function Indicacoes() {
 
   function atualizarCampo(campo, valor) {
     setFormulario((atual) => ({ ...atual, [campo]: valor }));
+  }
+
+  function preencherLoginDemo(tipo) {
+    const acesso = ACESSOS_DEMO[tipo];
+
+    setModoCadastro(false);
+    setFormulario((atual) => ({
+      ...atual,
+      email: acesso.email,
+      senha: acesso.senha,
+    }));
+    setMensagem("Login de teste preenchido. Clique em Entrar para acessar.");
   }
 
   async function enviarAcesso(event) {
@@ -477,14 +489,14 @@ export default function Indicacoes() {
                   Teste atendimento: {ACESSOS_DEMO.atendimento.email} /{" "}
                   {ACESSOS_DEMO.atendimento.senha}
                 </p>
-                <button type="button" onClick={() => entrarDemonstracao()}>
-                  Ver como cliente
+                <button type="button" onClick={() => preencherLoginDemo("cliente")}>
+                  Preencher login do cliente
                 </button>
                 <button
                   type="button"
-                  onClick={() => entrarDemonstracao("atendente", "Atendimento")}
+                  onClick={() => preencherLoginDemo("atendimento")}
                 >
-                  Ver atendimento
+                  Preencher login da equipe
                 </button>
               </div>
             )}
