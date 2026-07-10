@@ -3,8 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 // MANUTENCAO DOS CATALOGOS:
 // Edite titulos, precos e legendas nos arquivos dentro de src/data.
 // O arquivo src/data/README.md explica cada campo e o caminho das imagens.
-import produtosOportunidades from "../data/oportunidadesCatalogo.json";
-import produtosSaoJoao from "../data/saoJoaoCatalogo.json";
+import produtosFerias from "../data/feriasCatalogo.json";
 import "./campanha.css";
 
 // Numero oficial da loja no formato internacional exigido pelo WhatsApp.
@@ -48,41 +47,27 @@ const menuCliente = [
 // Cada aba controla seus próprios textos, produtos e filtros. Centralizar essa
 // configuração evita duplicar a grade e o modal de produtos no JSX.
 const catalogos = {
-  saoJoao: {
-    label: "São João",
-    kicker: "Catálogo atualizado",
-    titulo: "Escolha sua oferta de São João",
+  ferias: {
+    label: "Férias",
+    kicker: "Férias com a Bússola",
+    titulo: "Escolha sua oferta de férias",
     descricao:
-      "Para facilitar a escolha, mostramos poucas ofertas primeiro. Depois é só tocar em Ver mais ofertas para continuar explorando.",
-    produtos: produtosSaoJoao,
+      "Tecnologia, presentes, fragrâncias e cuidados para levar nas viagens, nos passeios e nos dias de descanso.",
+    produtos: produtosFerias,
     filtros: [
       { label: "Todos", value: "todos" },
-      { label: "Combos", value: "combo" },
-      { label: "Masculinos", value: "masculino" },
-      { label: "Femininos", value: "feminino" },
+      { label: "Tecnologia", value: "tecnologia" },
       { label: "Infantis", value: "infantil" },
-      { label: "Oportunidades", value: "oportunidade" },
-    ],
-  },
-  oportunidades: {
-    label: "Oportunidades",
-    kicker: "Novidades da Bússola",
-    titulo: "Mais oportunidades para presentear",
-    descricao:
-      "Uma seleção extra de estojos e presentes com pedido direto pelo WhatsApp.",
-    produtos: produtosOportunidades,
-    filtros: [
-      { label: "Todos", value: "todos" },
-      { label: "Masculinos", value: "masculino" },
-      { label: "Femininos", value: "feminino" },
+      { label: "Perfumaria", value: "perfumaria" },
+      { label: "Presentes", value: "presente" },
+      { label: "Flores", value: "flores" },
     ],
   },
 };
 
 // A ordem deste array também define a ordem visual das abas.
 const abasCatalogo = [
-  { label: "São João", value: "saoJoao" },
-  { label: "Oportunidades", value: "oportunidades" },
+  { label: "Férias", value: "ferias" },
 ];
 
 /*
@@ -109,13 +94,13 @@ function criarMensagemCadastro(dados) {
     `Cidade: ${dados.cidade || "Não informado"}`,
     `Nascimento: ${dados.nascimento || "Não informado"}`,
     "",
-    "Vim pela campanha de São João.",
+    "Vim pela campanha Férias com a Bússola.",
   ].join("\n");
 }
 
 // Monta a mensagem de compra para produtos de qualquer uma das abas.
 function criarLinkProduto(produto) {
-  const mensagem = `Olá! Vim pelo Arraiá de Oportunidades da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
+  const mensagem = `Olá! Vim pela campanha Férias com a Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
 
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
 }
@@ -135,7 +120,7 @@ function gerarCodigoIndicacao(nome) {
 
 export default function Campanha() {
   // Define qual conjunto de produtos está visível sem trocar de página.
-  const [abaCatalogo, setAbaCatalogo] = useState("saoJoao");
+  const [abaCatalogo, setAbaCatalogo] = useState("ferias");
 
   // Busca digitada pelo cliente dentro da aba ativa.
   const [buscaCatalogo, setBuscaCatalogo] = useState("");
@@ -223,7 +208,7 @@ export default function Campanha() {
 
     const payload = {
       ...formulario,
-      origem: "Campanha São João - Clube Bússola",
+      origem: "Campanha Férias - Clube Bússola",
       codigoIndicacao,
       dataCadastro: new Date().toISOString(),
     };
@@ -263,7 +248,7 @@ export default function Campanha() {
     A estrutura de Clube Bussola, dashboard demonstrativo, indicacoes,
     cashback, formulario com Apps Script e documentacao do Drive continuam no
     projeto para retomarmos depois. Por agora, a landing page mostra somente a
-    campanha/catalogo de Sao Joao, que e a prioridade comercial imediata.
+    campanha/catalogo de ferias, que e a prioridade comercial imediata.
 
     Importante para a proxima alteracao:
     antes de mexer novamente nessa secao, perguntar ao Bruno o que faremos com
@@ -273,44 +258,37 @@ export default function Campanha() {
   if (!EXIBIR_CLUBE_BUSSOLA) return (
     <section className="campanha clube-bussola" id="campanha">
       <div
-        className="clube-hero campanha-sao-joao-hero"
-        style={{
-          backgroundImage:
-            "url(/campanhas/sao-joao/capa-sao-joao.webp)",
-        }}
+        className="clube-hero campanha-ferias-hero"
       >
-        <div className="sao-joao-overlay" />
-
-        <div className="bandeirinhas" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
+        <div className="ferias-overlay" />
 
         <div className="clube-hero-texto">
-          <span className="campanha-tag">Arraiá de Oportunidades</span>
+          <img
+            className="ferias-logo"
+            src="/campanhas/ferias/logo-ferias.webp"
+            alt="Férias com a Bússola"
+            loading="eager"
+            decoding="async"
+          />
 
-          <h2>Catálogo São João Bússola</h2>
+          <span className="campanha-tag">Férias com a Bússola</span>
+
+          <h2>Catálogo de Férias Bússola</h2>
 
           <p>
-            Combos, perfumes, kits e presentes escolhidos para quem quer chegar
-            nos festejos com presença, cuidado e economia. Veja as primeiras
-            ofertas e carregue mais quando quiser continuar.
+            Produtos pensados para viagem, descanso, diversão, presentes e
+            autocuidado. Veja as primeiras ofertas e carregue mais quando quiser
+            continuar explorando.
           </p>
 
           <div className="clube-acoes">
-            <a href="#catalogo-sao-joao" className="btn-gold">
+            <a href="#catalogo-ferias" className="btn-gold">
               Ver ofertas
             </a>
 
             <a
               href={`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
-                "Olá! Quero ver as ofertas de São João da Bússola.",
+                "Olá! Quero ver as ofertas de férias da Bússola.",
               )}`}
               target="_blank"
               rel="noreferrer"
@@ -320,8 +298,8 @@ export default function Campanha() {
             </a>
           </div>
 
-          <div className="sao-joao-selos" aria-label="Destaques da campanha">
-            <span>Preços de arraiá</span>
+          <div className="ferias-selos" aria-label="Destaques da campanha">
+            <span>Produtos para viajar</span>
             <span>Estoque limitado</span>
             <span>Pedido direto</span>
           </div>
@@ -329,7 +307,7 @@ export default function Campanha() {
 
       </div>
 
-      <section className="catalogo-sao-joao" id="catalogo-sao-joao">
+      <section className="catalogo-sao-joao catalogo-ferias" id="catalogo-ferias">
         <div
           className="catalogo-abas"
           role="tablist"
@@ -367,7 +345,7 @@ export default function Campanha() {
               <span>Buscar oferta</span>
               <input
                 type="search"
-                placeholder="Ex.: perfume, estojo, masculino..."
+                placeholder="Ex.: fone, colônia, infantil..."
                 value={buscaCatalogo}
                 onChange={(event) => setBuscaCatalogo(event.target.value)}
               />
@@ -511,13 +489,13 @@ export default function Campanha() {
     <section className="campanha clube-bussola" id="campanha">
       <div className="clube-hero">
         <div className="clube-hero-texto">
-          <span className="campanha-tag">São João no Clube Bússola</span>
+          <span className="campanha-tag">Férias no Clube Bússola</span>
 
           <h2>Compre, indique, acompanhe sua evolução e desbloqueie benefícios.</h2>
 
           <p>
             O Clube Bússola nasce como um programa de relacionamento para
-            cashback, indicações, recompra e campanhas sazonais. No São João, o
+            cashback, indicações, recompra e campanhas sazonais. Nas férias, o
             cliente já entra entendendo que cada compra pode aproximar de novas
             recompensas.
           </p>
@@ -527,8 +505,8 @@ export default function Campanha() {
               Entrar no Clube
             </a>
 
-            <a href="#catalogo-sao-joao" className="btn-outline">
-              Ver ofertas São João
+            <a href="#catalogo-ferias" className="btn-outline">
+              Ver ofertas de férias
             </a>
 
             <a href="#clube-niveis" className="btn-outline">
@@ -695,7 +673,7 @@ export default function Campanha() {
 
       <section className="clube-cadastro" id="clube-cadastro">
         <div className="clube-cadastro-texto">
-          <span className="catalogo-kicker">Pré-cadastro São João</span>
+          <span className="catalogo-kicker">Pré-cadastro Férias</span>
           <h3>Comece pelo Drive agora. Depois evoluímos para login real.</h3>
           <p>
             Este formulário já está preparado para enviar dados para uma
@@ -767,14 +745,14 @@ export default function Campanha() {
         </form>
       </section>
 
-      <section className="catalogo-sao-joao" id="catalogo-sao-joao">
+      <section className="catalogo-sao-joao catalogo-ferias" id="catalogo-ferias">
         <div className="catalogo-topo">
           <div>
-            <span className="catalogo-kicker">Arraiá de Oportunidades</span>
-            <h3>Catálogo São João Bússola</h3>
+            <span className="catalogo-kicker">Férias com a Bússola</span>
+            <h3>Catálogo de Férias Bússola</h3>
             <p>
-              Combos, perfumes, kits e presentes escolhidos para quem quer
-              chegar nos festejos com presença, cuidado e economia.
+              Tecnologia, presentes, fragrâncias e cuidados para levar nas
+              viagens, nos passeios e nos dias de descanso.
             </p>
           </div>
 
@@ -782,15 +760,15 @@ export default function Campanha() {
             <span>Buscar oferta</span>
             <input
               type="search"
-              placeholder="Ex.: combo, masculino, infantil..."
+              placeholder="Ex.: fone, colônia, infantil..."
               value={buscaCatalogo}
               onChange={(event) => setBuscaCatalogo(event.target.value)}
             />
           </label>
         </div>
 
-        <div className="catalogo-filtros" aria-label="Filtros do catálogo São João">
-          {catalogos.saoJoao.filtros.map((filtro) => (
+        <div className="catalogo-filtros" aria-label="Filtros do catálogo de férias">
+          {catalogos.ferias.filtros.map((filtro) => (
             <button
               type="button"
               key={filtro.value}

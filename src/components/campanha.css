@@ -845,6 +845,69 @@
   padding: 10px;
 }
 
+/* Hero comercial da campanha de ferias exibido enquanto o Clube Bussola esta pausado. */
+.campanha-ferias-hero {
+  grid-template-columns: minmax(0, 1fr);
+  position: relative;
+  min-height: 650px;
+  max-width: none;
+  margin: -150px -30px 0;
+  padding: 158px max(30px, calc((100vw - 1280px) / 2)) 84px;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(16, 21, 26, 0.96), rgba(89, 31, 46, 0.88) 52%, rgba(32, 104, 110, 0.78)),
+    #151013;
+}
+
+.campanha-ferias-hero .clube-hero-texto {
+  max-width: 820px;
+}
+
+.ferias-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(15, 11, 12, 0.88), rgba(15, 11, 12, 0.42)),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.035) 0,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px,
+      transparent 18px
+    );
+}
+
+.campanha-ferias-hero > *:not(.ferias-overlay) {
+  position: relative;
+  z-index: 2;
+}
+
+.ferias-logo {
+  display: block;
+  width: min(330px, 76vw);
+  max-height: 190px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.36));
+}
+
+.ferias-selos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.ferias-selos span {
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
 /* Hero comercial do Sao Joao exibido enquanto o Clube Bussola esta pausado. */
 .campanha-sao-joao-hero {
   grid-template-columns: minmax(0, 1fr);
@@ -998,7 +1061,8 @@
     padding: 140px 24px 84px;
   }
 
-  .campanha-sao-joao-hero {
+  .campanha-sao-joao-hero,
+  .campanha-ferias-hero {
     margin: -140px -24px 0;
     padding-right: 24px;
     padding-left: 24px;
@@ -1037,7 +1101,8 @@
     padding: 124px 18px 72px;
   }
 
-  .campanha-sao-joao-hero {
+  .campanha-sao-joao-hero,
+  .campanha-ferias-hero {
     min-height: auto;
     margin: -124px -18px 0;
     padding: 158px 18px 64px;
@@ -1057,7 +1122,8 @@
     margin-left: 5px;
   }
 
-  .sao-joao-selos {
+  .sao-joao-selos,
+  .ferias-selos {
     display: grid;
     grid-template-columns: 1fr;
   }
