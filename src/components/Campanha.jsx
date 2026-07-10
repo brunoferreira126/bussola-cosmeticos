@@ -262,6 +262,16 @@ export default function Campanha() {
       >
         <div className="ferias-overlay" />
 
+        {/* Logo decorativa da campanha: fica flutuando no hero sem interferir nos botoes. */}
+        <img
+          className="ferias-logo-flutuante"
+          src="/campanhas/ferias/logo-ferias.webp"
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          decoding="async"
+        />
+
         <div className="clube-hero-texto">
           <img
             className="ferias-logo"
@@ -273,7 +283,7 @@ export default function Campanha() {
 
           <span className="campanha-tag">Férias com a Bússola</span>
 
-          <h2>Catálogo de Férias Bússola</h2>
+          <h2>Onde você for a Bússola te acompanha</h2>
 
           <p>
             Produtos pensados para viagem, descanso, diversão, presentes e
@@ -749,7 +759,7 @@ export default function Campanha() {
         <div className="catalogo-topo">
           <div>
             <span className="catalogo-kicker">Férias com a Bússola</span>
-            <h3>Catálogo de Férias Bússola</h3>
+            <h3>Onde você for a Bússola te acompanha</h3>
             <p>
               Tecnologia, presentes, fragrâncias e cuidados para levar nas
               viagens, nos passeios e nos dias de descanso.
