@@ -882,54 +882,14 @@
   z-index: 2;
 }
 
-/* Selo flutuante da campanha: reforca a identidade visual sem ocupar espaco do texto. */
-.ferias-logo-flutuante {
-  position: absolute;
-  top: 124px;
-  right: max(28px, calc((100vw - 1280px) / 2 + 20px));
-  z-index: 1;
-  width: clamp(180px, 24vw, 330px);
-  max-height: 230px;
-  object-fit: contain;
-  pointer-events: none;
-  opacity: 0.24;
-  transform: rotate(4deg);
-  filter: drop-shadow(0 24px 38px rgba(0, 0, 0, 0.34));
-  animation: ferias-logo-flutuar 5.8s ease-in-out infinite;
-}
-
-/* Movimento curto para dar vida ao hero sem criar peso visual nem distracao. */
-@keyframes ferias-logo-flutuar {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(4deg);
-  }
-
-  50% {
-    transform: translate3d(0, -14px, 0) rotate(2deg);
-  }
-}
-
+/* Logo principal da campanha: PNG transparente, maior e sem moldura para parecer parte do hero. */
 .ferias-logo {
   display: block;
-  width: min(330px, 76vw);
-  max-height: 190px;
+  width: min(470px, 84vw);
+  height: auto;
   object-fit: contain;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.36));
-  animation: ferias-logo-principal 6.4s ease-in-out infinite;
-}
-
-/* A logo principal tambem respira levemente para conversar com o selo flutuante. */
-@keyframes ferias-logo-principal {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
+  margin-bottom: 14px;
+  filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.52));
 }
 
 .ferias-selos {
@@ -1109,13 +1069,6 @@
     padding-left: 24px;
   }
 
-  .ferias-logo-flutuante {
-    top: 132px;
-    right: 18px;
-    width: clamp(150px, 32vw, 230px);
-    opacity: 0.18;
-  }
-
   .clube-hero {
     min-height: auto;
   }
@@ -1157,16 +1110,8 @@
     background-position: 55% center;
   }
 
-  .ferias-logo-flutuante {
-    top: 120px;
-    right: -22px;
-    width: 170px;
-    opacity: 0.13;
-  }
-
   .ferias-logo {
-    width: min(250px, 78vw);
-    max-height: 150px;
+    width: min(330px, 88vw);
   }
 
   .bandeirinhas {

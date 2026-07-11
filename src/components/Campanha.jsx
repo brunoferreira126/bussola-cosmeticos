@@ -263,20 +263,11 @@ export default function Campanha() {
       >
         <div className="ferias-overlay" />
 
-        {/* Logo decorativa da campanha: fica flutuando no hero sem interferir nos botoes. */}
-        <img
-          className="ferias-logo-flutuante"
-          src="/campanhas/ferias/logo-ferias.webp"
-          alt=""
-          aria-hidden="true"
-          loading="eager"
-          decoding="async"
-        />
-
         <div className="clube-hero-texto">
+          {/* Logo principal da campanha: mantida como primeira leitura visual do hero. */}
           <img
             className="ferias-logo"
-            src="/campanhas/ferias/logo-ferias.webp"
+            src="/campanhas/ferias/logo-ferias-transparente.png"
             alt="Férias com a Bússola"
             loading="eager"
             decoding="async"
