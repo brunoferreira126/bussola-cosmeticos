@@ -56,6 +56,7 @@ const catalogos = {
     produtos: produtosFerias,
     filtros: [
       { label: "Todos", value: "todos" },
+      { label: "Bolsas", value: "bolsas" },
       { label: "Tecnologia", value: "tecnologia" },
       { label: "Infantis", value: "infantil" },
       { label: "Perfumaria", value: "perfumaria" },
