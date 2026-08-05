@@ -1,0 +1,496 @@
+[
+  {
+    "numero": 1,
+    "title": "Estojo Malbec Completo",
+    "price": "R$ 309,90",
+    "category": "perfumaria",
+    "profiles": [
+      "classico",
+      "executivo",
+      "experiente",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/01-estojo-malbec-completo.webp",
+    "alt": "Estojo Malbec Completo",
+    "summary": "Perfume Malbec 100ml, shower gel e hidratante em um kit completo para o pai tradicional e elegante.",
+    "description": "Pai Clássico: um presente que atravessa gerações. O Estojo Malbec é para aquele pai que valoriza elegância, tradição e uma fragrância que nunca sai de moda. Uma composição completa com Perfume Malbec 100ml + Shower Gel 200g + Hidratante Corporal 200ml, trazendo praticidade para o cuidado diário e uma experiência marcante em todos os momentos. Um clássico que continua conquistando pelo seu aroma sofisticado, presença e qualidade. O tipo de presente que demonstra cuidado e bom gosto. Estojo Malbec completo por R$ 309,90"
+  },
+  {
+    "numero": 2,
+    "title": "Fragrâncias Kaiak",
+    "price": "R$ 159,90 cada",
+    "category": "perfumaria",
+    "profiles": [
+      "classico",
+      "aventureiro",
+      "simples"
+    ],
+    "image": "/campanhas/dia-dos-pais/02-fragrancias-kaiak.webp",
+    "alt": "Fragrâncias Kaiak",
+    "summary": "Oceano, Extremo e Aventura: fragrâncias reconhecidas para pais que gostam de frescor, energia e presença.",
+    "description": "Pai Clássico: fragrâncias que permanecem no tempo. Para aquele pai que gosta de perfumes conhecidos, marcantes e que continuam conquistando gerações, a linha Kaiak é uma escolha certeira. Kaiak Oceano — frescor e leveza para o pai que gosta de uma fragrância agradável e versátil para todos os momentos. Kaiak Extremo — intensidade e presença para o pai que gosta de marcar sua personalidade. Kaiak Aventura — energia e liberdade para o pai que está sempre em movimento. Três estilos diferentes, com uma mesma essência: perfumes clássicos, reconhecidos e que continuam presentes no gosto dos brasileiros pela qualidade e praticidade no dia a dia. Cada fragrância Kaiak por R$ 159,90 + cartão especial de Dia dos Pais."
+  },
+  {
+    "numero": 3,
+    "title": "Essencial Tradicional",
+    "price": "R$ 189,90",
+    "category": "perfumaria",
+    "profiles": [
+      "classico",
+      "executivo",
+      "experiente",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/03-essencial-tradicional.webp",
+    "alt": "Essencial Tradicional",
+    "summary": "Fragrância amadeirada e atemporal para o pai que transmite confiança, maturidade e sofisticação.",
+    "description": "Pai Clássico: uma fragrância que representa presença e tradição. Essencial tradicional pronto para presente 189,90 Para aquele pai que gosta de um perfume amadeirado, elegante e atemporal, o Essencial Tradicional é uma escolha que nunca perde seu valor. Uma fragrância criada para homens que carregam personalidade, confiança e estilo. Um clássico que permanece no gosto das pessoas justamente por sua presença marcante e por acompanhar diferentes momentos da vida. É aquele perfume que transmite maturidade, sofisticação e a sensação de estar sempre bem cuidado. Essencial Tradicional por R$ 189,90 + cartão especial de Dia dos Pais."
+  },
+  {
+    "numero": 4,
+    "title": "Essencial Exclusivo - Edição Limitada",
+    "price": "R$ 189,90",
+    "category": "perfumaria",
+    "profiles": [
+      "classico",
+      "experiente",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/04-essencial-exclusivo-edicao-limitada.webp",
+    "alt": "Essencial Exclusivo - Edição Limitada",
+    "summary": "Perfume marcante com embalagem personalizável para transformar um clássico em um presente único.",
+    "description": "ESSENCIAL EXCLUSIVO — EDIÇÃO LIMITADA POR R$ 189,90 UM PRESENTE CLÁSSICO, PERSONALIZADO E COM SIGNIFICADO. Para o Pai Clássico que gosta de tradição, elegância e fragrâncias que permanecem no tempo, o Essencial Exclusivo entrega uma escolha diferenciada. Além do perfume marcante, ele conta com embalagem personalizável, permitindo colocar o nome do seu pai e uma mensagem especial, transformando um clássico em um presente único. A solução perfeita para quem quer presentear com mais emoção, exclusividade e fugir do presente comum. Essencial Exclusivo — Edição Limitada por R$ 189,90."
+  },
+  {
+    "numero": 5,
+    "title": "UDV Francês",
+    "price": "R$ 129,90",
+    "category": "perfumaria",
+    "profiles": [
+      "classico",
+      "simples"
+    ],
+    "image": "/campanhas/dia-dos-pais/05-udv-frances.webp",
+    "alt": "UDV Francês",
+    "summary": "Um perfume masculino clássico, elegante e com excelente custo-benefício para presentear com segurança.",
+    "description": "UDV FRANCÊS — O CLÁSSICO QUE ATRAVESSA GERAÇÕES POR APENAS R$ 129,90 Para o Pai Clássico que valoriza uma fragrância marcante, elegante e que nunca sai de moda, o UDV Francês é uma escolha certeira. Um perfume com identidade masculina, que entrega presença, personalidade e sofisticação, perfeito para o pai que gosta de um aroma reconhecido, de qualidade e que continua conquistando ao longo do tempo. A solução ideal para quem busca um presente clássico, com excelente desempenho e que representa cuidado, confiança e estilo. UDV Francês — um clássico que combina com a história de um grande pai."
+  },
+  {
+    "numero": 6,
+    "title": "Relógio Atlantis + Boné Atlantis",
+    "price": "R$ 189,90",
+    "category": "acessorios",
+    "profiles": [
+      "vaidoso",
+      "moderno",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/06-relogio-atlantis-bone-atlantis.webp",
+    "alt": "Relógio Atlantis + Boné Atlantis",
+    "summary": "Combo de acessórios para o pai que gosta de completar o visual com estilo, conforto e personalidade.",
+    "description": "COMBO DE ACESSÓRIOS PARA O PAI VAIDOSO POR R$ 189,90 Para o Pai Vaidoso que gosta de cuidar da aparência e valorizar cada detalhe do seu estilo, esse combo entrega presença, praticidade e personalidade. O relógio Atlantis traz elegância e sofisticação para completar o visual, enquanto o boné Atlantis agrega conforto, versatilidade e estilo para diferentes momentos do dia. A solução ideal para o pai que sabe que os acessórios fazem parte da sua identidade e que pequenos detalhes podem transformar completamente sua apresentação. Combo Relógio Atlantis + Boné Atlantis — estilo, funcionalidade e personalidade em um único presente por R$ 189,90."
+  },
+  {
+    "numero": 7,
+    "title": "Estojo Turathi",
+    "price": "R$ 379,90",
+    "category": "perfumaria",
+    "profiles": [
+      "vaidoso",
+      "executivo",
+      "experiente",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/07-estojo-turathi.webp",
+    "alt": "Estojo Turathi",
+    "summary": "Perfume árabe de alto impacto com itens de cuidado masculino para uma experiência premium.",
+    "description": "ESTOJO TURATHI — PERFUME ÁRABE DE ALTO IMPACTO PRESENÇA, SOFISTICAÇÃO E PERSONALIDADE POR R$ 379,90 Para o Pai Vaidoso que gosta de cuidar da imagem e deixar sua marca por onde passa, o Estojo Turathi entrega uma experiência diferenciada. Uma fragrância árabe de alta performance, excelente fixação e projeção marcante, ideal para o homem que busca um perfume de presença e personalidade. Além do perfume, o estojo acompanha itens de cuidado masculino, proporcionando uma experiência completa de vaidade, praticidade e sofisticação. Um presente para o pai que valoriza detalhes, gosta de se sentir bem e merece uma fragrância à altura da sua personalidade. Estojo Turathi — uma experiência premium de cuidado e estilo por R$ 379,90."
+  },
+  {
+    "numero": 8,
+    "title": "Natura Homem Coragio",
+    "price": "R$ 249,90",
+    "category": "perfumaria",
+    "profiles": [
+      "vaidoso",
+      "classico",
+      "executivo"
+    ],
+    "image": "/campanhas/dia-dos-pais/08-natura-homem-coragio.webp",
+    "alt": "Natura Homem Coragio",
+    "summary": "Presente completo para o pai que gosta de transmitir presença, confiança e personalidade.",
+    "description": "NATURA HOMEM CORAGIO — PRESENÇA E PERSONALIDADE PARA O PAI VAIDOSO UM PRESENTE COMPLETO POR R$ 249,90 Para o Pai Vaidoso que gosta de cuidar da sua imagem e transmitir confiança, o Natura Homem Coragio é uma escolha que combina estilo e personalidade. Uma fragrância masculina marcante, com presença e sofisticação, ideal para o homem que valoriza estar bem cuidado e deixar sua identidade em todos os momentos. Um presente que entrega mais do que perfume: entrega autocuidado, elegância e a sensação de estar sempre preparado para qualquer ocasião. Natura Homem Coragio — o presente certo para o pai que gosta de se destacar por R$ 249,90."
+  },
+  {
+    "numero": 9,
+    "title": "Siage Men Shampoo + Condicionador",
+    "price": "R$ 84,90",
+    "category": "cuidados",
+    "profiles": [
+      "vaidoso",
+      "simples",
+      "pratico"
+    ],
+    "image": "/campanhas/dia-dos-pais/09-siage-men-shampoo-condicionador.webp",
+    "alt": "Siage Men Shampoo + Condicionador",
+    "summary": "Cuidado diário anticaspa em uma combinação prática para cabelos bem cuidados.",
+    "description": "SIAGE MEN — CUIDADO COMPLETO PARA O PAI VAIDOSO SHAMPOO + CONDICIONADOR POR R$ 84,90 Para o Pai Vaidoso que gosta de cuidar da aparência e valorizar cada detalhe, o Siage Men entrega praticidade e cuidado diário para os cabelos. Uma combinação de shampoo e condicionador com ação anticaspa, ideal para manter os fios bem cuidados, auxiliar no controle da caspa e proporcionar uma rotina de autocuidado completa. Porque a vaidade também está nos detalhes: um cabelo bem cuidado transmite confiança, presença e personalidade. Siage Men — Shampoo + Condicionador por R$ 84,90 com cartão especial de Dia dos Pais"
+  },
+  {
+    "numero": 10,
+    "title": "Club 6 Prestige Wood + Loção Hidratante",
+    "price": "R$ 199,90",
+    "category": "perfumaria",
+    "profiles": [
+      "vaidoso",
+      "executivo",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/10-club-6-prestige-wood-locao-hidratante.webp",
+    "alt": "Club 6 Prestige Wood + Loção Hidratante",
+    "summary": "Fragrância e hidratação em um combo de presença para o pai que valoriza autocuidado.",
+    "description": "CLUB 6 PRESTIGE WOOD — EAU DE PARFUM + LOÇÃO HIDRATANTE COMBO DE PRESENÇA E SOFISTICAÇÃO PARA O PAI VAIDOSO POR R$ 199,90 Para o Pai Vaidoso que gosta de cuidar da sua imagem e valorizar cada detalhe, o Club 6 Prestige Wood Eau de Parfum entrega uma experiência completa de fragrância e autocuidado. Uma combinação de perfume + loção hidratante, onde a hidratação ajuda a potencializar a experiência da fragrância, proporcionando mais presença, elegância e uma sensação prolongada de cuidado durante o dia. Ideal para o pai que gosta de se sentir bem, transmitir personalidade e deixar sua marca em todos os momentos. Club 6 Prestige Wood Eau de Parfum + Loção Hidratante por R$ 199,90 com cartão especial de Dia dos Pais."
+  },
+  {
+    "numero": 11,
+    "title": "Carregador Agold 10.000mAh",
+    "price": "R$ 129,90",
+    "category": "tecnologia",
+    "profiles": [
+      "pratico",
+      "moderno",
+      "aventureiro"
+    ],
+    "image": "/campanhas/dia-dos-pais/11-carregador-agold-10-000mah.webp",
+    "alt": "Carregador Agold 10.000mAh",
+    "summary": "Power bank com 4 cabos embutidos para o pai que quer autonomia e solução rápida no dia a dia.",
+    "description": "CARREGADOR AGOLD 10.000mAh — A SOLUÇÃO CERTA PARA O PAI PRÁTICO PRATICIDADE, AUTONOMIA E SEGURANÇA POR R$ 129,90 Para o Pai Prático que gosta de soluções inteligentes e não quer passar por imprevistos, o Carregador Agold 10.000mAh é o presente ideal. Com 4 cabos embutidos, ele traz mais praticidade para a rotina, permitindo até 4 carregamentos completos do celular, mantendo você sempre conectado onde estiver. Além disso, conta com indicador de percentual de carga e alça lateral para facilitar o transporte, unindo funcionalidade, conforto e segurança em um único acessório. Carregador Agold 10.000mAh por R$ 129,90 — a escolha certa para o pai que valoriza praticidade e soluções que facilitam a vida."
+  },
+  {
+    "numero": 12,
+    "title": "Compressor de Ar Portátil Innova",
+    "price": "R$ 119,90",
+    "category": "tecnologia",
+    "profiles": [
+      "pratico",
+      "aventureiro"
+    ],
+    "image": "/campanhas/dia-dos-pais/12-compressor-de-ar-portatil-innova.webp",
+    "alt": "Compressor de Ar Portátil Innova",
+    "summary": "Calibra pneus, enche bolas e acompanha lanterna integrada para evitar imprevistos.",
+    "description": "COMPRESSOR DE AR PORTÁTIL INNOVA — A SOLUÇÃO CERTA PARA O PAI PRÁTICO MAIS SEGURANÇA, AUTONOMIA E PRATICIDADE POR R$ 119,90 Para o Pai Prático que gosta de estar preparado para qualquer situação, o Compressor de Ar Portátil Innova é um presente que realmente faz a diferença no dia a dia. Compacto, funcional e fácil de transportar, ele calibra pneus de carro, moto e bicicleta, enche bolas e ainda conta com lanterna integrada, oferecendo mais praticidade e segurança sempre que necessário. É a solução ideal para evitar imprevistos e ter sempre à disposição um equipamento útil, eficiente e de excelente qualidade. Compressor de Ar Portátil Innova por R$ 119,90 — o presente perfeito para o pai que valoriza praticidade e soluções inteligentes."
+  },
+  {
+    "numero": 13,
+    "title": "Fone Bluetooth para Capacete",
+    "price": "R$ 129,90",
+    "category": "tecnologia",
+    "profiles": [
+      "pratico",
+      "moderno",
+      "aventureiro"
+    ],
+    "image": "/campanhas/dia-dos-pais/13-fone-bluetooth-para-capacete.webp",
+    "alt": "Fone Bluetooth para Capacete",
+    "summary": "Mais segurança, comunicação e praticidade para pais que usam moto na rotina.",
+    "description": "FONE BLUETOOTH PARA CAPACETE — A SOLUÇÃO CERTA PARA O PAI PRÁTICO MAIS SEGURANÇA, COMUNICAÇÃO E PRATICIDADE POR R$ 129,90 Para o Pai Prático que faz da moto parte da sua rotina, o Fone Bluetooth para Capacete é um presente que entrega segurança, conforto e praticidade em cada trajeto. Com conexão Bluetooth, bateria de excelente duração e áudio de qualidade, ele facilita a comunicação durante o percurso e permite aproveitar músicas e orientações com muito mais comodidade. É a escolha ideal para quem utiliza a moto no trabalho, nos deslocamentos diários ou para gerar renda extra, tornando cada viagem mais prática, conectada e segura. Fone Bluetooth para Capacete por R$ 129,90 — um presente útil, inteligente e pensado para cuidar de quem está sempre em movimento neste Dia dos Pais."
+  },
+  {
+    "numero": 14,
+    "title": "Fragrâncias Brand Collection 25ml",
+    "price": "R$ 89,90 cada",
+    "category": "perfumaria",
+    "profiles": [
+      "pratico",
+      "simples",
+      "vaidoso"
+    ],
+    "image": "/campanhas/dia-dos-pais/14-fragrancias-brand-collection-25ml.webp",
+    "alt": "Fragrâncias Brand Collection 25ml",
+    "summary": "Fragrâncias compactas, fáceis de levar e com ótimo custo-benefício.",
+    "description": "CADA UNIDADE POR R$ 89,90 Para o Pai Prático que gosta de estar sempre bem perfumado, as Fragrâncias Brand Collection 25ml são a escolha ideal. Compactas, fáceis de transportar e perfeitas para acompanhar a rotina, elas cabem na mochila, no carro ou na bolsa, garantindo praticidade sempre que precisar. São diversas fragrâncias para você escolher a que mais combina com o seu pai, com excelente desempenho e um ótimo custo-benefício. Escolha a sua favorita. Cada fragrância por apenas R$ 89,90."
+  },
+  {
+    "numero": 15,
+    "title": "Fone Bluetooth Agold com Tela Touch",
+    "price": "R$ 129,90",
+    "category": "tecnologia",
+    "profiles": [
+      "pratico",
+      "moderno",
+      "executivo"
+    ],
+    "image": "/campanhas/dia-dos-pais/15-fone-bluetooth-agold-com-tela-touch.webp",
+    "alt": "Fone Bluetooth Agold com Tela Touch",
+    "summary": "Fone compacto com tela touch para música, chamadas e rotina conectada.",
+    "description": "A SOLUÇÃO CERTA PARA O PAI PRÁTICO — POR R$ 129,90 Para o Pai Prático que está sempre em movimento, o Fone Bluetooth Agold com Tela Touch entrega tecnologia, praticidade e liberdade para o dia a dia. Compacto e fácil de levar para qualquer lugar, ele é ideal para ouvir músicas, acompanhar conteúdos, participar de reuniões e atender chamadas com mais discrição e conforto. A tela touch facilita o controle das funções na palma da mão, tornando a experiência ainda mais prática para quem valoriza agilidade e eficiência na rotina. Fone Bluetooth Agold com Tela Touch por R$ 129,90 — um presente inteligente para o pai que gosta de tecnologia, praticidade e liberdade em todos os momentos."
+  },
+  {
+    "numero": 16,
+    "title": "Mochila Preta",
+    "price": "R$ 89,90",
+    "category": "acessorios",
+    "profiles": [
+      "moderno",
+      "pratico",
+      "aventureiro"
+    ],
+    "image": "/campanhas/dia-dos-pais/16-mochila-preta.webp",
+    "alt": "Mochila Preta",
+    "summary": "Mochila versátil para trabalho, compromissos e rotina de pais que precisam de organização.",
+    "description": "MOCHILA PRETA — PRÁTICA, FUNCIONAL E MODERNA A ESCOLHA CERTA PARA O PAI MODERNO POR R$ 89,90 Para o Pai Moderno que precisa de praticidade para acompanhar sua rotina, essa mochila entrega exatamente o que ele busca: organização, funcionalidade e estilo. Com um design preto, básico e versátil, ela combina com diferentes momentos, seja para o trabalho, compromissos ou o dia a dia, trazendo mais conforto para carregar seus itens com segurança. Um presente pensado para o pai que vive conectado, tem uma rotina dinâmica e valoriza soluções simples que facilitam sua vida. Mochila Preta — praticidade e modernidade por apenas R$ 89,90."
+  },
+  {
+    "numero": 17,
+    "title": "Fragrâncias Árabes 25ml",
+    "price": "R$ 99,90 cada",
+    "category": "perfumaria",
+    "profiles": [
+      "moderno",
+      "vaidoso",
+      "experiente"
+    ],
+    "image": "/campanhas/dia-dos-pais/17-fragrancias-arabes-25ml.webp",
+    "alt": "Fragrâncias Árabes 25ml",
+    "summary": "Opções compactas inspiradas na perfumaria árabe para pais conectados às tendências.",
+    "description": "CADA UNIDADE POR R$ 99,90 Para o Pai Moderno que gosta de estar por dentro das tendências, as Fragrâncias Árabes 25ml são a escolha perfeita. Inspiradas no grande destaque da perfumaria atual, elas unem modernidade, personalidade e sofisticação em um formato compacto, ideal para acompanhar a rotina com praticidade. São diversas opções de fragrâncias, permitindo escolher a que mais combina com o estilo de cada pai ou até montar uma coleção para diferentes ocasiões. Escolha a sua favorita. Cada Fragrância Árabe 25ml por apenas R$ 99,90 — um presente moderno para um pai que gosta de estar sempre um passo à frente."
+  },
+  {
+    "numero": 18,
+    "title": "Kit Asad Eau de Parfum + Loção Hidratante",
+    "price": "R$ 389,90",
+    "category": "perfumaria",
+    "profiles": [
+      "moderno",
+      "executivo",
+      "experiente",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/18-kit-asad-eau-de-parfum-locao-hidratante.webp",
+    "alt": "Kit Asad Eau de Parfum + Loção Hidratante",
+    "summary": "Combo sofisticado de fragrância e cuidado para o pai que valoriza desempenho e presença.",
+    "description": "KIT ASAD — EAU DE PARFUM + LOÇÃO HIDRATANTE A ESCOLHA CERTA PARA O PAI MODERNO POR R$ 389,90 Para o Pai Moderno, que está sempre atento às novidades e gosta de produtos que unem qualidade, sofisticação e desempenho, o Kit Asad é a escolha ideal. A combinação do Eau de Parfum Asad + Loção Hidratante proporciona uma experiência completa: além de cuidar da pele, a loção ajuda a potencializar a fragrância, deixando o aroma ainda mais presente e duradouro ao longo do dia. Um presente pensado para o pai que valoriza inovação, acompanha as tendências da perfumaria e gosta de estar sempre bem apresentado. Kit Asad por R$ 389,90 — tecnologia, sofisticação e performance para o pai moderno neste Dia dos Pais."
+  },
+  {
+    "numero": 19,
+    "title": "Smartwatch Flare",
+    "price": "R$ 529,90",
+    "category": "tecnologia",
+    "profiles": [
+      "moderno",
+      "executivo",
+      "aventureiro"
+    ],
+    "image": "/campanhas/dia-dos-pais/19-smartwatch-flare.webp",
+    "alt": "Smartwatch Flare",
+    "summary": "GPS integrado e conexão com Strava para acompanhar treinos, saúde e performance.",
+    "description": "SMARTWATCH FLARE — TECNOLOGIA E PERFORMANCE PARA O PAI MODERNO GPS INTEGRADO + CONEXÃO COM STRAVA POR R$ 529,90 Para o Pai Moderno que leva a saúde e a qualidade de vida a sério, o Smartwatch Flare é o acessório ideal para acompanhar sua evolução. Com GPS integrado, ele permite registrar seus treinos sem precisar levar o celular, além de sincronizar com o Strava, acompanhando percursos, desempenho e progresso de forma prática e precisa. Muito mais do que um relógio, é uma ferramenta para o pai que gosta de tecnologia, está sempre antenado nas novidades e busca melhorar seus resultados todos os dias. Smartwatch Flare por R$ 529,90 — o presente perfeito para o pai que transforma tecnologia em qualidade de vida."
+  },
+  {
+    "numero": 20,
+    "title": "Box Essencial Oud",
+    "price": "R$ 259,90",
+    "category": "perfumaria",
+    "profiles": [
+      "moderno",
+      "executivo",
+      "experiente",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/20-box-essencial-oud.webp",
+    "alt": "Box Essencial Oud",
+    "summary": "Perfume e hidratante corporal em uma combinação sofisticada de autocuidado.",
+    "description": "BOX ESSENCIAL OUD — O PRESENTE CERTO PARA O PAI MODERNO PERFUME + HIDRATANTE CORPORAL POR R$ 259,90 Para o Pai Moderno que não abre mão do autocuidado e de uma fragrância marcante, o Box Essencial Wood é uma escolha que une elegância, qualidade e sofisticação. Com o Perfume Essencial Wood e o Hidratante Corporal 100ml, esse presente proporciona uma experiência completa, onde a hidratação ajuda a valorizar a fragrância e torna a rotina de cuidados ainda mais especial. Ideal para o pai que gosta de estar sempre bem apresentado, confia em produtos de alta qualidade e entende que o autocuidado também faz parte do seu estilo de vida. Box Essencial OUD por R$ 259,90 — um presente que combina presença, cuidado e personalidade para o Dia dos Pais"
+  },
+  {
+    "numero": 21,
+    "title": "Salvo Intense Maison",
+    "price": "R$ 289,90",
+    "category": "perfumaria",
+    "profiles": [
+      "executivo",
+      "experiente",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/21-salvo-intense-maison.webp",
+    "alt": "Salvo Intense Maison",
+    "summary": "Fragrância sofisticada e versátil para reuniões, eventos e momentos de presença.",
+    "description": "SALVO INTENSE MAISON — A FRAGRÂNCIA CERTA PARA O PAI EXECUTIVO PRESENÇA, ELEGÂNCIA E VERSATILIDADE POR R$ 289,90 Para o Pai Executivo que entende que uma boa imagem começa pela presença, o Salvo Intense Maison é a escolha ideal para acompanhar sua rotina. Uma fragrância sofisticada, versátil e de excelente fixação, perfeita para reuniões, ambiente de trabalho, eventos e compromissos importantes, transmitindo confiança, elegância e personalidade em qualquer ocasião. Um presente para o pai que lidera, inspira e sabe que os detalhes fazem toda a diferença. Salvo Intense Maison por R$ 289,90 — o presente certo para quem transforma presença em credibilidade."
+  },
+  {
+    "numero": 22,
+    "title": "Smartwatch Executivo",
+    "price": "R$ 179,90",
+    "category": "tecnologia",
+    "profiles": [
+      "executivo",
+      "moderno"
+    ],
+    "image": "/campanhas/dia-dos-pais/22-smartwatch-executivo.webp",
+    "alt": "Smartwatch Executivo",
+    "summary": "Relógio com 3 pulseiras para adaptar estilo, presença e praticidade em cada ocasião.",
+    "description": "SMARTWATCH EXECUTIVO — TECNOLOGIA, ELEGÂNCIA E PRESENÇA UM ACESSÓRIO DE IMPACTO PARA O PAI EXECUTIVO POR R$ 179,90 Para o Pai Executivo que entende que a imagem também comunica, o Smartwatch é a escolha certa para unir tecnologia, praticidade e estilo. Com 3 pulseiras diferentes — couro, aço e modelo ondulado, ele permite adaptar o visual para cada ocasião, trazendo mais elegância e personalidade para a rotina. Mais do que um relógio, é um acessório que complementa a presença desse homem no trabalho, nos compromissos e nos momentos importantes, transmitindo organização, modernidade e confiança. Smartwatch Executivo — tecnologia e estilo para o pai que lidera por R$ 179,90."
+  },
+  {
+    "numero": 23,
+    "title": "Smartwatch Executivo + Fone Bluetooth",
+    "price": "R$ 169,90",
+    "category": "tecnologia",
+    "profiles": [
+      "executivo",
+      "moderno",
+      "pratico",
+      "marido-pai"
+    ],
+    "image": "/campanhas/dia-dos-pais/23-smartwatch-executivo-fone-bluetooth.webp",
+    "alt": "Smartwatch Executivo + Fone Bluetooth",
+    "summary": "Combo tecnológico com smartwatch e fone para comunicação, estilo e rotina intensa.",
+    "description": "TECNOLOGIA, PRESENÇA E COMUNICAÇÃO POR R$ 169,90 Para o Pai Executivo que entende que os detalhes fazem parte da sua imagem, esse combo entrega estilo, praticidade e tecnologia para acompanhar sua rotina. O Smartwatch com duas pulseiras permite adaptar o visual para diferentes ocasiões, agregando mais presença e personalidade ao homem que valoriza uma boa apresentação. Além disso, acompanha fone Bluetooth de brinde, trazendo ainda mais praticidade para facilitar a comunicação, atender chamadas e acompanhar seus momentos do dia. Um acessório pensado para o pai moderno, organizado e conectado, que busca soluções inteligentes para sua rotina. Smartwatch Executivo + Fone Bluetooth por R$ 169,90 — tecnologia e elegância para o pai que lidera."
+  },
+  {
+    "numero": 24,
+    "title": "Rádio Comunicador",
+    "price": "R$ 159,90",
+    "category": "tecnologia",
+    "profiles": [
+      "executivo",
+      "pratico"
+    ],
+    "image": "/campanhas/dia-dos-pais/24-radio-comunicador.webp",
+    "alt": "Rádio Comunicador",
+    "summary": "Comunicação rápida e eficiente para ambientes de trabalho e rotinas que exigem agilidade.",
+    "description": "RÁDIO COMUNICADOR — A FERRAMENTA CERTA PARA O PAI EXECUTIVO COMUNICAÇÃO RÁPIDA, SEGURA E EFICIENTE POR R$ 159,90 Para o Pai Executivo que busca mais organização, agilidade e praticidade na rotina, o Rádio Comunicador é uma solução inteligente para facilitar a comunicação. Ideal para ambientes de trabalho, ele ajuda a reduzir falhas, evitar erros de informação e agilizar processos, permitindo uma comunicação mais rápida e eficiente entre as pessoas. Um produto pensado para quem entende que tempo é um dos recursos mais importantes: quanto melhor a comunicação, mais simples e produtiva fica a operação. Rádio Comunicador por R$ 159,90 — mais praticidade, segurança e eficiência para o pai que gosta de resolver tudo com agilidade."
+  },
+  {
+    "numero": 25,
+    "title": "Necessaire Eudora",
+    "price": "R$ 69,90",
+    "category": "acessorios",
+    "profiles": [
+      "executivo",
+      "pratico",
+      "simples"
+    ],
+    "image": "/campanhas/dia-dos-pais/25-necessaire-eudora.webp",
+    "alt": "Necessaire Eudora",
+    "summary": "Organização compacta para itens pessoais, produtos de cuidado e acessórios do dia a dia.",
+    "description": "NECESSAIRE EUDORA — ORGANIZAÇÃO E PRATICIDADE PARA O PAI EXECUTIVO O PRESENTE CERTO PARA QUEM VALORIZA CADA DETALHE POR R$ 69,90 Para o Pai Executivo que tem uma rotina dinâmica e precisa manter tudo organizado, a Necessaire Eudora é uma solução prática para acompanhar todos os momentos. Perfeita para guardar seus itens pessoais, produtos de cuidado e acessórios do dia a dia, ela traz mais organização, facilidade e praticidade para viagens, trabalho ou compromissos importantes. Um presente pensado para o pai que gosta de estar preparado, valoriza sua imagem e sabe que os detalhes fazem diferença na rotina. Necessaire Eudora por R$ 69,90 — praticidade e organização para o pai que está sempre pronto. PARA O PAI SIMPLES"
+  },
+  {
+    "numero": 26,
+    "title": "Coleção Legado - Faqueiro Personalizado",
+    "price": "R$ 149,90",
+    "category": "presentes",
+    "profiles": [
+      "simples",
+      "experiente",
+      "pai-mae"
+    ],
+    "image": "/campanhas/dia-dos-pais/26-colecao-legado-faqueiro-personalizado.webp",
+    "alt": "Coleção Legado - Faqueiro Personalizado",
+    "summary": "Faqueiro personalizado com mensagem de afeto para pais que valorizam família e história.",
+    "description": "COLEÇÃO LEGADO — FAQUEIRO PERSONALIZADO. UM PRESENTE CHEIO DE HISTÓRIA, AFETO E SIGNIFICADO POR R$ 149,90 Para o Pai Simples que valoriza os momentos mais importantes da vida, a Coleção Legado representa aquilo que realmente importa: família, união e boas lembranças. Um faqueiro pensado para aquele pai que gosta de receber as pessoas em casa, preparar uma carne para os amigos, reunir a família e aproveitar os pequenos momentos ao lado de quem ama. Além disso, é um presente personalizável, trazendo cinco pilares que representam a essência de um grande pai: RESPEITO, EXEMPLO, GRATIDÃO, FORÇA E AMOR. Mais do que um presente, é uma homenagem à história e aos valores que ele construiu. Coleção Legado — Faqueiro Personalizado por R$ 149,90."
+  },
+  {
+    "numero": 27,
+    "title": "Boticário Men Shampoo 2 em 1 Anticaspa",
+    "price": "R$ 99,90",
+    "category": "cuidados",
+    "profiles": [
+      "simples",
+      "vaidoso",
+      "pratico"
+    ],
+    "image": "/campanhas/dia-dos-pais/27-boticario-men-shampoo-2-em-1-anticaspa.webp",
+    "alt": "Boticário Men Shampoo 2 em 1 Anticaspa",
+    "summary": "Kit com duas unidades de shampoo 2 em 1 para cuidado essencial e fácil de usar.",
+    "description": "BOTICÁRIO MEN — SHAMPOO 2 EM 1 ANTICASPA PRATICIDADE E CUIDADO PARA O PAI SIMPLES POR R$ 99,90 Para o Pai Simples que valoriza praticidade e gosta de soluções que facilitam a rotina, o Kit Boticário Men Shampoo 2 em 1 Anticaspa é a escolha certa. Com 2 unidades de shampoo 2 em 1, que une shampoo e condicionador em um único produto, ele entrega cuidado, limpeza e praticidade sem complicação. É o presente ideal para aquele pai que gosta do que funciona: um produto eficiente, fácil de usar e que acompanha o dia a dia sem perder tempo. Kit Boticário Men Shampoo 2 em 1 Anticaspa por R$ 99,90 — cuidado essencial para o pai que prefere praticidade."
+  },
+  {
+    "numero": 28,
+    "title": "Kit Eudora - 2 Body Splash 100ml",
+    "price": "R$ 84,90",
+    "category": "perfumaria",
+    "profiles": [
+      "simples",
+      "pai-mae"
+    ],
+    "image": "/campanhas/dia-dos-pais/28-kit-eudora-2-body-splash-100ml.webp",
+    "alt": "Kit Eudora - 2 Body Splash 100ml",
+    "summary": "Duas fragrâncias para variar o aroma com praticidade, carinho e ótimo custo-benefício.",
+    "description": "KIT EUDORA — 2 BODY SPLASH 100ML PRATICIDADE, VARIEDADE E PERFUME PARA TODOS OS MOMENTOS POR R$ 84,90 Para o pai que gosta de praticidade e de estar sempre bem perfumado, o Kit Eudora com 2 Body Splash de 100ml cada é uma excelente escolha. Com duas fragrâncias para diferentes ocasiões, ele permite variar o aroma conforme o momento, seja na rotina, no trabalho ou em ocasiões especiais. Um presente completo, funcional e fácil de usar, que entrega cuidado, praticidade e ótimo custo-benefício para acompanhar o dia a dia. Kit Eudora — 2 Body Splash 100ml por R$ 84,90. Um presente prático, versátil e cheio de personalidade para o Dia dos Pais."
+  },
+  {
+    "numero": 29,
+    "title": "Combo 2 Chapéus",
+    "price": "R$ 85,00",
+    "category": "acessorios",
+    "profiles": [
+      "simples",
+      "aventureiro"
+    ],
+    "image": "/campanhas/dia-dos-pais/29-combo-2-chapeus.webp",
+    "alt": "Combo 2 Chapéus",
+    "summary": "Escolha os modelos favoritos para um presente com estilo e identidade.",
+    "description": "COMBO 2 CHAPÉUS — ESTILO E PERSONALIDADE PARA O PAI SIMPLES ESCOLHA SEUS MODELOS FAVORITOS POR APENAS R$ 85,00 Para o Pai Simples que gosta de acessórios que combinam com seu estilo e representam sua personalidade, o Combo com 2 Chapéus é uma escolha cheia de significado. Você pode escolher os modelos que mais combinam com ele: Cruz Sagrada, Meia Luz, chapéus de time e diversas outras opções, criando um presente único e com a cara do seu pai. Um acessório prático, versátil e que acompanha diferentes momentos, trazendo estilo e identidade para o dia a dia. Combo 2 Chapéus por R$ 85,00 — escolha os modelos que representam a história e o jeito de ser do seu pai."
+  },
+  {
+    "numero": 30,
+    "title": "Cestas Especiais",
+    "price": "A partir de R$ 99,90",
+    "category": "presentes",
+    "profiles": [
+      "simples",
+      "pai-mae",
+      "marido-pai",
+      "experiente"
+    ],
+    "image": "/campanhas/dia-dos-pais/30-cestas-especiais.webp",
+    "alt": "Cestas Especiais",
+    "summary": "Opções prontas, bonitas e cheias de carinho para transformar o gesto em lembrança especial.",
+    "description": "CESTAS ESPECIAIS — UM PRESENTE SIMPLES, MAS CHEIO DE SIGNIFICADO OPÇÕES A PARTIR DE R$ 99,90 Para quem busca um presente prático, mas que carregue sentimento e significado, as Cestas Especiais são a escolha perfeita para este Dia dos Pais. Com diversas combinações de produtos, elas foram pensadas para transformar um gesto simples em uma lembrança especial, daquelas que ficam eternizadas no coração. São opções prontas, bonitas e cheias de carinho, ideais para demonstrar reconhecimento, amor e gratidão por tudo que esse pai representa. Cestas Especiais a partir de R$ 99,90 — um presente com significado para tornar esse Dia dos Pais inesquecível."
+  },
+  {
+    "numero": 31,
+    "title": "Garrafa Térmica 800ml",
+    "price": "R$ 84,90",
+    "category": "acessorios",
+    "profiles": [
+      "aventureiro",
+      "pratico"
+    ],
+    "image": "/campanhas/dia-dos-pais/31-garrafa-termica-800ml.webp",
+    "alt": "Garrafa Térmica 800ml",
+    "summary": "Garrafa resistente, com bico prático e alça de segurança para acompanhar quem vive em movimento.",
+    "description": "GARRAFA TÉRMICA 800ML — RESISTÊNCIA E PRATICIDADE PARA O PAI AVENTUREIRO O PRESENTE CERTO PARA QUEM VIVE EM MOVIMENTO POR R$ 84,90 Para o Pai Aventureiro que gosta de explorar, praticar atividades e estar sempre preparado, essa garrafa entrega qualidade, funcionalidade e praticidade para acompanhar todos os momentos. Com 800ml de capacidade, design degradê em duas cores, bico prático e alça de segurança para evitar quedas, ela foi pensada para trazer mais conforto e facilidade na rotina. Um presente com excelente custo-benefício para o pai que valoriza produtos úteis, resistentes e que acompanham seu estilo de vida. Garrafa Aventureira 800ml — praticidade para acompanhar cada conquista por R$ 84,90."
+  },
+  {
+    "numero": 32,
+    "title": "Caixa de Som Kapbom 100W",
+    "price": "R$ 349,90",
+    "category": "tecnologia",
+    "profiles": [
+      "experiente",
+      "moderno",
+      "aventureiro"
+    ],
+    "image": "/campanhas/dia-dos-pais/32-caixa-de-som-kapbom-100w.webp",
+    "alt": "Caixa de Som Kapbom 100W",
+    "summary": "Som potente, Bluetooth e bateria para reunir família, amigos e bons momentos.",
+    "description": "CAIXA DE SOM KAPBOM 100W — A COMPANHEIRA IDEAL PARA O PAI EXPERIENTE QUALIDADE, PRATICIDADE E ENTRETENIMENTO POR R$ 349,90 Para o Pai Experiente, que sabe aproveitar os bons momentos da vida, a Caixa de Som Kapbom 100W é o presente ideal. Compacta, prática e fácil de transportar, ela entrega 100W de potência, conexão Bluetooth, entrada para pendrive, bateria de alta performance e iluminação em LED, garantindo som de qualidade para qualquer ocasião. A escolha certa para o pai que gosta de reunir a família, receber os amigos e transformar cada momento em uma boa lembrança. Caixa de Som Kapbom 100W por R$ 349,90 — mais qualidade, diversão e momentos inesquecíveis neste Dia dos Pais."
+  },
+  {
+    "numero": 33,
+    "title": "Cesta Eudora Lyra",
+    "price": "R$ 129,90",
+    "category": "presentes",
+    "profiles": [
+      "pai-mae",
+      "simples"
+    ],
+    "image": "/campanhas/dia-dos-pais/33-cesta-eudora-lyra.webp",
+    "alt": "Cesta Eudora Lyra",
+    "summary": "Body splash e loção hidratante em uma cesta pensada para quem cuida e ama em dobro.",
+    "description": "CESTA EUDORA LYRA — UM GESTO DE CARINHO PARA QUEM É MÃE E TAMBÉM É PAI BODY SPLASH 100ML + LOÇÃO HIDRATANTE POR R$ 129,90 Existem mulheres que desempenham o papel de mãe e pai com amor, coragem e dedicação. Para elas, o reconhecimento merece um presente cheio de significado. A Cesta Eudora Lyra reúne um Body Splash 100ml + Loção Hidratante em uma apresentação encantadora, perfeita para demonstrar carinho, gratidão e admiração. Um presente pensado para homenagear quem nunca mediu esforços para cuidar, proteger e amar, transformando um gesto simples em uma lembrança inesquecível. Cesta Eudora Lyra por R$ 129,90 — uma homenagem especial para quem representa amor em dobro neste Dia dos Pais."
+  }
+]

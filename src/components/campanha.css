@@ -252,6 +252,31 @@
   color: rgba(255, 255, 255, 0.52);
 }
 
+.catalogo-prioridade {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(244, 200, 76, 0.34);
+  border-radius: 8px;
+  background: rgba(27, 65, 140, 0.24);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.catalogo-prioridade button {
+  min-height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
 /* Filtros simples para navegar pelo catalogo sem trocar de pagina. */
 .catalogo-filtros {
   display: flex;
@@ -295,9 +320,28 @@
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
 }
 
+.produto-recomendado {
+  border-color: rgba(47, 107, 214, 0.44);
+  box-shadow: 0 26px 70px rgba(24, 70, 150, 0.2);
+}
+
 .produto-imagem {
   position: relative;
   background: #201617;
+}
+
+.produto-match {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #f4c84c;
+  color: #102554;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .produto-imagem img {
@@ -845,61 +889,115 @@
   padding: 10px;
 }
 
-/* Hero comercial da campanha de ferias exibido enquanto o Clube Bussola esta pausado. */
-.campanha-ferias-hero {
+/* Hero comercial da campanha de Dia dos Pais exibido enquanto o Clube Bussola esta pausado. */
+.campanha-dia-dos-pais-hero {
   grid-template-columns: minmax(0, 1fr);
   position: relative;
-  min-height: 650px;
+  min-height: 680px;
   max-width: none;
   margin: -150px -30px 0;
   padding: 158px max(30px, calc((100vw - 1280px) / 2)) 84px;
   overflow: hidden;
   background:
-    linear-gradient(120deg, rgba(16, 21, 26, 0.96), rgba(89, 31, 46, 0.88) 52%, rgba(32, 104, 110, 0.78)),
-    #151013;
+    radial-gradient(circle at 82% 18%, rgba(244, 200, 76, 0.22), transparent 28%),
+    linear-gradient(120deg, rgba(7, 23, 68, 0.98), rgba(13, 58, 142, 0.94) 48%, rgba(3, 16, 42, 0.96)),
+    #071744;
 }
 
-.campanha-ferias-hero .clube-hero-texto {
+.campanha-dia-dos-pais-hero .clube-hero-texto {
   max-width: 820px;
 }
 
-.ferias-overlay {
+.pais-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(15, 11, 12, 0.88), rgba(15, 11, 12, 0.42)),
+    linear-gradient(90deg, rgba(4, 14, 40, 0.9), rgba(4, 14, 40, 0.44)),
     repeating-linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.035) 0,
-      rgba(255, 255, 255, 0.035) 1px,
+      rgba(255, 255, 255, 0.04) 0,
+      rgba(255, 255, 255, 0.04) 1px,
       transparent 1px,
       transparent 18px
     );
 }
 
-.campanha-ferias-hero > *:not(.ferias-overlay) {
+.campanha-dia-dos-pais-hero > *:not(.pais-overlay) {
   position: relative;
   z-index: 2;
 }
 
-/* Logo principal da campanha: PNG transparente, maior e sem moldura para parecer parte do hero. */
-.ferias-logo {
-  display: block;
-  width: min(470px, 84vw);
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 14px;
-  filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.52));
+.pais-logo-area {
+  position: relative;
+  width: min(500px, 88vw);
+  margin-bottom: 12px;
+  overflow: hidden;
 }
 
-.ferias-selos {
+.pais-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.48));
+  animation: pais-logo-entrada 900ms ease-out both;
+}
+
+.pais-logo-brilho {
+  position: absolute;
+  top: -25%;
+  left: -40%;
+  width: 30%;
+  height: 150%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: rotate(18deg);
+  animation: pais-logo-brilho 3.4s ease-in-out 700ms infinite;
+  pointer-events: none;
+}
+
+@keyframes pais-logo-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pais-logo-brilho {
+  0%,
+  38% {
+    left: -44%;
+    opacity: 0;
+  }
+
+  52% {
+    opacity: 1;
+  }
+
+  76%,
+  100% {
+    left: 114%;
+    opacity: 0;
+  }
+}
+
+.pais-selos {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 24px;
 }
 
-.ferias-selos span {
+.pais-selos span {
   padding: 9px 13px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
@@ -907,6 +1005,333 @@
   color: #fff;
   font-size: 0.82rem;
   font-weight: 800;
+}
+
+.guia-pais {
+  position: relative;
+  margin: 56px -30px 54px;
+  padding: 58px max(30px, calc((100vw - 1280px) / 2)) 52px;
+  overflow: hidden;
+  border-top: 1px solid rgba(244, 200, 76, 0.24);
+  border-bottom: 1px solid rgba(244, 200, 76, 0.2);
+  background:
+    linear-gradient(135deg, rgba(5, 22, 58, 0.98), rgba(13, 53, 124, 0.94) 58%, rgba(244, 200, 76, 0.18)),
+    #061738;
+}
+
+.guia-pais::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 100%),
+    linear-gradient(0deg, rgba(244, 200, 76, 0.08) 0 1px, transparent 1px 100%);
+  background-size: 68px 68px;
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.55), transparent 82%);
+}
+
+.guia-pais-palco,
+.guia-pais-vitrine {
+  position: relative;
+  z-index: 1;
+}
+
+.guia-pais-palco {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+  gap: 34px;
+  align-items: center;
+}
+
+.guia-pais-topo {
+  max-width: 650px;
+}
+
+.guia-pais-topo h3 {
+  max-width: 600px;
+  margin: 12px 0 18px;
+  color: #fff;
+  font-size: 3.7rem;
+  line-height: 0.98;
+}
+
+.guia-pais-topo p {
+  margin: 0;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.guia-pais-metricas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.guia-pais-metricas span {
+  min-height: 82px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.guia-pais-metricas strong {
+  display: block;
+  color: #f4c84c;
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.guia-pais-consultor {
+  display: grid;
+  gap: 16px;
+  border: 1px solid rgba(244, 200, 76, 0.5);
+  border-radius: 8px;
+  padding: 22px;
+  background: #f7f4ea;
+  color: #102554;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.3);
+}
+
+.guia-pais-cabecalho {
+  display: grid;
+  gap: 6px;
+}
+
+.guia-pais-cabecalho span {
+  color: #1b5dc9;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.guia-pais-cabecalho strong {
+  color: #102554;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.guia-pais-trigger {
+  position: relative;
+  width: 100%;
+  min-height: 118px;
+  border: 0;
+  border-radius: 8px;
+  padding: 18px 150px 18px 18px;
+  background: #102554;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.guia-pais-trigger:hover,
+.guia-pais-trigger[aria-expanded="true"] {
+  background: #173b82;
+  box-shadow: 0 18px 34px rgba(16, 37, 84, 0.3);
+  transform: translateY(-2px);
+}
+
+.guia-pais-trigger span,
+.guia-pais-trigger strong,
+.guia-pais-trigger small {
+  display: block;
+}
+
+.guia-pais-trigger span {
+  color: #f4c84c;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.guia-pais-trigger strong {
+  margin: 7px 0 5px;
+  font-size: 1.32rem;
+  line-height: 1.2;
+}
+
+.guia-pais-trigger small {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.guia-pais-trigger b {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  min-width: 112px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  padding: 10px 13px;
+  background: #f4c84c;
+  color: #102554;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.guia-pais-opcoes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  max-height: 420px;
+  overflow-y: auto;
+  border: 1px solid rgba(16, 37, 84, 0.12);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+}
+
+.guia-pais-opcoes button {
+  min-height: 132px;
+  border: 1px solid rgba(16, 37, 84, 0.12);
+  border-radius: 8px;
+  padding: 14px;
+  background: #f7f4ea;
+  color: #102554;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.guia-pais-opcoes button:hover,
+.guia-pais-opcoes button.ativo {
+  border-color: #f4c84c;
+  background: #fff6d8;
+  transform: translateY(-3px);
+}
+
+.guia-pais-opcoes span,
+.guia-pais-opcoes strong,
+.guia-pais-opcoes small {
+  display: block;
+}
+
+.guia-pais-opcoes span {
+  color: #1b5dc9;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.guia-pais-opcoes strong {
+  margin: 8px 0 6px;
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.guia-pais-opcoes small {
+  color: rgba(16, 37, 84, 0.72);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.guia-pais-vitrine {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  gap: 18px;
+  align-items: stretch;
+  margin-top: 24px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.guia-pais-resultado {
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  min-height: 100%;
+  padding: 18px;
+  border: 1px solid rgba(244, 200, 76, 0.28);
+  border-radius: 8px;
+  background: rgba(4, 16, 42, 0.55);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.guia-pais-resultado span,
+.guia-pais-resultado strong {
+  display: block;
+}
+
+.guia-pais-resultado strong {
+  color: #fff;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.guia-pais-resultado button {
+  justify-self: start;
+  min-height: 40px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0 16px;
+  background: #f4c84c;
+  color: #102554;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 900;
+}
+
+.guia-pais-produtos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.guia-pais-produtos button {
+  display: grid;
+  grid-template-rows: 152px auto auto auto;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fff;
+  color: #102554;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.guia-pais-produtos button:hover {
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.guia-pais-produtos img {
+  width: 100%;
+  height: 152px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f5f6f8;
+}
+
+.guia-pais-produtos span {
+  color: #1b5dc9;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.guia-pais-produtos strong {
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.guia-pais-produtos small {
+  color: #7b1d28;
+  font-size: 0.92rem;
+  font-weight: 900;
 }
 
 /* Hero comercial do Sao Joao exibido enquanto o Clube Bussola esta pausado. */
@@ -1063,10 +1488,26 @@
   }
 
   .campanha-sao-joao-hero,
-  .campanha-ferias-hero {
+  .campanha-dia-dos-pais-hero {
     margin: -140px -24px 0;
     padding-right: 24px;
     padding-left: 24px;
+  }
+
+  .guia-pais {
+    margin-right: -24px;
+    margin-left: -24px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .guia-pais-palco,
+  .guia-pais-vitrine {
+    grid-template-columns: 1fr;
+  }
+
+  .guia-pais-topo h3 {
+    font-size: 3rem;
   }
 
   .clube-hero {
@@ -1103,15 +1544,15 @@
   }
 
   .campanha-sao-joao-hero,
-  .campanha-ferias-hero {
+  .campanha-dia-dos-pais-hero {
     min-height: auto;
     margin: -124px -18px 0;
-    padding: 158px 18px 64px;
+    padding: 146px 18px 64px;
     background-position: 55% center;
   }
 
-  .ferias-logo {
-    width: min(330px, 88vw);
+  .pais-logo-area {
+    width: min(360px, 90vw);
   }
 
   .bandeirinhas {
@@ -1128,9 +1569,67 @@
   }
 
   .sao-joao-selos,
-  .ferias-selos {
+  .pais-selos {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .guia-pais {
+    margin: 34px -18px 38px;
+    padding: 38px 18px;
+  }
+
+  .guia-pais-topo h3 {
+    font-size: 2.25rem;
+  }
+
+  .guia-pais-metricas,
+  .guia-pais-produtos {
+    grid-template-columns: 1fr;
+  }
+
+  .guia-pais-metricas span {
+    min-height: auto;
+  }
+
+  .guia-pais-consultor {
+    padding: 16px;
+  }
+
+  .guia-pais-trigger {
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .guia-pais-trigger b {
+    position: static;
+    display: inline-block;
+    min-width: 0;
+    margin-top: 14px;
+    transform: none;
+  }
+
+  .guia-pais-opcoes {
+    grid-template-columns: 1fr;
+    max-height: 520px;
+  }
+
+  .guia-pais-opcoes button {
+    min-height: auto;
+  }
+
+  .guia-pais-resultado,
+  .catalogo-prioridade {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .guia-pais-produtos button {
+    grid-template-rows: 180px auto auto auto;
+  }
+
+  .guia-pais-produtos img {
+    height: 180px;
   }
 
   .catalogo-resumo {
