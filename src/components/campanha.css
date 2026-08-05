@@ -196,7 +196,7 @@
 
 /* Area branca do catalogo para facilitar leitura e comparacao dos itens. */
 .catalogo-namorados {
-  /* Compensa o header fixo quando o usuario clica em "Ver catÃ¡logo". */
+  /* Compensa o header fixo quando o usuario clica em "Ver catálogo". */
   scroll-margin-top: 132px;
   max-width: 1280px;
   margin: 0 auto;
@@ -853,7 +853,7 @@
   scroll-margin-top: 132px;
 }
 
-/* Abas compartilham a mesma grade; somente os dados e filtros sÃ£o trocados. */
+/* Abas compartilham a mesma grade; somente os dados e filtros são trocados. */
 .catalogo-abas {
   display: flex;
   gap: 4px;

@@ -20,52 +20,52 @@ const CLUBE_ENDPOINT = import.meta.env.VITE_CLUBE_BUSSOLA_ENDPOINT || "";
 const niveis = [
   { nome: "Explorador", faixa: "0-4", descricao: "Primeiros passos no clube." },
   { nome: "Navegador", faixa: "5-9", descricao: "Mais vantagens e prioridade." },
-  { nome: "CapitÃ£o", faixa: "10-14", descricao: "Recompensas maiores." },
+  { nome: "Capitão", faixa: "10-14", descricao: "Recompensas maiores." },
   { nome: "Comandante", faixa: "15-19", descricao: "Beneficios especiais." },
   { nome: "Embaixador", faixa: "20+", descricao: "Status maximo do clube." },
 ];
 
 // Recompensas exibidas como trilha de gamificacao.
 const recompensas = [
-  { meta: "3 indicaÃ§Ãµes", premio: "Brinde especial" },
-  { meta: "5 indicaÃ§Ãµes", premio: "10% de benefÃ­cio" },
-  { meta: "10 indicaÃ§Ãµes", premio: "20% de benefÃ­cio" },
-  { meta: "15 indicaÃ§Ãµes", premio: "Presente especial" },
-  { meta: "20 indicaÃ§Ãµes", premio: "Embaixador BÃºssola" },
+  { meta: "3 indicações", premio: "Brinde especial" },
+  { meta: "5 indicações", premio: "10% de benefício" },
+  { meta: "10 indicações", premio: "20% de benefício" },
+  { meta: "15 indicações", premio: "Presente especial" },
+  { meta: "20 indicações", premio: "Embaixador Bússola" },
 ];
 
 // Itens do menu demonstrativo do dashboard do cliente.
 const menuCliente = [
   "Minha Conta",
   "Cashback",
-  "IndicaÃ§Ãµes",
-  "HistÃ³rico",
-  "BenefÃ­cios",
-  "PromoÃ§Ãµes",
+  "Indicações",
+  "Histórico",
+  "Benefícios",
+  "Promoções",
 ];
 
-// Cada aba controla seus prÃ³prios textos, produtos e filtros. Centralizar essa
-// configuraÃ§Ã£o evita duplicar a grade e o modal de produtos no JSX.
+// Cada aba controla seus próprios textos, produtos e filtros. Centralizar essa
+// configuração evita duplicar a grade e o modal de produtos no JSX.
 const catalogos = {
   diaDosPais: {
     label: "Dia dos Pais",
-    kicker: "PresentÃ£o para o Papai",
+    kicker: "Presentão para o Papai",
     titulo: "Presentes guiados pelo jeito do seu pai",
     descricao:
-      "Escolha um perfil para ver primeiro as opÃ§Ãµes que mais combinam, sem perder o acesso ao catÃ¡logo completo.",
+      "Escolha um perfil para ver primeiro as opções que mais combinam, sem perder o acesso ao catálogo completo.",
     produtos: produtosDiaDosPais,
     filtros: [
       { label: "Todos", value: "todos" },
       { label: "Perfumaria", value: "perfumaria" },
       { label: "Tecnologia", value: "tecnologia" },
-      { label: "AcessÃ³rios", value: "acessorios" },
+      { label: "Acessórios", value: "acessorios" },
       { label: "Cuidados", value: "cuidados" },
       { label: "Presentes", value: "presentes" },
     ],
   },
 };
 
-// A ordem deste array tambÃ©m define a ordem visual das abas.
+// A ordem deste array também define a ordem visual das abas.
 const abasCatalogo = [
   { label: "Dia dos Pais", value: "diaDosPais" },
 ];
@@ -74,7 +74,7 @@ const abasCatalogo = [
 const perfisPais = [
   {
     value: "classico",
-    nome: "Pai ClÃ¡ssico",
+    nome: "Pai Clássico",
     chamada: "O pai que nunca sai de moda",
     texto: "Tradicional, elegante e seguro nas escolhas.",
     direcao: "Perfumes marcantes, kits completos e presentes sofisticados.",
@@ -83,70 +83,70 @@ const perfisPais = [
     value: "vaidoso",
     nome: "Pai Vaidoso",
     chamada: "O pai que gosta de se cuidar",
-    texto: "Usa perfume, valoriza aparÃªncia e gosta de novidades.",
-    direcao: "FragrÃ¢ncias, cuidados masculinos e acessÃ³rios de estilo.",
+    texto: "Usa perfume, valoriza aparência e gosta de novidades.",
+    direcao: "Fragrâncias, cuidados masculinos e acessórios de estilo.",
   },
   {
     value: "pratico",
-    nome: "Pai PrÃ¡tico",
-    chamada: "O pai que gosta de soluÃ§Ãµes",
-    texto: "Prefere utilidade, funcionalidade e custo-benefÃ­cio.",
-    direcao: "Kits prontos, tecnologia Ãºtil, acessÃ³rios e rotina.",
+    nome: "Pai Prático",
+    chamada: "O pai que gosta de soluções",
+    texto: "Prefere utilidade, funcionalidade e custo-benefício.",
+    direcao: "Kits prontos, tecnologia útil, acessórios e rotina.",
   },
   {
     value: "moderno",
     nome: "Pai Moderno",
     chamada: "O pai conectado com as novidades",
-    texto: "Antenado, tecnolÃ³gico e aberto a experiÃªncias diferentes.",
-    direcao: "Smartwatch, fones, acessÃ³rios tecnolÃ³gicos e perfumes atuais.",
+    texto: "Antenado, tecnológico e aberto a experiências diferentes.",
+    direcao: "Smartwatch, fones, acessórios tecnológicos e perfumes atuais.",
   },
   {
     value: "executivo",
     nome: "Pai Executivo",
-    chamada: "O pai que transmite presenÃ§a",
+    chamada: "O pai que transmite presença",
     texto: "Profissional, elegante e cuidadoso com a imagem.",
-    direcao: "Perfumes premium, kits sofisticados e acessÃ³rios elegantes.",
+    direcao: "Perfumes premium, kits sofisticados e acessórios elegantes.",
   },
   {
     value: "simples",
     nome: "Pai Simples",
     chamada: "O pai que valoriza o carinho",
-    texto: "NÃ£o precisa de luxo para sentir o amor no gesto.",
-    direcao: "Presentes acessÃ­veis, Ãºteis e preparados com cuidado.",
+    texto: "Não precisa de luxo para sentir o amor no gesto.",
+    direcao: "Presentes acessíveis, úteis e preparados com cuidado.",
   },
   {
     value: "aventureiro",
     nome: "Pai Aventureiro",
-    chamada: "O pai que vive experiÃªncias",
+    chamada: "O pai que vive experiências",
     texto: "Gosta de viajar, sair e estar sempre em movimento.",
-    direcao: "Mochilas, tecnologia portÃ¡til e itens para fora de casa.",
+    direcao: "Mochilas, tecnologia portátil e itens para fora de casa.",
   },
   {
     value: "experiente",
     nome: "Pai Experiente",
-    chamada: "O pai que jÃ¡ conquistou muito",
+    chamada: "O pai que já conquistou muito",
     texto: "Valoriza qualidade, conforto e escolhas diferenciadas.",
     direcao: "Linhas premium, kits especiais e produtos de maior valor percebido.",
   },
   {
     value: "pai-mae",
-    nome: "Pai MÃ£e",
+    nome: "Pai Mãe",
     chamada: "Quem ama em dobro",
-    texto: "Cuidou, protegeu e assumiu dois papÃ©is com dedicaÃ§Ã£o.",
+    texto: "Cuidou, protegeu e assumiu dois papéis com dedicação.",
     direcao: "Presentes com carinho, reconhecimento e valor emocional.",
   },
   {
     value: "marido-pai",
     nome: "Meu Marido, Meu Pai",
-    chamada: "O homem que constrÃ³i uma histÃ³ria comigo",
+    chamada: "O homem que constrói uma história comigo",
     texto: "Presente para reconhecer o pai dos filhos e parceiro de caminhada.",
-    direcao: "Perfumes marcantes, kits sofisticados e acessÃ³rios de presenÃ§a.",
+    direcao: "Perfumes marcantes, kits sofisticados e acessórios de presença.",
   },
 ];
 
-// TraduÃ§Ã£o visual dos slugs usados no JSON para rÃ³tulos melhores nos cards.
+// Tradução visual dos slugs usados no JSON para rótulos melhores nos cards.
 const categoriasCatalogo = {
-  acessorios: "AcessÃ³rios",
+  acessorios: "Acessórios",
   cuidados: "Cuidados",
   perfumaria: "Perfumaria",
   presentes: "Presentes",
@@ -154,9 +154,9 @@ const categoriasCatalogo = {
 };
 
 /*
- * O Clube BÃºssola continua abaixo deste catÃ¡logo, preservado e oculto pela
- * constante EXIBIR_CLUBE_BUSSOLA. Antes de reativÃ¡-lo, alinhar as regras com
- * Bruno para nÃ£o misturar o programa de benefÃ­cios com campanhas sazonais.
+ * O Clube Bússola continua abaixo deste catálogo, preservado e oculto pela
+ * constante EXIBIR_CLUBE_BUSSOLA. Antes de reativá-lo, alinhar as regras com
+ * Bruno para não misturar o programa de benefícios com campanhas sazonais.
  */
 
 // Exemplo visual de indicacoes para o cliente entender o funcionamento.
@@ -169,21 +169,21 @@ const indicacoesDemo = [
 // Mensagem de WhatsApp usada como fallback enquanto o Google Sheets nao estiver conectado.
 function criarMensagemCadastro(dados) {
   return [
-    "OlÃ¡! Quero entrar no Clube BÃºssola.",
+    "Olá! Quero entrar no Clube Bússola.",
     "",
     `Nome: ${dados.nome}`,
     `WhatsApp: ${dados.whatsapp}`,
     `Email: ${dados.email}`,
-    `Cidade: ${dados.cidade || "NÃ£o informado"}`,
-    `Nascimento: ${dados.nascimento || "NÃ£o informado"}`,
+    `Cidade: ${dados.cidade || "Não informado"}`,
+    `Nascimento: ${dados.nascimento || "Não informado"}`,
     "",
-    "Vim pela campanha de Dia dos Pais da BÃºssola.",
+    "Vim pela campanha de Dia dos Pais da Bússola.",
   ].join("\n");
 }
 
 // Monta a mensagem de compra para produtos de qualquer uma das abas.
 function criarLinkProduto(produto) {
-  const mensagem = `OlÃ¡! Vim pela campanha de Dia dos Pais da BÃºssola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
+  const mensagem = `Olá! Vim pela campanha de Dia dos Pais da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
 
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
 }
@@ -202,7 +202,7 @@ function gerarCodigoIndicacao(nome) {
 }
 
 export default function Campanha() {
-  // Define qual conjunto de produtos estÃ¡ visÃ­vel sem trocar de pÃ¡gina.
+  // Define qual conjunto de produtos está visível sem trocar de página.
   const [abaCatalogo, setAbaCatalogo] = useState("diaDosPais");
 
   // Busca digitada pelo cliente dentro da aba ativa.
@@ -211,10 +211,10 @@ export default function Campanha() {
   // Categoria escolhida nos filtros da aba ativa.
   const [filtroCatalogo, setFiltroCatalogo] = useState("todos");
 
-  // Perfil escolhido na busca guiada. Vazio significa catÃ¡logo sem priorizaÃ§Ã£o.
+  // Perfil escolhido na busca guiada. Vazio significa catálogo sem priorização.
   const [perfilSelecionado, setPerfilSelecionado] = useState("");
 
-  // Controla a abertura das opÃ§Ãµes para a busca guiada ocupar menos espaÃ§o.
+  // Controla a abertura das opções para a busca guiada ocupar menos espaço.
   const [perfilMenuAberto, setPerfilMenuAberto] = useState(false);
 
   // Produto aberto no modal de descricao completa.
@@ -244,13 +244,13 @@ export default function Campanha() {
     [formulario.nome],
   );
 
-  // A configuraÃ§Ã£o ativa alimenta tÃ­tulo, filtros e produtos da mesma grade.
+  // A configuração ativa alimenta título, filtros e produtos da mesma grade.
   const catalogoAtual = catalogos[abaCatalogo];
 
   // Dados completos do perfil escolhido na busca guiada.
   const perfilAtual = perfisPais.find((perfil) => perfil.value === perfilSelecionado);
 
-  // Conta quantas opÃ§Ãµes combinam com o perfil para reforÃ§ar a sensaÃ§Ã£o de curadoria.
+  // Conta quantas opções combinam com o perfil para reforçar a sensação de curadoria.
   const totalRecomendados = perfilSelecionado
     ? catalogoAtual.produtos.filter((produto) =>
         produto.profiles?.includes(perfilSelecionado),
@@ -258,7 +258,7 @@ export default function Campanha() {
     : 0;
 
 
-  // Filtra por busca/categoria e, quando hÃ¡ perfil, coloca os matches primeiro.
+  // Filtra por busca/categoria e, quando há perfil, coloca os matches primeiro.
   const produtosFiltrados = useMemo(() => {
     const termo = buscaCatalogo.trim().toLowerCase();
 
@@ -299,8 +299,8 @@ export default function Campanha() {
   const produtosVisiveis = produtosFiltrados.slice(0, quantidadeVisivel);
   const temMaisProdutos = quantidadeVisivel < produtosFiltrados.length;
 
-  // Trocar de aba tambÃ©m limpa busca, filtro e modal para nÃ£o carregar estado
-  // de um catÃ¡logo no outro.
+  // Trocar de aba também limpa busca, filtro e modal para não carregar estado
+  // de um catálogo no outro.
   function selecionarAbaCatalogo(novaAba) {
     setAbaCatalogo(novaAba);
     setBuscaCatalogo("");
@@ -340,7 +340,7 @@ export default function Campanha() {
 
     const payload = {
       ...formulario,
-      origem: "Campanha Dia dos Pais - Clube BÃºssola",
+      origem: "Campanha Dia dos Pais - Clube Bússola",
       codigoIndicacao,
       dataCadastro: new Date().toISOString(),
     };
@@ -355,7 +355,7 @@ export default function Campanha() {
           body: JSON.stringify(payload),
         });
 
-        setRetorno("Cadastro enviado. A equipe BÃºssola vai confirmar seus benefÃ­cios.");
+        setRetorno("Cadastro enviado. A equipe Bússola vai confirmar seus benefícios.");
       } else {
         // Fallback seguro: abre WhatsApp com os dados preenchidos.
         const mensagem = criarMensagemCadastro(formulario);
@@ -368,7 +368,7 @@ export default function Campanha() {
         setRetorno("Abrimos o WhatsApp com seus dados para finalizar o cadastro.");
       }
     } catch {
-      setRetorno("NÃ£o conseguimos enviar agora. Chame a BÃºssola pelo WhatsApp.");
+      setRetorno("Não conseguimos enviar agora. Chame a Bússola pelo WhatsApp.");
     } finally {
       setEnviando(false);
     }
@@ -394,24 +394,24 @@ export default function Campanha() {
 
         <div className="clube-hero-texto">
           <div className="pais-logo-area">
-            {/* Logo oficial da campanha: PNG enviado pelo cliente com animaÃ§Ã£o leve. */}
+            {/* Logo oficial da campanha: PNG enviado pelo cliente com animação leve. */}
             <img
               className="pais-logo"
               src="/campanhas/dia-dos-pais/logo-dia-dos-pais.png"
-              alt="PresentÃ£o para o Papai"
+              alt="Presentão para o Papai"
               loading="eager"
               decoding="async"
             />
             <span className="pais-logo-brilho" aria-hidden="true" />
           </div>
 
-          <span className="campanha-tag">Dia dos Pais BÃºssola</span>
+          <span className="campanha-tag">Dia dos Pais Bússola</span>
 
           <h2>Qual presente combina com o jeito do seu pai?</h2>
 
           <p>
             Responda uma pergunta simples, veja primeiro os presentes mais
-            certeiros e continue explorando todas as opÃ§Ãµes da campanha.
+            certeiros e continue explorando todas as opções da campanha.
           </p>
 
           <div className="clube-acoes">
@@ -421,7 +421,7 @@ export default function Campanha() {
 
             <a
               href={`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
-                "OlÃ¡! Quero ver as ofertas de Dia dos Pais da BÃºssola.",
+                "Olá! Quero ver as ofertas de Dia dos Pais da Bússola.",
               )}`}
               target="_blank"
               rel="noreferrer"
@@ -448,15 +448,15 @@ export default function Campanha() {
             <h3>Qual o perfil do seu pai?</h3>
             <p>
               Selecione o jeito que mais combina com ele e veja primeiro os
-              presentes mais certeiros. A vitrine completa continua disponÃ­vel
-              para quem quiser explorar todas as opÃ§Ãµes.
+              presentes mais certeiros. A vitrine completa continua disponível
+              para quem quiser explorar todas as opções.
             </p>
           </div>
 
           <div className="guia-pais-consultor">
             <div className="guia-pais-cabecalho">
               <span>Escolha guiada</span>
-              <strong>Comece pelo perfil e chegue mais rÃ¡pido ao presente ideal.</strong>
+              <strong>Comece pelo perfil e chegue mais rápido ao presente ideal.</strong>
             </div>
 
             <button
@@ -471,9 +471,9 @@ export default function Campanha() {
               <small>
                 {perfilAtual
                   ? perfilAtual.chamada
-                  : "Abra a lista de perfis e escolha a opÃ§Ã£o que mais combina com ele."}
+                  : "Abra a lista de perfis e escolha a opção que mais combina com ele."}
               </small>
-              <b>{perfilMenuAberto ? "Fechar opÃ§Ãµes" : "Ver perfis"}</b>
+              <b>{perfilMenuAberto ? "Fechar opções" : "Ver perfis"}</b>
             </button>
 
             {perfilMenuAberto && (
@@ -503,7 +503,7 @@ export default function Campanha() {
           <div className="guia-pais-resultado">
             {perfilAtual ? (
               <>
-                <span>{totalRecomendados} recomendaÃ§Ãµes para {perfilAtual.nome}</span>
+                <span>{totalRecomendados} recomendações para {perfilAtual.nome}</span>
                 <strong>{perfilAtual.direcao}</strong>
                 <button
                   type="button"
@@ -517,9 +517,9 @@ export default function Campanha() {
               </>
             ) : (
               <>
-                <span>CatÃ¡logo completo logo abaixo</span>
+                <span>Catálogo completo logo abaixo</span>
                 <strong>
-                  Escolha um perfil para a BÃºssola organizar primeiro os
+                  Escolha um perfil para a Bússola organizar primeiro os
                   presentes que mais combinam com ele.
                 </strong>
               </>
@@ -527,13 +527,13 @@ export default function Campanha() {
           </div>
 
           <div className="guia-pais-catalogo-chamada">
-            <span>PrÃ³ximo passo</span>
+            <span>Próximo passo</span>
             <strong>
               {perfilAtual
-                ? "As recomendaÃ§Ãµes aparecem primeiro, mas todas as opÃ§Ãµes continuam disponÃ­veis para comparar."
-                : "A escolha guiada nÃ£o limita a vitrine. Ela apenas ajuda o cliente a comeÃ§ar melhor."}
+                ? "As recomendações aparecem primeiro, mas todas as opções continuam disponíveis para comparar."
+                : "A escolha guiada não limita a vitrine. Ela apenas ajuda o cliente a começar melhor."}
             </strong>
-            <a href="#catalogo-dia-dos-pais">Ver catÃ¡logo completo</a>
+            <a href="#catalogo-dia-dos-pais">Ver catálogo completo</a>
           </div>
         </div>
       </section>
@@ -545,7 +545,7 @@ export default function Campanha() {
         <div
           className="catalogo-abas"
           role="tablist"
-          aria-label="CatÃ¡logos da BÃºssola"
+          aria-label="Catálogos da Bússola"
         >
           {abasCatalogo.map((aba) => (
             <button
@@ -579,7 +579,7 @@ export default function Campanha() {
               <span>Buscar oferta</span>
               <input
                 type="search"
-                placeholder="Ex.: perfume, smartwatch, pai prÃ¡tico..."
+                placeholder="Ex.: perfume, smartwatch, pai prático..."
                 value={buscaCatalogo}
                 onChange={(event) => setBuscaCatalogo(event.target.value)}
               />
@@ -599,7 +599,7 @@ export default function Campanha() {
 
           <div
             className="catalogo-filtros"
-            aria-label={`Filtros do catÃ¡logo ${catalogoAtual.label}`}
+            aria-label={`Filtros do catálogo ${catalogoAtual.label}`}
           >
             {catalogoAtual.filtros.map((filtro) => (
               <button
@@ -661,7 +661,7 @@ export default function Campanha() {
                         className="produto-detalhes"
                         onClick={() => setProdutoAberto(produto)}
                       >
-                        Ler descriÃ§Ã£o completa
+                        Ler descrição completa
                       </button>
                     </div>
                   </div>
@@ -700,7 +700,7 @@ export default function Campanha() {
           className="produto-modal"
           role="dialog"
           aria-modal="true"
-          aria-label={`DescriÃ§Ã£o completa de ${produtoAberto.title}`}
+          aria-label={`Descrição completa de ${produtoAberto.title}`}
         >
           <button
             type="button"
@@ -716,7 +716,7 @@ export default function Campanha() {
               aria-label="Fechar detalhes"
               onClick={() => setProdutoAberto(null)}
             >
-              Ã—
+              ×
             </button>
 
             <img src={produtoAberto.image} alt={produtoAberto.alt} />
@@ -748,14 +748,14 @@ export default function Campanha() {
     <section className="campanha clube-bussola" id="campanha">
       <div className="clube-hero">
         <div className="clube-hero-texto">
-          <span className="campanha-tag">Dia dos Pais no Clube BÃºssola</span>
+          <span className="campanha-tag">Dia dos Pais no Clube Bússola</span>
 
-          <h2>Compre, indique, acompanhe sua evoluÃ§Ã£o e desbloqueie benefÃ­cios.</h2>
+          <h2>Compre, indique, acompanhe sua evolução e desbloqueie benefícios.</h2>
 
           <p>
-            O Clube BÃºssola nasce como um programa de relacionamento para
-            cashback, indicaÃ§Ãµes, recompra e campanhas sazonais. No Dia dos Pais, o
-            cliente jÃ¡ entra entendendo que cada compra pode aproximar de novas
+            O Clube Bússola nasce como um programa de relacionamento para
+            cashback, indicações, recompra e campanhas sazonais. No Dia dos Pais, o
+            cliente já entra entendendo que cada compra pode aproximar de novas
             recompensas.
           </p>
 
@@ -769,40 +769,40 @@ export default function Campanha() {
             </a>
 
             <a href="#clube-niveis" className="btn-outline">
-              Ver benefÃ­cios
+              Ver benefícios
             </a>
           </div>
         </div>
 
         <aside className="dashboard-demo" aria-label="Resumo demonstrativo do cliente">
           <div className="dashboard-topo">
-            <span>OlÃ¡, JoÃ£o</span>
-            <strong>Bem-vindo ao Clube BÃºssola.</strong>
+            <span>Olá, João</span>
+            <strong>Bem-vindo ao Clube Bússola.</strong>
           </div>
 
           <div className="dashboard-resumo">
             <span>
-              Cashback disponÃ­vel
+              Cashback disponível
               <strong>R$ 15,00</strong>
             </span>
 
             <span>
-              IndicaÃ§Ãµes
+              Indicações
               <strong>7</strong>
             </span>
 
             <span>
-              NÃ­vel atual
+              Nível atual
               <strong>Navegador</strong>
             </span>
           </div>
 
           <div className="dashboard-progresso">
             <div>
-              <span>PrÃ³ximo nÃ­vel</span>
-              <strong>CapitÃ£o</strong>
+              <span>Próximo nível</span>
+              <strong>Capitão</strong>
             </div>
-            <p>Faltam 3 indicaÃ§Ãµes validadas.</p>
+            <p>Faltam 3 indicações validadas.</p>
             <div className="barra-progresso">
               <span />
             </div>
@@ -819,15 +819,15 @@ export default function Campanha() {
       <div className="clube-grid">
         <section className="clube-card clube-explicacao">
           <span className="catalogo-kicker">Como funciona</span>
-          <h3>Cadastro nÃ£o gera ponto. Compra validada gera evoluÃ§Ã£o.</h3>
+          <h3>Cadastro não gera ponto. Compra validada gera evolução.</h3>
           <p>
-            O cliente gera um cÃ³digo, compartilha com amigos, o indicado se
-            cadastra e o ponto sÃ³ entra quando a compra Ã© confirmada pela equipe.
-            Isso mantÃ©m o clube justo, organizado e pronto para crescer.
+            O cliente gera um código, compartilha com amigos, o indicado se
+            cadastra e o ponto só entra quando a compra é confirmada pela equipe.
+            Isso mantém o clube justo, organizado e pronto para crescer.
           </p>
 
           <div className="fluxo-indicacao">
-            <span>Gerou cÃ³digo</span>
+            <span>Gerou código</span>
             <span>Indicou</span>
             <span>Cadastrou</span>
             <span>Comprou</span>
@@ -836,18 +836,18 @@ export default function Campanha() {
         </section>
 
         <section className="clube-card clube-indicacao">
-          <span className="catalogo-kicker">IndicaÃ§Ã£o</span>
-          <h3>Seu cÃ³digo aparece pronto para compartilhar.</h3>
+          <span className="catalogo-kicker">Indicação</span>
+          <h3>Seu código aparece pronto para compartilhar.</h3>
 
           <div className="codigo-box">
-            <small>CÃ³digo exemplo</small>
+            <small>Código exemplo</small>
             <strong>{codigoIndicacao}</strong>
             <span>bussola.com.br/indique/{codigoIndicacao}</span>
           </div>
 
           <a
             href={`https://wa.me/?text=${encodeURIComponent(
-              `OlÃ¡!\n\nSou cliente da BÃºssola CosmÃ©ticos & AcessÃ³rios.\n\nUse meu cÃ³digo:\n\n${codigoIndicacao}\n\ne ganhe benefÃ­cios na sua compra.\n\nAcesse:\n\nbussola.com.br/indique/${codigoIndicacao}`,
+              `Olá!\n\nSou cliente da Bússola Cosméticos & Acessórios.\n\nUse meu código:\n\n${codigoIndicacao}\n\ne ganhe benefícios na sua compra.\n\nAcesse:\n\nbussola.com.br/indique/${codigoIndicacao}`,
             )}`}
             target="_blank"
             rel="noreferrer"
@@ -860,15 +860,15 @@ export default function Campanha() {
 
       <section className="clube-niveis" id="clube-niveis">
         <div className="clube-secao-titulo">
-          <span className="catalogo-kicker">GamificaÃ§Ã£o</span>
-          <h3>NÃ­veis que fazem o cliente querer voltar.</h3>
+          <span className="catalogo-kicker">Gamificação</span>
+          <h3>Níveis que fazem o cliente querer voltar.</h3>
         </div>
 
         <div className="niveis-lista">
           {niveis.map((nivel) => (
             <article className="nivel-card" key={nivel.nome}>
               <strong>{nivel.nome}</strong>
-              <span>{nivel.faixa} indicaÃ§Ãµes</span>
+              <span>{nivel.faixa} indicações</span>
               <p>{nivel.descricao}</p>
             </article>
           ))}
@@ -878,7 +878,7 @@ export default function Campanha() {
       <section className="clube-recompensas">
         <div className="clube-secao-titulo">
           <span className="catalogo-kicker">Recompensas</span>
-          <h3>Marcos simples, fÃ¡ceis de entender e bons de compartilhar.</h3>
+          <h3>Marcos simples, fáceis de entender e bons de compartilhar.</h3>
         </div>
 
         <div className="recompensas-lista">
@@ -893,8 +893,8 @@ export default function Campanha() {
 
       <section className="clube-area-cliente">
         <div className="clube-card">
-          <span className="catalogo-kicker">Painel de indicaÃ§Ãµes</span>
-          <h3>O cliente acompanha quem jÃ¡ comprou e quem ainda falta validar.</h3>
+          <span className="catalogo-kicker">Painel de indicações</span>
+          <h3>O cliente acompanha quem já comprou e quem ainda falta validar.</h3>
 
           <div className="indicacoes-lista">
             {indicacoesDemo.map((indicacao) => (
@@ -909,17 +909,17 @@ export default function Campanha() {
 
         <div className="clube-card cashback-card">
           <span className="catalogo-kicker">Cashback</span>
-          <h3>Saldo visÃ­vel cria urgÃªncia de recompra.</h3>
+          <h3>Saldo visível cria urgência de recompra.</h3>
 
           <div className="cashback-box">
-            <span>Saldo disponÃ­vel</span>
+            <span>Saldo disponível</span>
             <strong>R$ 25,00</strong>
             <small>Expira em 12 dias</small>
           </div>
 
           <a
             href={`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
-              "OlÃ¡! Quero utilizar meu cashback do Clube BÃºssola.",
+              "Olá! Quero utilizar meu cashback do Clube Bússola.",
             )}`}
             target="_blank"
             rel="noreferrer"
@@ -932,11 +932,11 @@ export default function Campanha() {
 
       <section className="clube-cadastro" id="clube-cadastro">
         <div className="clube-cadastro-texto">
-          <span className="catalogo-kicker">PrÃ©-cadastro Dia dos Pais</span>
-          <h3>Comece pelo Drive agora. Depois evoluÃ­mos para login real.</h3>
+          <span className="catalogo-kicker">Pré-cadastro Dia dos Pais</span>
+          <h3>Comece pelo Drive agora. Depois evoluímos para login real.</h3>
           <p>
-            Este formulÃ¡rio jÃ¡ estÃ¡ preparado para enviar dados para uma
-            planilha do Google Sheets via Apps Script. Enquanto a integraÃ§Ã£o nÃ£o
+            Este formulário já está preparado para enviar dados para uma
+            planilha do Google Sheets via Apps Script. Enquanto a integração não
             estiver ativada, ele abre o WhatsApp com os dados do cliente.
           </p>
         </div>
@@ -1010,11 +1010,11 @@ export default function Campanha() {
       >
         <div className="catalogo-topo">
           <div>
-            <span className="catalogo-kicker">PresentÃ£o para o Papai</span>
+            <span className="catalogo-kicker">Presentão para o Papai</span>
             <h3>Presentes guiados pelo jeito do seu pai</h3>
             <p>
-              Escolha um perfil para ver primeiro as opÃ§Ãµes que mais combinam,
-              sem perder o acesso ao catÃ¡logo completo.
+              Escolha um perfil para ver primeiro as opções que mais combinam,
+              sem perder o acesso ao catálogo completo.
             </p>
           </div>
 
@@ -1022,14 +1022,14 @@ export default function Campanha() {
             <span>Buscar oferta</span>
             <input
               type="search"
-              placeholder="Ex.: perfume, smartwatch, pai prÃ¡tico..."
+              placeholder="Ex.: perfume, smartwatch, pai prático..."
               value={buscaCatalogo}
               onChange={(event) => setBuscaCatalogo(event.target.value)}
             />
           </label>
         </div>
 
-        <div className="catalogo-filtros" aria-label="Filtros do catÃ¡logo de Dia dos Pais">
+        <div className="catalogo-filtros" aria-label="Filtros do catálogo de Dia dos Pais">
           {catalogos.diaDosPais.filtros.map((filtro) => (
             <button
               type="button"
@@ -1078,7 +1078,7 @@ export default function Campanha() {
                     className="produto-detalhes"
                     onClick={() => setProdutoAberto(produto)}
                   >
-                    Ler descriÃ§Ã£o completa
+                    Ler descrição completa
                   </button>
                 </div>
               </div>
@@ -1098,7 +1098,7 @@ export default function Campanha() {
           className="produto-modal"
           role="dialog"
           aria-modal="true"
-          aria-label={`DescriÃ§Ã£o completa de ${produtoAberto.title}`}
+          aria-label={`Descrição completa de ${produtoAberto.title}`}
         >
           <button
             type="button"
@@ -1114,7 +1114,7 @@ export default function Campanha() {
               aria-label="Fechar detalhes"
               onClick={() => setProdutoAberto(null)}
             >
-              Ã—
+              ×
             </button>
 
             <img src={produtoAberto.image} alt={produtoAberto.alt} />
