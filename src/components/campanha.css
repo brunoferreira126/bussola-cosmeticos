@@ -196,7 +196,7 @@
 
 /* Area branca do catalogo para facilitar leitura e comparacao dos itens. */
 .catalogo-namorados {
-  /* Compensa o header fixo quando o usuario clica em "Ver catálogo". */
+  /* Compensa o header fixo quando o usuario clica em "Ver catÃ¡logo". */
   scroll-margin-top: 132px;
   max-width: 1280px;
   margin: 0 auto;
@@ -853,7 +853,7 @@
   scroll-margin-top: 132px;
 }
 
-/* Abas compartilham a mesma grade; somente os dados e filtros são trocados. */
+/* Abas compartilham a mesma grade; somente os dados e filtros sÃ£o trocados. */
 .catalogo-abas {
   display: flex;
   gap: 4px;
@@ -1048,12 +1048,27 @@
   max-width: 650px;
 }
 
+.guia-pais-chamada {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 16px;
+  border: 1px solid rgba(244, 200, 76, 0.48);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(244, 200, 76, 0.14);
+  color: #f4c84c;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
 .guia-pais-topo h3 {
-  max-width: 600px;
-  margin: 12px 0 18px;
+  max-width: 680px;
+  margin: 14px 0 18px;
   color: #fff;
-  font-size: 3.7rem;
+  font-size: 4.35rem;
   line-height: 0.98;
+  text-transform: uppercase;
 }
 
 .guia-pais-topo p {
@@ -1064,38 +1079,12 @@
   line-height: 1.7;
 }
 
-.guia-pais-metricas {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 28px;
-}
-
-.guia-pais-metricas span {
-  min-height: 82px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 8px;
-  padding: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.82rem;
-  font-weight: 800;
-  line-height: 1.35;
-}
-
-.guia-pais-metricas strong {
-  display: block;
-  color: #f4c84c;
-  font-size: 1.9rem;
-  line-height: 1;
-}
-
 .guia-pais-consultor {
   display: grid;
   gap: 16px;
-  border: 1px solid rgba(244, 200, 76, 0.5);
+  border: 1px solid rgba(244, 200, 76, 0.68);
   border-radius: 8px;
-  padding: 22px;
+  padding: 24px;
   background: #f7f4ea;
   color: #102554;
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.3);
@@ -1115,18 +1104,19 @@
 
 .guia-pais-cabecalho strong {
   color: #102554;
-  font-size: 1.5rem;
+  font-size: 1.32rem;
   line-height: 1.2;
 }
 
 .guia-pais-trigger {
   position: relative;
   width: 100%;
-  min-height: 118px;
+  min-height: 132px;
   border: 0;
   border-radius: 8px;
-  padding: 18px 150px 18px 18px;
-  background: #102554;
+  padding: 22px 166px 22px 22px;
+  background:
+    linear-gradient(135deg, #102554, #173b82);
   color: #fff;
   cursor: pointer;
   text-align: left;
@@ -1148,15 +1138,16 @@
 
 .guia-pais-trigger span {
   color: #f4c84c;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 900;
   text-transform: uppercase;
 }
 
 .guia-pais-trigger strong {
-  margin: 7px 0 5px;
-  font-size: 1.32rem;
+  margin: 8px 0 6px;
+  font-size: 1.68rem;
   line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .guia-pais-trigger small {
@@ -1169,10 +1160,10 @@
   position: absolute;
   top: 50%;
   right: 16px;
-  min-width: 112px;
+  min-width: 126px;
   transform: translateY(-50%);
   border-radius: 999px;
-  padding: 10px 13px;
+  padding: 12px 14px;
   background: #f4c84c;
   color: #102554;
   font-size: 0.88rem;
@@ -1283,55 +1274,45 @@
   font-weight: 900;
 }
 
-.guia-pais-produtos {
+.guia-pais-catalogo-chamada {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.guia-pais-produtos button {
-  display: grid;
-  grid-template-rows: 152px auto auto auto;
-  gap: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  align-content: center;
+  gap: 14px;
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
-  padding: 12px;
-  background: #fff;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(244, 200, 76, 0.2));
   color: #102554;
-  cursor: pointer;
-  text-align: left;
-  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.guia-pais-produtos button:hover {
-  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.2);
-  transform: translateY(-3px);
+.guia-pais-catalogo-chamada span,
+.guia-pais-catalogo-chamada strong {
+  display: block;
 }
 
-.guia-pais-produtos img {
-  width: 100%;
-  height: 152px;
-  object-fit: contain;
-  border-radius: 8px;
-  background: #f5f6f8;
-}
-
-.guia-pais-produtos span {
+.guia-pais-catalogo-chamada span {
   color: #1b5dc9;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-.guia-pais-produtos strong {
-  font-size: 0.95rem;
-  line-height: 1.25;
+.guia-pais-catalogo-chamada strong {
+  font-size: 1.2rem;
+  line-height: 1.45;
 }
 
-.guia-pais-produtos small {
-  color: #7b1d28;
-  font-size: 0.92rem;
+.guia-pais-catalogo-chamada a {
+  justify-self: start;
+  min-height: 44px;
+  border-radius: 999px;
+  padding: 12px 18px;
+  background: #f4c84c;
+  color: #102554;
   font-weight: 900;
+  text-decoration: none;
 }
 
 /* Hero comercial do Sao Joao exibido enquanto o Clube Bussola esta pausado. */
@@ -1583,14 +1564,6 @@
     font-size: 2.25rem;
   }
 
-  .guia-pais-metricas,
-  .guia-pais-produtos {
-    grid-template-columns: 1fr;
-  }
-
-  .guia-pais-metricas span {
-    min-height: auto;
-  }
 
   .guia-pais-consultor {
     padding: 16px;
@@ -1624,13 +1597,6 @@
     flex-direction: column;
   }
 
-  .guia-pais-produtos button {
-    grid-template-rows: 180px auto auto auto;
-  }
-
-  .guia-pais-produtos img {
-    height: 180px;
-  }
 
   .catalogo-resumo {
     padding-top: 92px;
