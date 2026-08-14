@@ -543,7 +543,7 @@ export default function Campanha() {
               <span>Buscar oferta</span>
               <input
                 type="search"
-                placeholder="Ex.: presente infantil, perfume feminino, surpresa..."
+                placeholder="Ex.: perfume, infantil, surpresa..."
                 value={buscaCatalogo}
                 onChange={(event) => setBuscaCatalogo(event.target.value)}
               />
