@@ -47,3 +47,12 @@ Use estes valores dentro de `profiles` para controlar a busca guiada:
 - `experiente`
 - `pai-mae`
 - `marido-pai`
+
+## Campanha Agosto com Direção
+
+O catálogo ativo da campanha fica em `agostoDirecaoCatalogo.json`.
+As imagens otimizadas ficam em `/public/campanhas/agosto-direcao/`.
+Para alterar título, preço, resumo, descrição, categoria ou opções do guia,
+edite o JSON e mantenha os campos `profiles` alinhados com as opções de
+"O que você procura?" em `Campanha.jsx`.
+

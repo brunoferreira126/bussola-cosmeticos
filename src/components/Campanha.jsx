@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 // MANUTENCAO DOS CATALOGOS:
 // Edite titulos, precos e legendas nos arquivos dentro de src/data.
 // O arquivo src/data/README.md explica cada campo e o caminho das imagens.
-import produtosDiaDosPais from "../data/diaDosPaisCatalogo.json";
+import produtosAgostoDirecao from "../data/agostoDirecaoCatalogo.json";
 import "./campanha.css";
 
 // Numero oficial da loja no formato internacional exigido pelo WhatsApp.
@@ -47,100 +47,72 @@ const menuCliente = [
 // Cada aba controla seus próprios textos, produtos e filtros. Centralizar essa
 // configuração evita duplicar a grade e o modal de produtos no JSX.
 const catalogos = {
-  diaDosPais: {
-    label: "Dia dos Pais",
-    kicker: "Presentão para o Papai",
-    titulo: "Presentes guiados pelo jeito do seu pai",
+  agostoDirecao: {
+    label: "Agosto com Direção",
+    kicker: "Agosto com Direção",
+    titulo: "Presentes guiados pelo que você procura",
     descricao:
-      "Escolha um perfil para ver primeiro as opções que mais combinam, sem perder o acesso ao catálogo completo.",
-    produtos: produtosDiaDosPais,
+      "Escolha uma intenção para ver primeiro as opções que mais combinam, sem perder o acesso ao catálogo completo.",
+    produtos: produtosAgostoDirecao,
     filtros: [
       { label: "Todos", value: "todos" },
       { label: "Perfumaria", value: "perfumaria" },
-      { label: "Tecnologia", value: "tecnologia" },
-      { label: "Acessórios", value: "acessorios" },
-      { label: "Cuidados", value: "cuidados" },
       { label: "Presentes", value: "presentes" },
+      { label: "Infantil", value: "infantil" },
+      { label: "Cuidados", value: "cuidados" },
+      { label: "Acessórios", value: "acessorios" },
     ],
   },
 };
 
 // A ordem deste array também define a ordem visual das abas.
 const abasCatalogo = [
-  { label: "Dia dos Pais", value: "diaDosPais" },
+  { label: "Agosto com Direção", value: "agostoDirecao" },
 ];
 
 // Perfis usados na busca guiada. O value deve bater com o campo profiles do JSON.
 const perfisPais = [
   {
-    value: "classico",
-    nome: "Pai Clássico",
-    chamada: "O pai que nunca sai de moda",
-    texto: "Tradicional, elegante e seguro nas escolhas.",
-    direcao: "Perfumes marcantes, kits completos e presentes sofisticados.",
+    value: "surpreender",
+    nome: "Surpreender quem ama",
+    chamada: "Presentes com presença, carinho e memória",
+    texto: "Flores, cestas e combinações especiais para transformar o gesto em surpresa.",
+    direcao: "Flores de cetim, cestas personalizadas, chocolates e perfumes prontos para encantar.",
   },
   {
-    value: "vaidoso",
-    nome: "Pai Vaidoso",
-    chamada: "O pai que gosta de se cuidar",
-    texto: "Usa perfume, valoriza aparência e gosta de novidades.",
-    direcao: "Fragrâncias, cuidados masculinos e acessórios de estilo.",
+    value: "infantil",
+    nome: "Presente infantil",
+    chamada: "Mimos delicados para crianças e bebês",
+    texto: "Kits suaves, práticos e bonitos para presentear com cuidado.",
+    direcao: "Colônias, kits infantis, cuidados para cabelo e nécessaires para a rotina dos pequenos.",
   },
   {
-    value: "pratico",
-    nome: "Pai Prático",
-    chamada: "O pai que gosta de soluções",
-    texto: "Prefere utilidade, funcionalidade e custo-benefício.",
-    direcao: "Kits prontos, tecnologia útil, acessórios e rotina.",
+    value: "presente-pronto",
+    nome: "Presente pronto",
+    chamada: "Escolhas certeiras para quem está sem ideia",
+    texto: "Combinações já montadas para comprar sem complicação.",
+    direcao: "Estojos, cestas e kits completos que facilitam a escolha e já chegam com boa apresentação.",
   },
   {
-    value: "moderno",
-    nome: "Pai Moderno",
-    chamada: "O pai conectado com as novidades",
-    texto: "Antenado, tecnológico e aberto a experiências diferentes.",
-    direcao: "Smartwatch, fones, acessórios tecnológicos e perfumes atuais.",
+    value: "perfume-feminino",
+    nome: "Perfume feminino até R$ 149",
+    chamada: "Fragrâncias femininas com ótimo custo-benefício",
+    texto: "Opções para autoestima, presença e rotina.",
+    direcao: "Fragrâncias femininas em condição especial para presentear ou renovar a coleção.",
   },
   {
-    value: "executivo",
-    nome: "Pai Executivo",
-    chamada: "O pai que transmite presença",
-    texto: "Profissional, elegante e cuidadoso com a imagem.",
-    direcao: "Perfumes premium, kits sofisticados e acessórios elegantes.",
+    value: "perfume-masculino",
+    nome: "Perfume masculino até R$ 149",
+    chamada: "Presença masculina sem passar do orçamento",
+    texto: "Perfumes marcantes, práticos e fáceis de acertar.",
+    direcao: "Fragrâncias masculinas de presença para rotina, trabalho e ocasiões especiais.",
   },
   {
-    value: "simples",
-    nome: "Pai Simples",
-    chamada: "O pai que valoriza o carinho",
-    texto: "Não precisa de luxo para sentir o amor no gesto.",
-    direcao: "Presentes acessíveis, úteis e preparados com cuidado.",
-  },
-  {
-    value: "aventureiro",
-    nome: "Pai Aventureiro",
-    chamada: "O pai que vive experiências",
-    texto: "Gosta de viajar, sair e estar sempre em movimento.",
-    direcao: "Mochilas, tecnologia portátil e itens para fora de casa.",
-  },
-  {
-    value: "experiente",
-    nome: "Pai Experiente",
-    chamada: "O pai que já conquistou muito",
-    texto: "Valoriza qualidade, conforto e escolhas diferenciadas.",
-    direcao: "Linhas premium, kits especiais e produtos de maior valor percebido.",
-  },
-  {
-    value: "pai-mae",
-    nome: "Pai Mãe",
-    chamada: "Quem ama em dobro",
-    texto: "Cuidou, protegeu e assumiu dois papéis com dedicação.",
-    direcao: "Presentes com carinho, reconhecimento e valor emocional.",
-  },
-  {
-    value: "marido-pai",
-    nome: "Meu Marido, Meu Pai",
-    chamada: "O homem que constrói uma história comigo",
-    texto: "Presente para reconhecer o pai dos filhos e parceiro de caminhada.",
-    direcao: "Perfumes marcantes, kits sofisticados e acessórios de presença.",
+    value: "se-presentear",
+    nome: "Quero me presentear",
+    chamada: "Escolhas para valorizar você",
+    texto: "Perfumes e acessórios para autocuidado, estilo e conquista pessoal.",
+    direcao: "Fragrâncias, relógios e acessórios para quem decidiu escolher a si mesmo também.",
   },
 ];
 
@@ -148,6 +120,7 @@ const perfisPais = [
 const categoriasCatalogo = {
   acessorios: "Acessórios",
   cuidados: "Cuidados",
+  infantil: "Infantil",
   perfumaria: "Perfumaria",
   presentes: "Presentes",
   tecnologia: "Tecnologia",
@@ -177,13 +150,13 @@ function criarMensagemCadastro(dados) {
     `Cidade: ${dados.cidade || "Não informado"}`,
     `Nascimento: ${dados.nascimento || "Não informado"}`,
     "",
-    "Vim pela campanha de Dia dos Pais da Bússola.",
+    "Vim pela campanha de Agosto com Direção da Bússola.",
   ].join("\n");
 }
 
 // Monta a mensagem de compra para produtos de qualquer uma das abas.
 function criarLinkProduto(produto) {
-  const mensagem = `Olá! Vim pela campanha de Dia dos Pais da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
+  const mensagem = `Olá! Vim pela campanha de Agosto com Direção da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
 
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
 }
@@ -203,7 +176,7 @@ function gerarCodigoIndicacao(nome) {
 
 export default function Campanha() {
   // Define qual conjunto de produtos está visível sem trocar de página.
-  const [abaCatalogo, setAbaCatalogo] = useState("diaDosPais");
+  const [abaCatalogo, setAbaCatalogo] = useState("agostoDirecao");
 
   // Busca digitada pelo cliente dentro da aba ativa.
   const [buscaCatalogo, setBuscaCatalogo] = useState("");
@@ -319,7 +292,7 @@ export default function Campanha() {
 
     window.setTimeout(() => {
       document
-        .getElementById("catalogo-dia-dos-pais")
+        .getElementById("catalogo-agosto-direcao")
         ?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 80);
   }
@@ -340,7 +313,7 @@ export default function Campanha() {
 
     const payload = {
       ...formulario,
-      origem: "Campanha Dia dos Pais - Clube Bússola",
+      origem: "Campanha Agosto com Direção - Clube Bússola",
       codigoIndicacao,
       dataCadastro: new Date().toISOString(),
     };
@@ -380,7 +353,7 @@ export default function Campanha() {
     A estrutura de Clube Bussola, dashboard demonstrativo, indicacoes,
     cashback, formulario com Apps Script e documentacao do Drive continuam no
     projeto para retomarmos depois. Por agora, a landing page mostra somente a
-    campanha/catalogo de Dia dos Pais, que e a prioridade comercial imediata.
+    campanha/catalogo de Agosto com Direção, que e a prioridade comercial imediata.
 
     Importante para a proxima alteracao:
     antes de mexer novamente nessa secao, perguntar ao Bruno o que faremos com
@@ -389,74 +362,65 @@ export default function Campanha() {
 
   if (!EXIBIR_CLUBE_BUSSOLA) return (
     <section className="campanha clube-bussola" id="campanha">
-      <div className="clube-hero campanha-dia-dos-pais-hero">
+      <div className="clube-hero campanha-agosto-direcao-hero">
         <div className="pais-overlay" />
 
         <div className="clube-hero-texto">
-          <div className="pais-logo-area">
+          <div className="pais-logo-area agosto-logo-area">
             {/* Logo oficial da campanha: PNG enviado pelo cliente com animação leve. */}
             <img
-              className="pais-logo"
-              src="/campanhas/dia-dos-pais/logo-dia-dos-pais.png"
-              alt="Presentão para o Papai"
+              className="pais-logo agosto-logo"
+              src="/campanhas/agosto-direcao/logo-agosto-direcao.webp"
+              alt="Agosto com Direção"
               loading="eager"
               decoding="async"
             />
             <span className="pais-logo-brilho" aria-hidden="true" />
           </div>
 
-          <span className="campanha-tag">Dia dos Pais Bússola</span>
-
-          <h2>Qual presente combina com o jeito do seu pai?</h2>
+          <h2>Escolha com direção.</h2>
 
           <p>
-            Responda uma pergunta simples, veja primeiro os presentes mais
-            certeiros e continue explorando todas as opções da campanha.
+            Responda uma pergunta e veja as melhores opções primeiro.
           </p>
 
           <div className="clube-acoes">
-            <a href="#guia-dia-dos-pais" className="btn-gold">
-              Encontrar presente
+            <a href="#guia-agosto-direcao" className="btn-gold">
+              Começar escolha
             </a>
 
             <a
               href={`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
-                "Olá! Quero ver as ofertas de Dia dos Pais da Bússola.",
+                "Olá! Quero ver as ofertas de Agosto com Direção da Bússola.",
               )}`}
               target="_blank"
               rel="noreferrer"
               className="btn-outline"
             >
-              Chamar no WhatsApp
+              WhatsApp
             </a>
-          </div>
-
-          <div className="pais-selos" aria-label="Destaques da campanha">
-            <span>Busca guiada</span>
-            <span>Presentes por perfil</span>
-            <span>Estoque limitado</span>
           </div>
         </div>
 
       </div>
 
-      <section className="guia-pais" id="guia-dia-dos-pais">
+      <section className="guia-pais" id="guia-agosto-direcao">
         <div className="guia-pais-palco">
           <div className="guia-pais-topo">
             <span className="catalogo-kicker">Guia de presentes</span>
-            <span className="guia-pais-chamada">Pergunta central da campanha</span>
-            <h3>Qual o perfil do seu pai?</h3>
+            <span className="guia-pais-chamada">Escolha a direção do presente</span>
+            <h3>O que você procura?</h3>
             <p>
-              Selecione o jeito que mais combina com ele e veja primeiro os
-              presentes mais certeiros. A vitrine completa continua disponível
-              para quem quiser explorar todas as opções.
+              Selecione a intenção que mais combina com a sua busca e veja
+              primeiro as sugestões mais certeiras. A vitrine completa continua
+              disponível para quem quiser explorar todas as opções.
             </p>
           </div>
 
           <div className="guia-pais-consultor">
             <div className="guia-pais-cabecalho">
               <span>Escolha guiada</span>
-              <strong>Comece pelo perfil e chegue mais rápido ao presente ideal.</strong>
+              <strong>Escolha uma intenção e chegue mais rápido ao presente ideal.</strong>
             </div>
 
             <button
@@ -466,21 +430,21 @@ export default function Campanha() {
               aria-controls="opcoes-perfil-pai"
               onClick={() => setPerfilMenuAberto((aberto) => !aberto)}
             >
-              <span>{perfilAtual ? "Perfil selecionado" : "Toque para responder"}</span>
-              <strong>{perfilAtual ? perfilAtual.nome : "Qual o perfil do seu pai?"}</strong>
+              <span>{perfilAtual ? "Direção selecionada" : "Toque para responder"}</span>
+              <strong>{perfilAtual ? perfilAtual.nome : "O que você procura?"}</strong>
               <small>
                 {perfilAtual
                   ? perfilAtual.chamada
-                  : "Abra a lista de perfis e escolha a opção que mais combina com ele."}
+                  : "Abra as opções e escolha a direção que mais combina com o que você procura."}
               </small>
-              <b>{perfilMenuAberto ? "Fechar opções" : "Ver perfis"}</b>
+              <b>{perfilMenuAberto ? "Fechar opções" : "Ver opções"}</b>
             </button>
 
             {perfilMenuAberto && (
               <div
                 className="guia-pais-opcoes"
                 id="opcoes-perfil-pai"
-                aria-label="Perfis de pai"
+                aria-label="Opções de busca"
               >
                 {perfisPais.map((perfil) => (
                   <button
@@ -503,7 +467,7 @@ export default function Campanha() {
           <div className="guia-pais-resultado">
             {perfilAtual ? (
               <>
-                <span>{totalRecomendados} recomendações para {perfilAtual.nome}</span>
+                <span>{totalRecomendados} opções para {perfilAtual.nome}</span>
                 <strong>{perfilAtual.direcao}</strong>
                 <button
                   type="button"
@@ -519,8 +483,8 @@ export default function Campanha() {
               <>
                 <span>Catálogo completo logo abaixo</span>
                 <strong>
-                  Escolha um perfil para a Bússola organizar primeiro os
-                  presentes que mais combinam com ele.
+                  Escolha uma opção para a Bússola organizar primeiro os
+                  produtos que mais combinam com o que você procura.
                 </strong>
               </>
             )}
@@ -530,17 +494,17 @@ export default function Campanha() {
             <span>Próximo passo</span>
             <strong>
               {perfilAtual
-                ? "As recomendações aparecem primeiro, mas todas as opções continuam disponíveis para comparar."
-                : "A escolha guiada não limita a vitrine. Ela apenas ajuda o cliente a começar melhor."}
+                ? "As sugestões aparecem primeiro, mas todas as opções continuam disponíveis para comparar."
+                : "A escolha guiada não limita a vitrine. Ela apenas ajuda você a começar melhor."}
             </strong>
-            <a href="#catalogo-dia-dos-pais">Ver catálogo completo</a>
+            <a href="#catalogo-agosto-direcao">Ver catálogo completo</a>
           </div>
         </div>
       </section>
 
       <section
-        className="catalogo-sao-joao catalogo-dia-dos-pais"
-        id="catalogo-dia-dos-pais"
+        className="catalogo-sao-joao catalogo-agosto-direcao"
+        id="catalogo-agosto-direcao"
       >
         <div
           className="catalogo-abas"
@@ -579,7 +543,7 @@ export default function Campanha() {
               <span>Buscar oferta</span>
               <input
                 type="search"
-                placeholder="Ex.: perfume, smartwatch, pai prático..."
+                placeholder="Ex.: presente infantil, perfume feminino, surpresa..."
                 value={buscaCatalogo}
                 onChange={(event) => setBuscaCatalogo(event.target.value)}
               />
@@ -589,7 +553,7 @@ export default function Campanha() {
           {perfilAtual && (
             <div className="catalogo-prioridade">
               <span>
-                Mostrando primeiro presentes para <strong>{perfilAtual.nome}</strong>.
+                Mostrando primeiro opções para <strong>{perfilAtual.nome}</strong>.
               </span>
               <button type="button" onClick={() => setPerfilSelecionado("")}>
                 Limpar escolha
@@ -627,7 +591,7 @@ export default function Campanha() {
                 >
                   <div className="produto-imagem produto-imagem-contain">
                     {produtoRecomendado && (
-                      <span className="produto-match">Combina com o perfil</span>
+                      <span className="produto-match">Combina com sua busca</span>
                     )}
                     <img
                       src={produto.image}
@@ -748,13 +712,13 @@ export default function Campanha() {
     <section className="campanha clube-bussola" id="campanha">
       <div className="clube-hero">
         <div className="clube-hero-texto">
-          <span className="campanha-tag">Dia dos Pais no Clube Bússola</span>
+          <span className="campanha-tag">Agosto com Direção no Clube Bússola</span>
 
           <h2>Compre, indique, acompanhe sua evolução e desbloqueie benefícios.</h2>
 
           <p>
             O Clube Bússola nasce como um programa de relacionamento para
-            cashback, indicações, recompra e campanhas sazonais. No Dia dos Pais, o
+            cashback, indicações, recompra e campanhas sazonais. No Agosto com Direção, o
             cliente já entra entendendo que cada compra pode aproximar de novas
             recompensas.
           </p>
@@ -764,8 +728,8 @@ export default function Campanha() {
               Entrar no Clube
             </a>
 
-            <a href="#catalogo-dia-dos-pais" className="btn-outline">
-              Ver ofertas de Dia dos Pais
+            <a href="#catalogo-agosto-direcao" className="btn-outline">
+              Ver ofertas de Agosto com Direção
             </a>
 
             <a href="#clube-niveis" className="btn-outline">
@@ -932,7 +896,7 @@ export default function Campanha() {
 
       <section className="clube-cadastro" id="clube-cadastro">
         <div className="clube-cadastro-texto">
-          <span className="catalogo-kicker">Pré-cadastro Dia dos Pais</span>
+          <span className="catalogo-kicker">Pré-cadastro Agosto com Direção</span>
           <h3>Comece pelo Drive agora. Depois evoluímos para login real.</h3>
           <p>
             Este formulário já está preparado para enviar dados para uma
@@ -1005,13 +969,13 @@ export default function Campanha() {
       </section>
 
       <section
-        className="catalogo-sao-joao catalogo-dia-dos-pais"
-        id="catalogo-dia-dos-pais"
+        className="catalogo-sao-joao catalogo-agosto-direcao"
+        id="catalogo-agosto-direcao"
       >
         <div className="catalogo-topo">
           <div>
-            <span className="catalogo-kicker">Presentão para o Papai</span>
-            <h3>Presentes guiados pelo jeito do seu pai</h3>
+            <span className="catalogo-kicker">Agosto com Direção</span>
+            <h3>Presentes guiados pelo que você procura</h3>
             <p>
               Escolha um perfil para ver primeiro as opções que mais combinam,
               sem perder o acesso ao catálogo completo.
@@ -1022,15 +986,15 @@ export default function Campanha() {
             <span>Buscar oferta</span>
             <input
               type="search"
-              placeholder="Ex.: perfume, smartwatch, pai prático..."
+              placeholder="Ex.: presente infantil, perfume feminino, surpresa..."
               value={buscaCatalogo}
               onChange={(event) => setBuscaCatalogo(event.target.value)}
             />
           </label>
         </div>
 
-        <div className="catalogo-filtros" aria-label="Filtros do catálogo de Dia dos Pais">
-          {catalogos.diaDosPais.filtros.map((filtro) => (
+        <div className="catalogo-filtros" aria-label="Filtros do catálogo de Agosto com Direção">
+          {catalogos.agostoDirecao.filtros.map((filtro) => (
             <button
               type="button"
               key={filtro.value}
