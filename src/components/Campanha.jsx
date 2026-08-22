@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 // Edite titulos, precos e legendas nos arquivos dentro de src/data.
 // O arquivo src/data/README.md explica cada campo e o caminho das imagens.
 import produtosAgostoDirecao from "../data/agostoDirecaoCatalogo.json";
+import ofertasEspeciais from "../data/condicoesEspeciaisCatalogo.json";
 import "./campanha.css";
 
 // Numero oficial da loja no formato internacional exigido pelo WhatsApp.
@@ -126,6 +127,10 @@ const categoriasCatalogo = {
   tecnologia: "Tecnologia",
 };
 
+// A primeira oferta vira o palco principal; as demais entram na vitrine rápida.
+const ofertaPrincipal = ofertasEspeciais[0];
+const ofertasRapidas = ofertasEspeciais.slice(1);
+
 /*
  * O Clube Bússola continua abaixo deste catálogo, preservado e oculto pela
  * constante EXIBIR_CLUBE_BUSSOLA. Antes de reativá-lo, alinhar as regras com
@@ -159,6 +164,12 @@ function criarLinkProduto(produto) {
   const mensagem = `Olá! Vim pela campanha de Agosto com Direção da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
 
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
+}
+
+// Alguns produtos de condição especial têm duas artes. Este helper deixa
+// cards e modal usando a mesma regra sem duplicar condicionais no JSX.
+function imagensProduto(produto) {
+  return produto?.images?.length ? produto.images : [produto.image];
 }
 
 // Gera um codigo demonstrativo de indicacao a partir do nome digitado.
@@ -385,24 +396,126 @@ export default function Campanha() {
           </p>
 
           <div className="clube-acoes">
-            <a href="#guia-agosto-direcao" className="btn-gold">
-              Começar escolha
+            <a href="#condicoes-especiais" className="btn-gold">
+              Ver condições especiais
             </a>
 
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
-                "Olá! Quero ver as ofertas de Agosto com Direção da Bússola.",
-              )}`}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-outline"
-            >
-              WhatsApp
+            <a href="#guia-agosto-direcao" className="btn-outline">
+              Escolha guiada
             </a>
           </div>
         </div>
 
       </div>
+
+      <section
+        className="condicoes-especiais"
+        id="condicoes-especiais"
+        aria-labelledby="condicoes-especiais-titulo"
+      >
+        <div className="condicoes-topo">
+          <span className="catalogo-kicker">Condições especiais</span>
+          <h3 id="condicoes-especiais-titulo">
+            Oportunidades para decidir antes que acabem.
+          </h3>
+          <p>
+            Produtos selecionados com preço de ação para girar rápido. Comece
+            por aqui, garanta a condição e depois explore a busca guiada.
+          </p>
+        </div>
+
+        {ofertaPrincipal && (
+          <div className="condicoes-palco">
+            <article className="condicao-principal">
+              <div className="condicao-principal-media">
+                <img
+                  src={ofertaPrincipal.image}
+                  alt={ofertaPrincipal.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="condicao-principal-info">
+                <span>{ofertaPrincipal.badge}</span>
+                <h4>{ofertaPrincipal.title}</h4>
+                <p>{ofertaPrincipal.summary}</p>
+
+                <div className="condicao-preco">
+                  {ofertaPrincipal.oldPrice && <del>{ofertaPrincipal.oldPrice}</del>}
+                  <strong>{ofertaPrincipal.price}</strong>
+                </div>
+
+                <div className="condicao-acoes">
+                  <a
+                    href={criarLinkProduto(ofertaPrincipal)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="produto-whatsapp"
+                  >
+                    Quero garantir
+                  </a>
+
+                  <button
+                    type="button"
+                    className="produto-detalhes"
+                    onClick={() => setProdutoAberto(ofertaPrincipal)}
+                  >
+                    Ler detalhes
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <div className="condicoes-lista" aria-label="Produtos em condição especial">
+              {ofertasRapidas.map((produto) => {
+                const imagens = imagensProduto(produto);
+
+                return (
+                  <article className="condicao-card" key={produto.numero}>
+                    <button
+                      type="button"
+                      className={`condicao-card-media ${
+                        imagens.length > 1 ? "tem-variantes" : ""
+                      }`}
+                      onClick={() => setProdutoAberto(produto)}
+                    >
+                      <img
+                        src={imagens[0]}
+                        alt={produto.alt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+
+                      {imagens.length > 1 && <span>{imagens.length} versões</span>}
+                    </button>
+
+                    <div className="condicao-card-info">
+                      <span>{produto.badge}</span>
+                      <h4>{produto.title}</h4>
+                      <p>{produto.summary}</p>
+
+                      <div className="condicao-card-preco">
+                        {produto.oldPrice && <del>{produto.oldPrice}</del>}
+                        <strong>{produto.price}</strong>
+                      </div>
+
+                      <a
+                        href={criarLinkProduto(produto)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="produto-whatsapp"
+                      >
+                        Chamar agora
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </section>
 
       <section className="guia-pais" id="guia-agosto-direcao">
         <div className="guia-pais-palco">
@@ -683,7 +796,19 @@ export default function Campanha() {
               ×
             </button>
 
-            <img src={produtoAberto.image} alt={produtoAberto.alt} />
+            <div
+              className={`produto-modal-galeria ${
+                imagensProduto(produtoAberto).length > 1 ? "tem-variantes" : ""
+              }`}
+            >
+              {imagensProduto(produtoAberto).map((imagem, index) => (
+                <img
+                  src={imagem}
+                  alt={`${produtoAberto.alt} ${index + 1}`}
+                  key={imagem}
+                />
+              ))}
+            </div>
 
             <div className="produto-modal-info">
               <span className="produto-categoria">
@@ -1081,7 +1206,19 @@ export default function Campanha() {
               ×
             </button>
 
-            <img src={produtoAberto.image} alt={produtoAberto.alt} />
+            <div
+              className={`produto-modal-galeria ${
+                imagensProduto(produtoAberto).length > 1 ? "tem-variantes" : ""
+              }`}
+            >
+              {imagensProduto(produtoAberto).map((imagem, index) => (
+                <img
+                  src={imagem}
+                  alt={`${produtoAberto.alt} ${index + 1}`}
+                  key={imagem}
+                />
+              ))}
+            </div>
 
             <div className="produto-modal-info">
               <span className="produto-categoria">{produtoAberto.category}</span>

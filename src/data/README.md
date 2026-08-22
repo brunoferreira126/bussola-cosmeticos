@@ -8,6 +8,9 @@ que possam ser alterados sem procurar dentro do componente visual.
 - `saoJoaoCatalogo.json`: produtos exibidos na aba **São João**.
 - `oportunidadesCatalogo.json`: produtos exibidos na aba **Oportunidades**.
 - `diaDosPaisCatalogo.json`: produtos exibidos na campanha **Dia dos Pais**.
+- `agostoDirecaoCatalogo.json`: produtos do catálogo principal da campanha atual.
+- `condicoesEspeciaisCatalogo.json`: produtos em condição especial exibidos
+  logo no começo da landing page.
 
 ## Como alterar uma legenda
 
@@ -22,9 +25,13 @@ que possam ser alterados sem procurar dentro do componente visual.
 - `numero`: ordem do produto no catálogo.
 - `title`: nome exibido no card e no modal.
 - `price`: preço destacado no card.
+- `oldPrice`: preço anterior, usado apenas quando a oferta tem comparação.
+- `badge`: selo curto exibido nos produtos em condição especial.
 - `category`: filtro ao qual o produto pertence.
 - `profiles`: perfis da busca guiada em que o produto aparece primeiro.
 - `image`: caminho da imagem dentro da pasta `public/campanhas`.
+- `images`: lista de imagens quando uma mesma linha de produto tem mais de
+  uma arte.
 - `alt`: descrição curta da imagem para acessibilidade.
 - `summary`: texto curto exibido no card do produto.
 - `description`: legenda completa aberta pelo botão de detalhes.
@@ -52,6 +59,8 @@ Use estes valores dentro de `profiles` para controlar a busca guiada:
 
 O catálogo ativo da campanha fica em `agostoDirecaoCatalogo.json`.
 As imagens otimizadas ficam em `/public/campanhas/agosto-direcao/`.
+As condições especiais ficam em `condicoesEspeciaisCatalogo.json`, com imagens
+em `/public/campanhas/condicoes-especiais/`.
 Para alterar título, preço, resumo, descrição, categoria ou opções do guia,
 edite o JSON e mantenha os campos `profiles` alinhados com as opções de
 "O que você procura?" em `Campanha.jsx`.
