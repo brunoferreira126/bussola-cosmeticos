@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 // MANUTENCAO DOS CATALOGOS:
 // Edite titulos, precos e legendas nos arquivos dentro de src/data.
 // O arquivo src/data/README.md explica cada campo e o caminho das imagens.
-import produtosAgostoDirecao from "../data/agostoDirecaoCatalogo.json";
+import produtosMesCliente from "../data/mesClienteCatalogo.json";
 import "./campanha.css";
 
 // Numero oficial da loja no formato internacional exigido pelo WhatsApp.
@@ -47,84 +47,100 @@ const menuCliente = [
 // Cada aba controla seus próprios textos, produtos e filtros. Centralizar essa
 // configuração evita duplicar a grade e o modal de produtos no JSX.
 const catalogos = {
-  agostoDirecao: {
-    label: "Agosto com Direção",
-    kicker: "Agosto com Direção",
-    titulo: "Presentes guiados pelo que você procura",
+  mesCliente: {
+    label: "Mês do Cliente",
+    kicker: "Mês do Cliente",
+    titulo: "Escolha pelo que faz sentido para você",
     descricao:
-      "Escolha uma intenção para ver primeiro as opções que mais combinam, sem perder o acesso ao catálogo completo.",
-    produtos: produtosAgostoDirecao,
+      "A vitrine organiza primeiro as opções que combinam com sua intenção: perfume, presente, autocuidado, benefícios e achados até R$ 100.",
+    produtos: produtosMesCliente,
     filtros: [
       { label: "Todos", value: "todos" },
       { label: "Perfumaria", value: "perfumaria" },
       { label: "Presentes", value: "presentes" },
-      { label: "Infantil", value: "infantil" },
-      { label: "Cuidados", value: "cuidados" },
+      { label: "Autocuidado", value: "autocuidado" },
       { label: "Acessórios", value: "acessorios" },
+      { label: "Infantil", value: "infantil" },
     ],
   },
 };
 
 // A ordem deste array também define a ordem visual das abas.
 const abasCatalogo = [
-  { label: "Agosto com Direção", value: "agostoDirecao" },
+  { label: "Mês do Cliente", value: "mesCliente" },
 ];
 
-// Perfis usados na busca guiada. O value deve bater com o campo profiles do JSON.
-const perfisPais = [
+// Opções da busca guiada. O value deve bater com o campo profiles do JSON.
+const opcoesBuscaCliente = [
   {
-    value: "surpreender",
-    nome: "Surpreender quem ama",
-    chamada: "Presentes com presença, carinho e memória",
-    texto: "Flores, cestas e combinações especiais para transformar o gesto em surpresa.",
-    direcao: "Flores de cetim, cestas personalizadas, chocolates e perfumes prontos para encantar.",
+    value: "perfume",
+    nome: "Um perfume para marcar presença",
+    chamada: "Fragrâncias escolhidas pelo estilo e pela ocasião",
+    texto: "Perfumes femininos, masculinos e linhas especiais para quem quer se sentir bem lembrado.",
+    direcao: "A Bússola mostra primeiro fragrâncias de presença, opções sofisticadas e oportunidades com ótimo valor.",
   },
   {
-    value: "infantil",
-    nome: "Presente infantil",
-    chamada: "Mimos delicados para crianças e bebês",
-    texto: "Kits suaves, práticos e bonitos para presentear com cuidado.",
-    direcao: "Colônias, kits infantis, cuidados para cabelo e nécessaires para a rotina dos pequenos.",
+    value: "presente",
+    nome: "Um presente para alguém especial",
+    chamada: "Escolhas prontas para encantar sem perder tempo",
+    texto: "Kits, estojos e combinações com boa apresentação para transformar o gesto em carinho.",
+    direcao: "As primeiras opções priorizam kits completos, presentes prontos e produtos com aparência de presente especial.",
   },
   {
-    value: "presente-pronto",
-    nome: "Presente pronto",
-    chamada: "Escolhas certeiras para quem está sem ideia",
-    texto: "Combinações já montadas para comprar sem complicação.",
-    direcao: "Estojos, cestas e kits completos que facilitam a escolha e já chegam com boa apresentação.",
+    value: "autocuidado",
+    nome: "Algo para cuidar de mim",
+    chamada: "Rotina mais cheirosa, prática e gostosa",
+    texto: "Hidratantes, sabonetes, linhas de cabelo, body splash e cuidados para usar todos os dias.",
+    direcao: "A vitrine começa por combos de autocuidado, linhas corporais e produtos que valorizam a rotina.",
   },
   {
-    value: "perfume-feminino",
-    nome: "Perfume feminino até R$ 149",
-    chamada: "Fragrâncias femininas com ótimo custo-benefício",
-    texto: "Opções para autoestima, presença e rotina.",
-    direcao: "Fragrâncias femininas em condição especial para presentear ou renovar a coleção.",
+    value: "ate-100",
+    nome: "Uma oportunidade até R$ 100",
+    chamada: "Boas escolhas com preço fácil de decidir",
+    texto: "Produtos com valor acessível, benefícios de leve dois e achados para comprar agora.",
+    direcao: "As sugestões até R$ 100 aparecem primeiro para facilitar a compra rápida sem abrir mão de qualidade.",
   },
   {
-    value: "perfume-masculino",
-    nome: "Perfume masculino até R$ 149",
-    chamada: "Presença masculina sem passar do orçamento",
-    texto: "Perfumes marcantes, práticos e fáceis de acertar.",
-    direcao: "Fragrâncias masculinas de presença para rotina, trabalho e ocasiões especiais.",
+    value: "beneficio",
+    nome: "Uma condição realmente vantajosa",
+    chamada: "Produtos com bônus, leve dois ou economia clara",
+    texto: "Opções pensadas para o cliente sentir que aproveitou uma oportunidade de verdade.",
+    direcao: "A Bússola destaca ofertas com benefício percebido, combos especiais e oportunidades que fazem o dinheiro render.",
   },
   {
-    value: "se-presentear",
-    nome: "Quero me presentear",
-    chamada: "Escolhas para valorizar você",
-    texto: "Perfumes e acessórios para autocuidado, estilo e conquista pessoal.",
-    direcao: "Fragrâncias, relógios e acessórios para quem decidiu escolher a si mesmo também.",
+    value: "impacto",
+    nome: "Algo para impressionar",
+    chamada: "Presentes e produtos com mais presença visual",
+    texto: "Linhas premium, perfumes árabes, relógios e escolhas com maior percepção de valor.",
+    direcao: "Os produtos de impacto aparecem primeiro para quem quer uma compra marcante e com aparência sofisticada.",
+  },
+  {
+    value: "rotina",
+    nome: "Algo útil para o dia a dia",
+    chamada: "Itens funcionais que acompanham a rotina",
+    texto: "Acessórios, cuidados práticos e produtos fáceis de usar em casa, no trabalho ou na viagem.",
+    direcao: "A seleção prioriza itens versáteis, funcionais e fáceis de encaixar na rotina.",
   },
 ];
 
 // Tradução visual dos slugs usados no JSON para rótulos melhores nos cards.
 const categoriasCatalogo = {
   acessorios: "Acessórios",
+  autocuidado: "Autocuidado",
   cuidados: "Cuidados",
   infantil: "Infantil",
   perfumaria: "Perfumaria",
   presentes: "Presentes",
   tecnologia: "Tecnologia",
 };
+
+// Produtos marcados como destaque no JSON abrem a página com intenção de venda rápida.
+// O primeiro destaque vira a peça principal; os demais formam a vitrine de decisão.
+const destaquesMesCliente = produtosMesCliente.filter((produto) => produto.highlight);
+const destaquePrincipalCliente = destaquesMesCliente[0] || produtosMesCliente[0];
+const destaquesRapidosCliente = destaquesMesCliente
+  .filter((produto) => produto.numero !== destaquePrincipalCliente?.numero)
+  .slice(0, 9);
 
 /*
  * O Clube Bússola continua abaixo deste catálogo, preservado e oculto pela
@@ -150,15 +166,21 @@ function criarMensagemCadastro(dados) {
     `Cidade: ${dados.cidade || "Não informado"}`,
     `Nascimento: ${dados.nascimento || "Não informado"}`,
     "",
-    "Vim pela campanha de Agosto com Direção da Bússola.",
+    "Vim pela campanha do Mês do Cliente da Bússola.",
   ].join("\n");
 }
 
 // Monta a mensagem de compra para produtos de qualquer uma das abas.
 function criarLinkProduto(produto) {
-  const mensagem = `Olá! Vim pela campanha de Agosto com Direção da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
+  const mensagem = `Olá! Vim pela campanha do Mês do Cliente da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
 
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
+}
+
+// Alguns produtos de condição especial têm duas artes. Este helper deixa
+// cards e modal usando a mesma regra sem duplicar condicionais no JSX.
+function imagensProduto(produto) {
+  return produto?.images?.length ? produto.images : [produto.image];
 }
 
 // Gera um codigo demonstrativo de indicacao a partir do nome digitado.
@@ -176,7 +198,7 @@ function gerarCodigoIndicacao(nome) {
 
 export default function Campanha() {
   // Define qual conjunto de produtos está visível sem trocar de página.
-  const [abaCatalogo, setAbaCatalogo] = useState("agostoDirecao");
+  const [abaCatalogo, setAbaCatalogo] = useState("mesCliente");
 
   // Busca digitada pelo cliente dentro da aba ativa.
   const [buscaCatalogo, setBuscaCatalogo] = useState("");
@@ -221,7 +243,7 @@ export default function Campanha() {
   const catalogoAtual = catalogos[abaCatalogo];
 
   // Dados completos do perfil escolhido na busca guiada.
-  const perfilAtual = perfisPais.find((perfil) => perfil.value === perfilSelecionado);
+  const perfilAtual = opcoesBuscaCliente.find((perfil) => perfil.value === perfilSelecionado);
 
   // Conta quantas opções combinam com o perfil para reforçar a sensação de curadoria.
   const totalRecomendados = perfilSelecionado
@@ -283,7 +305,7 @@ export default function Campanha() {
     setProdutoAberto(null);
   }
 
-  function selecionarPerfilPai(perfil) {
+  function selecionarPerfilCompra(perfil) {
     setPerfilSelecionado(perfil);
     setPerfilMenuAberto(false);
     setBuscaCatalogo("");
@@ -292,7 +314,7 @@ export default function Campanha() {
 
     window.setTimeout(() => {
       document
-        .getElementById("catalogo-agosto-direcao")
+        .getElementById("catalogo-mes-cliente")
         ?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 80);
   }
@@ -313,7 +335,7 @@ export default function Campanha() {
 
     const payload = {
       ...formulario,
-      origem: "Campanha Agosto com Direção - Clube Bússola",
+      origem: "Campanha Mês do Cliente - Clube Bússola",
       codigoIndicacao,
       dataCadastro: new Date().toISOString(),
     };
@@ -353,7 +375,7 @@ export default function Campanha() {
     A estrutura de Clube Bussola, dashboard demonstrativo, indicacoes,
     cashback, formulario com Apps Script e documentacao do Drive continuam no
     projeto para retomarmos depois. Por agora, a landing page mostra somente a
-    campanha/catalogo de Agosto com Direção, que e a prioridade comercial imediata.
+    campanha/catalogo do Mês do Cliente, que e a prioridade comercial imediata.
 
     Importante para a proxima alteracao:
     antes de mexer novamente nessa secao, perguntar ao Bruno o que faremos com
@@ -361,81 +383,188 @@ export default function Campanha() {
   */
 
   if (!EXIBIR_CLUBE_BUSSOLA) return (
-    <section className="campanha clube-bussola" id="campanha">
-      <div className="clube-hero campanha-agosto-direcao-hero">
-        <div className="pais-overlay" />
+    <section className="campanha clube-bussola mes-cliente-campanha" id="campanha">
+      <div className="clube-hero campanha-mes-cliente-hero">
+        <div className="pais-overlay cliente-overlay" />
 
         <div className="clube-hero-texto">
-          <div className="pais-logo-area agosto-logo-area">
-            {/* Logo oficial da campanha: PNG enviado pelo cliente com animação leve. */}
+          <div className="pais-logo-area cliente-logo-area">
+            {/* Logo oficial do Mês do Cliente, otimizada em WebP para abrir leve. */}
             <img
-              className="pais-logo agosto-logo"
-              src="/campanhas/agosto-direcao/logo-agosto-direcao.webp"
-              alt="Agosto com Direção"
+              className="pais-logo cliente-logo"
+              src="/campanhas/mes-cliente/logo-mes-cliente.webp"
+              alt="Mês do Cliente Bússola"
               loading="eager"
               decoding="async"
             />
-            <span className="pais-logo-brilho" aria-hidden="true" />
+            <span className="pais-logo-brilho cliente-logo-brilho" aria-hidden="true" />
           </div>
 
-          <h2>Escolha com direção.</h2>
+          <span className="campanha-tag">Mês do Cliente Bússola</span>
+          <h2>Seu estilo, seu momento, nossa prioridade.</h2>
 
           <p>
-            Responda uma pergunta e veja as melhores opções primeiro.
+            Uma curadoria para comprar melhor: escolha o que procura, veja as
+            oportunidades certas primeiro e siga com acesso ao catálogo completo.
           </p>
 
           <div className="clube-acoes">
-            <a href="#guia-agosto-direcao" className="btn-gold">
-              Começar escolha
+            <a href="#vitrine-mes-cliente" className="btn-gold">
+              Ver destaques
             </a>
 
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
-                "Olá! Quero ver as ofertas de Agosto com Direção da Bússola.",
-              )}`}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-outline"
-            >
-              WhatsApp
+            <a href="#guia-mes-cliente" className="btn-outline">
+              Escolha guiada
             </a>
           </div>
         </div>
-
       </div>
 
-      <section className="guia-pais" id="guia-agosto-direcao">
+      <section
+        className="condicoes-especiais mes-cliente-vitrine"
+        id="vitrine-mes-cliente"
+        aria-labelledby="vitrine-mes-cliente-titulo"
+      >
+        <div className="condicoes-topo">
+          <span className="catalogo-kicker">Vitrine do cliente</span>
+          <h3 id="vitrine-mes-cliente-titulo">
+            Comece pelas oportunidades que merecem atenção agora.
+          </h3>
+          <p>
+            Produtos com benefício real, preço fácil de decidir e escolhas que
+            entregam presente, autocuidado e presença sem pesar na experiência.
+          </p>
+        </div>
+
+        {destaquePrincipalCliente && (
+          <div className="condicoes-palco cliente-destaques-palco">
+            <article className="condicao-principal cliente-destaque-principal">
+              <div className="condicao-principal-media cliente-destaque-media">
+                <img
+                  src={destaquePrincipalCliente.image}
+                  alt={destaquePrincipalCliente.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="condicao-principal-info">
+                <span>{destaquePrincipalCliente.badge}</span>
+                <h4>{destaquePrincipalCliente.title}</h4>
+                <p>{destaquePrincipalCliente.summary}</p>
+
+                <div className="condicao-preco">
+                  {destaquePrincipalCliente.oldPrice && (
+                    <del>{destaquePrincipalCliente.oldPrice}</del>
+                  )}
+                  <strong>{destaquePrincipalCliente.price}</strong>
+                </div>
+
+                <div className="condicao-acoes">
+                  <a
+                    href={criarLinkProduto(destaquePrincipalCliente)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="produto-whatsapp"
+                  >
+                    Quero aproveitar
+                  </a>
+
+                  <button
+                    type="button"
+                    className="produto-detalhes"
+                    onClick={() => setProdutoAberto(destaquePrincipalCliente)}
+                  >
+                    Ler detalhes
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <div
+              className="condicoes-lista cliente-destaques-lista"
+              aria-label="Destaques do Mês do Cliente"
+            >
+              {destaquesRapidosCliente.map((produto) => {
+                const imagens = imagensProduto(produto);
+
+                return (
+                  <article className="condicao-card cliente-destaque-card" key={produto.numero}>
+                    <button
+                      type="button"
+                      className={`condicao-card-media ${
+                        imagens.length > 1 ? "tem-variantes" : ""
+                      }`}
+                      onClick={() => setProdutoAberto(produto)}
+                    >
+                      <img
+                        src={imagens[0]}
+                        alt={produto.alt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+
+                      {imagens.length > 1 && <span>{imagens.length} versões</span>}
+                    </button>
+
+                    <div className="condicao-card-info">
+                      <span>{produto.badge}</span>
+                      <h4>{produto.title}</h4>
+                      <p>{produto.summary}</p>
+
+                      <div className="condicao-card-preco">
+                        {produto.oldPrice && <del>{produto.oldPrice}</del>}
+                        <strong>{produto.price}</strong>
+                      </div>
+
+                      <a
+                        href={criarLinkProduto(produto)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="produto-whatsapp"
+                      >
+                        Chamar agora
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </section>
+
+      <section className="guia-pais guia-mes-cliente" id="guia-mes-cliente">
         <div className="guia-pais-palco">
           <div className="guia-pais-topo">
-            <span className="catalogo-kicker">Guia de presentes</span>
-            <span className="guia-pais-chamada">Escolha a direção do presente</span>
+            <span className="catalogo-kicker">Busca guiada</span>
+            <span className="guia-pais-chamada">A Bússola começa pela sua intenção</span>
             <h3>O que você procura?</h3>
             <p>
-              Selecione a intenção que mais combina com a sua busca e veja
-              primeiro as sugestões mais certeiras. A vitrine completa continua
-              disponível para quem quiser explorar todas as opções.
+              Selecione uma intenção e o catálogo reorganiza as sugestões mais
+              relevantes para aparecerem primeiro, sem esconder as demais opções.
             </p>
           </div>
 
           <div className="guia-pais-consultor">
             <div className="guia-pais-cabecalho">
-              <span>Escolha guiada</span>
-              <strong>Escolha uma intenção e chegue mais rápido ao presente ideal.</strong>
+              <span>Curadoria inteligente</span>
+              <strong>Escolha uma intenção e chegue mais rápido ao produto certo.</strong>
             </div>
 
             <button
               type="button"
               className="guia-pais-trigger"
               aria-expanded={perfilMenuAberto}
-              aria-controls="opcoes-perfil-pai"
+              aria-controls="opcoes-mes-cliente"
               onClick={() => setPerfilMenuAberto((aberto) => !aberto)}
             >
-              <span>{perfilAtual ? "Direção selecionada" : "Toque para responder"}</span>
+              <span>{perfilAtual ? "Intenção selecionada" : "Toque para responder"}</span>
               <strong>{perfilAtual ? perfilAtual.nome : "O que você procura?"}</strong>
               <small>
                 {perfilAtual
                   ? perfilAtual.chamada
-                  : "Abra as opções e escolha a direção que mais combina com o que você procura."}
+                  : "Abra as opções e escolha o tipo de compra que mais combina com este momento."}
               </small>
               <b>{perfilMenuAberto ? "Fechar opções" : "Ver opções"}</b>
             </button>
@@ -443,15 +572,15 @@ export default function Campanha() {
             {perfilMenuAberto && (
               <div
                 className="guia-pais-opcoes"
-                id="opcoes-perfil-pai"
-                aria-label="Opções de busca"
+                id="opcoes-mes-cliente"
+                aria-label="Opções da busca guiada"
               >
-                {perfisPais.map((perfil) => (
+                {opcoesBuscaCliente.map((perfil) => (
                   <button
                     type="button"
                     key={perfil.value}
                     className={perfilSelecionado === perfil.value ? "ativo" : ""}
-                    onClick={() => selecionarPerfilPai(perfil.value)}
+                    onClick={() => selecionarPerfilCompra(perfil.value)}
                   >
                     <span>{perfil.nome}</span>
                     <strong>{perfil.chamada}</strong>
@@ -476,15 +605,15 @@ export default function Campanha() {
                     setPerfilMenuAberto(false);
                   }}
                 >
-                  Limpar perfil
+                  Limpar escolha
                 </button>
               </>
             ) : (
               <>
                 <span>Catálogo completo logo abaixo</span>
                 <strong>
-                  Escolha uma opção para a Bússola organizar primeiro os
-                  produtos que mais combinam com o que você procura.
+                  A escolha guiada funciona como uma vitrine pessoal: ela muda a
+                  ordem dos produtos, mas mantém todas as opções disponíveis.
                 </strong>
               </>
             )}
@@ -494,17 +623,17 @@ export default function Campanha() {
             <span>Próximo passo</span>
             <strong>
               {perfilAtual
-                ? "As sugestões aparecem primeiro, mas todas as opções continuam disponíveis para comparar."
-                : "A escolha guiada não limita a vitrine. Ela apenas ajuda você a começar melhor."}
+                ? "As sugestões compatíveis aparecem primeiro para acelerar a decisão."
+                : "Comece pela intenção ou desça direto para comparar o catálogo completo."}
             </strong>
-            <a href="#catalogo-agosto-direcao">Ver catálogo completo</a>
+            <a href="#catalogo-mes-cliente">Ver catálogo completo</a>
           </div>
         </div>
       </section>
 
       <section
-        className="catalogo-sao-joao catalogo-agosto-direcao"
-        id="catalogo-agosto-direcao"
+        className="catalogo-sao-joao catalogo-mes-cliente"
+        id="catalogo-mes-cliente"
       >
         <div
           className="catalogo-abas"
@@ -543,7 +672,7 @@ export default function Campanha() {
               <span>Buscar oferta</span>
               <input
                 type="search"
-                placeholder="Ex.: perfume, infantil, surpresa..."
+                placeholder="Ex.: perfume, presente, refil, até 100..."
                 value={buscaCatalogo}
                 onChange={(event) => setBuscaCatalogo(event.target.value)}
               />
@@ -683,7 +812,19 @@ export default function Campanha() {
               ×
             </button>
 
-            <img src={produtoAberto.image} alt={produtoAberto.alt} />
+            <div
+              className={`produto-modal-galeria ${
+                imagensProduto(produtoAberto).length > 1 ? "tem-variantes" : ""
+              }`}
+            >
+              {imagensProduto(produtoAberto).map((imagem, index) => (
+                <img
+                  src={imagem}
+                  alt={`${produtoAberto.alt} ${index + 1}`}
+                  key={imagem}
+                />
+              ))}
+            </div>
 
             <div className="produto-modal-info">
               <span className="produto-categoria">
@@ -712,13 +853,13 @@ export default function Campanha() {
     <section className="campanha clube-bussola" id="campanha">
       <div className="clube-hero">
         <div className="clube-hero-texto">
-          <span className="campanha-tag">Agosto com Direção no Clube Bússola</span>
+          <span className="campanha-tag">Mês do Cliente no Clube Bússola</span>
 
           <h2>Compre, indique, acompanhe sua evolução e desbloqueie benefícios.</h2>
 
           <p>
             O Clube Bússola nasce como um programa de relacionamento para
-            cashback, indicações, recompra e campanhas sazonais. No Agosto com Direção, o
+            cashback, indicações, recompra e campanhas sazonais. No Mês do Cliente, o
             cliente já entra entendendo que cada compra pode aproximar de novas
             recompensas.
           </p>
@@ -728,8 +869,8 @@ export default function Campanha() {
               Entrar no Clube
             </a>
 
-            <a href="#catalogo-agosto-direcao" className="btn-outline">
-              Ver ofertas de Agosto com Direção
+            <a href="#catalogo-mes-cliente" className="btn-outline">
+              Ver ofertas de Mês do Cliente
             </a>
 
             <a href="#clube-niveis" className="btn-outline">
@@ -896,7 +1037,7 @@ export default function Campanha() {
 
       <section className="clube-cadastro" id="clube-cadastro">
         <div className="clube-cadastro-texto">
-          <span className="catalogo-kicker">Pré-cadastro Agosto com Direção</span>
+          <span className="catalogo-kicker">Pré-cadastro Mês do Cliente</span>
           <h3>Comece pelo Drive agora. Depois evoluímos para login real.</h3>
           <p>
             Este formulário já está preparado para enviar dados para uma
@@ -969,12 +1110,12 @@ export default function Campanha() {
       </section>
 
       <section
-        className="catalogo-sao-joao catalogo-agosto-direcao"
-        id="catalogo-agosto-direcao"
+        className="catalogo-sao-joao catalogo-mes-cliente"
+        id="catalogo-mes-cliente"
       >
         <div className="catalogo-topo">
           <div>
-            <span className="catalogo-kicker">Agosto com Direção</span>
+            <span className="catalogo-kicker">Mês do Cliente</span>
             <h3>Presentes guiados pelo que você procura</h3>
             <p>
               Escolha um perfil para ver primeiro as opções que mais combinam,
@@ -993,8 +1134,8 @@ export default function Campanha() {
           </label>
         </div>
 
-        <div className="catalogo-filtros" aria-label="Filtros do catálogo de Agosto com Direção">
-          {catalogos.agostoDirecao.filtros.map((filtro) => (
+        <div className="catalogo-filtros" aria-label="Filtros do catálogo do Mês do Cliente">
+          {catalogos.mesCliente.filtros.map((filtro) => (
             <button
               type="button"
               key={filtro.value}
@@ -1081,7 +1222,19 @@ export default function Campanha() {
               ×
             </button>
 
-            <img src={produtoAberto.image} alt={produtoAberto.alt} />
+            <div
+              className={`produto-modal-galeria ${
+                imagensProduto(produtoAberto).length > 1 ? "tem-variantes" : ""
+              }`}
+            >
+              {imagensProduto(produtoAberto).map((imagem, index) => (
+                <img
+                  src={imagem}
+                  alt={`${produtoAberto.alt} ${index + 1}`}
+                  key={imagem}
+                />
+              ))}
+            </div>
 
             <div className="produto-modal-info">
               <span className="produto-categoria">{produtoAberto.category}</span>

@@ -8,6 +8,10 @@ que possam ser alterados sem procurar dentro do componente visual.
 - `saoJoaoCatalogo.json`: produtos exibidos na aba **São João**.
 - `oportunidadesCatalogo.json`: produtos exibidos na aba **Oportunidades**.
 - `diaDosPaisCatalogo.json`: produtos exibidos na campanha **Dia dos Pais**.
+- `agostoDirecaoCatalogo.json`: arquivo legado da campanha Agosto com Direção.
+- `condicoesEspeciaisCatalogo.json`: produtos em condição especial exibidos
+  logo no começo da landing page.
+- `mesClienteCatalogo.json`: produtos da campanha atual **Mês do Cliente**.
 
 ## Como alterar uma legenda
 
@@ -22,16 +26,21 @@ que possam ser alterados sem procurar dentro do componente visual.
 - `numero`: ordem do produto no catálogo.
 - `title`: nome exibido no card e no modal.
 - `price`: preço destacado no card.
+- `oldPrice`: preço anterior, usado apenas quando a oferta tem comparação.
+- `badge`: selo curto exibido nos produtos em condição especial.
 - `category`: filtro ao qual o produto pertence.
 - `profiles`: perfis da busca guiada em que o produto aparece primeiro.
 - `image`: caminho da imagem dentro da pasta `public/campanhas`.
+- `images`: lista de imagens quando uma mesma linha de produto tem mais de
+  uma arte.
 - `alt`: descrição curta da imagem para acessibilidade.
 - `summary`: texto curto exibido no card do produto.
 - `description`: legenda completa aberta pelo botão de detalhes.
 
-As imagens de São João ficam em `public/campanhas/sao-joao` e as imagens da
-aba Oportunidades ficam em `public/campanhas/oportunidades`. As imagens do Dia
-dos Pais ficam em `public/campanhas/dia-dos-pais`.
+As imagens de São João ficam em `public/campanhas/sao-joao`, as imagens da
+aba Oportunidades ficam em `public/campanhas/oportunidades`, as imagens do Dia
+dos Pais ficam em `public/campanhas/dia-dos-pais` e a campanha atual fica em
+`public/campanhas/mes-cliente`.
 
 ## Perfis do Dia dos Pais
 
@@ -48,11 +57,22 @@ Use estes valores dentro de `profiles` para controlar a busca guiada:
 - `pai-mae`
 - `marido-pai`
 
-## Campanha Agosto com Direção
+## Campanha Mês do Cliente
 
-O catálogo ativo da campanha fica em `agostoDirecaoCatalogo.json`.
-As imagens otimizadas ficam em `/public/campanhas/agosto-direcao/`.
+O catálogo ativo da campanha fica em `mesClienteCatalogo.json`.
+As imagens otimizadas ficam em `/public/campanhas/mes-cliente/`.
+A logo da campanha fica em `/public/campanhas/mes-cliente/logo-mes-cliente.webp`.
 Para alterar título, preço, resumo, descrição, categoria ou opções do guia,
 edite o JSON e mantenha os campos `profiles` alinhados com as opções de
 "O que você procura?" em `Campanha.jsx`.
+
+Perfis usados na busca guiada do Mês do Cliente:
+
+- `perfume`
+- `presente`
+- `autocuidado`
+- `ate-100`
+- `beneficio`
+- `impacto`
+- `rotina`
 
