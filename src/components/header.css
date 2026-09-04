@@ -79,3 +79,23 @@
     font-size: 1.3rem;
   }
 }
+
+
+/* AJUSTE MENU MOBILE SEM OVERFLOW HORIZONTAL
+   O menu fechado deixa de ficar deslocado para fora da viewport, evitando
+   barra lateral no celular. Quando abre, ocupa a tela inteira normalmente. */
+@media (max-width: 768px) {
+  .header-nav {
+    opacity: 0;
+    pointer-events: none;
+    transform: none;
+    visibility: hidden;
+  }
+
+  .header-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    visibility: visible;
+  }
+}
