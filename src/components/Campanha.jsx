@@ -75,9 +75,9 @@ const opcoesBuscaCliente = [
   {
     value: "perfume",
     nome: "Um perfume para marcar presença",
-    chamada: "Fragr�ncias escolhidas pelo estilo e pela ocasião",
+    chamada: "Fragrâncias escolhidas pelo estilo e pela ocasião",
     texto: "Perfumes femininos, masculinos e linhas especiais para quem quer se sentir bem lembrado.",
-    direcao: "A Bússola mostra primeiro fragr�ncias de presença, opções sofisticadas e oportunidades com ótimo valor.",
+    direcao: "A Bússola mostra primeiro fragrâncias de presença, opções sofisticadas e oportunidades com ótimo valor.",
   },
   {
     value: "presente",

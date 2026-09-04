@@ -2960,3 +2960,171 @@
     min-height: 210px;
   }
 }
+
+
+/* ==================================================
+   AJUSTE MOBILE FINAL MÊS DO CLIENTE
+   --------------------------------------------------
+   Corrige a experiência no celular: evita rolagem
+   lateral, reduz a primeira dobra e mantém a logo
+   dentro da largura real da tela.
+================================================== */
+
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.mes-cliente-campanha {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.campanha-mes-cliente-hero,
+.mes-cliente-vitrine,
+.guia-mes-cliente,
+.catalogo-mes-cliente {
+  overflow-x: clip;
+}
+
+@media (max-width: 640px) {
+  .campanha-mes-cliente-hero {
+    margin: -124px -18px 0;
+    min-height: auto;
+    padding: 132px 16px 38px;
+    width: calc(100% + 36px);
+  }
+
+  .campanha-mes-cliente-hero::after {
+    height: 260px;
+    right: -184px;
+    top: 8%;
+    width: 260px;
+  }
+
+  .campanha-mes-cliente-hero .clube-hero-texto {
+    gap: 12px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .cliente-logo-area {
+    align-self: center;
+    display: block;
+    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: min(330px, calc(100vw - 48px));
+    overflow: hidden;
+    width: min(330px, calc(100vw - 48px));
+  }
+
+  .cliente-logo-area::before {
+    width: min(300px, calc(100vw - 64px));
+  }
+
+  .cliente-logo {
+    border-radius: 8px;
+    display: block;
+    max-height: 170px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .cliente-logo-brilho {
+    display: none;
+  }
+
+  .campanha-mes-cliente-hero .campanha-tag {
+    font-size: 0.68rem;
+    padding: 7px 10px;
+  }
+
+  .campanha-mes-cliente-hero .clube-hero-texto h2 {
+    font-size: clamp(2rem, 10.8vw, 2.85rem);
+    line-height: 1.02;
+    max-width: 340px;
+  }
+
+  .campanha-mes-cliente-hero .clube-hero-texto > p {
+    font-size: 0.9rem;
+    line-height: 1.42;
+    max-width: 320px;
+  }
+
+  .campanha-mes-cliente-hero .clube-acoes {
+    gap: 10px;
+    margin-top: 2px;
+  }
+
+  .campanha-mes-cliente-hero .btn-gold,
+  .campanha-mes-cliente-hero .btn-outline {
+    font-size: 0.95rem;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 16px;
+    width: 100%;
+  }
+
+  .mes-cliente-vitrine .condicoes-lista {
+    grid-auto-columns: minmax(248px, 76vw);
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    padding: 2px 0 14px;
+    width: 100%;
+  }
+
+  .mes-cliente-vitrine,
+  .guia-mes-cliente {
+    margin-left: -18px;
+    margin-right: -18px;
+    padding-left: 18px;
+    padding-right: 18px;
+    width: calc(100% + 36px);
+  }
+
+  .mes-cliente-vitrine .condicao-card {
+    scroll-snap-align: center;
+  }
+
+  .mes-cliente-vitrine .condicoes-topo h3,
+  .guia-mes-cliente .guia-pais-topo h3,
+  .catalogo-mes-cliente .catalogo-topo h3 {
+    font-size: clamp(1.7rem, 9vw, 2.18rem);
+    line-height: 1.05;
+  }
+
+  .guia-mes-cliente {
+    padding: 44px 18px;
+  }
+
+  .guia-mes-cliente .guia-pais-palco,
+  .guia-mes-cliente .guia-pais-vitrine {
+    padding: 22px 18px;
+  }
+
+  .guia-mes-cliente .guia-pais-consultor {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 390px) {
+  .cliente-logo-area {
+    max-width: min(300px, calc(100vw - 44px));
+  }
+
+  .cliente-logo {
+    max-height: 154px;
+  }
+
+  .campanha-mes-cliente-hero .clube-hero-texto h2 {
+    font-size: clamp(1.86rem, 10.4vw, 2.42rem);
+  }
+
+  .campanha-mes-cliente-hero .clube-hero-texto > p {
+    max-width: 292px;
+  }
+}
