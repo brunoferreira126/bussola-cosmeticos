@@ -387,7 +387,7 @@ export default function Campanha() {
       <div className="clube-hero campanha-mes-cliente-hero">
         <div className="pais-overlay cliente-overlay" />
 
-        <div className="clube-hero-texto">
+        <div className="clube-hero-texto cliente-hero-conteudo">
           <div className="pais-logo-area cliente-logo-area">
             {/* Logo oficial do Mês do Cliente, otimizada em WebP para abrir leve. */}
             <img
@@ -400,22 +400,24 @@ export default function Campanha() {
             <span className="pais-logo-brilho cliente-logo-brilho" aria-hidden="true" />
           </div>
 
-          <span className="campanha-tag">Mês do Cliente Bússola</span>
-          <h2>Seu estilo, seu momento, nossa prioridade.</h2>
+          <div className="cliente-hero-copy">
+            <span className="campanha-tag">Mês do Cliente Bússola</span>
+            <h2>Seu estilo, seu momento, nossa prioridade.</h2>
 
-          <p>
-            Uma curadoria para comprar melhor: escolha o que procura, veja as
-            oportunidades certas primeiro e siga com acesso ao catálogo completo.
-          </p>
+            <p>
+              Uma curadoria para comprar melhor: escolha o que procura, veja as
+              oportunidades certas primeiro e siga com acesso ao catálogo completo.
+            </p>
 
-          <div className="clube-acoes">
-            <a href="#vitrine-mes-cliente" className="btn-gold">
-              Ver destaques
-            </a>
+            <div className="clube-acoes">
+              <a href="#vitrine-mes-cliente" className="btn-gold">
+                Ver destaques
+              </a>
 
-            <a href="#guia-mes-cliente" className="btn-outline">
-              Escolha guiada
-            </a>
+              <a href="#guia-mes-cliente" className="btn-outline">
+                Escolha guiada
+              </a>
+            </div>
           </div>
         </div>
       </div>

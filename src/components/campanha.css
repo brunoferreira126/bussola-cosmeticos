@@ -2506,12 +2506,19 @@
 }
 
 .campanha-mes-cliente-hero {
-  min-height: clamp(620px, 84vh, 760px);
+  grid-template-columns: minmax(0, 1fr);
+  /* Remove a largura herdada do Clube para a campanha ocupar a tela inteira. */
+  margin: -150px -30px 0;
+  max-width: none;
+  min-height: clamp(660px, 88vh, 820px);
   background:
     linear-gradient(118deg, rgba(20, 18, 15, 0.97) 0%, rgba(44, 29, 18, 0.94) 48%, rgba(132, 82, 36, 0.92) 100%),
     linear-gradient(45deg, #1b6b57 0%, #c35f6a 100%);
   overflow: hidden;
-  padding: clamp(72px, 10vw, 132px) clamp(18px, 5vw, 72px) clamp(56px, 8vw, 96px);
+  padding:
+    clamp(150px, 10vw, 174px)
+    max(30px, calc((100vw - 1280px) / 2))
+    clamp(54px, 7vw, 84px);
 }
 
 .campanha-mes-cliente-hero::before {
@@ -2549,10 +2556,14 @@
 
 .campanha-mes-cliente-hero .clube-hero-texto {
   align-items: center;
-  gap: clamp(18px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 20px);
+  justify-self: center;
   margin-inline: auto;
   max-width: 940px;
   text-align: center;
+  width: min(940px, 100%);
 }
 
 .campanha-mes-cliente-hero .campanha-tag {
@@ -2563,9 +2574,9 @@
 
 .campanha-mes-cliente-hero .clube-hero-texto h2 {
   color: #fff8eb;
-  font-size: clamp(2.25rem, 5vw, 5.6rem);
+  font-size: clamp(2.25rem, 4.2vw, 4.65rem);
   letter-spacing: 0;
-  line-height: 0.92;
+  line-height: 0.98;
   margin: 0;
   max-width: 900px;
   text-wrap: balance;
@@ -2596,11 +2607,14 @@
   background: transparent;
   border: 0;
   box-shadow: none;
+  display: flex;
+  justify-content: center;
   isolation: isolate;
-  margin-bottom: 0;
-  max-width: min(720px, 92vw);
+  margin: clamp(-18px, -1.4vw, -8px) auto 2px;
+  max-width: none;
+  overflow: visible;
   padding: 0;
-  width: 100%;
+  width: min(540px, 82vw);
 }
 
 .cliente-logo-area::before {
@@ -2617,11 +2631,25 @@
 
 .cliente-logo {
   animation: cliente-logo-entrada 980ms cubic-bezier(0.18, 0.86, 0.22, 1) both;
-  border-radius: 10px;
-  filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.34));
-  max-height: clamp(210px, 35vw, 380px);
+  border-radius: 0;
+  filter: contrast(1.04) saturate(1.08);
+  height: auto;
+  max-height: none;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(
+    ellipse 82% 72% at 50% 53%,
+    #000 64%,
+    rgba(0, 0, 0, 0.86) 76%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 82% 72% at 50% 53%,
+    #000 64%,
+    rgba(0, 0, 0, 0.86) 76%,
+    transparent 100%
+  );
   object-fit: contain;
-  width: min(680px, 92vw);
+  width: 100%;
 }
 
 .cliente-logo-brilho {
@@ -3012,23 +3040,24 @@ body,
 
   .cliente-logo-area {
     align-self: center;
-    display: block;
+    display: flex;
     justify-self: center;
+    margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
-    max-width: min(330px, calc(100vw - 48px));
-    overflow: hidden;
-    width: min(330px, calc(100vw - 48px));
+    max-width: none;
+    overflow: visible;
+    width: min(342px, calc(100vw - 32px));
   }
 
   .cliente-logo-area::before {
-    width: min(300px, calc(100vw - 64px));
+    width: min(330px, calc(100vw - 52px));
   }
 
   .cliente-logo {
-    border-radius: 8px;
+    border-radius: 0;
     display: block;
-    max-height: 170px;
+    max-height: none;
     max-width: 100%;
     width: 100%;
   }
@@ -3113,11 +3142,12 @@ body,
 
 @media (max-width: 390px) {
   .cliente-logo-area {
-    max-width: min(300px, calc(100vw - 44px));
+    max-width: none;
+    width: min(318px, calc(100vw - 30px));
   }
 
   .cliente-logo {
-    max-height: 154px;
+    max-height: none;
   }
 
   .campanha-mes-cliente-hero .clube-hero-texto h2 {
@@ -3126,5 +3156,256 @@ body,
 
   .campanha-mes-cliente-hero .clube-hero-texto > p {
     max-width: 292px;
+  }
+}
+
+
+/* ==================================================
+   CORRECAO DEFINITIVA DO MES DO CLIENTE
+   --------------------------------------------------
+   A campanha usa a mesma base do Clube Bussola, mas
+   precisa controlar o proprio layout. Estas regras
+   ficam no fim do CSS para vencer herancas antigas.
+================================================== */
+
+.campanha.clube-bussola.mes-cliente-campanha {
+  background: #fff8eb;
+  max-width: 100%;
+  overflow-x: clip;
+  padding: 0;
+}
+
+.mes-cliente-campanha .campanha-mes-cliente-hero {
+  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0;
+  max-width: none;
+  min-height: min(850px, 100svh);
+  overflow: hidden;
+  padding:
+    clamp(128px, 9vw, 164px)
+    max(32px, calc((100vw - 1280px) / 2))
+    clamp(58px, 6vw, 84px);
+  width: 100%;
+}
+
+.mes-cliente-campanha .campanha-mes-cliente-hero::after {
+  height: min(420px, 32vw);
+  right: max(24px, calc((100vw - 1280px) / 2));
+  top: 16%;
+  width: min(420px, 32vw);
+}
+
+.mes-cliente-campanha .cliente-hero-conteudo {
+  align-items: center;
+  display: grid;
+  gap: clamp(36px, 5vw, 78px);
+  grid-template-areas: "copy logo";
+  grid-template-columns: minmax(0, 0.94fr) minmax(360px, 0.76fr);
+  justify-self: center;
+  margin: 0 auto;
+  max-width: 1280px;
+  text-align: left;
+  width: 100%;
+}
+
+.mes-cliente-campanha .cliente-hero-copy {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  grid-area: copy;
+  max-width: 700px;
+  min-width: 0;
+}
+
+.mes-cliente-campanha .cliente-logo-area {
+  background: linear-gradient(145deg, rgba(255, 248, 235, 0.08), rgba(255, 248, 235, 0.02));
+  border: 1px solid rgba(242, 207, 131, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.28);
+  grid-area: logo;
+  justify-self: center;
+  margin: 0;
+  overflow: hidden;
+  padding: clamp(8px, 1vw, 12px);
+  width: min(560px, 40vw);
+}
+
+.mes-cliente-campanha .cliente-logo-area::before {
+  display: none;
+}
+
+.mes-cliente-campanha .cliente-logo {
+  border-radius: 6px;
+  display: block;
+  filter: contrast(1.04) saturate(1.08);
+  height: auto;
+  -webkit-mask-image: none;
+  mask-image: none;
+  max-height: none;
+  mix-blend-mode: normal;
+  width: 100%;
+}
+
+.mes-cliente-campanha .campanha-tag {
+  margin-bottom: clamp(14px, 1.6vw, 20px);
+}
+
+.mes-cliente-campanha .campanha-mes-cliente-hero .clube-hero-texto h2 {
+  font-size: clamp(2.8rem, 4.35vw, 5rem);
+  line-height: 0.98;
+  margin: 0;
+  max-width: 720px;
+}
+
+.mes-cliente-campanha .campanha-mes-cliente-hero .clube-hero-texto p {
+  font-size: clamp(1rem, 1.18vw, 1.14rem);
+  line-height: 1.62;
+  margin: clamp(18px, 1.8vw, 24px) 0 0;
+  max-width: 620px;
+}
+
+.mes-cliente-campanha .campanha-mes-cliente-hero .clube-acoes {
+  justify-content: flex-start;
+  margin-top: clamp(22px, 2.2vw, 30px);
+}
+
+.mes-cliente-campanha .mes-cliente-vitrine,
+.mes-cliente-campanha .guia-mes-cliente {
+  margin: 0;
+  padding-left: max(30px, calc((100vw - 1280px) / 2));
+  padding-right: max(30px, calc((100vw - 1280px) / 2));
+  width: 100%;
+}
+
+.mes-cliente-campanha .guia-mes-cliente::after {
+  right: 0;
+  width: min(540px, 82vw);
+}
+
+.mes-cliente-campanha .catalogo-mes-cliente {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 64px 30px 96px;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .mes-cliente-campanha .campanha-mes-cliente-hero {
+    min-height: auto;
+    padding: 132px 24px 64px;
+  }
+
+  .mes-cliente-campanha .cliente-hero-conteudo {
+    gap: 22px;
+    grid-template-areas:
+      "logo"
+      "copy";
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 760px;
+    text-align: center;
+  }
+
+  .mes-cliente-campanha .cliente-hero-copy {
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mes-cliente-campanha .cliente-logo-area {
+    width: min(500px, calc(100vw - 48px));
+  }
+
+  .mes-cliente-campanha .campanha-mes-cliente-hero .clube-hero-texto h2 {
+    font-size: clamp(2.25rem, 7vw, 4.1rem);
+    max-width: 680px;
+  }
+
+  .mes-cliente-campanha .campanha-mes-cliente-hero .clube-acoes {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .campanha.clube-bussola.mes-cliente-campanha {
+    overflow-x: hidden;
+  }
+
+  .mes-cliente-campanha .campanha-mes-cliente-hero {
+    margin: 0;
+    min-height: auto;
+    padding: 112px 16px 38px;
+    width: 100%;
+  }
+
+  .mes-cliente-campanha .campanha-mes-cliente-hero::after {
+    display: none;
+  }
+
+  .mes-cliente-campanha .cliente-hero-conteudo {
+    gap: 14px;
+    max-width: 100%;
+  }
+
+  .mes-cliente-campanha .cliente-logo-area {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    width: min(336px, calc(100vw - 32px));
+  }
+
+  .mes-cliente-campanha .cliente-logo-area::before {
+    display: none;
+  }
+
+  .mes-cliente-campanha .cliente-logo {
+    border-radius: 8px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.26);
+  }
+
+  .mes-cliente-campanha .campanha-tag {
+    font-size: 0.68rem;
+    margin-bottom: 8px;
+    padding: 7px 10px;
+  }
+
+  .mes-cliente-campanha .campanha-mes-cliente-hero .clube-hero-texto h2 {
+    font-size: clamp(2.05rem, 10.6vw, 2.85rem);
+    line-height: 1.03;
+    max-width: 350px;
+  }
+
+  .mes-cliente-campanha .campanha-mes-cliente-hero .clube-hero-texto p {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    margin-top: 12px;
+    max-width: 330px;
+  }
+
+  .mes-cliente-campanha .campanha-mes-cliente-hero .clube-acoes {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+    width: 100%;
+  }
+
+  .mes-cliente-campanha .campanha-mes-cliente-hero .btn-gold,
+  .mes-cliente-campanha .campanha-mes-cliente-hero .btn-outline {
+    min-height: 46px;
+    width: 100%;
+  }
+
+  .mes-cliente-campanha .mes-cliente-vitrine,
+  .mes-cliente-campanha .guia-mes-cliente {
+    margin: 0;
+    padding-left: 18px;
+    padding-right: 18px;
+    width: 100%;
+  }
+
+  .mes-cliente-campanha .catalogo-mes-cliente {
+    padding: 44px 18px 76px;
   }
 }
