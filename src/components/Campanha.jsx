@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 // MANUTENCAO DOS CATALOGOS:
 // Edite titulos, precos e legendas nos arquivos dentro de src/data.
 // O arquivo src/data/README.md explica cada campo e o caminho das imagens.
-import produtosMesCliente from "../data/mesClienteCatalogo.json";
+import produtosRotaAlegria from "../data/rotaAlegriaCatalogo.json";
 import "./campanha.css";
 
 // Numero oficial da loja no formato internacional exigido pelo WhatsApp.
@@ -48,78 +48,79 @@ const menuCliente = [
 // configuração evita duplicar a grade e o modal de produtos no JSX.
 const catalogos = {
   mesCliente: {
-    label: "Mês do Cliente",
-    kicker: "Mês do Cliente",
-    titulo: "Escolha pelo que faz sentido para você",
+    label: "Rota da Alegria",
+    kicker: "Rota da Alegria",
+    titulo: "Escolhas reais guiadas pela Bússola",
     descricao:
-      "A vitrine organiza primeiro as opções que combinam com sua intenção: perfume, presente, autocuidado, benefícios e achados até R$ 100.",
-    produtos: produtosMesCliente,
+      "A vitrine organiza primeiro as opções que combinam com sua intenção: presente infantil, cheirinho, cuidado, diversão, utilidade e oportunidades até R$ 100.",
+    produtos: produtosRotaAlegria,
     filtros: [
       { label: "Todos", value: "todos" },
+      { label: "Infantil", value: "infantil" },
       { label: "Perfumaria", value: "perfumaria" },
       { label: "Presentes", value: "presentes" },
       { label: "Autocuidado", value: "autocuidado" },
       { label: "Acessórios", value: "acessorios" },
-      { label: "Infantil", value: "infantil" },
+      { label: "Tecnologia", value: "tecnologia" },
     ],
   },
 };
 
 // A ordem deste array também define a ordem visual das abas.
 const abasCatalogo = [
-  { label: "Mês do Cliente", value: "mesCliente" },
+  { label: "Rota da Alegria", value: "mesCliente" },
 ];
 
 // Opções da busca guiada. O value deve bater com o campo profiles do JSON.
 const opcoesBuscaCliente = [
   {
-    value: "perfume",
-    nome: "Um perfume para marcar presença",
-    chamada: "Fragrâncias escolhidas pelo estilo e pela ocasião",
-    texto: "Perfumes femininos, masculinos e linhas especiais para quem quer se sentir bem lembrado.",
-    direcao: "A Bússola mostra primeiro fragrâncias de presença, opções sofisticadas e oportunidades com ótimo valor.",
+    value: "crianca",
+    nome: "Presente para criança",
+    chamada: "Opções que combinam cuidado, encanto e sorriso",
+    texto: "Kits infantis, colônias, personagens e presentes prontos para acertar sem dúvida.",
+    direcao: "A Bússola mostra primeiro os presentes infantis com melhor conexão emocional e apresentação pronta.",
   },
   {
-    value: "presente",
-    nome: "Um presente para alguém especial",
-    chamada: "Escolhas prontas para encantar sem perder tempo",
-    texto: "Kits, estojos e combinações com boa apresentação para transformar o gesto em carinho.",
-    direcao: "As primeiras opções priorizam kits completos, presentes prontos e produtos com aparência de presente especial.",
+    value: "cheirinho",
+    nome: "Cheirinho especial",
+    chamada: "Colônias, body splash e fragrâncias para marcar o momento",
+    texto: "Sugestões para quem quer presentear com perfume, leveza e uma lembrança cheirosa.",
+    direcao: "A vitrine prioriza colônias, body splash e fragrâncias que transformam carinho em memória.",
   },
   {
-    value: "autocuidado",
-    nome: "Algo para cuidar de mim",
-    chamada: "Rotina mais cheirosa, prática e gostosa",
-    texto: "Hidratantes, sabonetes, linhas de cabelo, body splash e cuidados para usar todos os dias.",
-    direcao: "A vitrine começa por combos de autocuidado, linhas corporais e produtos que valorizam a rotina.",
+    value: "presente-pronto",
+    nome: "Presente pronto",
+    chamada: "Kits, cestas e combinações para entregar sem complicação",
+    texto: "Escolhas com boa apresentação para quem quer resolver o presente com segurança.",
+    direcao: "As primeiras opções trazem kits completos, cestas e combinações com maior percepção de presente.",
+  },
+  {
+    value: "cuidado",
+    nome: "Cuidado e rotina",
+    chamada: "Produtos úteis para cabelo, pele e autocuidado diário",
+    texto: "Shampoos, condicionadores, loções, sabonetes e kits pensados para facilitar a rotina.",
+    direcao: "A seleção começa pelos produtos que unem cuidado, praticidade e carinho na rotina.",
+  },
+  {
+    value: "diversao",
+    nome: "Diversão e tecnologia",
+    chamada: "Presentes diferentes para sair do comum",
+    texto: "Games, fones, smartwatch, power bank e opções para surpreender com utilidade e diversão.",
+    direcao: "A Bússola destaca produtos tecnológicos e divertidos para quem quer impressionar sem ficar no óbvio.",
+  },
+  {
+    value: "utilidade",
+    nome: "Algo útil para o dia a dia",
+    chamada: "Bolsas, garrafas e itens que acompanham a rotina",
+    texto: "Produtos funcionais para escola, trabalho, viagem, passeio e autocuidado fora de casa.",
+    direcao: "As sugestões úteis aparecem primeiro para quem procura algo bonito, prático e fácil de usar.",
   },
   {
     value: "ate-100",
-    nome: "Uma oportunidade até R$ 100",
-    chamada: "Boas escolhas com preço fácil de decidir",
-    texto: "Produtos com valor acessível, benefícios de leve dois e achados para comprar agora.",
-    direcao: "As sugestões até R$ 100 aparecem primeiro para facilitar a compra rápida sem abrir mão de qualidade.",
-  },
-  {
-    value: "beneficio",
-    nome: "Uma condição realmente vantajosa",
-    chamada: "Produtos com bônus, leve dois ou economia clara",
-    texto: "Opções pensadas para o cliente sentir que aproveitou uma oportunidade de verdade.",
-    direcao: "A Bússola destaca ofertas com benefício percebido, combos especiais e oportunidades que fazem o dinheiro render.",
-  },
-  {
-    value: "impacto",
-    nome: "Algo para impressionar",
-    chamada: "Presentes e produtos com mais presença visual",
-    texto: "Linhas premium, perfumes árabes, relógios e escolhas com maior percepção de valor.",
-    direcao: "Os produtos de impacto aparecem primeiro para quem quer uma compra marcante e com aparência sofisticada.",
-  },
-  {
-    value: "rotina",
-    nome: "Algo útil para o dia a dia",
-    chamada: "Itens funcionais que acompanham a rotina",
-    texto: "Acessórios, cuidados práticos e produtos fáceis de usar em casa, no trabalho ou na viagem.",
-    direcao: "A seleção prioriza itens versáteis, funcionais e fáceis de encaixar na rotina.",
+    nome: "Até R$ 100",
+    chamada: "Boas escolhas com decisão rápida",
+    texto: "Achados acessíveis, combos e presentes que cabem melhor no bolso.",
+    direcao: "As oportunidades até R$ 100 aparecem primeiro para facilitar a compra rápida sem perder qualidade.",
   },
 ];
 
@@ -136,9 +137,9 @@ const categoriasCatalogo = {
 
 // Produtos marcados como destaque no JSON abrem a página com intenção de venda rápida.
 // O primeiro destaque vira a peça principal; os demais formam a vitrine de decisão.
-const destaquesMesCliente = produtosMesCliente.filter((produto) => produto.highlight);
-const destaquePrincipalCliente = destaquesMesCliente[0] || produtosMesCliente[0];
-const destaquesRapidosCliente = destaquesMesCliente
+const destaquesCampanha = produtosRotaAlegria.filter((produto) => produto.highlight);
+const destaquePrincipalCliente = destaquesCampanha[0] || produtosRotaAlegria[0];
+const destaquesRapidosCliente = destaquesCampanha
   .filter((produto) => produto.numero !== destaquePrincipalCliente?.numero)
   .slice(0, 9);
 
@@ -166,13 +167,13 @@ function criarMensagemCadastro(dados) {
     `Cidade: ${dados.cidade || "Não informado"}`,
     `Nascimento: ${dados.nascimento || "Não informado"}`,
     "",
-    "Vim pela campanha do Mês do Cliente da Bússola.",
+    "Vim pela campanha Rota da Alegria da Bússola.",
   ].join("\n");
 }
 
 // Monta a mensagem de compra para produtos de qualquer uma das abas.
 function criarLinkProduto(produto) {
-  const mensagem = `Olá! Vim pela campanha do Mês do Cliente da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
+  const mensagem = `Olá! Vim pela campanha Rota da Alegria da Bússola e quero saber mais sobre: ${produto.title} - ${produto.price}`;
 
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
 }
@@ -314,7 +315,7 @@ export default function Campanha() {
 
     window.setTimeout(() => {
       document
-        .getElementById("catalogo-mes-cliente")
+        .getElementById("catalogo-rota-alegria")
         ?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 80);
   }
@@ -335,7 +336,7 @@ export default function Campanha() {
 
     const payload = {
       ...formulario,
-      origem: "Campanha Mês do Cliente - Clube Bússola",
+      origem: "Campanha Rota da Alegria - Clube Bússola",
       codigoIndicacao,
       dataCadastro: new Date().toISOString(),
     };
@@ -375,7 +376,7 @@ export default function Campanha() {
     A estrutura de Clube Bussola, dashboard demonstrativo, indicacoes,
     cashback, formulario com Apps Script e documentacao do Drive continuam no
     projeto para retomarmos depois. Por agora, a landing page mostra somente a
-    campanha/catalogo do Mês do Cliente, que e a prioridade comercial imediata.
+    campanha/catalogo da Rota da Alegria, que e a prioridade comercial imediata.
 
     Importante para a proxima alteracao:
     antes de mexer novamente nessa secao, perguntar ao Bruno o que faremos com
@@ -383,56 +384,60 @@ export default function Campanha() {
   */
 
   if (!EXIBIR_CLUBE_BUSSOLA) return (
-    <section className="campanha clube-bussola mes-cliente-campanha" id="campanha">
+    <section className="campanha clube-bussola mes-cliente-campanha rota-alegria-campanha" id="campanha">
       <div className="clube-hero campanha-mes-cliente-hero">
         <div className="pais-overlay cliente-overlay" />
 
-        <div className="clube-hero-texto">
+        <div className="clube-hero-texto cliente-hero-conteudo">
           <div className="pais-logo-area cliente-logo-area">
-            {/* Logo oficial do Mês do Cliente, otimizada em WebP para abrir leve. */}
+            {/* Logo oficial da Rota da Alegria usada como sinal visual principal da campanha. */}
             <img
               className="pais-logo cliente-logo"
-              src="/campanhas/mes-cliente/logo-mes-cliente.webp"
-              alt="Mês do Cliente Bússola"
+              src="/campanhas/rota-da-alegria/logo-rota-da-alegria.png"
+              alt="Rota da Alegria Bússola"
               loading="eager"
               decoding="async"
             />
             <span className="pais-logo-brilho cliente-logo-brilho" aria-hidden="true" />
           </div>
 
-          <span className="campanha-tag">Mês do Cliente Bússola</span>
-          <h2>Seu estilo, seu momento, nossa prioridade.</h2>
+          <div className="cliente-hero-copy">
+            <span className="campanha-tag">Rota da Alegria Bússola</span>
+            <h2>Escolhas reais guiadas pela Bússola.</h2>
 
-          <p>
-            Uma curadoria para comprar melhor: escolha o que procura, veja as
-            oportunidades certas primeiro e siga com acesso ao catálogo completo.
-          </p>
+            <p>
+              Presentes infantis, cheirinhos, cuidado, diversão e itens úteis
+              em uma vitrine pensada para resolver a escolha e transformar o
+              presente em sorriso.
+            </p>
 
-          <div className="clube-acoes">
-            <a href="#vitrine-mes-cliente" className="btn-gold">
-              Ver destaques
-            </a>
+            <div className="clube-acoes">
+              <a href="#vitrine-rota-alegria" className="btn-gold">
+                Ver destaques
+              </a>
 
-            <a href="#guia-mes-cliente" className="btn-outline">
-              Escolha guiada
-            </a>
+              <a href="#guia-rota-alegria" className="btn-outline">
+                Escolha guiada
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <section
         className="condicoes-especiais mes-cliente-vitrine"
-        id="vitrine-mes-cliente"
-        aria-labelledby="vitrine-mes-cliente-titulo"
+        id="vitrine-rota-alegria"
+        aria-labelledby="vitrine-rota-alegria-titulo"
       >
         <div className="condicoes-topo">
-          <span className="catalogo-kicker">Vitrine do cliente</span>
-          <h3 id="vitrine-mes-cliente-titulo">
-            Comece pelas oportunidades que merecem atenção agora.
+          <span className="catalogo-kicker">Paradas da alegria</span>
+          <h3 id="vitrine-rota-alegria-titulo">
+            Comece pelos presentes que resolvem a dúvida.
           </h3>
           <p>
-            Produtos com benefício real, preço fácil de decidir e escolhas que
-            entregam presente, autocuidado e presença sem pesar na experiência.
+            Selecionamos as opções com maior força de presente, melhor
+            apresentação e compra mais fácil para quem quer acertar sem rodar a
+            cidade inteira.
           </p>
         </div>
 
@@ -483,7 +488,7 @@ export default function Campanha() {
 
             <div
               className="condicoes-lista cliente-destaques-lista"
-              aria-label="Destaques do Mês do Cliente"
+              aria-label="Destaques da Rota da Alegria"
             >
               {destaquesRapidosCliente.map((produto) => {
                 const imagens = imagensProduto(produto);
@@ -534,12 +539,12 @@ export default function Campanha() {
         )}
       </section>
 
-      <section className="guia-pais guia-mes-cliente" id="guia-mes-cliente">
+      <section className="guia-pais guia-mes-cliente" id="guia-rota-alegria">
         <div className="guia-pais-palco">
           <div className="guia-pais-topo">
             <span className="catalogo-kicker">Busca guiada</span>
-            <span className="guia-pais-chamada">A Bússola começa pela sua intenção</span>
-            <h3>O que você procura?</h3>
+            <span className="guia-pais-chamada">A Bússola aponta a direção certa</span>
+            <h3>Qual presente você quer encontrar?</h3>
             <p>
               Selecione uma intenção e o catálogo reorganiza as sugestões mais
               relevantes para aparecerem primeiro, sem esconder as demais opções.
@@ -556,15 +561,15 @@ export default function Campanha() {
               type="button"
               className="guia-pais-trigger"
               aria-expanded={perfilMenuAberto}
-              aria-controls="opcoes-mes-cliente"
+              aria-controls="opcoes-rota-alegria"
               onClick={() => setPerfilMenuAberto((aberto) => !aberto)}
             >
-              <span>{perfilAtual ? "Intenção selecionada" : "Toque para responder"}</span>
-              <strong>{perfilAtual ? perfilAtual.nome : "O que você procura?"}</strong>
+              <span>{perfilAtual ? "Rota selecionada" : "Toque para responder"}</span>
+              <strong>{perfilAtual ? perfilAtual.nome : "Qual presente você quer encontrar?"}</strong>
               <small>
                 {perfilAtual
                   ? perfilAtual.chamada
-                  : "Abra as opções e escolha o tipo de compra que mais combina com este momento."}
+                  : "Abra as opções e escolha a direção que mais combina com esse presente."}
               </small>
               <b>{perfilMenuAberto ? "Fechar opções" : "Ver opções"}</b>
             </button>
@@ -572,7 +577,7 @@ export default function Campanha() {
             {perfilMenuAberto && (
               <div
                 className="guia-pais-opcoes"
-                id="opcoes-mes-cliente"
+                id="opcoes-rota-alegria"
                 aria-label="Opções da busca guiada"
               >
                 {opcoesBuscaCliente.map((perfil) => (
@@ -626,14 +631,14 @@ export default function Campanha() {
                 ? "As sugestões compatíveis aparecem primeiro para acelerar a decisão."
                 : "Comece pela intenção ou desça direto para comparar o catálogo completo."}
             </strong>
-            <a href="#catalogo-mes-cliente">Ver catálogo completo</a>
+            <a href="#catalogo-rota-alegria">Ver catálogo completo</a>
           </div>
         </div>
       </section>
 
       <section
         className="catalogo-sao-joao catalogo-mes-cliente"
-        id="catalogo-mes-cliente"
+        id="catalogo-rota-alegria"
       >
         <div
           className="catalogo-abas"
@@ -672,7 +677,7 @@ export default function Campanha() {
               <span>Buscar oferta</span>
               <input
                 type="search"
-                placeholder="Ex.: perfume, presente, refil, até 100..."
+                placeholder="Ex.: kids, colônia, bolsa, fone, até 100..."
                 value={buscaCatalogo}
                 onChange={(event) => setBuscaCatalogo(event.target.value)}
               />

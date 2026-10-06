@@ -3128,3 +3128,368 @@ body,
     max-width: 292px;
   }
 }
+
+
+/* ==================================================
+   CAMPANHA ROTA DA ALEGRIA
+   --------------------------------------------------
+   Reaproveita a estrutura da campanha anterior, mas
+   troca a direção visual para a paleta clara/dourada
+   da arte oficial: branco, caramelo, dourado quente,
+   preto suave e acentos alegres da própria logo.
+================================================== */
+
+.campanha.clube-bussola.rota-alegria-campanha {
+  --rota-branco: #fffdf8;
+  --rota-marfim: #fff5df;
+  --rota-ouro: #f5c86f;
+  --rota-caramelo: #b1844d;
+  --rota-cobre: #d07a00;
+  --rota-texto: #393939;
+  --rota-preto: #171512;
+  --rota-azul: #18aee8;
+  --rota-rosa: #f45c84;
+  --rota-verde: #7cc82e;
+  background: var(--rota-branco);
+  color: var(--rota-texto);
+  max-width: 100%;
+  overflow-x: clip;
+  padding: 0;
+}
+
+.rota-alegria-campanha .campanha-mes-cliente-hero {
+  align-items: center;
+  background:
+    radial-gradient(1200px 620px at 86% 22%, rgba(245, 200, 111, 0.24), transparent 58%),
+    radial-gradient(880px 520px at 4% 68%, rgba(208, 122, 0, 0.13), transparent 58%),
+    linear-gradient(180deg, #ffffff 0%, #fffaf0 100%);
+  color: var(--rota-texto);
+  display: grid;
+  margin: 0;
+  max-width: none;
+  min-height: min(820px, 100svh);
+  overflow: hidden;
+  padding:
+    clamp(118px, 9vw, 158px)
+    max(28px, calc((100vw - 1280px) / 2))
+    clamp(58px, 7vw, 92px);
+  position: relative;
+  width: 100%;
+}
+
+.rota-alegria-campanha .campanha-mes-cliente-hero::before {
+  background:
+    radial-gradient(ellipse 84% 68% at 72% 44%, transparent 58%, rgba(208, 122, 0, 0.46) 58.3%, transparent 58.8%),
+    radial-gradient(ellipse 92% 72% at 42% 12%, transparent 62%, rgba(245, 200, 111, 0.62) 62.3%, transparent 62.8%),
+    linear-gradient(90deg, transparent 0 47%, rgba(177, 132, 77, 0.12) 47% 47.15%, transparent 47.15% 100%);
+  content: "";
+  inset: -22% -12% -18%;
+  opacity: 0.9;
+  pointer-events: none;
+  position: absolute;
+}
+
+.rota-alegria-campanha .campanha-mes-cliente-hero::after {
+  background:
+    linear-gradient(135deg, rgba(245, 200, 111, 0.34), rgba(177, 132, 77, 0.22)),
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.52), transparent);
+  border: 1px solid rgba(177, 132, 77, 0.26);
+  box-shadow: none;
+  content: "";
+  height: min(360px, 26vw);
+  position: absolute;
+  right: max(22px, calc((100vw - 1280px) / 2));
+  top: 20%;
+  transform: rotate(-11deg);
+  width: min(360px, 26vw);
+}
+
+.rota-alegria-campanha .cliente-overlay {
+  display: none;
+}
+
+.rota-alegria-campanha .cliente-hero-conteudo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 3vw, 34px);
+  justify-self: center;
+  max-width: 1120px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.rota-alegria-campanha .cliente-hero-copy {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 980px;
+  text-align: center;
+}
+
+.rota-alegria-campanha .cliente-logo-area {
+  background: linear-gradient(145deg, #ffffff, #fff1cf);
+  border: 1px solid rgba(177, 132, 77, 0.28);
+  border-radius: 8px;
+  box-shadow: 0 32px 76px rgba(57, 57, 57, 0.16);
+  display: block;
+  justify-self: center;
+  margin: 0;
+  max-width: none;
+  overflow: hidden;
+  padding: clamp(8px, 1.1vw, 12px);
+  position: relative;
+  width: min(340px, 30vw);
+}
+
+.rota-alegria-campanha .cliente-logo-area::before {
+  display: none;
+}
+
+.rota-alegria-campanha .cliente-logo {
+  animation: cliente-logo-entrada 980ms cubic-bezier(0.18, 0.86, 0.22, 1) both;
+  border-radius: 6px;
+  display: block;
+  filter: saturate(1.08) contrast(1.03);
+  height: auto;
+  max-height: none;
+  max-width: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.rota-alegria-campanha .cliente-logo-brilho {
+  display: none;
+}
+
+.rota-alegria-campanha .campanha-tag {
+  background: linear-gradient(135deg, rgba(245, 200, 111, 0.28), rgba(177, 132, 77, 0.16));
+  border: 1px solid rgba(177, 132, 77, 0.34);
+  color: #704a1f;
+  margin-bottom: clamp(14px, 1.5vw, 20px);
+}
+
+.rota-alegria-campanha .campanha-mes-cliente-hero .clube-hero-texto h2 {
+  color: var(--rota-texto);
+  font-size: clamp(3.1rem, 5.8vw, 6.6rem);
+  line-height: 0.93;
+  margin: 0;
+  max-width: 1080px;
+}
+
+.rota-alegria-campanha .campanha-mes-cliente-hero .clube-hero-texto p {
+  color: rgba(57, 57, 57, 0.78);
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  line-height: 1.62;
+  margin: clamp(18px, 1.8vw, 24px) 0 0;
+  max-width: 720px;
+}
+
+.rota-alegria-campanha .campanha-mes-cliente-hero .clube-acoes {
+  justify-content: center;
+  margin-top: clamp(22px, 2.1vw, 30px);
+}
+
+.rota-alegria-campanha .campanha-mes-cliente-hero .btn-gold {
+  background: linear-gradient(135deg, #ffe09a, #b1844d);
+  box-shadow: 0 18px 36px rgba(177, 132, 77, 0.28);
+  color: #2d2821;
+}
+
+.rota-alegria-campanha .campanha-mes-cliente-hero .btn-outline {
+  background: rgba(255, 255, 255, 0.62);
+  border-color: rgba(57, 57, 57, 0.3);
+  color: var(--rota-texto);
+}
+
+.rota-alegria-campanha .mes-cliente-vitrine,
+.rota-alegria-campanha .guia-mes-cliente {
+  margin: 0;
+  padding-left: max(28px, calc((100vw - 1280px) / 2));
+  padding-right: max(28px, calc((100vw - 1280px) / 2));
+  width: 100%;
+}
+
+.rota-alegria-campanha .mes-cliente-vitrine {
+  background:
+    linear-gradient(180deg, #fffaf0, #ffffff),
+    linear-gradient(90deg, rgba(24, 174, 232, 0.08), rgba(244, 92, 132, 0.08), rgba(124, 200, 46, 0.08));
+}
+
+.rota-alegria-campanha .mes-cliente-vitrine::before {
+  background:
+    linear-gradient(90deg, rgba(177, 132, 77, 0.16), transparent 35%),
+    repeating-linear-gradient(135deg, rgba(177, 132, 77, 0.05) 0 1px, transparent 1px 18px);
+}
+
+.rota-alegria-campanha .mes-cliente-vitrine::after {
+  background: linear-gradient(135deg, rgba(245, 200, 111, 0.18), rgba(24, 174, 232, 0.08));
+  border-color: rgba(177, 132, 77, 0.18);
+}
+
+.rota-alegria-campanha .mes-cliente-vitrine .catalogo-kicker,
+.rota-alegria-campanha .catalogo-mes-cliente .catalogo-kicker,
+.rota-alegria-campanha .guia-mes-cliente .catalogo-kicker {
+  color: #9a651e;
+}
+
+.rota-alegria-campanha .cliente-destaque-principal {
+  background: linear-gradient(145deg, #292623, #7b552e);
+  border-color: rgba(245, 200, 111, 0.34);
+}
+
+.rota-alegria-campanha .cliente-destaque-media {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(245, 200, 111, 0.24), transparent 58%),
+    #fffaf0;
+}
+
+.rota-alegria-campanha .cliente-destaque-card .condicao-card-media,
+.rota-alegria-campanha .catalogo-mes-cliente .produto-imagem-contain {
+  background:
+    linear-gradient(145deg, rgba(245, 200, 111, 0.28), rgba(255, 255, 255, 0.74)),
+    #fffaf0;
+}
+
+.rota-alegria-campanha .guia-mes-cliente {
+  background:
+    linear-gradient(135deg, rgba(57, 57, 57, 0.98), rgba(126, 86, 44, 0.96)),
+    linear-gradient(90deg, var(--rota-azul), var(--rota-rosa), var(--rota-verde));
+}
+
+.rota-alegria-campanha .guia-mes-cliente .guia-pais-chamada,
+.rota-alegria-campanha .guia-mes-cliente .guia-pais-resultado button,
+.rota-alegria-campanha .guia-mes-cliente .guia-pais-catalogo-chamada a {
+  background: linear-gradient(135deg, #ffe09a, #f5c86f);
+  color: #2d2821;
+}
+
+.rota-alegria-campanha .catalogo-mes-cliente {
+  background: linear-gradient(180deg, #ffffff 0%, #fff5df 58%, #ffffff 100%);
+  color: var(--rota-texto);
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 64px 30px 96px;
+  width: 100%;
+}
+
+.rota-alegria-campanha .catalogo-mes-cliente::before {
+  background:
+    linear-gradient(90deg, rgba(245, 200, 111, 0.14), transparent 36%, rgba(24, 174, 232, 0.08)),
+    repeating-linear-gradient(90deg, rgba(57, 57, 57, 0.04) 0 1px, transparent 1px 64px);
+}
+
+.rota-alegria-campanha .catalogo-mes-cliente .catalogo-topo {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(177, 132, 77, 0.18);
+}
+
+.rota-alegria-campanha .catalogo-mes-cliente .catalogo-filtros button.ativo,
+.rota-alegria-campanha .catalogo-mes-cliente .catalogo-filtros button:hover,
+.rota-alegria-campanha .catalogo-mes-cliente .catalogo-abas button.ativo,
+.rota-alegria-campanha .catalogo-mes-cliente .catalogo-abas button:hover {
+  background: var(--rota-texto);
+  color: #ffe09a;
+}
+
+.rota-alegria-campanha .catalogo-mes-cliente .produto-recomendado {
+  border-color: rgba(245, 200, 111, 0.82);
+  box-shadow: 0 24px 60px rgba(177, 132, 77, 0.18);
+}
+
+@media (max-width: 1100px) {
+  .rota-alegria-campanha .campanha-mes-cliente-hero {
+    min-height: auto;
+    padding: 118px 24px 62px;
+  }
+
+  .rota-alegria-campanha .cliente-hero-conteudo {
+    gap: 18px;
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 760px;
+    text-align: center;
+  }
+
+  .rota-alegria-campanha .cliente-hero-copy {
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .rota-alegria-campanha .cliente-logo-area {
+    order: -1;
+    width: min(420px, calc(100vw - 48px));
+  }
+
+  .rota-alegria-campanha .campanha-mes-cliente-hero .clube-acoes {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .campanha.clube-bussola.rota-alegria-campanha {
+    overflow-x: hidden;
+  }
+
+  .rota-alegria-campanha .campanha-mes-cliente-hero {
+    margin: 0;
+    padding: 98px 16px 42px;
+    width: 100%;
+  }
+
+  .rota-alegria-campanha .campanha-mes-cliente-hero::after {
+    display: none;
+  }
+
+  .rota-alegria-campanha .cliente-hero-conteudo {
+    max-width: 100%;
+  }
+
+  .rota-alegria-campanha .cliente-logo-area {
+    border-radius: 8px;
+    padding: 7px;
+    width: min(330px, calc(100vw - 34px));
+  }
+
+  .rota-alegria-campanha .cliente-logo {
+    max-height: none;
+  }
+
+  .rota-alegria-campanha .campanha-mes-cliente-hero .clube-hero-texto h2 {
+    font-size: clamp(2.35rem, 12vw, 3.25rem);
+    line-height: 0.96;
+    max-width: 370px;
+  }
+
+  .rota-alegria-campanha .campanha-mes-cliente-hero .clube-hero-texto p {
+    font-size: 0.94rem;
+    line-height: 1.45;
+    max-width: 340px;
+  }
+
+  .rota-alegria-campanha .campanha-mes-cliente-hero .clube-acoes {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .rota-alegria-campanha .campanha-mes-cliente-hero .btn-gold,
+  .rota-alegria-campanha .campanha-mes-cliente-hero .btn-outline {
+    min-height: 46px;
+    width: 100%;
+  }
+
+  .rota-alegria-campanha .mes-cliente-vitrine,
+  .rota-alegria-campanha .guia-mes-cliente {
+    margin: 0;
+    padding-left: 18px;
+    padding-right: 18px;
+    width: 100%;
+  }
+
+  .rota-alegria-campanha .catalogo-mes-cliente {
+    padding: 44px 18px 76px;
+  }
+}

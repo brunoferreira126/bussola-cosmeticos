@@ -11,7 +11,8 @@ que possam ser alterados sem procurar dentro do componente visual.
 - `agostoDirecaoCatalogo.json`: arquivo legado da campanha Agosto com Direção.
 - `condicoesEspeciaisCatalogo.json`: produtos em condição especial exibidos
   logo no começo da landing page.
-- `mesClienteCatalogo.json`: produtos da campanha atual **Mês do Cliente**.
+- `mesClienteCatalogo.json`: arquivo legado da campanha **Mês do Cliente**.
+- `rotaAlegriaCatalogo.json`: produtos da campanha atual **Rota da Alegria**.
 
 ## Como alterar uma legenda
 
@@ -39,8 +40,9 @@ que possam ser alterados sem procurar dentro do componente visual.
 
 As imagens de São João ficam em `public/campanhas/sao-joao`, as imagens da
 aba Oportunidades ficam em `public/campanhas/oportunidades`, as imagens do Dia
-dos Pais ficam em `public/campanhas/dia-dos-pais` e a campanha atual fica em
-`public/campanhas/mes-cliente`.
+dos Pais ficam em `public/campanhas/dia-dos-pais`, as imagens antigas do Mês
+do Cliente ficam em `public/campanhas/mes-cliente` e a campanha atual fica em
+`public/campanhas/rota-da-alegria`.
 
 ## Perfis do Dia dos Pais
 
@@ -57,22 +59,21 @@ Use estes valores dentro de `profiles` para controlar a busca guiada:
 - `pai-mae`
 - `marido-pai`
 
-## Campanha Mês do Cliente
+## Campanha Rota da Alegria
 
-O catálogo ativo da campanha fica em `mesClienteCatalogo.json`.
-As imagens otimizadas ficam em `/public/campanhas/mes-cliente/`.
-A logo da campanha fica em `/public/campanhas/mes-cliente/logo-mes-cliente.webp`.
+O catálogo ativo da campanha fica em `rotaAlegriaCatalogo.json`.
+As imagens ficam em `/public/campanhas/rota-da-alegria/`.
+A logo da campanha fica em `/public/campanhas/rota-da-alegria/logo-rota-da-alegria.png`.
 Para alterar título, preço, resumo, descrição, categoria ou opções do guia,
 edite o JSON e mantenha os campos `profiles` alinhados com as opções de
-"O que você procura?" em `Campanha.jsx`.
+"Qual presente você quer encontrar?" em `Campanha.jsx`.
 
-Perfis usados na busca guiada do Mês do Cliente:
+Perfis usados na busca guiada da Rota da Alegria:
 
-- `perfume`
-- `presente`
-- `autocuidado`
+- `crianca`
+- `cheirinho`
+- `presente-pronto`
+- `cuidado`
+- `diversao`
+- `utilidade`
 - `ate-100`
-- `beneficio`
-- `impacto`
-- `rotina`
-
