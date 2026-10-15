@@ -1,3495 +1,754 @@
-/* ==================================================
-   SECAO DE CAMPANHA + CATALOGO DIA DOS NAMORADOS
-   As imagens ficam em /public e sao carregadas sob demanda.
-================================================== */
+/* ROTA DA ALEGRIA
+   Estilos da campanha atual, isolados das campanhas anteriores.
+   Cores: branco e dourado da arte, com acentos da logo e WhatsApp. */
 
-.campanha {
-  background: #0f0b0c;
-  color: #fff;
-  overflow: hidden;
+.rota-page {
+  --rota-ink: #343635;
+  --rota-muted: #696d6c;
+  --rota-gold: #c99840;
+  --rota-line: #e6e8e5;
+  --rota-teal: #148a9c;
+  --rota-rose: #bb4c7d;
+  background: #fff;
+  color: var(--rota-ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding: 0 0 56px;
+  width: 100%;
 }
 
-/* Hero da campanha com imagem de fundo leve em WebP. */
-.campanha-hero {
-  position: relative;
-  min-height: 100vh;
-  padding: 165px 30px 95px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Camada escura para manter o texto legivel sobre a foto. */
-.campanha-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(10, 7, 8, 0.96) 0%,
-      rgba(10, 7, 8, 0.9) 43%,
-      rgba(10, 7, 8, 0.68) 100%
-    );
-}
-
-/* Organiza texto e cards de destaque lado a lado no desktop. */
-.campanha-container {
-  position: relative;
-  z-index: 2;
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
-  gap: 64px;
-  align-items: center;
-}
-
-.campanha-content {
-  max-width: 740px;
-}
-
-.campanha-tag,
-.catalogo-kicker,
-.produto-categoria {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  border: 1px solid rgba(232, 185, 92, 0.4);
-  color: #f5d38d;
-  background: rgba(232, 185, 92, 0.1);
-  font-weight: 800;
-  text-transform: uppercase;
+.rota-page *, .rota-page *::before, .rota-page *::after {
+  box-sizing: border-box;
   letter-spacing: 0;
 }
 
-.campanha-tag {
-  padding: 9px 16px;
-  border-radius: 999px;
-  font-size: 0.82rem;
+.rota-page button, .rota-page input, .rota-page select {
+  font: inherit;
+}
+
+.rota-page button, .rota-page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rota-page button {
+  cursor: pointer;
+}
+
+.rota-page :is(button, a, input, select):focus-visible {
+  outline: 3px solid #158da3;
+  outline-offset: 4px;
+}
+
+.rota-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* A abertura e curta para os produtos ja aparecerem na primeira tela. */
+
+.rota-brand {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+  padding: 96px 20px 26px;
+  position: relative;
+  text-align: center;
+}
+
+/* Os arcos finos repetem as linhas douradas da arte oficial da Rota.
+   Ficam recortados na faixa de abertura, sem interferir nos controles. */
+.rota-brand::before,
+.rota-brand::after {
+  border: 1px solid #d6b573;
+  border-radius: 50%;
+  content: "";
+  height: 600px;
+  pointer-events: none;
+  position: absolute;
+  width: 1400px;
+}
+
+.rota-brand::before {
+  left: calc(50% - 1400px);
+  top: -390px;
+  transform: rotate(14deg);
+}
+
+.rota-brand::after {
+  border-color: #ead6ac;
+  left: calc(50% - 40px);
+  top: -360px;
+  transform: rotate(-16deg);
+}
+
+.rota-brand-logo {
+  animation: rota-entrada 650ms ease-out both;
+  display: block;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 10px #a675251c);
+  position: relative;
+  width: 260px;
+  max-width: 100%;
+  z-index: 1;
+}
+
+.rota-brand p {
+  color: #363b37;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 2.1rem;
+  font-weight: 650;
+  gap: 2px 10px;
+  justify-content: center;
+  line-height: 1.2;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.rota-brand p strong {
+  color: #9b702b;
+  font-weight: 750;
+}
+
+/* Uma unica vitrine, sem a duplicacao entre destaques e catalogo. */
+
+.rota-catalogo {
+  margin: 0 auto;
+  background: #fafcfb;
+  border-top: 1px solid #dfcc9f;
+  max-width: none;
+  padding: 20px max(24px, calc((100% - 1152px) / 2)) 0;
+  scroll-margin-top: 100px;
+}
+
+.rota-catalogo-heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.rota-catalogo-heading h2 {
+  border-left: 4px solid var(--rota-gold);
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  padding-left: 14px;
+}
+
+.rota-professores-logo {
+  background: none;
+  border: 0;
+  flex-shrink: 0;
+  padding: 0;
+  width: 160px;
+}
+
+.rota-professores-logo img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+/* Tres escolhas de publico. A busca por perfil fica em um seletor compacto. */
+
+.rota-colecoes {
+  background: #eef1ec;
+  border: 1px solid #e1e6de;
+  border-radius: 7px;
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 16px;
+  padding: 4px;
+}
+
+.rota-colecoes button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--rota-muted);
+  display: flex;
+  font-size: .95rem;
+  font-weight: 650;
+  gap: 8px;
+  justify-content: center;
+  min-height: 48px;
+  padding: 8px 10px;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.rota-colecoes button svg {
+  font-size: 1.1rem;
+}
+
+.rota-colecoes button:first-child svg {
+  color: #a47225;
+}
+
+.rota-colecoes button:nth-child(2) svg {
+  color: #148a9c;
+}
+
+.rota-colecoes button.ativo {
+  background: #f5d792;
+  border-color: #d5b16a;
+  box-shadow: 0 2px 5px #73551f12;
+  color: #503b1c;
+}
+
+.rota-colecoes button:nth-child(2).ativo {
+  background: #daf2f4;
+  border-color: #8ec5cd;
+  color: #176d7a;
+}
+
+.rota-colecoes button:nth-child(3).ativo {
+  background: #fff;
+  border-color: #c4cbc2;
+  color: #39473c;
+}
+
+.rota-colecoes button:not(.ativo):hover {
+  background: #fff;
+}
+
+.rota-tools {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   margin-bottom: 24px;
 }
 
-.campanha-content h2 {
-  max-width: 760px;
-  margin: 0 0 24px;
-  color: #fff;
-  font-size: 3.45rem;
-  line-height: 1.06;
-  font-weight: 900;
-}
-
-.campanha-content p {
-  max-width: 650px;
-  margin: 0 0 28px;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 1.08rem;
-  line-height: 1.75;
-}
-
-/* Numeros rapidos para mostrar volume, leveza e canal de compra. */
-.campanha-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  max-width: 650px;
-  gap: 12px;
-  margin-bottom: 30px;
-}
-
-.campanha-stats span {
-  min-height: 82px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.74);
-  font-size: 0.9rem;
-}
-
-.campanha-stats strong {
-  display: block;
-  margin-bottom: 4px;
-  color: #fff;
-  font-size: 1.15rem;
-}
-
-.campanha-buttons {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.btn-gold,
-.btn-outline,
-.produto-whatsapp {
-  display: inline-flex;
+.rota-field {
   align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 800;
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-}
-
-.btn-gold {
-  padding: 0 26px;
-  background: linear-gradient(135deg, #f7e4b0, #d4a441);
-  color: #111;
-  box-shadow: 0 14px 35px rgba(212, 164, 65, 0.28);
-}
-
-.btn-outline {
-  padding: 0 26px;
-  border: 2px solid #f1d18a;
-  color: #f1d18a;
-}
-
-.btn-gold:hover,
-.btn-outline:hover,
-.produto-whatsapp:hover {
-  transform: translateY(-3px);
-}
-
-/* Cards pequenos com os primeiros itens do catalogo. */
-.campanha-destaques {
-  display: grid;
-  gap: 16px;
-}
-
-.destaque-card {
-  display: grid;
-  grid-template-columns: 112px 1fr;
-  gap: 16px;
-  align-items: center;
-  padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-}
-
-.destaque-card img {
-  width: 112px;
-  aspect-ratio: 1;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.destaque-card span {
-  display: block;
-  margin-bottom: 8px;
-  color: #f5d38d;
-  font-weight: 900;
-}
-
-.destaque-card strong {
-  display: block;
-  color: #fff;
-  font-size: 1rem;
-  line-height: 1.35;
-}
-
-.campanha-mobile-atalho {
-  display: none;
-}
-
-/* Area branca do catalogo para facilitar leitura e comparacao dos itens. */
-.catalogo-namorados {
-  /* Compensa o header fixo quando o usuario clica em "Ver catálogo". */
-  scroll-margin-top: 132px;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 72px 30px 96px;
-  color: #1c1516;
-}
-
-.catalogo-topo {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
-  gap: 32px;
-  align-items: end;
-  margin-bottom: 22px;
-}
-
-.catalogo-kicker,
-.produto-categoria {
-  padding: 7px 12px;
-  border-radius: 999px;
-  color: #8b6418;
-  background: rgba(212, 164, 65, 0.14);
-  font-size: 0.72rem;
-}
-
-.catalogo-topo h3 {
-  max-width: 720px;
-  margin: 14px 0 0;
-  color: #fff;
-  font-size: 2.35rem;
-  line-height: 1.12;
-}
-
-.catalogo-busca {
-  display: grid;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 700;
-}
-
-.catalogo-busca input {
-  width: 100%;
-  min-height: 52px;
-  border: 1px solid rgba(245, 211, 141, 0.35);
-  border-radius: 8px;
-  padding: 0 16px;
-  outline: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font: inherit;
-}
-
-.catalogo-busca input::placeholder {
-  color: rgba(255, 255, 255, 0.52);
-}
-
-.catalogo-prioridade {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
-  padding: 14px 16px;
-  border: 1px solid rgba(244, 200, 76, 0.34);
-  border-radius: 8px;
-  background: rgba(27, 65, 140, 0.24);
-  color: rgba(255, 255, 255, 0.86);
-}
-
-.catalogo-prioridade button {
-  min-height: 36px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 999px;
-  padding: 0 12px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 800;
-}
-
-/* Filtros simples para navegar pelo catalogo sem trocar de pagina. */
-.catalogo-filtros {
+  background: #fff;
+  border: 1px solid #d9ddd8;
+  border-radius: 6px;
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
+  min-height: 46px;
+  min-width: 0;
+  padding: 0 13px;
 }
 
-.catalogo-filtros button {
-  min-height: 42px;
-  border: 1px solid rgba(245, 211, 141, 0.32);
-  border-radius: 999px;
-  padding: 0 16px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.82);
-  cursor: pointer;
-  font-weight: 800;
+.rota-field > svg {
+  color: #97713b;
+  flex-shrink: 0;
+  font-size: .95rem;
 }
 
-.catalogo-filtros button.ativo,
-.catalogo-filtros button:hover {
-  background: #f1d18a;
-  color: #111;
+.rota-field input, .rota-field select {
+  background: transparent;
+  border: 0;
+  color: var(--rota-ink);
+  flex: 1;
+  font-size: .9rem;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0;
+  width: 100%;
 }
 
-/* Grade responsiva: cria quantas colunas couberem sem quebrar os cards. */
-.catalogo-grade {
+.rota-field input::placeholder {
+  color: #727773;
+}
+
+.rota-field:focus-within {
+  border-color: #148a9c;
+}
+
+.rota-field input:focus-visible, .rota-field select:focus-visible {
+  outline: none;
+}
+
+.rota-guide {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+
+.rota-guide .rota-field {
+  background: #fff7e5;
+  border-color: #dcc28c;
+  flex: 1;
+}
+
+.rota-guide select {
+  color: #765321;
+  font-weight: 650;
+}
+
+.rota-clear {
+  align-items: center;
+  background: #f5f6f3;
+  border: 1px solid #d9ddd8;
+  border-radius: 6px;
+  color: #696d6c;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  width: 44px;
+}
+
+/* Foto inteira, nome, preco e duas acoes. Textos longos ficam nos detalhes. */
+
+.rota-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 22px;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.produto-card {
+.rota-product {
+  background: #fff;
+  --product-accent: var(--rota-gold);
+  border: 1px solid #e2e6df;
+  border-top: 3px solid var(--product-accent);
+  border-radius: 8px;
+  box-shadow: 0 5px 18px #34442c08;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-width: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.produto-recomendado {
-  border-color: rgba(47, 107, 214, 0.44);
-  box-shadow: 0 26px 70px rgba(24, 70, 150, 0.2);
+/* Acentos discretos das letras da logo identificam a vitrine da Rota. */
+.rota-product:nth-child(3n + 2) {
+  --product-accent: var(--rota-teal);
 }
 
-.produto-imagem {
-  position: relative;
-  background: #201617;
+.rota-product:nth-child(3n) {
+  --product-accent: var(--rota-rose);
 }
 
-.produto-match {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 2;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: #f4c84c;
-  color: #102554;
-  font-size: 0.72rem;
-  font-weight: 900;
-  text-transform: uppercase;
+.rota-product:hover {
+  border-color: var(--product-accent);
+  box-shadow: 0 10px 26px #27332812;
 }
 
-.produto-imagem img {
-  display: block;
+.rota-product-photo {
+  background: #f3f6f2;
+  border: 0;
+  border-bottom: 1px solid #e8ece5;
+  display: grid;
+  height: 260px;
+  padding: 12px;
+  place-items: center;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
 }
 
-.produto-info {
+.rota-product-photo img {
+  border-radius: 4px;
+  box-shadow: 0 3px 12px #142a2214;
+  display: block;
+  height: 100%;
+  max-height: 236px;
+  object-fit: contain;
+  max-width: 100%;
+  width: auto;
+}
+
+.rota-product-info {
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 20px;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px;
 }
 
-.produto-info h4 {
-  margin: 12px 0 10px;
-  color: #1f1718;
-  font-size: 1.08rem;
+.rota-product-info h3 {
+  color: var(--rota-ink);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.4;
+  margin: 0;
+  min-height: 2.8em;
+  overflow-wrap: anywhere;
+}
+
+.rota-price {
+  color: #4b402a;
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 700;
   line-height: 1.3;
 }
 
-.produto-info p {
-  display: -webkit-box;
-  margin: 0 0 20px;
-  overflow: hidden;
-  color: #5b4d4f;
-  font-size: 0.95rem;
-  line-height: 1.62;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-}
-
-.produto-rodape {
-  display: grid;
-  gap: 14px;
+.rota-product-info .rota-price {
   margin-top: auto;
 }
 
-.produto-rodape strong {
-  color: #8d1f31;
-  font-size: 1.18rem;
-}
-
-.produto-whatsapp {
-  width: 100%;
-  padding: 0 16px;
-  background: #128c4a;
-  color: #fff;
-}
-
-.produto-whatsapp:hover {
-  background: #0f793f;
-}
-
-.produto-detalhes {
-  min-height: 44px;
-  border: 1px solid rgba(141, 31, 49, 0.25);
-  border-radius: 8px;
-  background: #fff;
-  color: #8d1f31;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 800;
-}
-
-.produto-detalhes:hover {
-  background: #fff4f6;
-}
-
-/* Modal usado para mostrar a descricao completa sem alongar todos os cards. */
-.produto-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 300;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-}
-
-.produto-modal-fundo {
-  position: absolute;
-  inset: 0;
-  border: 0;
-  background: rgba(0, 0, 0, 0.72);
-  cursor: pointer;
-}
-
-.produto-modal-card {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(260px, 420px) minmax(0, 1fr);
-  width: min(920px, 100%);
-  max-height: min(760px, calc(100vh - 48px));
-  overflow: hidden;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
-}
-
-.produto-modal-galeria {
-  display: grid;
-  gap: 8px;
-  align-content: center;
-  min-height: 420px;
-  overflow: auto;
-  padding: 12px;
-  background: #f7f1ea;
-}
-
-.produto-modal-galeria img {
-  display: block;
-  width: 100%;
-  max-height: 520px;
-  border-radius: 8px;
-  object-fit: contain;
-}
-
-.produto-modal-galeria.tem-variantes {
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-}
-
-.produto-modal-galeria.tem-variantes img {
-  max-height: 330px;
-}
-
-.produto-modal-info {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  overflow-y: auto;
-  padding: 32px;
-  color: #251b1d;
-}
-
-.produto-modal-info h3 {
-  margin: 0;
-  font-size: 1.75rem;
-  line-height: 1.2;
-}
-
-.produto-modal-info strong {
-  color: #8d1f31;
-  font-size: 1.35rem;
-}
-
-.produto-modal-info p {
-  margin: 0;
-  color: #514548;
-  font-size: 1rem;
-  line-height: 1.75;
-}
-
-.produto-modal-fechar {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 2;
-  width: 42px;
-  height: 42px;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(17, 17, 17, 0.78);
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.6rem;
-  line-height: 1;
-}
-
-.catalogo-vazio {
-  margin-top: 28px;
-  padding: 22px;
-  border: 1px solid rgba(245, 211, 141, 0.35);
-  border-radius: 8px;
-  color: #fff;
-  text-align: center;
-}
-
-/* ==================================================
-   CLUBE BUSSOLA + CAMPANHA AGOSTO COM DIRECAO
-================================================== */
-
-.clube-bussola {
-  padding: 150px 30px 96px;
-  background:
-    linear-gradient(150deg, rgba(7, 28, 25, 0.98), rgba(12, 45, 39, 0.96) 42%, rgba(33, 22, 15, 0.98)),
-    #071c19;
-}
-
-.clube-hero,
-.clube-grid,
-.clube-niveis,
-.clube-recompensas,
-.clube-area-cliente,
-.clube-cadastro,
-.catalogo-sao-joao {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.clube-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 430px;
-  gap: 56px;
+.rota-whatsapp {
   align-items: center;
-  min-height: calc(100vh - 190px);
-}
-
-.clube-hero-texto h2 {
-  max-width: 820px;
-  margin: 0 0 24px;
+  background: #147d48;
+  border-radius: 5px;
   color: #fff;
-  font-size: 3.2rem;
-  line-height: 1.08;
-}
-
-.clube-hero-texto p,
-.clube-cadastro-texto p,
-.catalogo-sao-joao .catalogo-topo p,
-.clube-card p {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 1rem;
-  line-height: 1.75;
-}
-
-.clube-acoes {
   display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 28px;
-}
-
-.dashboard-demo,
-.clube-card,
-.nivel-card,
-.recompensa-card {
-  border: 1px solid rgba(245, 211, 141, 0.18);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.07);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(12px);
-}
-
-.dashboard-demo {
-  padding: 22px;
-}
-
-.dashboard-topo span,
-.dashboard-progresso span,
-.cashback-box span,
-.codigo-box small {
-  display: block;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 0.86rem;
-}
-
-.dashboard-topo strong,
-.dashboard-progresso strong {
-  display: block;
-  margin-top: 6px;
-  color: #fff;
-  font-size: 1.18rem;
-}
-
-.dashboard-resumo {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin: 22px 0;
-}
-
-.dashboard-resumo span {
-  padding: 14px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.dashboard-resumo strong {
-  display: block;
-  margin-top: 6px;
-  color: #f1d18a;
-  font-size: 1.35rem;
-}
-
-.dashboard-progresso {
-  padding: 16px;
-  border-radius: 8px;
-  background: rgba(18, 140, 74, 0.14);
-}
-
-.dashboard-progresso p {
-  margin: 10px 0 12px;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.barra-progresso {
-  height: 9px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.barra-progresso span {
-  display: block;
-  width: 70%;
-  height: 100%;
-  background: linear-gradient(90deg, #f1d18a, #c53026);
-}
-
-.dashboard-menu {
-  display: flex;
+  font-size: .93rem;
+  font-weight: 600;
   gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 18px;
-}
-
-.dashboard-menu span {
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.78rem;
-  font-weight: 800;
-}
-
-.clube-grid,
-.clube-area-cliente,
-.clube-cadastro {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 34px;
-}
-
-.clube-card {
-  padding: 26px;
-}
-
-.clube-card h3,
-.clube-secao-titulo h3,
-.clube-cadastro-texto h3,
-.catalogo-sao-joao h3 {
-  margin: 12px 0 14px;
-  color: #fff;
-  font-size: 2rem;
-  line-height: 1.16;
-}
-
-.fluxo-indicacao {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 22px;
-}
-
-.fluxo-indicacao span {
-  min-height: 54px;
-  display: grid;
-  place-items: center;
-  border-radius: 8px;
-  background: rgba(241, 209, 138, 0.14);
-  color: #f1d18a;
-  text-align: center;
-  font-weight: 900;
-  font-size: 0.78rem;
-}
-
-.codigo-box {
-  display: grid;
-  gap: 6px;
-  margin: 20px 0;
-  padding: 18px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.codigo-box strong {
-  color: #f1d18a;
-  font-size: 2rem;
-}
-
-.codigo-box span {
-  color: rgba(255, 255, 255, 0.76);
-  word-break: break-word;
-}
-
-.btn-compartilhar {
-  width: 100%;
-}
-
-.clube-niveis,
-.clube-recompensas,
-.catalogo-sao-joao {
-  margin-top: 58px;
-}
-
-.clube-secao-titulo {
-  max-width: 760px;
-  margin-bottom: 22px;
-}
-
-.niveis-lista,
-.recompensas-lista {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.nivel-card,
-.recompensa-card {
-  padding: 18px;
-}
-
-.nivel-card strong,
-.recompensa-card strong {
-  display: block;
-  color: #fff;
-  font-size: 1.08rem;
-}
-
-.nivel-card span,
-.recompensa-card span {
-  display: block;
-  margin: 10px 0;
-  color: #f1d18a;
-  font-weight: 900;
-}
-
-.nivel-card p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.68);
-  line-height: 1.55;
-}
-
-.indicacoes-lista {
-  display: grid;
-  gap: 10px;
-}
-
-.indicacao-linha {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8px;
-  padding: 14px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.indicacao-linha strong {
-  color: #fff;
-}
-
-.indicacao-linha span,
-.indicacao-linha em {
-  color: rgba(255, 255, 255, 0.7);
-  font-style: normal;
-}
-
-.cashback-box {
-  display: grid;
-  gap: 8px;
-  margin: 18px 0;
-  padding: 18px;
-  border-radius: 8px;
-  background: rgba(18, 140, 74, 0.16);
-}
-
-.cashback-box strong {
-  color: #f1d18a;
-  font-size: 2rem;
-}
-
-.cashback-box small {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.clube-cadastro {
-  align-items: start;
-  padding: 30px;
-  border: 1px solid rgba(245, 211, 141, 0.18);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.clube-form {
-  display: grid;
-  gap: 14px;
-}
-
-.clube-form label {
-  display: grid;
-  gap: 7px;
-  color: rgba(255, 255, 255, 0.82);
-  font-weight: 800;
-}
-
-.clube-form input {
-  min-height: 50px;
-  border: 1px solid rgba(245, 211, 141, 0.28);
-  border-radius: 8px;
-  padding: 0 14px;
-  outline: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font: inherit;
-}
-
-.clube-form input::placeholder {
-  color: rgba(255, 255, 255, 0.48);
-}
-
-.clube-form button:disabled {
-  cursor: wait;
-  opacity: 0.72;
-}
-
-.form-retorno {
-  margin: 0;
-  color: #f1d18a;
-  line-height: 1.5;
-}
-
-.catalogo-sao-joao {
-  scroll-margin-top: 132px;
-}
-
-/* Abas compartilham a mesma grade; somente os dados e filtros são trocados. */
-.catalogo-abas {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 34px;
-  border-bottom: 1px solid rgba(245, 211, 141, 0.25);
-}
-
-.catalogo-abas button {
-  min-height: 48px;
-  border: 0;
-  border-bottom: 3px solid transparent;
-  padding: 0 22px;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.66);
-  cursor: pointer;
-  font: inherit;
-  font-weight: 900;
-}
-
-.catalogo-abas button:hover,
-.catalogo-abas button.ativo {
-  border-bottom-color: #f1d18a;
-  color: #fff;
-}
-
-.produto-imagem-contain {
-  background: #f7f1ea;
-}
-
-.produto-imagem-contain img {
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  padding: 10px;
-}
-
-/* Hero comercial da campanha Agosto com Direção exibido enquanto o Clube Bussola esta pausado. */
-.campanha-agosto-direcao-hero {
-  grid-template-columns: minmax(0, 1fr);
-  position: relative;
-  isolation: isolate;
-  min-height: 720px;
-  max-width: none;
-  margin: -150px -30px 0;
-  padding: 150px max(30px, calc((100vw - 1280px) / 2)) 92px;
-  overflow: hidden;
-  background:
-    repeating-linear-gradient(
-      -18deg,
-      rgba(239, 199, 120, 0.07) 0,
-      rgba(239, 199, 120, 0.07) 1px,
-      transparent 1px,
-      transparent 42px
-    ),
-    linear-gradient(112deg, #061917 0%, #0b3a34 45%, #251812 100%);
-}
-
-/* Faixa diagonal inspirada em rota: cria movimento sem adicionar imagem pesada. */
-.campanha-agosto-direcao-hero::before {
-  content: "";
-  position: absolute;
-  right: -12vw;
-  bottom: 6%;
-  z-index: 1;
-  width: min(820px, 68vw);
-  height: 170px;
-  border-top: 1px solid rgba(241, 200, 117, 0.38);
-  border-bottom: 1px solid rgba(241, 200, 117, 0.18);
-  background:
-    linear-gradient(90deg, transparent, rgba(241, 200, 117, 0.18), transparent),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 48px,
-      rgba(255, 255, 255, 0.56) 48px,
-      rgba(255, 255, 255, 0.56) 92px,
-      transparent 92px,
-      transparent 150px
-    );
-  clip-path: polygon(0 42%, 100% 0, 100% 58%, 0 100%);
-  opacity: 0.64;
-  transform: rotate(-5deg);
-}
-
-.campanha-agosto-direcao-hero::after {
-  content: "";
-  position: absolute;
-  right: max(24px, calc((100vw - 1280px) / 2));
-  top: 138px;
-  z-index: 1;
-  width: min(380px, 36vw);
-  height: min(380px, 36vw);
-  border: 1px solid rgba(241, 200, 117, 0.22);
-  border-radius: 50%;
-  background:
-    linear-gradient(90deg, transparent 49.7%, rgba(241, 200, 117, 0.34) 50%, transparent 50.3%),
-    linear-gradient(0deg, transparent 49.7%, rgba(241, 200, 117, 0.22) 50%, transparent 50.3%);
-  opacity: 0.42;
-  transform: rotate(12deg);
-}
-
-.campanha-agosto-direcao-hero .clube-hero-texto {
-  max-width: 860px;
-}
-
-.campanha-agosto-direcao-hero .campanha-tag {
-  margin-bottom: 14px;
-  padding: 7px 13px;
-  border-color: rgba(241, 200, 117, 0.28);
-  background: rgba(3, 13, 12, 0.42);
-  color: #f8dfab;
-}
-
-.campanha-agosto-direcao-hero .clube-hero-texto h2 {
-  max-width: 520px;
-  margin-bottom: 8px;
-  color: #f8dfab;
-  font-size: clamp(1.45rem, 2.7vw, 2.3rem);
-  line-height: 1.08;
-}
-
-.campanha-agosto-direcao-hero .clube-hero-texto p {
-  max-width: 440px;
-  margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.74);
-  font-size: 0.96rem;
-  line-height: 1.5;
-}
-
-.campanha-agosto-direcao-hero .clube-acoes {
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.campanha-agosto-direcao-hero .btn-gold,
-.campanha-agosto-direcao-hero .btn-outline {
+  justify-content: center;
   min-height: 44px;
-  padding-right: 18px;
-  padding-left: 18px;
-}
-
-.campanha-agosto-direcao-hero .btn-outline {
-  border-width: 1px;
-  border-color: rgba(241, 200, 117, 0.48);
-  background: rgba(3, 13, 12, 0.18);
-}
-
-.pais-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    linear-gradient(90deg, rgba(3, 13, 12, 0.94), rgba(3, 13, 12, 0.42) 72%),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.04) 0,
-      rgba(255, 255, 255, 0.04) 1px,
-      transparent 1px,
-      transparent 74px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(241, 200, 117, 0.05) 0,
-      rgba(241, 200, 117, 0.05) 1px,
-      transparent 1px,
-      transparent 74px
-    );
-}
-
-.campanha-agosto-direcao-hero > *:not(.pais-overlay),
-.campanha-agosto-direcao-hero .clube-hero-texto {
-  position: relative;
-  z-index: 3;
-}
-
-.pais-logo-area {
-  position: relative;
-  width: min(500px, 88vw);
-  margin-bottom: 18px;
-  overflow: hidden;
-}
-
-.pais-logo {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.48));
-  animation: pais-logo-entrada 900ms ease-out both;
-}
-
-.pais-logo-brilho {
-  position: absolute;
-  top: -25%;
-  left: -40%;
-  width: 30%;
-  height: 150%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.74), transparent);
-  transform: rotate(18deg);
-  animation: pais-logo-brilho 3.4s ease-in-out 700ms infinite;
-  pointer-events: none;
-}
-
-.agosto-logo-area {
-  width: min(650px, 92vw);
-  border: 1px solid rgba(241, 200, 117, 0.22);
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-    rgba(3, 13, 12, 0.32);
-  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.4);
-}
-
-.agosto-logo {
-  border-radius: 8px;
-  filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.42));
-  animation: direcao-logo-entrada 950ms cubic-bezier(0.2, 0.78, 0.2, 1) both;
-}
-
-.campanha-agosto-direcao-hero .clube-hero-texto {
-  animation: direcao-conteudo-entrada 760ms ease-out both;
-}
-
-@keyframes direcao-logo-entrada {
-  from {
-    opacity: 0;
-    transform: translateX(-24px) scale(0.94);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-
-@keyframes direcao-conteudo-entrada {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pais-logo-entrada {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.94);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes pais-logo-brilho {
-  0%,
-  38% {
-    left: -44%;
-    opacity: 0;
-  }
-
-  52% {
-    opacity: 1;
-  }
-
-  76%,
-  100% {
-    left: 114%;
-    opacity: 0;
-  }
-}
-
-.pais-selos {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 28px;
-}
-
-.pais-selos span {
-  padding: 10px 14px;
-  border: 1px solid rgba(241, 200, 117, 0.28);
-  border-radius: 8px;
-  background: rgba(6, 25, 23, 0.72);
-  color: #f7dfac;
-  font-size: 0.82rem;
-  font-weight: 800;
-}
-
-/* Vitrine de prioridade: mostra as ofertas que precisam girar antes do guia. */
-.condicoes-especiais {
-  position: relative;
-  scroll-margin-top: 126px;
-  margin: -18px -30px 54px;
-  padding: 70px max(30px, calc((100vw - 1280px) / 2)) 64px;
-  overflow: hidden;
-  border-top: 1px solid rgba(248, 223, 171, 0.2);
-  border-bottom: 1px solid rgba(248, 223, 171, 0.16);
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 100%),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 100%),
-    radial-gradient(circle at 18% 8%, rgba(232, 79, 78, 0.28), transparent 24%),
-    radial-gradient(circle at 86% 18%, rgba(245, 198, 109, 0.24), transparent 24%),
-    linear-gradient(135deg, #160f13 0%, #3d141d 46%, #071c19 100%);
-  background-size: 72px 72px, 72px 72px, auto, auto, auto;
-}
-
-.condicoes-especiais::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(115deg, transparent 0 46%, rgba(248, 223, 171, 0.12) 46% 47%, transparent 47% 100%);
-  opacity: 0.9;
-}
-
-.condicoes-especiais::after {
-  content: "";
-  position: absolute;
-  top: 32px;
-  right: max(22px, calc((100vw - 1280px) / 2));
-  width: min(280px, 34vw);
-  height: min(280px, 34vw);
-  border: 1px solid rgba(248, 223, 171, 0.18);
-  border-radius: 50%;
-  background:
-    linear-gradient(90deg, transparent 49.7%, rgba(248, 223, 171, 0.24) 50%, transparent 50.3%),
-    linear-gradient(0deg, transparent 49.7%, rgba(248, 223, 171, 0.16) 50%, transparent 50.3%);
-  opacity: 0.6;
-  transform: rotate(-10deg);
-}
-
-.condicoes-topo,
-.condicoes-palco {
-  position: relative;
-  z-index: 1;
-}
-
-.condicoes-topo {
-  display: grid;
-  max-width: 760px;
-  margin-bottom: 28px;
-}
-
-.condicoes-topo h3 {
-  margin: 14px 0 12px;
-  color: #fff8ea;
-  font-size: clamp(2.4rem, 5vw, 5.2rem);
-  line-height: 0.98;
-  text-transform: uppercase;
-}
-
-.condicoes-topo p {
-  max-width: 620px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 1.02rem;
-  line-height: 1.68;
-}
-
-.condicoes-palco {
-  display: grid;
-  grid-template-columns: minmax(320px, 0.88fr) minmax(0, 1.12fr);
-  gap: 20px;
-  align-items: stretch;
-}
-
-.condicao-principal,
-.condicao-card {
-  border: 1px solid rgba(248, 223, 171, 0.18);
-  border-radius: 8px;
-  background: rgba(255, 250, 240, 0.98);
-  box-shadow: 0 28px 84px rgba(0, 0, 0, 0.32);
-}
-
-.condicao-principal {
-  display: grid;
-  grid-template-rows: minmax(320px, 1fr) auto;
-  overflow: hidden;
-}
-
-.condicao-principal-media,
-.condicao-card-media {
-  position: relative;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  background:
-    linear-gradient(135deg, #fff7eb, #ead7bb);
-}
-
-.condicao-principal-media::after {
-  content: "";
-  position: absolute;
-  inset: auto -20% 14% -20%;
-  height: 64px;
-  background: linear-gradient(90deg, transparent, rgba(141, 31, 49, 0.18), transparent);
-  transform: rotate(-8deg);
-}
-
-.condicao-principal-media img,
-.condicao-card-media img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.condicao-principal-media img {
-  max-height: 460px;
-  padding: 18px;
-}
-
-.condicao-principal-info,
-.condicao-card-info {
-  display: grid;
-  gap: 12px;
-  color: #1d1718;
-}
-
-.condicao-principal-info {
-  padding: 28px;
-}
-
-.condicao-principal-info > span,
-.condicao-card-info > span {
-  width: fit-content;
-  border-radius: 999px;
-  background: #8d1f31;
-  color: #fff8ea;
-  font-size: 0.74rem;
-  font-weight: 900;
-  padding: 7px 11px;
-  text-transform: uppercase;
-}
-
-.condicao-principal-info h4,
-.condicao-card-info h4 {
-  margin: 0;
-  color: #1d1718;
-  line-height: 1.14;
-}
-
-.condicao-principal-info h4 {
-  font-size: 2rem;
-}
-
-.condicao-principal-info p,
-.condicao-card-info p {
-  margin: 0;
-  color: #5d5050;
-  line-height: 1.56;
-}
-
-.condicao-preco,
-.condicao-card-preco {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.condicao-preco del,
-.condicao-card-preco del {
-  color: #9d8b87;
-  font-weight: 800;
-}
-
-.condicao-preco strong,
-.condicao-card-preco strong {
-  color: #0a7b4f;
-  font-weight: 950;
-}
-
-.condicao-preco strong {
-  font-size: 2rem;
-}
-
-.condicao-acoes {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 10px;
-  align-items: center;
-}
-
-.condicoes-lista {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.condicao-card {
-  display: grid;
-  grid-template-columns: minmax(118px, 0.42fr) minmax(0, 0.58fr);
-  min-height: 232px;
-  overflow: hidden;
-}
-
-.condicao-card-media {
-  width: 100%;
-  min-height: 100%;
-  border: 0;
-  cursor: pointer;
-  padding: 0;
-}
-
-.condicao-card-media img {
-  min-height: 100%;
-  padding: 10px;
-}
-
-.condicao-card-media span {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  z-index: 2;
-  border-radius: 999px;
-  padding: 7px 10px;
-  border: 1px solid rgba(248, 223, 171, 0.36);
-  background: rgba(7, 28, 25, 0.92);
-  color: #f8dfab;
-  font-size: 0.7rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.condicao-card-info {
-  align-content: start;
-  padding: 18px;
-}
-
-.condicao-card-info h4 {
-  font-size: 1.05rem;
-}
-
-.condicao-card-info p {
-  display: -webkit-box;
-  overflow: hidden;
-  font-size: 0.86rem;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
-.condicao-card-preco strong {
-  font-size: 1.16rem;
-}
-
-.condicao-card .produto-whatsapp {
-  min-height: 40px;
-  font-size: 0.86rem;
-}
-
-.guia-pais {
-  position: relative;
-  scroll-margin-top: 126px;
-  margin: 56px -30px 54px;
-  padding: 68px max(30px, calc((100vw - 1280px) / 2)) 58px;
-  overflow: hidden;
-  border-top: 1px solid rgba(184, 123, 55, 0.22);
-  border-bottom: 1px solid rgba(184, 123, 55, 0.22);
-  background:
-    linear-gradient(145deg, rgba(248, 243, 232, 0.98), rgba(237, 226, 205, 0.98) 58%, rgba(203, 143, 70, 0.2)),
-    #f4ebdc;
-}
-
-.guia-pais::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg, rgba(10, 58, 50, 0.07) 0 1px, transparent 1px 100%),
-    linear-gradient(0deg, rgba(184, 123, 55, 0.12) 0 1px, transparent 1px 100%);
-  background-size: 74px 74px;
-  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.52), transparent 84%);
-}
-
-.guia-pais::after {
-  content: "";
-  position: absolute;
-  right: -120px;
-  bottom: 34px;
-  width: min(680px, 72vw);
-  height: 120px;
-  border-top: 1px solid rgba(12, 58, 50, 0.22);
-  background: linear-gradient(90deg, transparent, rgba(12, 58, 50, 0.1), transparent);
-  clip-path: polygon(0 48%, 100% 0, 100% 42%, 0 100%);
-  pointer-events: none;
-}
-
-.guia-pais-palco,
-.guia-pais-vitrine {
-  position: relative;
-  z-index: 1;
-}
-
-.guia-pais-palco {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
-  gap: 34px;
-  align-items: center;
-}
-
-.guia-pais-topo {
-  max-width: 650px;
-}
-
-.guia-pais-chamada {
-  display: inline-flex;
-  width: fit-content;
-  margin-top: 16px;
-  border: 1px solid rgba(10, 58, 50, 0.18);
-  border-radius: 999px;
-  padding: 8px 14px;
-  background: #0a3a32;
-  color: #f8dfab;
-  font-size: 0.78rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.guia-pais-topo h3 {
-  max-width: 680px;
-  margin: 14px 0 18px;
-  color: #071c19;
-  font-size: clamp(3rem, 7vw, 6.8rem);
-  line-height: 0.98;
-  text-transform: uppercase;
-}
-
-.guia-pais-topo p {
-  margin: 0;
-  max-width: 560px;
-  color: #48504b;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-.guia-pais-consultor {
-  display: grid;
-  gap: 16px;
-  border: 1px solid rgba(241, 200, 117, 0.34);
-  border-radius: 8px;
-  padding: 26px;
-  background:
-    linear-gradient(155deg, rgba(8, 35, 31, 0.98), rgba(9, 27, 25, 0.98)),
-    #08231f;
-  color: #fff;
-  box-shadow: 0 28px 80px rgba(8, 35, 31, 0.28);
-}
-
-.guia-pais-cabecalho {
-  display: grid;
-  gap: 6px;
-}
-
-.guia-pais-cabecalho span {
-  color: #f5c66d;
-  font-size: 0.78rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.guia-pais-cabecalho strong {
-  color: #fff;
-  font-size: 1.32rem;
-  line-height: 1.2;
-}
-
-.guia-pais-trigger {
-  position: relative;
-  width: 100%;
-  min-height: 132px;
-  border: 1px solid rgba(241, 200, 117, 0.3);
-  border-radius: 8px;
-  padding: 22px 166px 22px 22px;
-  background:
-    linear-gradient(135deg, #f6ddb0, #c98938);
-  color: #071c19;
-  cursor: pointer;
-  text-align: left;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-}
-
-.guia-pais-trigger::after {
-  content: "";
-  position: absolute;
-  right: 150px;
-  top: 22px;
-  bottom: 22px;
-  width: 1px;
-  background: rgba(7, 28, 25, 0.18);
-}
-
-.guia-pais-trigger:hover,
-.guia-pais-trigger[aria-expanded="true"] {
-  background: linear-gradient(135deg, #ffe8ba, #d99a43);
-  box-shadow: 0 18px 34px rgba(7, 28, 25, 0.26);
-  transform: translateY(-2px);
-}
-
-.guia-pais-trigger span,
-.guia-pais-trigger strong,
-.guia-pais-trigger small {
-  display: block;
-}
-
-.guia-pais-trigger span {
-  color: #0a3a32;
-  font-size: 0.82rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.guia-pais-trigger strong {
-  margin: 8px 0 6px;
-  font-size: 1.68rem;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.guia-pais-trigger small {
-  color: rgba(7, 28, 25, 0.72);
-  font-size: 0.92rem;
-  line-height: 1.45;
-}
-
-.guia-pais-trigger b {
-  position: absolute;
-  top: 50%;
-  right: 16px;
-  min-width: 126px;
-  transform: translateY(-50%);
-  border-radius: 8px;
-  padding: 12px 14px;
-  background: #071c19;
-  color: #f8dfab;
-  font-size: 0.88rem;
+  padding: 10px 12px;
   text-align: center;
-}
-
-.guia-pais-opcoes {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
-  max-height: 420px;
-  overflow-y: auto;
-  border: 1px solid rgba(241, 200, 117, 0.18);
-  border-radius: 8px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.guia-pais-opcoes button {
-  min-height: 132px;
-  border: 1px solid rgba(241, 200, 117, 0.16);
-  border-radius: 8px;
-  padding: 14px;
-  background: #f8f1e4;
-  color: #071c19;
-  cursor: pointer;
-  text-align: left;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-}
-
-.guia-pais-opcoes button:hover,
-.guia-pais-opcoes button.ativo {
-  border-color: #c98938;
-  background: #fff8ea;
-  transform: translateY(-3px);
-}
-
-.guia-pais-opcoes span,
-.guia-pais-opcoes strong,
-.guia-pais-opcoes small {
-  display: block;
-}
-
-.guia-pais-opcoes span {
-  color: #a45e24;
-  font-size: 0.78rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.guia-pais-opcoes strong {
-  margin: 8px 0 6px;
-  font-size: 0.98rem;
-  line-height: 1.35;
-}
-
-.guia-pais-opcoes small {
-  color: rgba(7, 28, 25, 0.72);
-  font-size: 0.84rem;
-  line-height: 1.5;
-}
-
-.guia-pais-vitrine {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
-  gap: 18px;
-  align-items: stretch;
-  margin-top: 24px;
-  padding: 18px;
-  border: 1px solid rgba(7, 28, 25, 0.12);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.52);
-  box-shadow: 0 22px 60px rgba(7, 28, 25, 0.12);
-}
-
-.guia-pais-resultado {
-  display: grid;
-  align-content: center;
-  gap: 12px;
-  min-height: 100%;
-  padding: 18px;
-  border: 1px solid rgba(241, 200, 117, 0.24);
-  border-radius: 8px;
-  background: #08231f;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.guia-pais-resultado span,
-.guia-pais-resultado strong {
-  display: block;
-}
-
-.guia-pais-resultado strong {
-  color: #fff;
-  font-size: 1.05rem;
-  line-height: 1.45;
-}
-
-.guia-pais-resultado button {
-  justify-self: start;
-  min-height: 40px;
-  border: 0;
-  border-radius: 8px;
-  padding: 0 16px;
-  background: #f5c66d;
-  color: #071c19;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 900;
-}
-
-.guia-pais-catalogo-chamada {
-  display: grid;
-  align-content: center;
-  gap: 14px;
-  min-height: 100%;
-  padding: 22px;
-  border: 1px solid rgba(201, 137, 56, 0.22);
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(246, 221, 176, 0.64));
-  color: #071c19;
-}
-
-.guia-pais-catalogo-chamada span,
-.guia-pais-catalogo-chamada strong {
-  display: block;
-}
-
-.guia-pais-catalogo-chamada span {
-  color: #a45e24;
-  font-size: 0.78rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.guia-pais-catalogo-chamada strong {
-  font-size: 1.2rem;
-  line-height: 1.45;
-}
-
-.guia-pais-catalogo-chamada a {
-  justify-self: start;
-  min-height: 44px;
-  border-radius: 8px;
-  padding: 12px 18px;
-  background: #071c19;
-  color: #f8dfab;
-  font-weight: 900;
   text-decoration: none;
 }
 
-/* Identidade visual especifica do catalogo Agosto com Direção. */
-.catalogo-agosto-direcao {
-  position: relative;
-  scroll-margin-top: 126px;
-  margin-top: 0;
-  padding-top: 48px;
-  border: 1px solid rgba(241, 200, 117, 0.14);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(7, 28, 25, 0.96) 0%, rgba(10, 58, 50, 0.92) 28%, rgba(248, 243, 232, 0.98) 28%, rgba(248, 243, 232, 0.98) 100%);
+.rota-whatsapp svg {
+  flex-shrink: 0;
+  font-size: 1.12rem;
 }
 
-.catalogo-agosto-direcao::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(241, 200, 117, 0.05) 0,
-      rgba(241, 200, 117, 0.05) 1px,
-      transparent 1px,
-      transparent 84px
-    );
+.rota-whatsapp:hover {
+  background: #106439;
 }
 
-.catalogo-agosto-direcao > * {
-  position: relative;
-  z-index: 1;
+.rota-details {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: #59685e;
+  display: flex;
+  font-size: .86rem;
+  gap: 7px;
+  justify-content: center;
+  min-height: 32px;
+  padding: 4px;
+  text-decoration: none;
 }
 
-.catalogo-agosto-direcao .catalogo-abas button.ativo {
-  background: #f5c66d;
-  color: #071c19;
+.rota-details svg {
+  font-size: .7rem;
+  transition: transform 160ms ease;
 }
 
-.catalogo-agosto-direcao .catalogo-topo {
-  align-items: stretch;
-  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
-  margin-bottom: 20px;
-  padding: 22px 24px;
-  border: 1px solid rgba(241, 200, 117, 0.2);
-  border-radius: 8px;
-  background: rgba(5, 20, 18, 0.5);
+.rota-details:hover svg {
+  transform: translateX(3px);
 }
 
-.catalogo-agosto-direcao .catalogo-kicker,
-.catalogo-agosto-direcao .produto-categoria {
-  border-color: rgba(10, 58, 50, 0.16);
-  color: #0a3a32;
-  background: #f5d48d;
+.rota-more {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 30px 0 12px;
 }
 
-.catalogo-agosto-direcao .catalogo-topo h3 {
-  color: #fff;
-  font-size: clamp(2rem, 3vw, 2.75rem);
+.rota-more span {
+  color: #787e77;
+  font-size: .8rem;
 }
 
-.catalogo-agosto-direcao .catalogo-topo p,
-.catalogo-agosto-direcao .catalogo-busca {
-  color: rgba(255, 255, 255, 0.82);
+.rota-more button, .rota-empty button {
+  align-items: center;
+  background: #f5d18a;
+  border: 1px solid #dbb96e;
+  border-radius: 6px;
+  color: #4b3b22;
+  display: inline-flex;
+  font-size: .95rem;
+  font-weight: 600;
+  gap: 12px;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 28px;
 }
 
-.catalogo-agosto-direcao .catalogo-busca {
-  align-content: center;
+.rota-empty {
+  padding: 40px 0;
+  text-align: center;
 }
 
-.catalogo-agosto-direcao .catalogo-busca input {
-  height: 58px;
-  border-color: rgba(241, 200, 117, 0.34);
-  background: rgba(255, 255, 255, 0.1);
+.rota-empty p {
+  margin-bottom: 18px;
 }
 
-.catalogo-agosto-direcao .catalogo-filtros button {
-  border-color: rgba(10, 58, 50, 0.18);
+/* O modal usa faixas com minimo zero para legendas longas nunca serem cortadas.
+   A foto fica inteira e somente a area de leitura rola no desktop e no mobile. */
+
+.rota-dialog {
   background: #fff;
-  color: #0f2824;
-  box-shadow: 0 12px 26px rgba(7, 28, 25, 0.07);
-}
-
-.catalogo-agosto-direcao .catalogo-filtros button.ativo,
-.catalogo-agosto-direcao .catalogo-filtros button:hover {
-  background: #0a3a32;
-  color: #f8dfab;
-}
-
-.catalogo-agosto-direcao .catalogo-prioridade {
-  border-color: rgba(10, 58, 50, 0.16);
-  background: #fff8ea;
-  color: #071c19;
-}
-
-.catalogo-agosto-direcao .catalogo-prioridade button {
-  border-color: rgba(10, 58, 50, 0.18);
-  background: #071c19;
-  color: #f8dfab;
-}
-
-.catalogo-agosto-direcao .produto-card {
-  border-color: rgba(10, 58, 50, 0.13);
-  background: #fffdf7;
-  box-shadow: 0 20px 50px rgba(7, 28, 25, 0.14);
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
-}
-
-.catalogo-agosto-direcao .produto-card:hover {
-  border-color: rgba(201, 137, 56, 0.34);
-  box-shadow: 0 28px 70px rgba(7, 28, 25, 0.18);
-  transform: translateY(-4px);
-}
-
-.catalogo-agosto-direcao .produto-recomendado {
-  border-color: rgba(201, 137, 56, 0.56);
-  box-shadow: 0 30px 80px rgba(201, 137, 56, 0.2);
-}
-
-.catalogo-agosto-direcao .produto-imagem-contain {
-  background:
-    linear-gradient(135deg, #fffaf0, #eadcc6);
-}
-
-.catalogo-agosto-direcao .produto-match {
-  background: #071c19;
-  color: #f8dfab;
-}
-
-.catalogo-agosto-direcao .produto-info h4 {
-  color: #071c19;
-}
-
-.catalogo-agosto-direcao .produto-info p {
-  color: #4d5752;
-}
-
-.catalogo-agosto-direcao .produto-rodape strong {
-  color: #0a3a32;
-}
-
-.catalogo-agosto-direcao .produto-whatsapp {
-  background: #0a7b4f;
-}
-
-.catalogo-agosto-direcao .produto-whatsapp:hover {
-  background: #075f3e;
-}
-
-.catalogo-agosto-direcao .produto-detalhes {
-  border-color: rgba(10, 58, 50, 0.22);
-  color: #0a3a32;
-}
-
-.catalogo-agosto-direcao .produto-detalhes:hover {
-  background: #f8efde;
-}
-
-/* Hero comercial do Sao Joao exibido enquanto o Clube Bussola esta pausado. */
-.campanha-sao-joao-hero {
-  grid-template-columns: minmax(0, 1fr);
-  position: relative;
-  min-height: 650px;
-  max-width: none;
-  margin: -150px -30px 0;
-  padding: 170px max(30px, calc((100vw - 1280px) / 2)) 84px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--rota-ink);
+  margin: auto;
+  max-height: calc(100dvh - 32px);
+  max-width: calc(100% - 32px);
   overflow: hidden;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 0;
+  width: 960px;
 }
 
-/* Sem o antigo card-resumo, o texto ocupa o hero com largura confortavel. */
-.campanha-sao-joao-hero .clube-hero-texto {
-  max-width: 820px;
+.rota-dialog::backdrop {
+  background: #121a16b8;
 }
 
-.sao-joao-overlay {
+.rota-dialog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  grid-template-rows: minmax(0, 1fr);
+  height: min(760px, calc(100dvh - 32px));
+}
+
+.rota-dialog-close {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #dce1db;
+  border-radius: 50%;
+  color: #384039;
+  display: flex;
+  height: 38px;
+  justify-content: center;
   position: absolute;
-  inset: 0;
-  background: rgba(18, 8, 9, 0.84);
-}
-
-.campanha-sao-joao-hero > *:not(.sao-joao-overlay, .bandeirinhas) {
-  position: relative;
+  right: 12px;
+  top: 12px;
+  width: 38px;
   z-index: 2;
 }
 
-/* Bandeirinhas leves feitas apenas com CSS. */
-.bandeirinhas {
-  position: absolute;
-  top: 132px;
-  left: 0;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  border-top: 2px solid rgba(255, 255, 255, 0.56);
-  pointer-events: none;
-}
-
-.bandeirinhas span {
-  width: 54px;
-  height: 58px;
-  margin: -1px 10px 0;
-  background: #d44032;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-}
-
-.bandeirinhas span:nth-child(2n) {
-  background: #efb73e;
-}
-
-.bandeirinhas span:nth-child(3n) {
-  background: #16804d;
-}
-
-.bandeirinhas span:nth-child(4n) {
-  background: #3276b1;
-}
-
-.sao-joao-selos {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 24px;
-}
-
-.sao-joao-selos span {
-  padding: 9px 13px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.09);
-  color: #fff;
-  font-size: 0.82rem;
-  font-weight: 800;
-}
-
-.catalogo-resumo {
-  position: relative;
-  padding-top: 96px;
-  border-color: rgba(239, 183, 62, 0.42);
-  background: rgba(40, 13, 14, 0.8);
-}
-
-.selo-sao-joao {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: grid;
-  place-items: center;
-  width: 92px;
-  height: 92px;
-  border: 3px solid #efb73e;
-  border-radius: 50%;
-  background: #a62322;
-  color: #fff;
-  text-align: center;
-  transform: rotate(5deg);
-}
-
-.selo-sao-joao small,
-.selo-sao-joao span {
-  font-size: 0.68rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.selo-sao-joao strong {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.catalogo-ver-mais {
-  display: grid;
-  justify-items: center;
-  gap: 14px;
-  margin-top: 34px;
-  padding: 24px;
-  border: 1px solid rgba(245, 211, 141, 0.2);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.72);
-  text-align: center;
-}
-
-.catalogo-ver-mais button {
-  border: 0;
-  cursor: pointer;
-  font: inherit;
-}
-
-/* Ajustes para tablets. */
-@media (max-width: 1100px) {
-  .campanha-hero {
-    padding: 145px 24px 80px;
-  }
-
-  .campanha-container,
-  .catalogo-topo,
-  .clube-hero,
-  .clube-grid,
-  .clube-area-cliente,
-  .clube-cadastro {
-    grid-template-columns: 1fr;
-  }
-
-  .clube-bussola {
-    padding: 140px 24px 84px;
-  }
-
-  .campanha-sao-joao-hero,
-  .campanha-agosto-direcao-hero {
-    margin: -140px -24px 0;
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-
-  .condicoes-especiais {
-    margin-right: -24px;
-    margin-left: -24px;
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-
-  .condicoes-palco {
-    grid-template-columns: 1fr;
-  }
-
-  .condicoes-lista {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .guia-pais {
-    margin-right: -24px;
-    margin-left: -24px;
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-
-  .guia-pais-palco,
-  .guia-pais-vitrine {
-    grid-template-columns: 1fr;
-  }
-
-  .guia-pais-topo h3 {
-    font-size: 3rem;
-  }
-
-  .clube-hero {
-    min-height: auto;
-  }
-
-  .niveis-lista,
-  .recompensas-lista {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .campanha-destaques {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .destaque-card {
-    grid-template-columns: 1fr;
-  }
-
-  .destaque-card img {
-    width: 100%;
-  }
-}
-
-/* Ajustes para celulares. */
-@media (max-width: 768px) {
-  .campanha-hero {
-    min-height: auto;
-    padding: 128px 18px 64px;
-  }
-
-  .clube-bussola {
-    padding: 124px 18px 72px;
-  }
-
-  .campanha-sao-joao-hero,
-  .campanha-agosto-direcao-hero {
-    min-height: auto;
-    margin: -124px -18px 0;
-    padding: 146px 18px 64px;
-    background-position: 55% center;
-  }
-
-  .pais-logo-area {
-    width: min(360px, 90vw);
-  }
-
-  .agosto-logo-area {
-    width: min(420px, 94vw);
-  }
-
-  .bandeirinhas {
-    top: 116px;
-    justify-content: flex-start;
-  }
-
-  .bandeirinhas span {
-    min-width: 34px;
-    width: 34px;
-    height: 38px;
-    margin-right: 5px;
-    margin-left: 5px;
-  }
-
-  .sao-joao-selos,
-  .pais-selos {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .condicoes-especiais {
-    margin: 0 -18px 38px;
-    padding: 42px 18px 44px;
-  }
-
-  .condicoes-especiais::after {
-    width: 220px;
-    height: 220px;
-    opacity: 0.34;
-  }
-
-  .condicoes-topo {
-    margin-bottom: 20px;
-  }
-
-  .condicoes-topo h3 {
-    font-size: 2.35rem;
-    line-height: 1;
-  }
-
-  .condicoes-topo p {
-    font-size: 0.94rem;
-    line-height: 1.58;
-  }
-
-  .condicao-principal {
-    grid-template-rows: auto auto;
-  }
-
-  .condicao-principal-media {
-    min-height: 280px;
-  }
-
-  .condicao-principal-media img {
-    max-height: 320px;
-    padding: 12px;
-  }
-
-  .condicao-principal-info {
-    padding: 20px;
-  }
-
-  .condicao-principal-info h4 {
-    font-size: 1.55rem;
-  }
-
-  .condicao-preco strong {
-    font-size: 1.65rem;
-  }
-
-  .condicao-acoes {
-    grid-template-columns: 1fr;
-  }
-
-  .condicoes-lista {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(270px, 84vw);
-    grid-template-columns: none;
-    gap: 12px;
-    margin-right: -18px;
-    margin-left: -18px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    padding: 2px 18px 14px;
-    scroll-snap-type: x mandatory;
-  }
-
-  .condicao-card {
-    grid-template-columns: 1fr;
-    min-height: auto;
-    scroll-snap-align: start;
-  }
-
-  .condicao-card-media {
-    min-height: 240px;
-  }
-
-  .condicao-card-info {
-    padding: 16px;
-  }
-
-  .condicao-card-info p {
-    -webkit-line-clamp: 2;
-  }
-
-  .guia-pais {
-    margin: 34px -18px 38px;
-    padding: 38px 18px;
-  }
-
-  .guia-pais-topo h3 {
-    font-size: 2.25rem;
-  }
-
-
-  .guia-pais-consultor {
-    gap: 12px;
-    padding: 16px;
-  }
-
-  .guia-pais-trigger {
-    min-height: auto;
-    padding: 16px;
-  }
-
-  .guia-pais-trigger::after {
-    display: none;
-  }
-
-  .guia-pais-trigger strong {
-    font-size: 1.38rem;
-  }
-
-  .guia-pais-trigger small {
-    font-size: 0.86rem;
-  }
-
-  .guia-pais-trigger b {
-    position: static;
-    display: inline-block;
-    min-width: 0;
-    width: 100%;
-    margin-top: 14px;
-    transform: none;
-  }
-
-  .guia-pais-opcoes {
-    grid-template-columns: 1fr;
-    max-height: 520px;
-  }
-
-  .guia-pais-opcoes button {
-    min-height: auto;
-  }
-
-  .guia-pais-resultado,
-  .catalogo-prioridade {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-
-  .catalogo-resumo {
-    padding-top: 92px;
-  }
-
-  .catalogo-agosto-direcao {
-    padding-top: 34px;
-  }
-
-  .catalogo-agosto-direcao .catalogo-topo {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-bottom: 18px;
-    padding: 18px;
-  }
-
-  .catalogo-agosto-direcao .catalogo-topo h3 {
-    max-width: none;
-    font-size: 1.9rem;
-    line-height: 1.12;
-  }
-
-  .catalogo-agosto-direcao .catalogo-topo p {
-    font-size: 0.95rem;
-    line-height: 1.55;
-  }
-
-  .catalogo-agosto-direcao .catalogo-busca {
-    width: 100%;
-  }
-
-  .catalogo-agosto-direcao .catalogo-busca input {
-    width: 100%;
-    height: 50px;
-    min-height: 50px;
-    padding: 0 12px;
-    font-size: 0.9rem;
-  }
-
-  .campanha-content h2,
-  .catalogo-topo h3,
-  .clube-hero-texto h2,
-  .clube-card h3,
-  .clube-secao-titulo h3,
-  .clube-cadastro-texto h3 {
-    font-size: 2rem;
-  }
-
-  .campanha-content p,
-  .clube-hero-texto p {
-    font-size: 1rem;
-  }
-
-  .campanha-stats,
-  .campanha-destaques {
-    display: none;
-  }
-
-  .campanha-mobile-atalho {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 54px;
-    margin-top: 18px;
-    border-radius: 8px;
-    background: #f1d18a;
-    color: #111;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 900;
-  }
-
-  .catalogo-namorados {
-    padding: 54px 18px 72px;
-  }
-
-  .catalogo-grade {
-    grid-template-columns: 1fr;
-  }
-
-  .catalogo-abas button {
-    flex: 1;
-    padding-right: 8px;
-    padding-left: 8px;
-  }
-
-  .clube-acoes {
-    display: grid;
-  }
-
-  .dashboard-demo,
-  .clube-card,
-  .clube-cadastro {
-    padding: 20px;
-  }
-
-  .fluxo-indicacao {
-    grid-template-columns: 1fr;
-  }
-
-  .niveis-lista,
-  .recompensas-lista {
-    grid-template-columns: 1fr;
-  }
-
-  .indicacao-linha {
-    grid-template-columns: 1fr;
-  }
-
-  .produto-imagem {
-    background: #f7f1ea;
-  }
-
-  .produto-imagem img {
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    padding: 10px;
-  }
-
-  .produto-modal {
-    align-items: end;
-    padding: 12px;
-  }
-
-  .produto-modal-card {
-    grid-template-columns: 1fr;
-    max-height: calc(100vh - 24px);
-  }
-
-  .produto-modal-galeria {
-    grid-template-columns: 1fr;
-    min-height: 220px;
-    max-height: 320px;
-    padding: 10px;
-  }
-
-  .produto-modal-galeria.tem-variantes {
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(220px, 86%);
-    grid-template-columns: none;
-    grid-template-rows: none;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-  }
-
-  .produto-modal-galeria img,
-  .produto-modal-galeria.tem-variantes img {
-    max-height: 280px;
-    scroll-snap-align: center;
-  }
-
-  .produto-modal-info {
-    padding: 24px 18px;
-  }
-
-  .produto-modal-info h3 {
-    font-size: 1.35rem;
-  }
-}
-
-
-/* ==========================================================================
-   Campanha Mês do Cliente
-   --------------------------------------------------------------------------
-   Esta seção concentra a identidade visual da campanha atual sem apagar os
-   estilos antigos. Para trocar cores, logo, vitrine ou guia, comece por aqui.
-   ========================================================================== */
-
-.mes-cliente-campanha {
-  --cliente-noite: #14120f;
-  --cliente-preto: #221913;
-  --cliente-caramelo: #a46a2d;
-  --cliente-ouro: #f2cf83;
-  --cliente-marfim: #fff8eb;
-  --cliente-rose: #c35f6a;
-  --cliente-verde: #1b6b57;
-  background: #fff8eb;
-}
-
-.campanha-mes-cliente-hero {
-  min-height: clamp(620px, 84vh, 760px);
-  background:
-    linear-gradient(118deg, rgba(20, 18, 15, 0.97) 0%, rgba(44, 29, 18, 0.94) 48%, rgba(132, 82, 36, 0.92) 100%),
-    linear-gradient(45deg, #1b6b57 0%, #c35f6a 100%);
-  overflow: hidden;
-  padding: clamp(72px, 10vw, 132px) clamp(18px, 5vw, 72px) clamp(56px, 8vw, 96px);
-}
-
-.campanha-mes-cliente-hero::before {
-  background:
-    linear-gradient(90deg, transparent, rgba(242, 207, 131, 0.28), transparent),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 248, 235, 0.08) 0 1px,
-      transparent 1px 72px
-    );
-  content: "";
-  inset: 0;
-  opacity: 0.7;
-  position: absolute;
-  transform: skewY(-6deg) translateY(-18%);
-}
-
-.campanha-mes-cliente-hero::after {
-  border: 1px solid rgba(242, 207, 131, 0.2);
-  box-shadow: inset 0 0 0 24px rgba(255, 248, 235, 0.03);
-  content: "";
-  height: min(52vw, 560px);
-  position: absolute;
-  right: max(-220px, -14vw);
-  top: 10%;
-  transform: rotate(-12deg);
-  width: min(52vw, 560px);
-}
-
-.campanha-mes-cliente-hero > *:not(.pais-overlay),
-.campanha-mes-cliente-hero .clube-hero-texto {
-  position: relative;
-  z-index: 1;
-}
-
-.campanha-mes-cliente-hero .clube-hero-texto {
+.rota-dialog-media {
   align-items: center;
-  gap: clamp(18px, 3vw, 28px);
-  margin-inline: auto;
-  max-width: 940px;
-  text-align: center;
-}
-
-.campanha-mes-cliente-hero .campanha-tag {
-  background: rgba(255, 248, 235, 0.12);
-  border: 1px solid rgba(242, 207, 131, 0.34);
-  color: #f9df9d;
-}
-
-.campanha-mes-cliente-hero .clube-hero-texto h2 {
-  color: #fff8eb;
-  font-size: clamp(2.25rem, 5vw, 5.6rem);
-  letter-spacing: 0;
-  line-height: 0.92;
-  margin: 0;
-  max-width: 900px;
-  text-wrap: balance;
-}
-
-.campanha-mes-cliente-hero .clube-hero-texto p {
-  color: rgba(255, 248, 235, 0.82);
-  font-size: clamp(1rem, 1.7vw, 1.2rem);
-  line-height: 1.7;
-  max-width: 680px;
-}
-
-.campanha-mes-cliente-hero .clube-acoes {
+  background: #f6f7f4;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  min-height: 0;
+  overflow: auto;
+  padding: 18px;
 }
 
-.campanha-mes-cliente-hero .btn-gold {
-  background: linear-gradient(135deg, #f7d58b, #b87832);
-  color: #21170f;
-}
-
-.campanha-mes-cliente-hero .btn-outline {
-  border-color: rgba(255, 248, 235, 0.5);
-  color: #fff8eb;
-}
-
-.cliente-logo-area {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  isolation: isolate;
-  margin-bottom: 0;
-  max-width: min(720px, 92vw);
-  padding: 0;
+.rota-dialog-media img {
+  display: block;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
   width: 100%;
 }
 
-.cliente-logo-area::before {
-  background: linear-gradient(90deg, transparent, rgba(247, 213, 139, 0.34), transparent);
-  content: "";
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translateX(-50%);
-  width: min(680px, 86vw);
-  z-index: -1;
+.rota-dialog-media[data-multiple="true"] {
+  justify-content: flex-start;
+  gap: 12px;
 }
 
-.cliente-logo {
-  animation: cliente-logo-entrada 980ms cubic-bezier(0.18, 0.86, 0.22, 1) both;
-  border-radius: 10px;
-  filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.34));
-  max-height: clamp(210px, 35vw, 380px);
-  object-fit: contain;
-  width: min(680px, 92vw);
+.rota-dialog-media[data-multiple="true"] img {
+  height: auto;
+  max-height: 380px;
+  min-height: 220px;
 }
 
-.cliente-logo-brilho {
-  background: linear-gradient(90deg, transparent, rgba(255, 248, 235, 0.84), transparent);
-  mix-blend-mode: screen;
+.rota-dialog-info {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding: 54px 30px 30px;
 }
 
-.mes-cliente-vitrine {
-  background:
-    linear-gradient(155deg, rgba(255, 248, 235, 0.97), rgba(244, 232, 210, 0.92)),
-    linear-gradient(90deg, rgba(27, 107, 87, 0.18), rgba(195, 95, 106, 0.14));
+.rota-dialog-info h2 {
+  font-size: 1.65rem;
+  line-height: 1.25;
+  margin: 0 0 12px;
+  overflow-wrap: anywhere;
 }
 
-.mes-cliente-vitrine::before {
-  background:
-    linear-gradient(90deg, rgba(164, 106, 45, 0.18), transparent 35%),
-    repeating-linear-gradient(
-      135deg,
-      rgba(34, 25, 19, 0.05) 0 1px,
-      transparent 1px 18px
-    );
+.rota-dialog-info > p {
+  color: #586058;
+  font-size: .95rem;
+  line-height: 1.65;
+  margin: 24px 0;
+  white-space: pre-line;
 }
 
-.mes-cliente-vitrine::after {
-  background: linear-gradient(135deg, rgba(27, 107, 87, 0.12), rgba(195, 95, 106, 0.12));
-  border: 1px solid rgba(164, 106, 45, 0.18);
-}
+@keyframes rota-entrada {
 
-.mes-cliente-vitrine .catalogo-kicker,
-.catalogo-mes-cliente .catalogo-kicker,
-.guia-mes-cliente .catalogo-kicker {
-  color: #8a5726;
-}
-
-.mes-cliente-vitrine .condicoes-topo h3 {
-  color: #1f1711;
-  max-width: 820px;
-}
-
-.mes-cliente-vitrine .condicoes-topo p {
-  color: rgba(31, 23, 17, 0.72);
-  max-width: 760px;
-}
-
-.cliente-destaque-principal {
-  background: linear-gradient(145deg, #241912, #4a2c18);
-  border: 1px solid rgba(242, 207, 131, 0.22);
-  box-shadow: 0 30px 90px rgba(34, 25, 19, 0.2);
-  color: #fff8eb;
-}
-
-.cliente-destaque-media {
-  background:
-    radial-gradient(circle at 50% 42%, rgba(242, 207, 131, 0.18), transparent 55%),
-    #150f0b;
-}
-
-.cliente-destaque-media img,
-.cliente-destaque-card .condicao-card-media img {
-  object-fit: contain;
-}
-
-.cliente-destaque-principal .condicao-principal-info span,
-.cliente-destaque-card .condicao-card-info > span {
-  background: rgba(242, 207, 131, 0.14);
-  border-color: rgba(242, 207, 131, 0.3);
-  color: #f8da99;
-}
-
-.cliente-destaque-principal .condicao-principal-info h4 {
-  color: #fff8eb;
-}
-
-.cliente-destaque-principal .condicao-principal-info p {
-  color: rgba(255, 248, 235, 0.78);
-}
-
-.cliente-destaque-principal .condicao-preco strong {
-  color: #f7d58b;
-}
-
-.cliente-destaques-lista {
-  scrollbar-color: #a46a2d rgba(34, 25, 19, 0.1);
-}
-
-.cliente-destaque-card {
-  background: rgba(255, 248, 235, 0.94);
-  border-color: rgba(164, 106, 45, 0.18);
-  box-shadow: 0 18px 46px rgba(34, 25, 19, 0.11);
-}
-
-.cliente-destaque-card .condicao-card-media {
-  background:
-    linear-gradient(160deg, rgba(242, 207, 131, 0.2), rgba(27, 107, 87, 0.1)),
-    #fffaf1;
-}
-
-.cliente-destaque-card .condicao-card-info h4 {
-  color: #241912;
-}
-
-.cliente-destaque-card .condicao-card-info p {
-  color: rgba(36, 25, 18, 0.68);
-}
-
-.guia-mes-cliente {
-  background:
-    linear-gradient(135deg, rgba(34, 25, 19, 0.97), rgba(72, 41, 25, 0.95)),
-    linear-gradient(90deg, #1b6b57, #c35f6a);
-  color: #fff8eb;
-}
-
-.guia-mes-cliente::before {
-  background:
-    linear-gradient(90deg, transparent, rgba(242, 207, 131, 0.16), transparent),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 248, 235, 0.08) 0 1px,
-      transparent 1px 56px
-    );
-}
-
-.guia-mes-cliente .guia-pais-palco,
-.guia-mes-cliente .guia-pais-vitrine {
-  border-color: rgba(242, 207, 131, 0.18);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
-}
-
-.guia-mes-cliente .guia-pais-palco {
-  background: rgba(255, 248, 235, 0.08);
-}
-
-.guia-mes-cliente .guia-pais-topo h3,
-.guia-mes-cliente .guia-pais-cabecalho strong,
-.guia-mes-cliente .guia-pais-resultado strong,
-.guia-mes-cliente .guia-pais-catalogo-chamada strong {
-  color: #fff8eb;
-}
-
-.guia-mes-cliente .guia-pais-topo p,
-.guia-mes-cliente .guia-pais-opcoes small,
-.guia-mes-cliente .guia-pais-trigger small {
-  color: rgba(255, 248, 235, 0.72);
-}
-
-.guia-mes-cliente .guia-pais-chamada,
-.guia-mes-cliente .guia-pais-resultado button,
-.guia-mes-cliente .guia-pais-catalogo-chamada a {
-  background: #f7d58b;
-  color: #23170f;
-}
-
-.guia-mes-cliente .guia-pais-trigger,
-.guia-mes-cliente .guia-pais-opcoes button,
-.guia-mes-cliente .guia-pais-resultado,
-.guia-mes-cliente .guia-pais-catalogo-chamada {
-  background: rgba(255, 248, 235, 0.1);
-  border-color: rgba(255, 248, 235, 0.16);
-  color: #fff8eb;
-}
-
-.guia-mes-cliente .guia-pais-opcoes button:hover,
-.guia-mes-cliente .guia-pais-opcoes button.ativo,
-.guia-mes-cliente .guia-pais-trigger:hover,
-.guia-mes-cliente .guia-pais-trigger[aria-expanded="true"] {
-  background: rgba(242, 207, 131, 0.16);
-  border-color: rgba(242, 207, 131, 0.46);
-}
-
-.catalogo-mes-cliente {
-  background:
-    linear-gradient(180deg, #fff8eb 0%, #f6ead8 54%, #ffffff 100%);
-  color: #241912;
-}
-
-.catalogo-mes-cliente::before {
-  background:
-    linear-gradient(90deg, rgba(164, 106, 45, 0.13), transparent 34%, rgba(27, 107, 87, 0.12)),
-    repeating-linear-gradient(
-      90deg,
-      rgba(34, 25, 19, 0.04) 0 1px,
-      transparent 1px 64px
-    );
-}
-
-.catalogo-mes-cliente .catalogo-topo {
-  background: rgba(255, 252, 245, 0.9);
-  border-color: rgba(164, 106, 45, 0.16);
-  box-shadow: 0 20px 60px rgba(34, 25, 19, 0.08);
-}
-
-.catalogo-mes-cliente .catalogo-topo h3 {
-  color: #241912;
-}
-
-.catalogo-mes-cliente .catalogo-topo p,
-.catalogo-mes-cliente .catalogo-busca {
-  color: rgba(36, 25, 18, 0.68);
-}
-
-.catalogo-mes-cliente .catalogo-busca input {
-  background: #fff;
-  border-color: rgba(164, 106, 45, 0.2);
-  color: #241912;
-}
-
-.catalogo-mes-cliente .catalogo-filtros button,
-.catalogo-mes-cliente .catalogo-abas button {
-  background: rgba(255, 252, 245, 0.88);
-  border-color: rgba(164, 106, 45, 0.18);
-  color: #5c3a1e;
-}
-
-.catalogo-mes-cliente .catalogo-filtros button.ativo,
-.catalogo-mes-cliente .catalogo-filtros button:hover,
-.catalogo-mes-cliente .catalogo-abas button.ativo,
-.catalogo-mes-cliente .catalogo-abas button:hover {
-  background: #241912;
-  color: #f7d58b;
-}
-
-.catalogo-mes-cliente .produto-card {
-  background: rgba(255, 252, 245, 0.96);
-  border-color: rgba(164, 106, 45, 0.16);
-  box-shadow: 0 18px 42px rgba(34, 25, 19, 0.08);
-}
-
-.catalogo-mes-cliente .produto-card:hover {
-  box-shadow: 0 24px 54px rgba(34, 25, 19, 0.14);
-}
-
-.catalogo-mes-cliente .produto-recomendado {
-  border-color: rgba(242, 207, 131, 0.7);
-  box-shadow: 0 24px 60px rgba(164, 106, 45, 0.18);
-}
-
-.catalogo-mes-cliente .produto-imagem-contain {
-  background:
-    linear-gradient(145deg, rgba(247, 213, 139, 0.18), rgba(27, 107, 87, 0.08)),
-    #fffaf1;
-}
-
-.catalogo-mes-cliente .produto-match {
-  background: #241912;
-  color: #f7d58b;
-}
-
-.catalogo-mes-cliente .produto-categoria {
-  color: #8a5726;
-}
-
-.catalogo-mes-cliente .produto-info h4,
-.catalogo-mes-cliente .produto-rodape strong {
-  color: #241912;
-}
-
-.catalogo-mes-cliente .produto-info p {
-  color: rgba(36, 25, 18, 0.68);
-}
-
-.catalogo-mes-cliente .produto-whatsapp,
-.catalogo-mes-cliente .produto-detalhes {
-  border-radius: 8px;
-}
-
-@keyframes cliente-logo-entrada {
-  0% {
+  from {
     opacity: 0;
-    transform: translateY(28px) scale(0.94);
+    transform: translateY(12px);
   }
 
-  60% {
+  to {
     opacity: 1;
-    transform: translateY(-3px) scale(1.02);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: none;
   }
 }
 
 @media (max-width: 900px) {
-  .campanha-mes-cliente-hero {
-    min-height: auto;
-    padding-top: 84px;
-  }
 
-  .cliente-logo {
-    max-height: 300px;
-    width: min(620px, 94vw);
-  }
-
-  .mes-cliente-vitrine .condicoes-palco {
-    gap: 18px;
-  }
-
-  .guia-mes-cliente {
-    grid-template-columns: 1fr;
+  .rota-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
-  .campanha-mes-cliente-hero {
-    padding-inline: 16px;
+
+  .rota-brand {
+    gap: 8px;
+    padding: 96px 16px 22px;
   }
 
-  .campanha-mes-cliente-hero .clube-hero-texto h2 {
-    font-size: clamp(2rem, 14vw, 3.35rem);
-    line-height: 0.96;
+  .rota-brand-logo {
+    width: 200px;
   }
 
-  .campanha-mes-cliente-hero .clube-acoes {
-    align-items: stretch;
-    width: 100%;
+  .rota-brand p {
+    font-size: 1.35rem;
+    gap: 2px 6px;
   }
 
-  .campanha-mes-cliente-hero .btn-gold,
-  .campanha-mes-cliente-hero .btn-outline {
-    justify-content: center;
-    width: 100%;
+  .rota-catalogo {
+    padding: 14px 16px 0;
+    scroll-margin-top: 90px;
   }
 
-  .cliente-logo {
-    max-height: 230px;
-    width: 96vw;
-  }
-
-  .mes-cliente-vitrine .condicoes-topo h3,
-  .guia-mes-cliente .guia-pais-topo h3,
-  .catalogo-mes-cliente .catalogo-topo h3 {
-    font-size: clamp(1.8rem, 11vw, 2.45rem);
-  }
-
-  .cliente-destaque-card .condicao-card-media {
-    min-height: 210px;
-  }
-}
-
-
-/* ==================================================
-   AJUSTE MOBILE FINAL MÊS DO CLIENTE
-   --------------------------------------------------
-   Corrige a experiência no celular: evita rolagem
-   lateral, reduz a primeira dobra e mantém a logo
-   dentro da largura real da tela.
-================================================== */
-
-html,
-body,
-#root {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.mes-cliente-campanha {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.campanha-mes-cliente-hero,
-.mes-cliente-vitrine,
-.guia-mes-cliente,
-.catalogo-mes-cliente {
-  overflow-x: clip;
-}
-
-@media (max-width: 640px) {
-  .campanha-mes-cliente-hero {
-    margin: -124px -18px 0;
-    min-height: auto;
-    padding: 132px 16px 38px;
-    width: calc(100% + 36px);
-  }
-
-  .campanha-mes-cliente-hero::after {
-    height: 260px;
-    right: -184px;
-    top: 8%;
-    width: 260px;
-  }
-
-  .campanha-mes-cliente-hero .clube-hero-texto {
+  .rota-catalogo-heading {
     gap: 12px;
-    max-width: 100%;
-    width: 100%;
+    margin-bottom: 12px;
   }
 
-  .cliente-logo-area {
-    align-self: center;
-    display: block;
-    justify-self: center;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: min(330px, calc(100vw - 48px));
-    overflow: hidden;
-    width: min(330px, calc(100vw - 48px));
+  .rota-catalogo-heading h2 {
+    font-size: 1.28rem;
+    padding-left: 10px;
   }
 
-  .cliente-logo-area::before {
-    width: min(300px, calc(100vw - 64px));
+  .rota-professores-logo {
+    width: 124px;
   }
 
-  .cliente-logo {
-    border-radius: 8px;
-    display: block;
-    max-height: 170px;
-    max-width: 100%;
-    width: 100%;
+  .rota-colecoes {
+    margin-bottom: 12px;
   }
 
-  .cliente-logo-brilho {
-    display: none;
+  .rota-colecoes button {
+    font-size: .85rem;
+    gap: 6px;
+    min-height: 44px;
+    padding: 8px 5px;
   }
 
-  .campanha-mes-cliente-hero .campanha-tag {
-    font-size: 0.68rem;
-    padding: 7px 10px;
-  }
-
-  .campanha-mes-cliente-hero .clube-hero-texto h2 {
-    font-size: clamp(2rem, 10.8vw, 2.85rem);
-    line-height: 1.02;
-    max-width: 340px;
-  }
-
-  .campanha-mes-cliente-hero .clube-hero-texto > p {
-    font-size: 0.9rem;
-    line-height: 1.42;
-    max-width: 320px;
-  }
-
-  .campanha-mes-cliente-hero .clube-acoes {
+  .rota-tools {
     gap: 10px;
-    margin-top: 2px;
-  }
-
-  .campanha-mes-cliente-hero .btn-gold,
-  .campanha-mes-cliente-hero .btn-outline {
-    font-size: 0.95rem;
-    justify-content: center;
-    min-height: 46px;
-    padding: 12px 16px;
-    width: 100%;
-  }
-
-  .mes-cliente-vitrine .condicoes-lista {
-    grid-auto-columns: minmax(248px, 76vw);
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 100%;
-    padding: 2px 0 14px;
-    width: 100%;
-  }
-
-  .mes-cliente-vitrine,
-  .guia-mes-cliente {
-    margin-left: -18px;
-    margin-right: -18px;
-    padding-left: 18px;
-    padding-right: 18px;
-    width: calc(100% + 36px);
-  }
-
-  .mes-cliente-vitrine .condicao-card {
-    scroll-snap-align: center;
-  }
-
-  .mes-cliente-vitrine .condicoes-topo h3,
-  .guia-mes-cliente .guia-pais-topo h3,
-  .catalogo-mes-cliente .catalogo-topo h3 {
-    font-size: clamp(1.7rem, 9vw, 2.18rem);
-    line-height: 1.05;
-  }
-
-  .guia-mes-cliente {
-    padding: 44px 18px;
-  }
-
-  .guia-mes-cliente .guia-pais-palco,
-  .guia-mes-cliente .guia-pais-vitrine {
-    padding: 22px 18px;
-  }
-
-  .guia-mes-cliente .guia-pais-consultor {
-    padding: 16px;
-  }
-}
-
-@media (max-width: 390px) {
-  .cliente-logo-area {
-    max-width: min(300px, calc(100vw - 44px));
-  }
-
-  .cliente-logo {
-    max-height: 154px;
-  }
-
-  .campanha-mes-cliente-hero .clube-hero-texto h2 {
-    font-size: clamp(1.86rem, 10.4vw, 2.42rem);
-  }
-
-  .campanha-mes-cliente-hero .clube-hero-texto > p {
-    max-width: 292px;
-  }
-}
-
-
-/* ==================================================
-   CAMPANHA ROTA DA ALEGRIA
-   --------------------------------------------------
-   Reaproveita a estrutura da campanha anterior, mas
-   troca a direção visual para a paleta clara/dourada
-   da arte oficial: branco, caramelo, dourado quente,
-   preto suave e acentos alegres da própria logo.
-================================================== */
-
-.campanha.clube-bussola.rota-alegria-campanha {
-  --rota-branco: #fffdf8;
-  --rota-marfim: #fff5df;
-  --rota-ouro: #f5c86f;
-  --rota-caramelo: #b1844d;
-  --rota-cobre: #d07a00;
-  --rota-texto: #393939;
-  --rota-preto: #171512;
-  --rota-azul: #18aee8;
-  --rota-rosa: #f45c84;
-  --rota-verde: #7cc82e;
-  background: var(--rota-branco);
-  color: var(--rota-texto);
-  max-width: 100%;
-  overflow-x: clip;
-  padding: 0;
-}
-
-.rota-alegria-campanha .campanha-mes-cliente-hero {
-  align-items: center;
-  background:
-    radial-gradient(1200px 620px at 86% 22%, rgba(245, 200, 111, 0.24), transparent 58%),
-    radial-gradient(880px 520px at 4% 68%, rgba(208, 122, 0, 0.13), transparent 58%),
-    linear-gradient(180deg, #ffffff 0%, #fffaf0 100%);
-  color: var(--rota-texto);
-  display: grid;
-  margin: 0;
-  max-width: none;
-  min-height: min(820px, 100svh);
-  overflow: hidden;
-  padding:
-    clamp(118px, 9vw, 158px)
-    max(28px, calc((100vw - 1280px) / 2))
-    clamp(58px, 7vw, 92px);
-  position: relative;
-  width: 100%;
-}
-
-.rota-alegria-campanha .campanha-mes-cliente-hero::before {
-  background:
-    radial-gradient(ellipse 84% 68% at 72% 44%, transparent 58%, rgba(208, 122, 0, 0.46) 58.3%, transparent 58.8%),
-    radial-gradient(ellipse 92% 72% at 42% 12%, transparent 62%, rgba(245, 200, 111, 0.62) 62.3%, transparent 62.8%),
-    linear-gradient(90deg, transparent 0 47%, rgba(177, 132, 77, 0.12) 47% 47.15%, transparent 47.15% 100%);
-  content: "";
-  inset: -22% -12% -18%;
-  opacity: 0.9;
-  pointer-events: none;
-  position: absolute;
-}
-
-.rota-alegria-campanha .campanha-mes-cliente-hero::after {
-  background:
-    linear-gradient(135deg, rgba(245, 200, 111, 0.34), rgba(177, 132, 77, 0.22)),
-    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.52), transparent);
-  border: 1px solid rgba(177, 132, 77, 0.26);
-  box-shadow: none;
-  content: "";
-  height: min(360px, 26vw);
-  position: absolute;
-  right: max(22px, calc((100vw - 1280px) / 2));
-  top: 20%;
-  transform: rotate(-11deg);
-  width: min(360px, 26vw);
-}
-
-.rota-alegria-campanha .cliente-overlay {
-  display: none;
-}
-
-.rota-alegria-campanha .cliente-hero-conteudo {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(18px, 3vw, 34px);
-  justify-self: center;
-  max-width: 1120px;
-  position: relative;
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-}
-
-.rota-alegria-campanha .cliente-hero-copy {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  max-width: 980px;
-  text-align: center;
-}
-
-.rota-alegria-campanha .cliente-logo-area {
-  background: linear-gradient(145deg, #ffffff, #fff1cf);
-  border: 1px solid rgba(177, 132, 77, 0.28);
-  border-radius: 8px;
-  box-shadow: 0 32px 76px rgba(57, 57, 57, 0.16);
-  display: block;
-  justify-self: center;
-  margin: 0;
-  max-width: none;
-  overflow: hidden;
-  padding: clamp(8px, 1.1vw, 12px);
-  position: relative;
-  width: min(340px, 30vw);
-}
-
-.rota-alegria-campanha .cliente-logo-area::before {
-  display: none;
-}
-
-.rota-alegria-campanha .cliente-logo {
-  animation: cliente-logo-entrada 980ms cubic-bezier(0.18, 0.86, 0.22, 1) both;
-  border-radius: 6px;
-  display: block;
-  filter: saturate(1.08) contrast(1.03);
-  height: auto;
-  max-height: none;
-  max-width: 100%;
-  object-fit: contain;
-  width: 100%;
-}
-
-.rota-alegria-campanha .cliente-logo-brilho {
-  display: none;
-}
-
-.rota-alegria-campanha .campanha-tag {
-  background: linear-gradient(135deg, rgba(245, 200, 111, 0.28), rgba(177, 132, 77, 0.16));
-  border: 1px solid rgba(177, 132, 77, 0.34);
-  color: #704a1f;
-  margin-bottom: clamp(14px, 1.5vw, 20px);
-}
-
-.rota-alegria-campanha .campanha-mes-cliente-hero .clube-hero-texto h2 {
-  color: var(--rota-texto);
-  font-size: clamp(3.1rem, 5.8vw, 6.6rem);
-  line-height: 0.93;
-  margin: 0;
-  max-width: 1080px;
-}
-
-.rota-alegria-campanha .campanha-mes-cliente-hero .clube-hero-texto p {
-  color: rgba(57, 57, 57, 0.78);
-  font-size: clamp(1rem, 1.25vw, 1.18rem);
-  line-height: 1.62;
-  margin: clamp(18px, 1.8vw, 24px) 0 0;
-  max-width: 720px;
-}
-
-.rota-alegria-campanha .campanha-mes-cliente-hero .clube-acoes {
-  justify-content: center;
-  margin-top: clamp(22px, 2.1vw, 30px);
-}
-
-.rota-alegria-campanha .campanha-mes-cliente-hero .btn-gold {
-  background: linear-gradient(135deg, #ffe09a, #b1844d);
-  box-shadow: 0 18px 36px rgba(177, 132, 77, 0.28);
-  color: #2d2821;
-}
-
-.rota-alegria-campanha .campanha-mes-cliente-hero .btn-outline {
-  background: rgba(255, 255, 255, 0.62);
-  border-color: rgba(57, 57, 57, 0.3);
-  color: var(--rota-texto);
-}
-
-.rota-alegria-campanha .mes-cliente-vitrine,
-.rota-alegria-campanha .guia-mes-cliente {
-  margin: 0;
-  padding-left: max(28px, calc((100vw - 1280px) / 2));
-  padding-right: max(28px, calc((100vw - 1280px) / 2));
-  width: 100%;
-}
-
-.rota-alegria-campanha .mes-cliente-vitrine {
-  background:
-    linear-gradient(180deg, #fffaf0, #ffffff),
-    linear-gradient(90deg, rgba(24, 174, 232, 0.08), rgba(244, 92, 132, 0.08), rgba(124, 200, 46, 0.08));
-}
-
-.rota-alegria-campanha .mes-cliente-vitrine::before {
-  background:
-    linear-gradient(90deg, rgba(177, 132, 77, 0.16), transparent 35%),
-    repeating-linear-gradient(135deg, rgba(177, 132, 77, 0.05) 0 1px, transparent 1px 18px);
-}
-
-.rota-alegria-campanha .mes-cliente-vitrine::after {
-  background: linear-gradient(135deg, rgba(245, 200, 111, 0.18), rgba(24, 174, 232, 0.08));
-  border-color: rgba(177, 132, 77, 0.18);
-}
-
-.rota-alegria-campanha .mes-cliente-vitrine .catalogo-kicker,
-.rota-alegria-campanha .catalogo-mes-cliente .catalogo-kicker,
-.rota-alegria-campanha .guia-mes-cliente .catalogo-kicker {
-  color: #9a651e;
-}
-
-.rota-alegria-campanha .cliente-destaque-principal {
-  background: linear-gradient(145deg, #292623, #7b552e);
-  border-color: rgba(245, 200, 111, 0.34);
-}
-
-.rota-alegria-campanha .cliente-destaque-media {
-  background:
-    radial-gradient(circle at 50% 42%, rgba(245, 200, 111, 0.24), transparent 58%),
-    #fffaf0;
-}
-
-.rota-alegria-campanha .cliente-destaque-card .condicao-card-media,
-.rota-alegria-campanha .catalogo-mes-cliente .produto-imagem-contain {
-  background:
-    linear-gradient(145deg, rgba(245, 200, 111, 0.28), rgba(255, 255, 255, 0.74)),
-    #fffaf0;
-}
-
-.rota-alegria-campanha .guia-mes-cliente {
-  background:
-    linear-gradient(135deg, rgba(57, 57, 57, 0.98), rgba(126, 86, 44, 0.96)),
-    linear-gradient(90deg, var(--rota-azul), var(--rota-rosa), var(--rota-verde));
-}
-
-.rota-alegria-campanha .guia-mes-cliente .guia-pais-chamada,
-.rota-alegria-campanha .guia-mes-cliente .guia-pais-resultado button,
-.rota-alegria-campanha .guia-mes-cliente .guia-pais-catalogo-chamada a {
-  background: linear-gradient(135deg, #ffe09a, #f5c86f);
-  color: #2d2821;
-}
-
-.rota-alegria-campanha .catalogo-mes-cliente {
-  background: linear-gradient(180deg, #ffffff 0%, #fff5df 58%, #ffffff 100%);
-  color: var(--rota-texto);
-  margin: 0 auto;
-  max-width: 1280px;
-  padding: 64px 30px 96px;
-  width: 100%;
-}
-
-.rota-alegria-campanha .catalogo-mes-cliente::before {
-  background:
-    linear-gradient(90deg, rgba(245, 200, 111, 0.14), transparent 36%, rgba(24, 174, 232, 0.08)),
-    repeating-linear-gradient(90deg, rgba(57, 57, 57, 0.04) 0 1px, transparent 1px 64px);
-}
-
-.rota-alegria-campanha .catalogo-mes-cliente .catalogo-topo {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(177, 132, 77, 0.18);
-}
-
-.rota-alegria-campanha .catalogo-mes-cliente .catalogo-filtros button.ativo,
-.rota-alegria-campanha .catalogo-mes-cliente .catalogo-filtros button:hover,
-.rota-alegria-campanha .catalogo-mes-cliente .catalogo-abas button.ativo,
-.rota-alegria-campanha .catalogo-mes-cliente .catalogo-abas button:hover {
-  background: var(--rota-texto);
-  color: #ffe09a;
-}
-
-.rota-alegria-campanha .catalogo-mes-cliente .produto-recomendado {
-  border-color: rgba(245, 200, 111, 0.82);
-  box-shadow: 0 24px 60px rgba(177, 132, 77, 0.18);
-}
-
-@media (max-width: 1100px) {
-  .rota-alegria-campanha .campanha-mes-cliente-hero {
-    min-height: auto;
-    padding: 118px 24px 62px;
-  }
-
-  .rota-alegria-campanha .cliente-hero-conteudo {
-    gap: 18px;
     grid-template-columns: minmax(0, 1fr);
-    max-width: 760px;
-    text-align: center;
+    margin-bottom: 16px;
   }
 
-  .rota-alegria-campanha .cliente-hero-copy {
-    align-items: center;
-    margin: 0 auto;
-    text-align: center;
+  .rota-grid {
+    gap: 12px;
   }
 
-  .rota-alegria-campanha .cliente-logo-area {
-    order: -1;
-    width: min(420px, calc(100vw - 48px));
+  .rota-product-photo {
+    height: 208px;
+    padding: 8px;
   }
 
-  .rota-alegria-campanha .campanha-mes-cliente-hero .clube-acoes {
-    justify-content: center;
+  .rota-product-photo img {
+    max-height: 192px;
+  }
+
+  .rota-product-info {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .rota-product-info h3 {
+    font-size: .88rem;
+    min-height: 3.9em;
+  }
+
+  .rota-product-info .rota-price {
+    font-size: 1.08rem;
+  }
+
+  .rota-whatsapp {
+    font-size: .83rem;
+    gap: 6px;
+    min-height: 42px;
+    padding: 9px 6px;
+  }
+
+  .rota-details {
+    font-size: .78rem;
+  }
+
+  .rota-dialog {
+    max-height: calc(100dvh - 24px);
+    max-width: calc(100% - 24px);
+  }
+
+  .rota-dialog-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, .32fr) minmax(0, .68fr);
+    height: min(900px, calc(100dvh - 24px));
+  }
+
+  .rota-dialog-media {
+    padding: 10px;
+  }
+
+  .rota-dialog-info {
+    padding: 22px 20px;
+  }
+
+  .rota-dialog-info h2 {
+    font-size: 1.35rem;
   }
 }
 
-@media (max-width: 640px) {
-  .campanha.clube-bussola.rota-alegria-campanha {
-    overflow-x: hidden;
+@media (max-width: 375px) {
+
+  .rota-colecoes button {
+    font-size: .78rem;
+    gap: 4px;
+    padding-inline: 3px;
   }
 
-  .rota-alegria-campanha .campanha-mes-cliente-hero {
-    margin: 0;
-    padding: 98px 16px 42px;
-    width: 100%;
+  .rota-colecoes button svg {
+    flex-shrink: 0;
+    font-size: .8rem;
   }
 
-  .rota-alegria-campanha .campanha-mes-cliente-hero::after {
-    display: none;
+  .rota-product-photo {
+    height: 180px;
   }
 
-  .rota-alegria-campanha .cliente-hero-conteudo {
-    max-width: 100%;
+  .rota-product-photo img {
+    max-height: 164px;
   }
 
-  .rota-alegria-campanha .cliente-logo-area {
-    border-radius: 8px;
-    padding: 7px;
-    width: min(330px, calc(100vw - 34px));
+  .rota-professores-logo {
+    width: 110px;
   }
 
-  .rota-alegria-campanha .cliente-logo {
-    max-height: none;
+  .rota-catalogo-heading h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .rota-brand-logo {
+    animation: none;
   }
 
-  .rota-alegria-campanha .campanha-mes-cliente-hero .clube-hero-texto h2 {
-    font-size: clamp(2.35rem, 12vw, 3.25rem);
-    line-height: 0.96;
-    max-width: 370px;
+  .rota-product {
+    transition: none;
   }
 
-  .rota-alegria-campanha .campanha-mes-cliente-hero .clube-hero-texto p {
-    font-size: 0.94rem;
-    line-height: 1.45;
-    max-width: 340px;
-  }
-
-  .rota-alegria-campanha .campanha-mes-cliente-hero .clube-acoes {
-    display: grid;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .rota-alegria-campanha .campanha-mes-cliente-hero .btn-gold,
-  .rota-alegria-campanha .campanha-mes-cliente-hero .btn-outline {
-    min-height: 46px;
-    width: 100%;
-  }
-
-  .rota-alegria-campanha .mes-cliente-vitrine,
-  .rota-alegria-campanha .guia-mes-cliente {
-    margin: 0;
-    padding-left: 18px;
-    padding-right: 18px;
-    width: 100%;
-  }
-
-  .rota-alegria-campanha .catalogo-mes-cliente {
-    padding: 44px 18px 76px;
+  .rota-colecoes button,
+  .rota-details svg {
+    transition: none;
   }
 }

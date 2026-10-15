@@ -13,6 +13,8 @@ que possam ser alterados sem procurar dentro do componente visual.
   logo no começo da landing page.
 - `mesClienteCatalogo.json`: arquivo legado da campanha **Mês do Cliente**.
 - `rotaAlegriaCatalogo.json`: produtos da campanha atual **Rota da Alegria**.
+- `professoresCatalogo.json`: oito presentes do **Dia dos Professores**,
+  exibidos antes dos produtos da Rota da Alegria, sem substituir os kids.
 
 ## Como alterar uma legenda
 
@@ -66,10 +68,11 @@ As imagens ficam em `/public/campanhas/rota-da-alegria/`.
 A logo da campanha fica em `/public/campanhas/rota-da-alegria/logo-rota-da-alegria.png`.
 Para alterar título, preço, resumo, descrição, categoria ou opções do guia,
 edite o JSON e mantenha os campos `profiles` alinhados com as opções de
-"Qual presente você quer encontrar?" em `Campanha.jsx`.
+"O que você procura?" em `Campanha.jsx`.
 
 Perfis usados na busca guiada da Rota da Alegria:
 
+- `professor`
 - `crianca`
 - `cheirinho`
 - `presente-pronto`
@@ -77,3 +80,35 @@ Perfis usados na busca guiada da Rota da Alegria:
 - `diversao`
 - `utilidade`
 - `ate-100`
+
+## Destaque Dia dos Professores
+
+Para corrigir nomes, preços e legendas desta ação, edite
+`src/data/professoresCatalogo.json`. Os itens antigos continuam intactos em
+`rotaAlegriaCatalogo.json`. O componente combina os dois arquivos, priorizando
+professores na listagem inicial e permitindo selecionar o filtro **Kids**.
+
+As fotos otimizadas e a logo com transparência ficam em
+`public/campanhas/rota-da-alegria/professores/`. O PNG original continua na pasta
+`rota da alegria`; a página carrega uma versão WebP mais leve.
+
+- `colecao: "professores"` coloca o produto no filtro **Para professores**.
+- `profiles: ["professor", ...]` inclui o produto na busca guiada por professor.
+- Os números 50 a 57 são identificadores únicos; não reutilize os números dos
+  49 itens anteriores.
+- O Word recebido reutiliza a mesma imagem no **Combo elegante e marcante** e
+  na **Cestinha Body Splash + Loção Hidratante**. A associação foi preservada;
+  para trocar a foto de uma oferta, altere somente o campo `image` desse item.
+
+## Layout simplificado da Rota da Alegria
+
+- `src/components/Campanha.jsx`: tela atual, coleções Professores/Kids/Todos,
+  busca pelo nome, seletor de perfil, paginação e janela de descrição completa.
+- `src/components/campanha.css`: estilos isolados da tela atual. A logo principal
+  fica em `public/campanhas/rota-da-alegria/logo-rota-alegria.webp`.
+- Os cards mostram foto, título e preço. Os campos `summary` e `description`
+  continuam nos JSONs; `description` aparece na janela de detalhes.
+- A escolha de perfil coloca as sugestões compatíveis primeiro no catálogo
+  completo. As coleções Professores e Kids mostram somente o público escolhido.
+- `CampanhaLegado.jsx` e `campanha-legado.css`: versão anterior e código do Clube
+  preservados para consulta. Esses arquivos não são carregados na página atual.

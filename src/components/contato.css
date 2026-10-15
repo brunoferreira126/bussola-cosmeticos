@@ -112,8 +112,22 @@
   }
 
   .contato-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     text-align: center;
+  }
+
+  /* Perfis sociais e emails longos precisam caber tambem em telas estreitas. */
+  .contato-info {
+    min-width: 0;
+  }
+
+  .contato-links a span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .contato-links svg {
+    flex-shrink: 0;
   }
 
   .contato-links {

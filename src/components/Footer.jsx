@@ -26,9 +26,9 @@ export default function Footer() {
         <div className="footer-col">
           <h4>Links Rápidos</h4>
           <ul>
-            <li><a href="#hero">Início</a></li>
+            <li><a href="#campanha">Início</a></li>
             <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#campanhas">Campanha</a></li>
+            <li><a href="#catalogo-rota-alegria">Presentes</a></li>
             <li><a href="#contato">Contatos</a></li>
           </ul>
         </div>

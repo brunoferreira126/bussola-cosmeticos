@@ -10,10 +10,10 @@ export default function Header() {
       <div className="header-container">
         <img src={logoImg} alt="Bússola" className="header-logo" />
 
-        <nav className={`header-nav ${open ? "open" : ""}`}>
-           <a href="#inicio" onClick={() => setOpen(false)}>Página Inicial</a>
+        <nav id="menu-principal" className={`header-nav ${open ? "open" : ""}`}>
+           <a href="#campanha" onClick={() => setOpen(false)}>Início</a>
           <a href="#sobre" onClick={() => setOpen(false)}>Sobre</a>
-          <a href="#campanha" onClick={() => setOpen(false)}>Campanha</a>
+          <a href="#catalogo-rota-alegria" onClick={() => setOpen(false)}>Presentes</a>
           <a href="#contato" onClick={() => setOpen(false)}>Contatos</a>
         </nav>
 
@@ -21,6 +21,8 @@ export default function Header() {
           className={`menu-toggle ${open ? "open" : ""}`}
           onClick={() => setOpen(!open)}
           aria-label="Menu"
+          aria-expanded={open}
+          aria-controls="menu-principal"
         >
           <span></span>
           <span></span>

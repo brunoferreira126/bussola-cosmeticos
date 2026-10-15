@@ -3,22 +3,24 @@
   top: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(0,0,0,0.6);
+  background: rgba(255,255,255,0.96);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(230, 184, 92, 0.3);
 }
 
 .header-container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: auto;
-  padding: 16px 30px;
+  padding: 8px 24px;
+  min-height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .header-logo {
-  max-height: 100px;
+  display: block;
+  max-height: 64px;
 }
 
 /* MENU DESKTOP */
@@ -28,7 +30,7 @@
 }
 
 .header-nav a {
-  color: #ddd;
+  color: #424641;
   text-decoration: none;
   font-size: 0.95rem;
 }
@@ -39,13 +41,14 @@
   background: none;
   border: none;
   cursor: pointer;
+  padding: 10px;
 }
 
 .menu-toggle span {
   display: block;
   width: 26px;
   height: 2px;
-  background: #f1d18a;
+  background: #987133;
   margin: 6px 0;
   transition: 0.3s;
 }
@@ -58,11 +61,11 @@
 
   .header-nav {
     position: fixed;
-    top: 70px;
+    top: 80px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 70px);
-    background: #000;
+    height: calc(100dvh - 80px);
+    background: #fff;
     flex-direction: column;
     align-items: center;
     justify-content: center;
