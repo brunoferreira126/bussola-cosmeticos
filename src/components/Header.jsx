@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./header.css";
-import logoImg from "../assets/icons/logo-bussola.png";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -8,12 +7,13 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        <img src={logoImg} alt="Bússola" className="header-logo" />
+        {/* Copia WebP leve; a marca original em PNG continua preservada. */}
+        <img src="/marca/logo-bussola.webp" alt="Bússola" className="header-logo" width="480" height="320" />
 
         <nav id="menu-principal" className={`header-nav ${open ? "open" : ""}`}>
            <a href="#campanha" onClick={() => setOpen(false)}>Início</a>
           <a href="#sobre" onClick={() => setOpen(false)}>Sobre</a>
-          <a href="#catalogo-rota-alegria" onClick={() => setOpen(false)}>Presentes</a>
+          <a href="#catalogo-servir-direcao" onClick={() => setOpen(false)}>Produtos</a>
           <a href="#contato" onClick={() => setOpen(false)}>Contatos</a>
         </nav>
 

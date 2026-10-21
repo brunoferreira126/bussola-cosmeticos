@@ -3,6 +3,42 @@
 Os títulos, preços, descrições e caminhos das imagens ficam nesta pasta para
 que possam ser alterados sem procurar dentro do componente visual.
 
+## Campanha atual: Servir com Direção
+
+**Edite `src/data/servirDirecaoCatalogo.json` para trocar nomes, valores e legendas.**
+Esse é o único catálogo que a página carrega atualmente. As campanhas anteriores
+estão preservadas, mas não são misturadas às novas ofertas.
+
+- `title`, `brand`: nome e marca no card.
+- `price`: preço exibido; `priceValue`: o mesmo valor em centavos.
+- `oldPrice`, `oldPriceValue`: opcionais, somente quando existe preço anterior.
+- `priceNote`: `cada`, `o par` ou vazio.
+- `description`: legenda completa exibida em **Ver detalhes**.
+- `genero`: `feminino` ou `masculino`, determina a aba.
+- `profiles`: prioridades do guia: `perfume`, `body-splash`, `presentear`,
+  `ate-100` ou `condicao-especial`.
+- `image`: foto maior; `thumbnail`: miniatura leve; `width` e `height`: dimensões.
+- `numero`: identificador único, inclusive entre as duas seleções.
+
+Para adicionar os masculinos, inclua novos registros com `genero: "masculino"`,
+IDs novos e fotos em `public/campanhas/servir-com-direcao/`. A aba funciona
+automaticamente; enquanto não há produtos, ela oferece atendimento pelo WhatsApp.
+
+O componente fica em `src/components/Campanha.jsx`, e o visual em
+`src/components/campanha.css`. Os comentários explicam os filtros, o guia,
+a paginação e o modal. Não é necessário editar esses arquivos para trocar legenda.
+
+O importador `scripts/importar-servir-direcao.py` permite reconstruir catálogo e
+WebP a partir do Word (Python com Pillow). Ele não modifica a origem; porém,
+reexecutá-lo substitui o JSON gerado, então preserve edições manuais antes disso.
+
+Antes de publicar, execute `node scripts/verificar-catalogo-servir.mjs` e
+`npm run build -- --configLoader runner`. A marca leve do cabeçalho fica em
+`public/marca/logo-bussola.webp`, independente das pastas de campanha.
+
+Conferências desta importação: Ella Única/Radiance por **R$ 149,90**, confirmado
+pelo proprietário; legenda Wepink duplicada no Word consolidada em uma oferta.
+
 ## Arquivos principais
 
 - `saoJoaoCatalogo.json`: produtos exibidos na aba **São João**.
@@ -12,7 +48,7 @@ que possam ser alterados sem procurar dentro do componente visual.
 - `condicoesEspeciaisCatalogo.json`: produtos em condição especial exibidos
   logo no começo da landing page.
 - `mesClienteCatalogo.json`: arquivo legado da campanha **Mês do Cliente**.
-- `rotaAlegriaCatalogo.json`: produtos da campanha atual **Rota da Alegria**.
+- `rotaAlegriaCatalogo.json`: arquivo preservado da campanha **Rota da Alegria**.
 - `professoresCatalogo.json`: oito presentes do **Dia dos Professores**,
   exibidos antes dos produtos da Rota da Alegria, sem substituir os kids.
 

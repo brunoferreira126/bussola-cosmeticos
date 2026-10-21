@@ -1,255 +1,464 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { FaArrowRight, FaChild, FaChevronDown, FaCompass, FaGraduationCap, FaLayerGroup, FaSearch, FaTimes, FaUndo, FaWhatsapp } from "react-icons/fa";
-import produtosKids from "../data/rotaAlegriaCatalogo.json";
-import produtosProfessores from "../data/professoresCatalogo.json";
+import {
+  FaArrowRight,
+  FaChevronDown,
+  FaCompass,
+  FaExpand,
+  FaMars,
+  FaSearch,
+  FaTimes,
+  FaUndo,
+  FaVenus,
+  FaWhatsapp,
+} from "react-icons/fa";
+import produtos from "../data/servirDirecaoCatalogo.json";
 import "./campanha.css";
 
-// MANUTENCAO: textos e precos continuam nos dois JSONs de src/data.
-// A ordem inicial destaca professores; a colecao Kids preserva os produtos antigos.
-const PRODUTOS = [...produtosProfessores, ...produtosKids];
+// CAMPANHA ATIVA: SERVIR COM DIRECAO.
+// Nomes, precos, legendas, genero e fotos: src/data/servirDirecaoCatalogo.json.
+// Para incluir a selecao masculina, cadastre produtos com genero: "masculino".
+// Nenhum produto ou preco das campanhas anteriores e reaproveitado.
 const WHATSAPP = "5585984241536";
 const ITENS_POR_PAGINA = 6;
-const COLECOES = [
-  { value: "professores", label: "Professores", icon: <FaGraduationCap aria-hidden="true" /> },
-  { value: "kids", label: "Kids", icon: <FaChild aria-hidden="true" /> },
-  { value: "todos", label: "Todos", icon: <FaLayerGroup aria-hidden="true" /> },
+const PUBLICOS = [
+  {
+    value: "feminino",
+    label: "Feminino",
+    icon: <FaVenus aria-hidden="true" />,
+  },
+  {
+    value: "masculino",
+    label: "Masculino",
+    icon: <FaMars aria-hidden="true" />,
+  },
 ];
-
-// Os valores correspondem a profiles nos JSONs. A escolha prioriza os matches
-// no catalogo completo, mantendo os outros presentes acessiveis pelo Ver mais.
 const PERFIS = [
-  { value: "professor", label: "Presentear um professor" },
-  { value: "crianca", label: "Presentear uma criança" },
-  { value: "cheirinho", label: "Perfumes e fragrâncias" },
-  { value: "presente-pronto", label: "Kits e presentes prontos" },
-  { value: "cuidado", label: "Cuidado e rotina" },
-  { value: "diversao", label: "Diversão e tecnologia" },
-  { value: "utilidade", label: "Algo útil para o dia a dia" },
-  { value: "ate-100", label: "Presentes até R$ 100" },
+  { value: "perfume", label: "Perfumes e fragrâncias" },
+  { value: "body-splash", label: "Body Splash" },
+  { value: "presentear", label: "Um presente especial" },
+  { value: "ate-100", label: "Opções até R$ 100" },
+  { value: "condicao-especial", label: "Ofertas com desconto" },
 ];
 
 function normalizarBusca(texto = "") {
-  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 }
 
 function linkWhatsApp(produto) {
-  const mensagem = `Olá! Vim pela Rota da Alegria da Bússola e quero este presente: ${produto.title} - ${produto.price}`;
+  const mensagem = produto
+    ? `Olá! Vim pela campanha Servir com Direção da Bússola e quero saber mais sobre ${produto.title} - ${produto.price}.`
+    : "Olá! Vim pela campanha Servir com Direção e gostaria de conhecer as opções masculinas da Bússola.";
   return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
 }
 
-// O texto original e preservado no JSON. Na leitura, removemos apenas os
-// pictogramas das legendas antigas para manter o mesmo acabamento visual.
-function legendaLegivel(texto) {
-  return texto.replace(/\p{Extended_Pictographic}|\uFE0F|\u200D/gu, "").trim();
-}
-
 export default function Campanha() {
-  const [colecao, setColecao] = useState("professores");
+  const [publico, setPublico] = useState("feminino");
   const [busca, setBusca] = useState("");
   const [perfil, setPerfil] = useState("");
   const [limite, setLimite] = useState(ITENS_POR_PAGINA);
   const [produtoAberto, setProdutoAberto] = useState(null);
   const dialogRef = useRef(null);
+  const origemDoFoco = useRef(null);
 
+  // Genero e busca filtram. O guia prioriza matches, sem esconder as demais
+  // ofertas da mesma selecao; a ordem do Word e mantida entre equivalentes.
+  const selecao = useMemo(
+    () => produtos.filter((item) => item.genero === publico),
+    [publico],
+  );
   const resultados = useMemo(() => {
     const termo = normalizarBusca(busca.trim());
-    return PRODUTOS.filter((produto) => {
-      const pertence = colecao === "todos"
-        || (colecao === "professores" && produto.colecao === "professores")
-        || (colecao === "kids" && produto.profiles?.includes("crianca"));
-      const texto = normalizarBusca([produto.title, produto.summary, produto.description].join(" "));
-      return pertence && (!termo || texto.includes(termo));
-    }).sort((a, b) => {
-      if (!perfil) return 0;
-      return Number(Boolean(b.profiles?.includes(perfil))) - Number(Boolean(a.profiles?.includes(perfil)));
-    });
-  }, [colecao, busca, perfil]);
+    return selecao
+      .filter(
+        (item) =>
+          !termo ||
+          normalizarBusca(
+            [item.title, item.brand, item.summary, item.description].join(" "),
+          ).includes(termo),
+      )
+      .sort((a, b) =>
+        perfil
+          ? Number(Boolean(b.profiles?.includes(perfil))) -
+            Number(Boolean(a.profiles?.includes(perfil)))
+          : 0,
+      );
+  }, [selecao, busca, perfil]);
 
-  // O dialog nativo prende o foco, aceita Escape e devolve o foco ao card.
-  // A rolagem do fundo e restaurada ao fechar, inclusive ao desmontar a pagina.
+  // O dialog nativo contem o foco e aceita Escape. O fundo nao rola enquanto
+  // ele esta aberto; ao fechar, o foco e devolvido ao card que o abriu.
   useEffect(() => {
     if (!produtoAberto) return;
     const dialog = dialogRef.current;
-    const rolagemAnterior = document.body.style.overflow;
+    const overflowAnterior = document.body.style.overflow;
     dialog.showModal();
     document.body.style.overflow = "hidden";
     return () => {
       dialog.close();
-      document.body.style.overflow = rolagemAnterior;
+      document.body.style.overflow = overflowAnterior;
+      origemDoFoco.current?.focus({ preventScroll: true });
     };
   }, [produtoAberto]);
 
-  function escolherColecao(value) {
-    setColecao(value);
+  function mudarPublico(value) {
+    setPublico(value);
     setBusca("");
     setPerfil("");
     setLimite(ITENS_POR_PAGINA);
   }
 
-  function escolherPerfil(value) {
-    setPerfil(value);
-    setColecao("todos");
-    setBusca("");
-    setLimite(ITENS_POR_PAGINA);
+  function abrirProduto(produto) {
+    origemDoFoco.current = document.activeElement;
+    setProdutoAberto(produto);
   }
 
   const visiveis = resultados.slice(0, limite);
-  const imagensAbertas = produtoAberto?.images?.length
-    ? produtoAberto.images : [produtoAberto?.image];
 
   return (
-    <section className="rota-page" id="campanha">
-      {/* Uma unica abertura: a Rota e a marca principal da campanha. */}
-      <div className="rota-brand">
-        <h1 className="rota-sr-only">Rota da Alegria Bússola</h1>
+    <section className="servir-page" id="campanha">
+      {/* Uma unica abertura; nao ha uma vitrine extra antes dos produtos. */}
+      <div className="servir-brand">
+        <h1 className="servir-sr-only">Servir com Direção Bússola</h1>
         <img
-          src="/campanhas/rota-da-alegria/logo-rota-alegria.webp"
-          className="rota-brand-logo"
-          alt="Rota da Alegria"
-          width="768"
-          height="512"
+          src="/campanhas/servir-com-direcao/logo-servir-direcao.webp"
+          className="servir-logo"
+          alt="Servir com Direção"
+          width="1000"
+          height="667"
           fetchPriority="high"
           decoding="async"
         />
-        <p><span>Presente guiado.</span> <strong>Sem dúvida.</strong></p>
+        <p className="servir-mensagem">
+          Quem faz a vida acontecer
+          <br />
+          <strong>merece ser valorizado.</strong>
+        </p>
+        <p className="servir-convite">
+          Uma homenagem aos servidores. Uma campanha para todos.
+        </p>
       </div>
 
-      {/* Colecoes, busca guiada e produtos ocupam a mesma vitrine. */}
-      <div className="rota-catalogo" id="catalogo-rota-alegria">
-        <div className="rota-catalogo-heading">
-          <h2>Escolha seu presente</h2>
-          <button
-            type="button"
-            className="rota-professores-logo"
-            onClick={() => escolherColecao("professores")}
-            title="Ver presentes para professores"
-          >
-            <img
-              src="/campanhas/rota-da-alegria/professores/logo-professores.webp"
-              alt="Especial Dia dos Professores na Bússola"
-              width="1400"
-              height="700"
-              decoding="async"
-            />
-          </button>
+      <div className="servir-catalogo" id="catalogo-servir-direcao">
+        {/* Links compartilhados da campanha antiga continuam chegando a vitrine. */}
+        <span
+          id="catalogo-rota-alegria"
+          className="servir-anchor"
+          aria-hidden="true"
+        />
+        <div className="servir-catalogo-heading">
+          <div>
+            <span className="servir-eyebrow">
+              ESCOLHAS REAIS. CUIDADAS PELA BÚSSOLA.
+            </span>
+            <h2>Seu próximo favorito está aqui.</h2>
+          </div>
+          <span className="servir-campanha-label">
+            <FaCompass aria-hidden="true" /> Servir com Direção
+          </span>
         </div>
 
-        <div className="rota-colecoes" aria-label="Escolher presentes">
-          {COLECOES.map(({ value, label, icon }) => (
+        <div
+          className="servir-publicos"
+          role="group"
+          aria-label="Escolher seleção de produtos"
+        >
+          {PUBLICOS.map(({ value, label, icon }) => (
             <button
               type="button"
               key={value}
-              aria-pressed={colecao === value}
-              className={colecao === value ? "ativo" : ""}
-              onClick={() => escolherColecao(value)}
+              aria-pressed={publico === value}
+              onClick={() => mudarPublico(value)}
             >
-              {icon} {label}
+              {icon}
+              <span>{label}</span>
+              <FaArrowRight
+                className="servir-publico-arrow"
+                aria-hidden="true"
+              />
             </button>
           ))}
         </div>
 
-        <div className="rota-tools">
-          <label className="rota-field">
-            <FaSearch aria-hidden="true" />
-            <span className="rota-sr-only">Buscar produto</span>
-            <input
-              type="search"
-              placeholder="Buscar um produto"
-              value={busca}
-              onChange={(event) => {
-                setBusca(event.target.value);
-                setLimite(ITENS_POR_PAGINA);
-              }}
-            />
-          </label>
+        {selecao.length > 0 ? (
+          <>
+            <div className="servir-tools">
+              <label className="servir-field">
+                <FaSearch aria-hidden="true" />
+                <span className="servir-sr-only">Buscar produto</span>
+                <input
+                  type="search"
+                  placeholder="Buscar por nome ou marca"
+                  value={busca}
+                  onChange={(event) => {
+                    setBusca(event.target.value);
+                    setLimite(ITENS_POR_PAGINA);
+                  }}
+                />
+              </label>
+              <div className="servir-guide">
+                <label className="servir-field">
+                  <FaCompass aria-hidden="true" />
+                  <span className="servir-sr-only">O que você procura?</span>
+                  <select
+                    value={perfil}
+                    onChange={(event) => {
+                      setPerfil(event.target.value);
+                      setLimite(ITENS_POR_PAGINA);
+                    }}
+                  >
+                    <option value="">O que você procura?</option>
+                    {PERFIS.map((opcao) => (
+                      <option key={opcao.value} value={opcao.value}>
+                        {opcao.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                {perfil && (
+                  <button
+                    className="servir-clear"
+                    type="button"
+                    title="Limpar escolha"
+                    aria-label="Limpar escolha"
+                    onClick={() => {
+                      setPerfil("");
+                      setLimite(ITENS_POR_PAGINA);
+                    }}
+                  >
+                    <FaUndo aria-hidden="true" />
+                  </button>
+                )}
+              </div>
+            </div>
 
-          <div className="rota-guide">
-            <label className="rota-field">
-              <FaCompass aria-hidden="true" />
-              <span className="rota-sr-only">O que você procura?</span>
-              <select value={perfil} onChange={(event) => escolherPerfil(event.target.value)}>
-                <option value="">O que você procura?</option>
-                {PERFIS.map((opcao) => <option key={opcao.value} value={opcao.value}>{opcao.label}</option>)}
-              </select>
-            </label>
-            {perfil && (
-              <button className="rota-clear" type="button" title="Limpar escolha" aria-label="Limpar escolha" onClick={() => escolherPerfil("")}>
-                <FaUndo aria-hidden="true" />
-              </button>
-            )}
-          </div>
-        </div>
-
-        <div className="rota-grid" aria-live="polite">
-          {visiveis.map((produto) => (
-            <article className="rota-product" key={produto.numero}>
-              <button
-                type="button"
-                className="rota-product-photo"
-                aria-label={`Ver detalhes de ${produto.title}`}
-                onClick={() => setProdutoAberto(produto)}
-              >
-                <img src={produto.image} alt={produto.alt} loading="lazy" decoding="async" />
-              </button>
-              <div className="rota-product-info">
-                <h3>{produto.title}</h3>
-                <strong className="rota-price">{produto.price}</strong>
-                <a href={linkWhatsApp(produto)} target="_blank" rel="noreferrer" className="rota-whatsapp">
-                  <FaWhatsapp aria-hidden="true" /> Comprar
-                  <span className="rota-sr-only"> {produto.title} pelo WhatsApp</span>
-                </a>
-                <button type="button" className="rota-details" onClick={() => setProdutoAberto(produto)}>
-                  Ver detalhes
-                  <span className="rota-sr-only"> de {produto.title}</span>
-                  <FaArrowRight aria-hidden="true" />
+            <div className="servir-resultados" aria-live="polite">
+              <h3>
+                Seleção {publico === "feminino" ? "feminina" : "masculina"}
+              </h3>
+              <span>
+                {resultados.length}{" "}
+                {resultados.length === 1 ? "opção" : "opções"}
+              </span>
+            </div>
+            <div className="servir-grid">
+              {visiveis.map((produto) => (
+                <article className="servir-product" key={produto.numero}>
+                  <button
+                    type="button"
+                    className="servir-product-photo"
+                    aria-label={`Ver detalhes de ${produto.title}`}
+                    onClick={() => abrirProduto(produto)}
+                  >
+                    {produto.oldPriceValue > produto.priceValue && (
+                      <span className="servir-discount">
+                        {Math.floor(
+                          (1 - produto.priceValue / produto.oldPriceValue) *
+                            100,
+                        )}
+                        % OFF
+                      </span>
+                    )}
+                    <img
+                      src={produto.thumbnail || produto.image}
+                      alt={produto.alt}
+                      width={produto.width}
+                      height={produto.height}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="servir-photo-action">
+                      <FaExpand aria-hidden="true" />
+                    </span>
+                  </button>
+                  <div className="servir-product-info">
+                    <span className="servir-product-brand">
+                      {produto.brand}
+                    </span>
+                    <h4>{produto.title}</h4>
+                    <div className="servir-price-block">
+                      <span className="servir-old-price">
+                        {produto.oldPrice ? (
+                          <>
+                            <span className="servir-sr-only">De </span>
+                            <s>{produto.oldPrice}</s>
+                          </>
+                        ) : (
+                          "\u00a0"
+                        )}
+                      </span>
+                      <div className="servir-price">
+                        <strong>{produto.price}</strong>
+                        {produto.priceNote && <span>{produto.priceNote}</span>}
+                      </div>
+                    </div>
+                    <a
+                      href={linkWhatsApp(produto)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="servir-whatsapp"
+                    >
+                      <FaWhatsapp aria-hidden="true" /> Quero esse
+                      <span className="servir-sr-only">: {produto.title}</span>
+                    </a>
+                    <button
+                      type="button"
+                      className="servir-details"
+                      onClick={() => abrirProduto(produto)}
+                    >
+                      Ver detalhes
+                      <span className="servir-sr-only">
+                        {" "}
+                        de {produto.title}
+                      </span>
+                      <FaArrowRight aria-hidden="true" />
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+            {resultados.length === 0 ? (
+              <div className="servir-empty">
+                <h3>Nenhum produto encontrado.</h3>
+                <p>Tente outro nome ou consulte toda a seleção.</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setBusca("");
+                    setPerfil("");
+                    setLimite(ITENS_POR_PAGINA);
+                  }}
+                >
+                  Limpar busca
                 </button>
               </div>
-            </article>
-          ))}
-        </div>
-
-        {resultados.length === 0 && (
-          <div className="rota-empty">
-            <p>Não encontramos esse produto.</p>
-            <button type="button" onClick={() => escolherColecao("todos")}>Ver todos os presentes</button>
-          </div>
-        )}
-
-        {resultados.length > 0 && (
-          <div className="rota-more">
-            <span>{visiveis.length} de {resultados.length} presentes</span>
-            {limite < resultados.length && (
-              <button type="button" onClick={() => setLimite((atual) => atual + ITENS_POR_PAGINA)}>
-                Ver mais presentes <FaChevronDown aria-hidden="true" />
-              </button>
+            ) : (
+              <div className="servir-more">
+                <span>
+                  {visiveis.length} de {resultados.length} opções
+                </span>
+                {limite < resultados.length && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setLimite((atual) => atual + ITENS_POR_PAGINA)
+                    }
+                  >
+                    Ver mais produtos
+                    <FaChevronDown aria-hidden="true" />
+                  </button>
+                )}
+              </div>
             )}
+          </>
+        ) : (
+          <div className="servir-empty servir-em-breve">
+            <FaMars aria-hidden="true" />
+            <h3>A seleção masculina está chegando.</h3>
+            <p>
+              Enquanto isso, a equipe Bússola ajuda você a encontrar a
+              fragrância certa.
+            </p>
+            <a
+              href={linkWhatsApp()}
+              target="_blank"
+              rel="noreferrer"
+              className="servir-whatsapp"
+            >
+              <FaWhatsapp aria-hidden="true" /> Consultar opções masculinas
+            </a>
           </div>
         )}
+
+        {/* A historia da campanha fica acessivel sem atrasar a escolha. */}
+        <details className="servir-manifesto">
+          <summary>
+            Uma homenagem que abraça toda Pindoretama
+            <FaChevronDown aria-hidden="true" />
+          </summary>
+          <div>
+            <h3>
+              Nasceu para reconhecer quem serve.
+              <br />
+              Cresceu para valorizar quem faz a vida acontecer.
+            </h3>
+            <p>
+              A Servir com Direção homenageia o Dia do Servidor Público,
+              celebrado em 28 de outubro, e quem dedica seus dias a cuidar,
+              ensinar e atender.
+            </p>
+            <p>
+              Mas esse reconhecimento é para todos: comerciantes,
+              empreendedores, trabalhadores, mães e cada pessoa que faz
+              Pindoretama acontecer. As oportunidades da campanha são abertas a
+              você, independentemente da profissão.
+            </p>
+            <p>
+              Servir com propósito. Valorizar com carinho. Essa é a nossa
+              direção.
+            </p>
+          </div>
+        </details>
       </div>
 
-      {/* As legendas completas ficam nesta leitura sob demanda, fora da grade. */}
+      {/* A foto grande so carrega ao abrir. Texto completo com rolagem propria. */}
       {produtoAberto && (
         <dialog
-          className="rota-dialog"
+          className="servir-dialog"
           ref={dialogRef}
-          aria-labelledby="rota-produto-titulo"
+          aria-labelledby="servir-produto-titulo"
           onCancel={() => setProdutoAberto(null)}
           onClick={(event) => {
             if (event.target === event.currentTarget) setProdutoAberto(null);
           }}
         >
-          <div className="rota-dialog-layout">
-            <button type="button" className="rota-dialog-close" aria-label="Fechar detalhes" title="Fechar detalhes" onClick={() => setProdutoAberto(null)}>
+          <div className="servir-dialog-layout">
+            <button
+              type="button"
+              className="servir-dialog-close"
+              aria-label="Fechar detalhes"
+              title="Fechar detalhes"
+              onClick={() => setProdutoAberto(null)}
+            >
               <FaTimes aria-hidden="true" />
             </button>
-            <div className="rota-dialog-media" data-multiple={imagensAbertas.length > 1}>
-              {imagensAbertas.map((imagem) => <img src={imagem} alt={produtoAberto.alt} key={imagem} />)}
+            <div className="servir-dialog-media">
+              <img
+                src={produtoAberto.image}
+                alt={produtoAberto.alt}
+                width={produtoAberto.width}
+                height={produtoAberto.height}
+              />
+              <a
+                href={produtoAberto.image}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Ampliar foto original"
+                title="Ampliar foto original"
+              >
+                <FaExpand aria-hidden="true" />
+              </a>
             </div>
-            <div className="rota-dialog-info">
-              <h2 id="rota-produto-titulo">{produtoAberto.title}</h2>
-              <strong className="rota-price">{produtoAberto.price}</strong>
-              <p>{legendaLegivel(produtoAberto.description)}</p>
-              <a href={linkWhatsApp(produtoAberto)} target="_blank" rel="noreferrer" className="rota-whatsapp">
+            <div className="servir-dialog-info">
+              <span className="servir-product-brand">
+                {produtoAberto.brand}
+              </span>
+              <h2 id="servir-produto-titulo">{produtoAberto.title}</h2>
+              {produtoAberto.oldPrice && (
+                <s className="servir-old-price">{produtoAberto.oldPrice}</s>
+              )}
+              <div className="servir-price">
+                <strong>{produtoAberto.price}</strong>
+                <span>{produtoAberto.priceNote}</span>
+              </div>
+              <p>{produtoAberto.description}</p>
+              <a
+                href={linkWhatsApp(produtoAberto)}
+                target="_blank"
+                rel="noreferrer"
+                className="servir-whatsapp"
+              >
                 <FaWhatsapp aria-hidden="true" /> Pedir pelo WhatsApp
               </a>
             </div>

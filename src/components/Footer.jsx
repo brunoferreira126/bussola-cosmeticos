@@ -28,7 +28,7 @@ export default function Footer() {
           <ul>
             <li><a href="#campanha">Início</a></li>
             <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#catalogo-rota-alegria">Presentes</a></li>
+            <li><a href="#catalogo-servir-direcao">Produtos</a></li>
             <li><a href="#contato">Contatos</a></li>
           </ul>
         </div>
