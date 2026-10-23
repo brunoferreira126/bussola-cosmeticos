@@ -14,15 +14,29 @@ estão preservadas, mas não são misturadas às novas ofertas.
 - `oldPrice`, `oldPriceValue`: opcionais, somente quando existe preço anterior.
 - `priceNote`: `cada`, `o par` ou vazio.
 - `description`: legenda completa exibida em **Ver detalhes**.
-- `genero`: `feminino` ou `masculino`, determina a aba.
+- `genero`: `feminino`, `masculino` ou `unissex`; o último aparece nas duas abas.
 - `profiles`: prioridades do guia: `perfume`, `body-splash`, `presentear`,
-  `ate-100` ou `condicao-especial`.
+  `ate-100`, `condicao-especial` ou `utilidade`.
 - `image`: foto maior; `thumbnail`: miniatura leve; `width` e `height`: dimensões.
 - `numero`: identificador único, inclusive entre as duas seleções.
 
-Para adicionar os masculinos, inclua novos registros com `genero: "masculino"`,
-IDs novos e fotos em `public/campanhas/servir-com-direcao/`. A aba funciona
-automaticamente; enquanto não há produtos, ela oferece atendimento pelo WhatsApp.
+As duas seleções já têm produtos. Novos registros usam IDs únicos e fotos em
+`public/campanhas/servir-com-direcao/`. Itens compartilhados, como carregador
+portátil e seleção Barbour's, aparecem nas duas abas sem duplicar o cadastro.
+
+### Produtos adicionais de 23/10/2026
+
+O PDF da pasta `servir com direção` trouxe 20 ofertas adicionais. Para
+reimportar esse lote, execute `scripts/importar-adicionais-servir-pdf.py` com
+Python, pypdf e Pillow. O script tem o mapeamento de páginas e valores revisados;
+não tenta adivinhar preços. Reexecutá-lo atualiza somente os registros desse
+lote, identificados por `importKey`, sem duplicar produtos nem substituir as
+20 ofertas originais. Preserve alterações manuais desses novos registros antes
+de reimportar. As fotos originais do PDF são extraídas e convertidas em WebP.
+
+Os textos das páginas 71 e 73 terminavam com frases incompletas no arquivo de
+origem; apenas esses fragmentos finais foram omitidos, sem inventar informação.
+O visual preto e dourado e o carregamento de seis itens por vez permanecem iguais.
 
 O componente fica em `src/components/Campanha.jsx`, e o visual em
 `src/components/campanha.css`. Os comentários explicam os filtros, o guia,

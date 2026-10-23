@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Cache gerado pelos importadores de catalogo em Python
+__pycache__/
+*.pyc

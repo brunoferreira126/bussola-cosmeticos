@@ -78,8 +78,11 @@ def save_webp(source, target, width, quality):
 
 
 def main():
+    docs = list(SOURCE.glob("*.docx"))
+    if not docs:
+        raise SystemExit("O arquivo atual e PDF. Use scripts/importar-adicionais-servir-pdf.py para preservar as ofertas existentes.")
     DEST.mkdir(parents=True, exist_ok=True)
-    with ZipFile(next(SOURCE.glob("*.docx"))) as archive:
+    with ZipFile(docs[0]) as archive:
         relationships = ET.fromstring(archive.read("word/_rels/document.xml.rels"))
         targets = {rel.attrib["Id"]: rel.attrib["Target"] for rel in relationships}
         document = ET.fromstring(archive.read("word/document.xml"))

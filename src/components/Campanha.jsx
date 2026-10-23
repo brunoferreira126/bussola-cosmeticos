@@ -16,7 +16,7 @@ import "./campanha.css";
 
 // CAMPANHA ATIVA: SERVIR COM DIRECAO.
 // Nomes, precos, legendas, genero e fotos: src/data/servirDirecaoCatalogo.json.
-// Para incluir a selecao masculina, cadastre produtos com genero: "masculino".
+// Genero: "feminino", "masculino" ou "unissex" (compartilhado nas duas abas).
 // Nenhum produto ou preco das campanhas anteriores e reaproveitado.
 const WHATSAPP = "5585984241536";
 const ITENS_POR_PAGINA = 6;
@@ -38,6 +38,7 @@ const PERFIS = [
   { value: "presentear", label: "Um presente especial" },
   { value: "ate-100", label: "Opções até R$ 100" },
   { value: "condicao-especial", label: "Ofertas com desconto" },
+  { value: "utilidade", label: "Acessórios e praticidade" },
 ];
 
 function normalizarBusca(texto = "") {
@@ -66,7 +67,10 @@ export default function Campanha() {
   // Genero e busca filtram. O guia prioriza matches, sem esconder as demais
   // ofertas da mesma selecao; a ordem do Word e mantida entre equivalentes.
   const selecao = useMemo(
-    () => produtos.filter((item) => item.genero === publico),
+    () =>
+      produtos.filter(
+        (item) => item.genero === publico || item.genero === "unissex",
+      ),
     [publico],
   );
   const resultados = useMemo(() => {
@@ -79,12 +83,18 @@ export default function Campanha() {
             [item.title, item.brand, item.summary, item.description].join(" "),
           ).includes(termo),
       )
-      .sort((a, b) =>
-        perfil
+      .sort((a, b) => {
+        const prioridade = perfil
           ? Number(Boolean(b.profiles?.includes(perfil))) -
             Number(Boolean(a.profiles?.includes(perfil)))
-          : 0,
-      );
+          : 0;
+        // Matches do guia primeiro; depois produtos da aba. Linhas e acessorios
+        // compartilhados permanecem acessiveis ao final, sem duplicar ofertas.
+        return (
+          prioridade ||
+          Number(a.genero === "unissex") - Number(b.genero === "unissex")
+        );
+      });
   }, [selecao, busca, perfil]);
 
   // O dialog nativo contem o foco e aceita Escape. O fundo nao rola enquanto

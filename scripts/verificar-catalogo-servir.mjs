@@ -13,7 +13,7 @@ assert.ok(products.length > 0, "Catalogo vazio");
 assert.equal(new Set(products.map((item) => item.numero)).size, products.length, "IDs repetidos");
 for (const item of products) {
   assert.ok(item.title && item.description && item.brand, `Texto incompleto: ${item.numero}`);
-  assert.ok(["feminino", "masculino"].includes(item.genero), `Genero invalido: ${item.title}`);
+  assert.ok(["feminino", "masculino", "unissex"].includes(item.genero), `Genero invalido: ${item.title}`);
   assert.ok(Number.isSafeInteger(item.priceValue) && item.priceValue > 0, `Preco invalido: ${item.title}`);
   assert.ok(item.price.includes(money(item.priceValue)), `Preco visivel diferente do numerico: ${item.title}`);
   assert.ok(!/[\uFFFD]|\u00c3[\u00a3\u00a7]/u.test(item.description), `Acentos invalidos: ${item.title}`);
@@ -29,5 +29,11 @@ for (const item of products) {
 // O Word tinha duplicidade Wepink e dois precos Ella; guarda essas correcoes.
 assert.equal(products.filter((item) => item.title === "Body Splash Wepink").length, 1);
 assert.equal(products.find((item) => item.title.startsWith("Ella ")).priceValue, 14990);
+assert.ok(products.some((item) => item.genero === "masculino"), "Selecao masculina vazia");
+const imported = products.filter((item) => item.importKey?.startsWith("servir-adicionais-20261023-"));
+assert.equal(imported.length, 20, "Importacao adicional incompleta ou duplicada");
+assert.equal(new Set(imported.map((item) => item.importKey)).size, imported.length);
+const shared = products.filter((item) => item.genero === "unissex");
+assert.ok(shared.every((item) => item.profiles.includes("utilidade") || item.category === "body-splash"));
 assert.ok(existsSync(path.join(root, "public/marca/logo-bussola.webp")));
 console.log(`OK: ${products.length} produtos, precos, textos e imagens conferidos.`);
