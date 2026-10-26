@@ -11,6 +11,8 @@ const money = (cents) => `R$ ${Math.floor(cents / 100)},${String(cents % 100).pa
 
 assert.ok(products.length > 0, "Catalogo vazio");
 assert.equal(new Set(products.map((item) => item.numero)).size, products.length, "IDs repetidos");
+const importKeys = products.map((item) => item.importKey).filter(Boolean);
+assert.equal(new Set(importKeys).size, importKeys.length, "Chaves de importacao repetidas");
 for (const item of products) {
   assert.ok(item.title && item.description && item.brand, `Texto incompleto: ${item.numero}`);
   assert.ok(["feminino", "masculino", "unissex"].includes(item.genero), `Genero invalido: ${item.title}`);
@@ -33,6 +35,17 @@ assert.ok(products.some((item) => item.genero === "masculino"), "Selecao masculi
 const imported = products.filter((item) => item.importKey?.startsWith("servir-adicionais-20261023-"));
 assert.equal(imported.length, 20, "Importacao adicional incompleta ou duplicada");
 assert.equal(new Set(imported.map((item) => item.importKey)).size, imported.length);
+// Lote do Word de 26/10: somente acrescimos, sem perder nenhum dos 40 IDs antigos.
+for (let numero = 1; numero <= 40; numero += 1) {
+  assert.ok(products.some((item) => item.numero === numero), `Produto anterior ausente: ${numero}`);
+}
+const additions = products.filter((item) => item.importKey?.startsWith("servir-complementos-20261026-"));
+assert.equal(additions.length, 14, "Complementos do Word incompletos ou duplicados");
+const lantern = additions.find((item) => item.importKey.endsWith("-image12"));
+assert.equal(lantern.priceValue, 8999, "Preco final da lanterna confirmado pelo proprietario");
+assert.ok(!lantern.oldPriceValue, "A lanterna nao tem preco anterior informado");
+assert.equal(additions.filter((item) => item.genero === "unissex").length, 13);
+assert.equal(additions.find((item) => item.category === "kit").genero, "masculino");
 const shared = products.filter((item) => item.genero === "unissex");
 assert.ok(shared.every((item) => item.profiles.includes("utilidade") || item.category === "body-splash"));
 assert.ok(existsSync(path.join(root, "public/marca/logo-bussola.webp")));

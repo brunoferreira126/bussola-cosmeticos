@@ -24,7 +24,26 @@ As duas seleções já têm produtos. Novos registros usam IDs únicos e fotos e
 `public/campanhas/servir-com-direcao/`. Itens compartilhados, como carregador
 portátil e seleção Barbour's, aparecem nas duas abas sem duplicar o cadastro.
 
-### Produtos adicionais de 23/10/2026
+### Complementos de 26/10/2026
+
+O arquivo `servir com direção/bussola arquivos que faltam.docx` acrescentou
+14 ofertas: som, relógios, mochilas, fones, utilidades e um combo masculino.
+Os 40 registros anteriores permanecem sem alterações. As 13 ofertas de
+acessórios são compartilhadas nas duas abas e aparecem na busca guiada
+**Acessórios e praticidade**; o combo Body Splash + carteira fica em Masculino.
+
+Para importar esse Word, use `scripts/importar-complementos-servir-docx.py`
+(Python e Pillow). Ele só acrescenta o lote de chave
+`servir-complementos-20261026-`; ao repetir, ignora registros já importados.
+Não execute os importadores antigos para esse documento. Para manutenção,
+edite títulos, preços e descrições em `src/data/servirDirecaoCatalogo.json`.
+
+A lanterna custa **R$ 89,99**, preço final confirmado pelo proprietário;
+não existe desconto anterior informado. As grafias Kapbom e Lehmox foram
+conferidas nas embalagens. Originais não são modificados. As fotos novas
+têm versões WebP de até 960 px e miniaturas de até 480 px, sem cortes.
+
+### Importação do PDF de 23/10/2026
 
 O PDF da pasta `servir com direção` trouxe 20 ofertas adicionais. Para
 reimportar esse lote, execute `scripts/importar-adicionais-servir-pdf.py` com
